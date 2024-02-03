@@ -34,6 +34,10 @@ const schema  = new mongoose.Schema({
         type: Number,
         required: [true,"pin code must be provided"]
       },
+      isDeleted:{
+        type: Boolean,
+        default: false
+      }
 },{timestamps:true})
 
 export const Address =  mongoose.model('Address',schema);
