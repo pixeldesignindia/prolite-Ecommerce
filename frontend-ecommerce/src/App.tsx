@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./global.css";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header/Header";
@@ -54,6 +54,7 @@ else{dispatch(userNotExist())}
       <Suspense fallback={<h5>Loading...</h5>}>
         <Header user={user || null}/>
         <Routes>
+          <Route path="*" element={<>hi manas</>} />
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product" element={<Search />} />

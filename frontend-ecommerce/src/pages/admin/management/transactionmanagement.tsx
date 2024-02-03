@@ -40,7 +40,7 @@ const TransactionManagement = () => {
   const { isLoading, data, isError } = useOrderDetailsQuery(params.id!);
 console.log(isLoading, data, isError)
   const {
-    shippingInfo: { address, city, state, country, pinCode },
+    // shippingInfo: { address, city, state, country, pinCode },
     orderItems,
     user: { name },
     status,
@@ -109,7 +109,7 @@ console.log(isLoading, data, isError)
               <p>Name: {name}</p>
               <p>
                 Address:{" "}
-                {`${ address && address}, ${city}, ${state}, ${country} ${pinCode}`}
+                {/* {`${ address && address}, ${city}, ${state}, ${country} ${pinCode}`} */}
               </p>
               <h5>Amount Info</h5>
               <p>Subtotal: {subtotal}</p>

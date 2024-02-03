@@ -1,4 +1,4 @@
-import { CartItem, Order, Product, ShippingInfo } from "./types";
+import { Bar, CartItem, Line, Order, Pie, Product, ShippingInfo, Stats, User } from "./types";
 
     export type MessageResponse = {
     success: boolean;
@@ -54,7 +54,7 @@ import { CartItem, Order, Product, ShippingInfo } from "./types";
       };
       export type OrderDetailsResponse = {
         success: boolean;
-        order: Order;
+        orders: Order;
       };
       export type AllOrdersResponse = {
         success: boolean;
@@ -70,4 +70,35 @@ import { CartItem, Order, Product, ShippingInfo } from "./types";
         total: number;
         user: string;
         paymentMethod:string
+      };
+
+      export type DeleteUserRequest = {
+        userId: string;
+        adminUserId: string;
+      };
+      
+      export type AllUsersResponse = {
+        success: boolean;
+        users: User[];
+      };
+
+
+      export type StatsResponse = {
+        success: boolean;
+        stats: Stats;
+      };
+      
+      export type PieResponse = {
+        success: boolean;
+        charts: Pie;
+      };
+      
+      export type BarResponse = {
+        success: boolean;
+        charts: Bar;
+      };
+      
+      export type LineResponse = {
+        success: boolean;
+        charts: Line;
       };

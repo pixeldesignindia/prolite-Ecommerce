@@ -41,13 +41,13 @@ const Search = () => {
   console.log(categoriesResponse)
   if (isError) {
     const err = error as CustomError;
-    toast.error(err.data.message);
+    toast.error(err?.data?.message||"Can`t find Products");
   }
   const isPrevPage = page > 1;
   const isNextPage = page < 4;
   if (productIsError) {
     const err = productError as CustomError;
-    toast.error(err.data.message);
+    toast.error(err?.data?.message||"Can`t find Products");
   }
   return (
     <div className="product-search-page">

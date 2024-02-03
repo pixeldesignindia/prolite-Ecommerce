@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { server } from "../store";
-import { MessageResponse } from "../../types/api-types";
+import { AllUsersResponse, DeleteUserRequest, MessageResponse } from "../../types/api-types";
 import { User } from "../../types/types";
 import axios from "axios";
 
@@ -19,17 +19,17 @@ export const userApi = createApi({
       }),
       invalidatesTags:['users']
     }),
-    deleteUser: builder.mutation<MessageResponse, User>({
-      query: (user) => ({
-        url: "new",
-        method: "POST",
-        body: user,
+    deleteUser: builder.mutation<MessageResponse, DeleteUserRequest>({
+      query: ({ userId, adminUserId }) => ({
+        url: `${userId}?id=${adminUserId}`,
+        method: "DELETE",
       }),
-      invalidatesTags:['users']
+      invalidatesTags: ["users"],
     }),
-    allUsers: builder.query<string,string>({
-      query: (id) =>`all?id${id}`,
-      providesTags:['users']
+
+    allUsers: builder.query<AllUsersResponse, string>({
+      query: (id) => `all?id=${id}`,
+      providesTags: ["users"],
     }),
     
   }),
@@ -43,4 +43,4 @@ export const getUser = async (id: string) => {
     return data;
   } catch(error) {console.log(error)}
 };
-export const { useLoginMutation } = userApi;
+export const { useLoginMutation ,useAllUsersQuery,useDeleteUserMutation } = userApi;
