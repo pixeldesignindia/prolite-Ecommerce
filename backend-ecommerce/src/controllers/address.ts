@@ -5,6 +5,7 @@ import ErrorHandler from "../utils/utility-class.js";
 import { Address } from "../models/address.js";
 import { invalidateCache } from "../utils/features.js";
 import { myCache } from "../app.js";
+import { set } from "mongoose";
 
 
 export const getAllAdressByUser =TryCatch(async(req,res,next)=>{
@@ -32,7 +33,11 @@ export const deleteAdress = TryCatch(async (req, res, next) => {
   const address = await Address.findById(id);
   if (!address) return next(new ErrorHandler("address  Not Found", 404));
 
-  await address.deleteOne();
+  await Address.updateOne(
+    { _id: id },
+    { $set: { isDeleted: true } }
+  );
+
   invalidateCache({
     addressId:String(address._id),
     shippingAddress:true,
