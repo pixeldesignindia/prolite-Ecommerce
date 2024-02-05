@@ -1,0 +1,13 @@
+.cardC{max-width: 200px;height: 550px;margin: 0 10px;padding: 14px;align-items: center;border: 0px;border-radius: 20px;}
+.card-body{height:172px;}
+.card .img{height: 390px;display: flex;align-items: center;background: rgba(244, 250, 255, 1);border-radius: 20px;padding: 0 15px;}
+.card-title{color: rgba(0, 0, 0, 1);font-size: 22px;text-transform: uppercase;font-weight: 600;}
+.card-text{font-family: Montserrat; font-size: 28px;font-weight: 700;color: rgba(53, 180, 119, 1);}
+
+.add-cart{background: rgba(1, 79, 179, 1);display: flex;width: 350px;justify-content: center;align-items: center;padding: 10px 0;border-radius: 20px;}
+.add{color: white;font-size: 18px;text-transform: uppercase;margin-bottom: 0px;}
+
+.fa-solid{color: rgb(9, 8, 8); padding: 0 10px;}
+
+#button{width: 50px;padding: 10px; border-radius: 50%;}
+#button i{border: 1px solid #151414;padding: 10px;border-radius: 50px;}

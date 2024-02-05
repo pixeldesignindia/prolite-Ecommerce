@@ -6,6 +6,7 @@ import { userReducer } from "./userReducer";
 import { latestProductApi } from "./api/productsApi";
 import { cartReducer } from "./cart-reducer";
 import { orderApi } from "./api/orderApi";
+import { dashboardApi } from "./api/dashboardApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 export const server = "http://localhost:4000";
@@ -20,6 +21,7 @@ const persistedReducer = persistReducer(persistConfig, combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   [latestProductApi.reducerPath]: latestProductApi.reducer,
   [orderApi.reducerPath]: orderApi.reducer,
+  [dashboardApi.reducerPath]: dashboardApi.reducer,
   [userReducer.name]: userReducer.reducer,
   [cartReducer.name]: cartReducer.reducer,
 }));
@@ -30,6 +32,7 @@ export const store = configureStore({
     getDefaultMiddleware().concat(
       userApi.middleware,
       latestProductApi.middleware,
+      dashboardApi.middleware,
       orderApi.middleware
     ),
 });
