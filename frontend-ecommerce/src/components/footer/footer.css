@@ -4,4 +4,5 @@
 .ft-list a{color: #FFFFFF;text-decoration: none;}
 
 .second-left{text-align: start;color: #fff;}
-.second-right{text-align: end;color: #fff;}
+.second-right{text-align: end;color: #fff;display: flex;justify-content: flex-end;}
+.second-right a{color: #FFFFFF;}

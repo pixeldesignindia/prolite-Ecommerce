@@ -39,7 +39,7 @@ const Footer = () => {
                         <div className="col-6">
                             <div className="second-right">
                                 <p>Design & Developed By -</p>
-                                <a href="">Pixel Design India</a>
+                                <a href="https://pixeldesignindia.com/" target='blank_'>Pixel Design India</a>
                             </div>
                         </div>
                     </div>
