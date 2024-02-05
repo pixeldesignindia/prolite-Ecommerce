@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Footer from '../src/components/footer/Footer'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header/Header";
@@ -87,6 +87,7 @@ else{dispatch(userNotExist())}
           />
           </Route>;
         </Routes>
+        <Footer/>
       </Suspense>
       <Toaster position="top-right"/>
     </BrowserRouter>
