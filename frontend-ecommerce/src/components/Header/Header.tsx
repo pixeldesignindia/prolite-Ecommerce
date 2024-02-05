@@ -43,8 +43,8 @@ const Header = ({ user }: propestype) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             
-            <Nav.Link href={"/product"}>Product</Nav.Link>
-      <Nav.Link href={"/orders"}>Orders</Nav.Link>
+            <Nav.Link href={"/product"}>Brands</Nav.Link>
+      <Nav.Link href={"/orders"}>About Us</Nav.Link>
       <Nav.Link href={"/cart"}>
         <FaShoppingBag />
         {cartItems && cartItems.length>=1 && cartItems.length}
