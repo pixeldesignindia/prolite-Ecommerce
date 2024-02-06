@@ -31,9 +31,7 @@ export const productSchema = z.object({
     invalid_type_error: "stock should be number"})
   .min(0, { message: "Stock is required" }),
 
-  photo: z
-  .string()
-  .min(1, { message: "Photo is required" }),
+  photos: z.array(z.string()).min(1, "At least one photo is required"),
    discription: z
     .string({
       required_error: 'Product Name is required',
