@@ -44,9 +44,9 @@ const Header = ({ user }: propestype) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="nav-Body">
             <div>
-              <div className="link-center"><Nav.Link href={"/product"}>Home</Nav.Link>
+            <div className="link-center">
             <Nav.Link href={"/product"}>Brands</Nav.Link>
-      <Nav.Link href={"/orders"}>About Us</Nav.Link></div>
+      <Nav.Link href={"/orders"}>Orders</Nav.Link></div>
               
       </div>
           
