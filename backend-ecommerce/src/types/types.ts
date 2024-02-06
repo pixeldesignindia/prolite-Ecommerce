@@ -13,7 +13,7 @@ export interface NewProductRequestBody {
   name: string;
   category: string;
   description: string;
-  photo: string;
+  photos:string[];
   stock: number;
   price: number;
 }
