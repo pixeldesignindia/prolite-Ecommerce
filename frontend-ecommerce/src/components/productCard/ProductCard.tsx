@@ -26,7 +26,7 @@ const ProductCard = ({
     <div className="cardC">
       {/* <p>ID: {productId}</p> */}
       <div className="img">
-      <img src={`${server}/${photo}`} alt={name} style={{ width: "200px", height: "200px" }}/>
+      <img src={`${server}/${photo}`} alt={name} style={{ width: "320px", height: "200px" }}/>
       </div>
       <div className="card-body">
       <p className="card-title">{name}</p>

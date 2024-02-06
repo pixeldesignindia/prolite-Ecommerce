@@ -11,7 +11,7 @@ const Brand = () => {
         <h2 className="heading text-center">Shop by brand</h2>
       </div>
 
-      <div className="container text-center" >
+      <div className="container brand-box" >
         <div className="row gx-4 ">
           <div className="col-4 mt-5 mb-5 ">
             <div className="three">
