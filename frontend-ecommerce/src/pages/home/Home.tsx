@@ -94,7 +94,7 @@ const Home: React.FC = () => {
     <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
 
       </div>
-      <Brand/>
+      <h4 className="para" style={{color:'#014FB3'}}>Prolite</h4>
       {isSuccess && (
       // <MultipleItems>
         <div className=" slider-container">
@@ -117,6 +117,7 @@ const Home: React.FC = () => {
       // </MultipleItems>
     )}
     <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
+    <Brand/>
     </>
   );
 };
