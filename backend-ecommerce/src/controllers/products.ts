@@ -10,6 +10,8 @@ import ErrorHandler from "../utils/utility-class.js";
 import { rm } from "fs";
 import { myCache } from "../app.js";
 import { invalidateCache } from "../utils/features.js";
+import { any } from "zod";
+import { unlink } from 'fs/promises'
 
 export const getlatestProducts = TryCatch(async (req, res, next) => {
   let products;
@@ -81,25 +83,28 @@ export const getSingleProduct = TryCatch(async (req, res, next) => {
 
 export const newProduct = TryCatch(
   async (req: Request<{}, {}, NewProductRequestBody>, res, next) => {
-    const { name, price, stock, category,discription } = req.body;
-    const photo = req.file;
+    const { name, price, stock, category,description } = req.body;
+        const photos = req.files as Express.Multer.File[]; 
 
-    if (!photo) return next(new ErrorHandler("Please add Photo", 400));
+    if (!photos) return next(new ErrorHandler("Please add Photo", 400));
 
-    if (!name || !price || !stock || !category || !discription) {
-      rm(photo.path, () => {
-        console.log("Deleted");
-      });
+    if (!name || !price || !stock || !category || !description) {
+     for (const photo of photos) {
+        await unlink(photo.path);
+      }
 
-      return next(new ErrorHandler("Please enter All Fields", 400));
+      return next(new ErrorHandler('Please enter all fields', 400));
     }
+
+    const photoPaths = photos.map((photo) => photo.path);
 
     await Product.create({
       name,
       price,
       stock,
       category: category.toLowerCase(),
-      photo: photo.path,
+      description,
+      photos: photoPaths,
     });
 
      invalidateCache({ product: true, admin: true });
@@ -113,24 +118,26 @@ export const newProduct = TryCatch(
 
 export const updateProduct = TryCatch(async (req, res, next) => {
   const { id } = req.params;
-  const { name, price, stock, category ,discription} = req.body;
-  const photo = req.file;
+  const { name, price, stock, category ,description} = req.body;
+  const photos = req.files as  Express.Multer.File[];
   const product = await Product.findById(id);
 
   if (!product) return next(new ErrorHandler("Product Not Found", 404));
 
-  if (photo) {
-    rm(product.photo!, () => {
-      console.log("Old Photo Deleted");
-    });
-    product.photo = photo.path;
-  }
+  if (photos) {
+     for (const photo of photos) {
+        await unlink(photo.path);
+      }
+      const photoPaths = photos.map((photo) => photo.path);
+      product.photos = photoPaths
+    }
+  
 
   if (name) product.name = name;
   if (price) product.price = price;
   if (stock) product.stock = stock;
   if (category) product.category = category;
-  if (discription) product.discription = discription;
+  if (description) product.description = description;
 
   await product.save();
 
@@ -150,10 +157,10 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
   if (!product) return next(new ErrorHandler("Product Not Found", 404));
 
-  rm(product.photo!, () => {
-    console.log("Product Photo Deleted");
-  });
-
+ const photos = product.photos;
+  for (const photo of photos) {
+    await unlink(photo);
+  }
   await product.deleteOne();
 
   invalidateCache({
