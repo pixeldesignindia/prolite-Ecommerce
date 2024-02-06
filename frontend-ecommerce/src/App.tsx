@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Footer from '../src/components/footer/Footer'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header/Header";
@@ -15,6 +14,7 @@ import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 
 
 const Home = lazy(() => import("./pages/home/Home"));
+const Product = lazy(() => import("./pages/product/Product"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Cart = lazy(() => import("./pages/cart/Cart"));
 const Search = lazy(() => import("./pages/search/Search"));
@@ -58,6 +58,7 @@ else{dispatch(userNotExist())}
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product" element={<Search />} />
+          <Route path="/product/:id" element={<Product />} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
            {/* Logged In User Routes */}
           <Route element={<ProtectedRoute isAuthenticated={user ? true : false} />}>
@@ -87,7 +88,7 @@ else{dispatch(userNotExist())}
           />
           </Route>;
         </Routes>
-        <Footer/>
+        
       </Suspense>
       <Toaster position="top-right"/>
     </BrowserRouter>

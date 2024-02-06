@@ -12,7 +12,7 @@ import ProductCard from "../../components/productCard/ProductCard";
 import { addToCart } from "../../redux/cart-reducer";
 import { CartItem } from "../../types/types";
 import Slider from "react-slick";
-
+import Footer from '../../components/footer/Footer'
 const Home: React.FC = () => {
 
   const { isLoading, data, isError, error, isSuccess } =
@@ -90,6 +90,7 @@ const Home: React.FC = () => {
     )}
 
       </div>
+      <Footer/>
     </>
   );
 };

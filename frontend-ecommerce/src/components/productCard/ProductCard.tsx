@@ -2,7 +2,7 @@ import './product.css'
 import { server } from "../../redux/store";
 import { CartItem } from "../../types/types";
 import { FaCartPlus } from "react-icons/fa6";
-
+import { useNavigate } from 'react-router-dom';
 type ProductsProps = {
   productId: string;
   photo: string;
@@ -22,10 +22,11 @@ const ProductCard = ({
   stock,
   handler,
 }: ProductsProps) => {
+  const navigate=useNavigate()
   return (
     <div className="cardC">
       {/* <p>ID: {productId}</p> */}
-      <div className="img">
+      <div className="img" onClick={()=>navigate(`/product/${productId}`)} style={{cursor:"pointer"}}>
       <img src={`${server}/${photo}`} alt={name} style={{ width: "200px", height: "200px" }}/>
       </div>
       <div className="card-body">

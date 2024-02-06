@@ -37,7 +37,7 @@ import { Bar, CartItem, Line, Order, Pie, Product, ShippingInfo, Stats, User } f
     }
     export type NewProductRequest = {
         id:string;
-        formData:FormData;
+        name:string; price:number; stock:number; category:string;discription:string;photo:file
     }
     export type UpdateProductRequest = {
         userId:string;

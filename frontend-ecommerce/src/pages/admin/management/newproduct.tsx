@@ -11,6 +11,7 @@ const NewProduct = () => {
   const {user}= useSelector((state:{userReducer:UserReducerInitialState})=>state.userReducer)
 
   const [name, setName] = useState<string>("");
+  const [discription, setDiscription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [price, setPrice] = useState<number>(1000);
   const [stock, setStock] = useState<number>(1);
@@ -34,18 +35,17 @@ const [newProduct]=useNewProductMutation()
       };
     }
   };
-const submitHandler=async(e:FormEvent<HTMLFormElement>)=>{
-  e.preventDefault()
-  if(!name || !price || !stock || !photo || !category) return ;
-  const formData = new FormData()
-  formData.set('name', name);
-  formData.set('price', price.toString());
-  formData.set('stock', stock.toString());
-  formData.set('photo', photo);
-  formData.set('category', category);
-  const res=await newProduct({id:user?._id!,formData: formData})
-  responseToast(res,navigate,'/admin/product')
-}
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!name || !price || !stock || !photo || !category) return;
+  
+    const res = await newProduct({
+      id:user?._id,name, price, stock, category,discription,photo
+    });
+    responseToast(res, navigate, '/admin/product');
+  }
+  
+  
 
   return (
     <div className="admin-container">
@@ -62,6 +62,16 @@ const submitHandler=async(e:FormEvent<HTMLFormElement>)=>{
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Description</label>
+              <input
+              required
+                type="text"
+                placeholder="Description"
+                value={discription}
+                onChange={(e) => setDiscription(e.target.value)}
               />
             </div>
             <div>
