@@ -29,7 +29,7 @@ const Home: React.FC = () => {
     toast.success("Added to cart");
   };
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -95,6 +95,28 @@ const Home: React.FC = () => {
 
       </div>
       <Brand/>
+      {isSuccess && (
+      // <MultipleItems>
+        <div className=" slider-container">
+          <Slider {...settings}>
+            {data.products?.map((i: Product) => (
+              <ProductCard
+                key={i._id}
+                productId={i._id}
+                name={i.name}
+                price={i.price}
+                stock={i.stock}
+                handler={addToCartHandler}
+                photo={i.photo}
+                category={i.category}
+              />
+            ))}
+          </Slider>
+        </div>
+
+      // </MultipleItems>
+    )}
+    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
     </>
   );
 };

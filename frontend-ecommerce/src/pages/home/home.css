@@ -2,10 +2,21 @@ p{margin: 0 !important;}
 .product-card{display: flex;flex-direction: column;justify-content: center;align-items: center; height: 27rem; width: 20rem;border: 1px solid rgb(121, 121, 248);margin: 1rem 0;padding: 1.5rem ;gap:.25rem ;}
 .product-container{display: flex; flex-wrap: wrap;gap: 1rem;}
 
-.slick-list{padding: 0 170px;}
-.cardC{max-width: 400px;height: 450px;}
+.slick-list{margin: 0 150px;}
+.cardC{max-width: 400px;height: 25rem;}
 .para{font-family: Poppins;font-size: 30px;font-weight: 600;line-height: 45px;letter-spacing: 0.2em;color: #209920;text-align: center;}
 .btn-ex{display: flex;justify-content: center;}
 .Explore{font-family: Poppins;font-size: 22px;font-weight: 600;line-height: 33px;letter-spacing: 0.36em;text-align:center;color: rgba(0, 0, 0, 1);}
 #explore-btn{padding: 10px 30px;border-radius: 50px;margin-top: 40px;margin-bottom: 40px;border-width: 0px;background: transparent;
 border: 2px solid rgba(8, 91, 176, 1);}
+.slick-next {
+    background: black;
+    right: 50px;
+}
+.slick-prev {
+    background: url('/images/vite.svg');
+    left: 50px;
+}
+.slick-prev:before{
+    content:''
+}
