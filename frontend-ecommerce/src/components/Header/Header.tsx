@@ -43,12 +43,13 @@ const Header = ({ user }: propestype) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             
+          <Nav.Link href={"/product"}>Home</Nav.Link>
             <Nav.Link href={"/product"}>Brands</Nav.Link>
       <Nav.Link href={"/orders"}>About Us</Nav.Link>
-      <Nav.Link href={"/cart"}>
+      {/* <Nav.Link href={"/cart"}>
         <FaShoppingBag />
         {cartItems && cartItems.length>=1 && cartItems.length}
-      </Nav.Link>
+      </Nav.Link> */}
       {user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link><button onClick={logOutHandler}>Log Out</button></> : <Nav.Link href={"/logIn"}>SignIn</Nav.Link>}
           </Nav>
         </Navbar.Collapse>

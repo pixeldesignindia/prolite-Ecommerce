@@ -42,16 +42,4 @@ const ProductCard = ({
 
 export default ProductCard;
 
-{
-  /* <div class="card">
-                    <div class="img"><img src="img/right-arrow.jpeg" class="card-img-top" alt="..."></div>
-                    <div class="card-body">
-                      <h5 class="card-title">PHOTOLUMINESCENT SIGNAGES</h5>
-                      <p class="card-text">3,000.00</p>
-                      <div class="add-cart">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p class="add">Add to Cart</p>
-                      </div>
-                    </div>
-                  </div> */
-}
+

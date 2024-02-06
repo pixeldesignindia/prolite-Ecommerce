@@ -12,7 +12,7 @@ import ProductCard from "../../components/productCard/ProductCard";
 import { addToCart } from "../../redux/cart-reducer";
 import { CartItem } from "../../types/types";
 import Slider from "react-slick";
-
+import Brand from "../../components/brand/Brand";
 const Home: React.FC = () => {
 
   const { isLoading, data, isError, error, isSuccess } =
@@ -66,7 +66,9 @@ const Home: React.FC = () => {
   return (
     <>
     <Banner/>
-
+<div className="text-align-center">
+  <h2 className="heading">Shop by brand</h2>
+        <h4 className="para">AutoGlo</h4></div>
       <div className=" slider-container">
       {isSuccess && (
       // <MultipleItems>
@@ -86,10 +88,13 @@ const Home: React.FC = () => {
             ))}
           </Slider>
         </div>
+
       // </MultipleItems>
     )}
+    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
 
       </div>
+      <Brand/>
     </>
   );
 };
