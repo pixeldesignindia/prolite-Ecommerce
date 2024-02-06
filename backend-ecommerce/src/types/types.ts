@@ -12,6 +12,7 @@ export interface NewUserRequestBody {
 export interface NewProductRequestBody {
   name: string;
   category: string;
+  discription: string;
   photo: string;
   stock: number;
   price: number;

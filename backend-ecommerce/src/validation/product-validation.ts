@@ -34,4 +34,11 @@ export const productSchema = z.object({
   photo: z
   .string()
   .min(1, { message: "Photo is required" }),
+   discription: z
+    .string({
+      required_error: 'Product Name is required',
+      invalid_type_error: 'Product Name must be a string',
+    })
+    .trim()
+    .min(1, { message: "Discription is required" }),
 });
