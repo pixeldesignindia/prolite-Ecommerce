@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const productSchema = z.object({
   name: z
-  .string({
+    .string({
       required_error: 'Product Name is required',
       invalid_type_error: 'Product Name must be a string',
     })
@@ -12,40 +12,45 @@ export const productSchema = z.object({
 
   category: z
     .string({
-      required_error: 'Product Name is required',
-      invalid_type_error: 'Product Name must be a string',
+      required_error: 'Category is required',
+      invalid_type_error: 'Category must be a string',
     })
     .trim()
     .min(1, { message: "Category is required" }),
-    
+
   brand: z
     .string({
       required_error: 'Product brand is required',
       invalid_type_error: 'Product brand must be a string',
     })
     .trim()
-    .min(1, { message: "Category is required" })
+    .min(1, { message: "Brand is required" })
     .toUpperCase(),
 
   price: z
-  .number({
-    required_error: 'Product Price is required',
-    invalid_type_error: "price should be number",
-})
-  .min(0, { message: "Price is required" }),
+  .string({
+      required_error: 'Product Price is required',
+      invalid_type_error: "Price should be a string",
+    })
+    .min(0, { message: "Price should be greater than or equal to 0" })
+    .transform((val) => parseFloat(val)),
+    
 
   stock: z
-  .number({
-    required_error: 'Product Stock is required',
-    invalid_type_error: "stock should be number"})
-  .min(0, { message: "Stock is required" }),
-
-  photos: z.array(z.string()).min(1, "At least one photo is required"),
-   discription: z
     .string({
-      required_error: 'Product Name is required',
-      invalid_type_error: 'Product Name must be a string',
+      required_error: 'Product stock is required',
+      invalid_type_error: "stock should be a string",
+    })
+    .min(0, { message: "Price should be greater than or equal to 0" })
+    .transform((val) => parseFloat(val)),
+
+  photos: z.array(z.string()).min(1, "At least one photo is required").optional(),
+
+  description: z
+    .string({
+      required_error: 'Description is required',
+      invalid_type_error: 'Description must be a string',
     })
     .trim()
-    .min(1, { message: "Discription is required" }),
+    .min(1, { message: "Description is required" }),
 });
