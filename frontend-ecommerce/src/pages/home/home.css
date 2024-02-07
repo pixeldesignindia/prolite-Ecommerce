@@ -10,9 +10,9 @@ p{margin: 0 !important;}
 
 .para{font-size: 30px;font-weight: 600;line-height: 45px;letter-spacing: 0.2em;color: #209920;text-align: center;text-transform: uppercase;}
 .btn-ex{display: flex;justify-content: center;}
-.Explore{font-size: 22px;font-weight: 600;line-height: 33px;letter-spacing: 0.36em;text-align:center;color: rgba(0, 0, 0, 1);text-transform: uppercase;}
-#explore-btn{padding: 10px 30px;border-radius: 50px;margin-top: 40px;margin-bottom: 40px;border-width: 0px;background: transparent;
-border: 2px solid rgba(8, 91, 176, 1);text-transform: uppercase;}
+.Explore{font-size: 20px;font-weight: 600;line-height: 33px;letter-spacing: 0.36em;text-align:center;color: rgba(0, 0, 0, 1);text-transform: uppercase;}
+#explore-btn{padding: 18px 42px;border-radius: 50px;margin-top: 40px;margin-bottom: 40px;border-width: 0px;background: transparent;
+border: 1px solid rgba(8, 91, 176, 1);text-transform: uppercase;}
 
 .slick-list{margin: 0 150px;}
 .slick-prev:before, .slick-next:before {
