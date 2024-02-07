@@ -6,14 +6,12 @@ import {
   SearchRequestQuery,
 } from "../types/types.js";
 import { Product } from "../models/products.js";
-import ErrorHandler from "../utils/utility-class.js";
-import { rm } from "fs";
+import ErrorHandler from "../utils/utility-class.js"
 import { myCache } from "../app.js";
 import { invalidateCache } from "../utils/features.js";
-import { any } from "zod";
 import { unlink } from 'fs/promises'
 
-export const getlatestProducts = TryCatch(async (req, res, next) => {
+export const getlatestProducts= TryCatch(async (req, res, next) => {
   let products;
 
   if (myCache.has("latest-products"))
@@ -29,6 +27,37 @@ export const getlatestProducts = TryCatch(async (req, res, next) => {
   });
 });
 
+interface LatestProductsByBrand {
+  [brand: string]: NewProductRequestBody[]; // Assuming NewProductRequestBody is the type of product
+}
+
+export const getlatestProductsByBrand = TryCatch(async (req, res, next) => {
+  let latestProductsByBrand: LatestProductsByBrand = {};
+
+  if (myCache.has("latest-products")) {
+    latestProductsByBrand = JSON.parse(myCache.get("latest-products") as string);
+  } else {
+    const allProducts = await Product.find({}).sort({ createdAt: -1 });
+
+    allProducts.forEach(product => {
+      const { brand } = product;
+      if (!latestProductsByBrand[brand]) {
+        latestProductsByBrand[brand] = [product];
+      } else if (latestProductsByBrand[brand].length < 5) {
+        latestProductsByBrand[brand].push(product);
+      }
+    });
+
+    myCache.set("latest-products", JSON.stringify(latestProductsByBrand));
+  }
+
+  return res.status(200).json({
+    success: true,
+    latestProductsByBrand,
+  });
+});
+
+
 // Revalidate on New,Update,Delete Product & on New Order
 export const getAllCategories = TryCatch(async (req, res, next) => {
   let categories;
@@ -43,6 +72,21 @@ export const getAllCategories = TryCatch(async (req, res, next) => {
   return res.status(200).json({
     success: true,
     categories,
+  });
+});
+export const getAllBrand = TryCatch(async (req, res, next) => {
+  let brands;
+
+  if (myCache.has("brands"))
+    brands = JSON.parse(myCache.get("brands") as string);
+  else {
+    brands = await Product.distinct("brands");
+    myCache.set("brands", JSON.stringify(brands));
+  }
+
+  return res.status(200).json({
+    success: true,
+    brands,
   });
 });
 
@@ -83,12 +127,13 @@ export const getSingleProduct = TryCatch(async (req, res, next) => {
 
 export const newProduct = TryCatch(
   async (req: Request<{}, {}, NewProductRequestBody>, res, next) => {
-    const { name, price, stock, category,description } = req.body;
+    const { name, price, stock, category,description,brand } = req.body;
         const photos = req.files as Express.Multer.File[]; 
+        console.log(photos)
 
     if (!photos) return next(new ErrorHandler("Please add Photo", 400));
 
-    if (!name || !price || !stock || !category || !description) {
+    if (!name || !price || !stock || !category || !description || !brand) {
      for (const photo of photos) {
         await unlink(photo.path);
       }
@@ -105,6 +150,7 @@ export const newProduct = TryCatch(
       category: category.toLowerCase(),
       description,
       photos: photoPaths,
+      brand:brand.toUpperCase()
     });
 
      invalidateCache({ product: true, admin: true });
