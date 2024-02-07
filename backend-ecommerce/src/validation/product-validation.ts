@@ -17,6 +17,15 @@ export const productSchema = z.object({
     })
     .trim()
     .min(1, { message: "Category is required" }),
+    
+  brand: z
+    .string({
+      required_error: 'Product brand is required',
+      invalid_type_error: 'Product brand must be a string',
+    })
+    .trim()
+    .min(1, { message: "Category is required" })
+    .toUpperCase(),
 
   price: z
   .number({

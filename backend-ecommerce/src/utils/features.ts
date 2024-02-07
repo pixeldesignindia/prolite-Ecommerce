@@ -28,6 +28,7 @@ export const invalidateCache = ({
       "latest-products",
       "categories",
       "all-products",
+      "brands",
     ];
 
     if (typeof productId === "string") productKeys.push(`product-${productId}`);

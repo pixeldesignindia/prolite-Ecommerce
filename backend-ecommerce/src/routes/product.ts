@@ -4,10 +4,12 @@ import {adminOnly} from "../middlewares/auth.js"
 import {
   deleteProduct,
   getAdminProducts,
+  getAllBrand,
   getAllCategories,
   getAllProducts,
   getSingleProduct,
   getlatestProducts,
+  getlatestProductsByBrand,
   newProduct,
   updateProduct,
 } from "../controllers/products.js";
@@ -24,8 +26,10 @@ app.get("/all", getAllProducts);
 
 //To get last 10 Products  - /api/v1/product/latest
 app.get("/latest", getlatestProducts);
+app.get("/latestByBrand",getlatestProductsByBrand)
 
 //To get all unique Categories  - /api/v1/product/categories
+app.get("/brands",getAllBrand)
 app.get("/categories", getAllCategories);
 
 
