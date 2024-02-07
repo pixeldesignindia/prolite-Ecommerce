@@ -1,3 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
 /* img{height: 200px;width: 200px;} */
 body,footer{font-family: Montserrat;overflow-x: hidden;}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  a{text-decoration: none;font-family: Montserrat;}
+  /* Carousel */
+.swiper {
+  width: 90vw;height: 300px}
+  body{overflow-x: hidden;}
+
+/* Body styles */
+  h1,h2,h3,h4,h5,h6 {font-family: Montserrat;}
+  p{font-family: Montserrat;margin: 0 !important;}
+  .b{font-weight: 600 !important;}
+  .bg-blue{background: #F4FAFF;}
