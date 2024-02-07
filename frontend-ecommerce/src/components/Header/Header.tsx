@@ -11,6 +11,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '/images/logo.svg';
+import { FaShoppingCart } from "react-icons/fa";
 interface propestype {
   user: User | null;
 }
@@ -41,15 +42,20 @@ const Header = ({ user }: propestype) => {
         <Navbar.Brand href="/"><img src={logo} alt="logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            
-            <Nav.Link href={"/product"}>Product</Nav.Link>
-      <Nav.Link href={"/orders"}>Orders</Nav.Link>
+          <Nav className="nav-Body">
+            <div>
+            <div className="link-center">
+            <Nav.Link href={"/product"}>Brands</Nav.Link>
+      <Nav.Link href={"/orders"}>Orders</Nav.Link></div>
+              
+      </div>
+          
       <Nav.Link href={"/cart"}>
-        <FaShoppingBag />
+      <FaShoppingCart />
         {cartItems && cartItems.length>=1 && cartItems.length}
       </Nav.Link>
-      {user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link><button onClick={logOutHandler}>Log Out</button></> : <Nav.Link href={"/logIn"}>SignIn</Nav.Link>}
+      <div className='admin-logo'>{user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link><button onClick={logOutHandler}>Log Out</button></> : <Nav.Link href={"/logIn"}>SignIn</Nav.Link>}</div>
+      
           </Nav>
         </Navbar.Collapse>
       </Container>

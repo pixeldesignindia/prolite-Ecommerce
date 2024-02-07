@@ -1,0 +1,14 @@
+.banner-head{font-family: Poppins;font-size: 86px;font-weight: 600;line-height: 80px;letter-spacing: 0em;text-align: center;}
+.banner-para{font-family: Poppins;font-size: 26px;font-weight: 500;line-height: 47px;letter-spacing: 0em;text-align: center;padding: 0 180px;}
+.banner-btn{padding: 16px 24px;font-size: 18px;font-weight: 600; color: #000000;border-radius: 5px;text-transform: uppercase;letter-spacing: 4px;background-color: #fff;border: 0px;margin-top: 40px;}
+.carousel-caption{padding-bottom: 12rem;}
+.carousel-indicators .active{visibility: hidden;}
+.carousel-control-prev-icon{background: url('/images/pre-banner.svg');padding: 0px;width: 60px;height: 60px;background-repeat: no-repeat;}
+.carousel-control-next-icon{background: url('/images/next-banner.svg');padding: 0px;width: 60px;height: 60px;background-repeat: no-repeat;}
+
+
+.box{background:linear-gradient(101.09deg, #1176D0 13.72%, #025FB2 89.1%);padding: 0 50px;height: 160px; align-items: center; display: flex; justify-content:center;border-radius:10px;color: rgba(255, 255, 255, 1);text-transform: uppercase;font-weight: 600;}
+.green{background: linear-gradient(102.08deg, #68CD3E 12.37%, #3AA20F 84.78%);
+}
+
+

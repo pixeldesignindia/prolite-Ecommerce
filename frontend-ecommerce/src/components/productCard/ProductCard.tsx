@@ -26,8 +26,8 @@ const ProductCard = ({
   return (
     <div className="cardC">
       {/* <p>ID: {productId}</p> */}
-      <div className="img" onClick={()=>navigate(`/product/${productId}`)} style={{cursor:"pointer"}}>
-      <img src={`${server}/${photo}`} alt={name} style={{ width: "200px", height: "200px" }}/>
+      <div className="img">
+      <img src={`${server}/${photo}`} alt={name} style={{ width: "320px", height: "200px" }}/>
       </div>
       <div className="card-body">
       <p className="card-title">{name}</p>
@@ -43,16 +43,4 @@ const ProductCard = ({
 
 export default ProductCard;
 
-{
-  /* <div class="card">
-                    <div class="img"><img src="img/right-arrow.jpeg" class="card-img-top" alt="..."></div>
-                    <div class="card-body">
-                      <h5 class="card-title">PHOTOLUMINESCENT SIGNAGES</h5>
-                      <p class="card-text">3,000.00</p>
-                      <div class="add-cart">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p class="add">Add to Cart</p>
-                      </div>
-                    </div>
-                  </div> */
-}
+

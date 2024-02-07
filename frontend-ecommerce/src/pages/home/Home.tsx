@@ -12,7 +12,7 @@ import ProductCard from "../../components/productCard/ProductCard";
 import { addToCart } from "../../redux/cart-reducer";
 import { CartItem } from "../../types/types";
 import Slider from "react-slick";
-import Footer from '../../components/footer/Footer'
+import Brand from "../../components/brand/Brand";
 const Home: React.FC = () => {
 
   const { isLoading, data, isError, error, isSuccess } =
@@ -29,7 +29,7 @@ const Home: React.FC = () => {
     toast.success("Added to cart");
   };
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -66,7 +66,9 @@ const Home: React.FC = () => {
   return (
     <>
     <Banner/>
-
+<div className="text-align-center">
+  <h2 className="heading">Shop by brand</h2>
+        <h4 className="para">AutoGlo</h4></div>
       <div className=" slider-container">
       {isSuccess && (
       // <MultipleItems>
@@ -86,11 +88,36 @@ const Home: React.FC = () => {
             ))}
           </Slider>
         </div>
+
       // </MultipleItems>
     )}
+    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
 
       </div>
-      <Footer/>
+      <h4 className="para" style={{color:'#014FB3'}}>Prolite</h4>
+      {isSuccess && (
+      // <MultipleItems>
+        <div className=" slider-container">
+          <Slider {...settings}>
+            {data.products?.map((i: Product) => (
+              <ProductCard
+                key={i._id}
+                productId={i._id}
+                name={i.name}
+                price={i.price}
+                stock={i.stock}
+                handler={addToCartHandler}
+                photo={i.photo}
+                category={i.category}
+              />
+            ))}
+          </Slider>
+        </div>
+
+      // </MultipleItems>
+    )}
+    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
+    <Brand/>
     </>
   );
 };
