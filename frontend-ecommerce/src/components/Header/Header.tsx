@@ -1,5 +1,5 @@
 import { FaSearch, FaShoppingBag, FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import "./header.css";
 import { User } from "../../types/types";
 import { signOut } from "firebase/auth";
@@ -25,6 +25,7 @@ const Header = ({ user }: propestype) => {
       toast.error("Log Out Failed");
     }
   };
+  const navigate=useNavigate()
   return (
     // <nav>
     //   <Link to={"/"}>Home</Link>
@@ -46,15 +47,13 @@ const Header = ({ user }: propestype) => {
             <div>
             <div className="link-center">
             <Nav.Link href={"/product"}>Brands</Nav.Link>
-      <Nav.Link href={"/orders"}>Orders</Nav.Link></div>
-              
-      </div>
-          
+            <Nav.Link href={"/orders"}>Orders</Nav.Link></div>
+            </div>
       <Nav.Link href={"/cart"}>
       <FaShoppingCart />
         {cartItems && cartItems.length>=1 && cartItems.length}
       </Nav.Link>
-      <div className='admin-logo'>{user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link><button onClick={logOutHandler}>Log Out</button></> : <Nav.Link href={"/logIn"}>SignIn</Nav.Link>}</div>
+      <div className='admin-logo'>{user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link><button className="logout" onClick={logOutHandler}>Logout</button></> : <button className="log" onClick={()=>{navigate('/login')}}>SignIn</button>}</div>
       
           </Nav>
         </Navbar.Collapse>
