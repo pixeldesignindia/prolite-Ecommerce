@@ -25,11 +25,21 @@ export const latestProductApi = createApi({
 
     productDetails:builder.query<ProductResponse,string>({query:(id)=>id,providesTags:['product']}),
 
-    newProduct:builder.mutation<MessageResponse,NewProductRequest>({query:({name, price, stock, category,discription,photo,id})=>({
-      url:`new?id=${id}`,
-      method:'POST',
-      body:name, price, stock, category,discription,photo
-    }),invalidatesTags:['product']}),
+    newProduct: builder.mutation<MessageResponse, NewProductRequest>({
+      query: ({ name, price, stock, category, discription, photo, id }) => ({
+        url: `new?id=${id}`,
+        method: 'POST',
+        body: {
+          name,
+          price,
+          stock,
+          category,
+          discription,
+          photo // Assuming 'photo' is a File object
+        }
+      }),
+      invalidatesTags: ['product']
+    }),
 
     updateProduct:builder.mutation<MessageResponse,UpdateProductRequest>({query:({formData,userId,productId})=>({
       url:`${productId}?id=${userId}`,

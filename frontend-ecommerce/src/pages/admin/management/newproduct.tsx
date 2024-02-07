@@ -27,6 +27,7 @@ const [newProduct]=useNewProductMutation()
 
     if (file) {
       reader.readAsDataURL(file);
+      console.log(file)
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
           setPhotoPrev(reader.result);
