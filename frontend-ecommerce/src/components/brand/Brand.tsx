@@ -8,7 +8,7 @@ const Brand = () => {
     <div>
 <section className="why-us">
       <div className="container pt-5">
-        <h2 className="heading text-center">Shop by brand</h2>
+        <h2 className="heading text-center">Why Choose Us</h2>
       </div>
 
       <div className="container brand-box" >

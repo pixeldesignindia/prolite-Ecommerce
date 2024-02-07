@@ -26,8 +26,8 @@ const ProductCard = ({
   return (
     <div className="cardC">
       {/* <p>ID: {productId}</p> */}
-      <div className="img">
-      <img src={`${server}/${photo}`} alt={name} style={{ width: "320px", height: "200px" }}/>
+      <div className="img center" onClick={()=>navigate(`product/${productId}`)}>
+      <img src={`${server}/${photo}`} alt={name} />
       </div>
       <div className="card-body">
       <p className="card-title">{name}</p>

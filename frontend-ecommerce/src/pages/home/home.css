@@ -2,22 +2,24 @@ p{margin: 0 !important;}
 .slick-track{height: 560px;
 }
 
-.text-align-center{padding: 40px 0;}
+.text-align-center{padding: 2.5rem 0 1rem 0;}
 .product-card{display: flex;flex-direction: column;justify-content: center;align-items: center; height: 27rem; width: 20rem;border: 1px solid rgb(121, 121, 248);margin: 1rem 0;padding: 1.5rem ;gap:.25rem ;}
 .product-container{display: flex; flex-wrap: wrap;gap: 1rem;}
 
 
-.cardC{max-width: 430px;height: 35rem;}
-.cardC .img{background-color: #F4FAFF;height: 280px;width: 390px;border-radius: 20px;}
-.cardC .img img{width: 100% !important;display: flex;padding: 20px;}
-.para{font-family: Poppins;font-size: 30px;font-weight: 600;line-height: 45px;letter-spacing: 0.2em;color: #209920;text-align: center;}
+
+.para{font-size: 30px;font-weight: 600;line-height: 45px;letter-spacing: 0.2em;color: #209920;text-align: center;text-transform: uppercase;}
 .btn-ex{display: flex;justify-content: center;}
-.Explore{font-family: Poppins;font-size: 22px;font-weight: 600;line-height: 33px;letter-spacing: 0.36em;text-align:center;color: rgba(0, 0, 0, 1);}
+.Explore{font-size: 22px;font-weight: 600;line-height: 33px;letter-spacing: 0.36em;text-align:center;color: rgba(0, 0, 0, 1);text-transform: uppercase;}
 #explore-btn{padding: 10px 30px;border-radius: 50px;margin-top: 40px;margin-bottom: 40px;border-width: 0px;background: transparent;
-border: 2px solid rgba(8, 91, 176, 1);}
+border: 2px solid rgba(8, 91, 176, 1);text-transform: uppercase;}
 
 .slick-list{margin: 0 150px;}
-.slick-next {background: url('/images/next-banner.svg');right: 50px;height: 60px;width: 60px;background-repeat: no-repeat;}
-.slick-prev {background: url('/images/pre-banner.svg');left: 50px;height: 60px;width: 60px;background-repeat: no-repeat;}
-.slick-prev:before{content:''}
-.slick-next:before{content:''}
+.slick-prev:before, .slick-next:before {
+    content: none;
+}
+.slick-next,.slick-next:hover {background: url('/images/rightArrow.svg');right: 50px;height: 70px;width: 70px;background-repeat: no-repeat;}
+.slick-prev,.slick-prev:hover  {background: url('/images/leftArrow.svg');left: 50px;height: 70px;width: 70px;background-repeat: no-repeat;}
+
+
+

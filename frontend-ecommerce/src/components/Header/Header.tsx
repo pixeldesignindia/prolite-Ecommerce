@@ -39,7 +39,7 @@ const Header = ({ user }: propestype) => {
   <>
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/"><img src={logo} alt="logo" /></Navbar.Brand>
+        <Navbar.Brand href="/"><img src={logo} alt="logo"  className='logo-img' /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="nav-Body">

@@ -10,6 +10,9 @@ import ProductCard from "../../components/productCard/ProductCard";
 import { addToCart } from "../../redux/cart-reducer";
 import { CartItem } from "../../types/types";
 import { useDispatch } from "react-redux";
+import Footer from '../../components/footer/Footer'
+import { FiSearch } from "react-icons/fi";
+
 const Search = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
@@ -51,11 +54,12 @@ const Search = () => {
     toast.error(err?.data?.message||"Can`t find Products");
   }
   return (
-    <div className="product-search-page">
+    <>
+    <div className="product-search-page bg-blue">
       <aside>
-        <h2>Filters</h2>
+        <h3 style={{color:'#014FB3'}}>Filters</h3>
         <div>
-          <h4>Sort</h4>
+          <h5>Sort</h5>
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value="">None</option>
             <option value="asc">Price (Low to High)</option>
@@ -64,18 +68,19 @@ const Search = () => {
         </div>
 
         <div>
-          <h4>Max Price: {maxPrice || ""}</h4>
+          <h5 >Max Price: <span style={{color:'#014FB3'}}>{maxPrice || ""}</span> </h5>
           <input
             type="range"
             min={100}
             max={100000}
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
+            className='range-input'
           />
         </div>
 
         <div>
-          <h4>Category</h4>
+          <h5>Category</h5>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -90,33 +95,42 @@ const Search = () => {
           </select>
         </div>
       </aside>
-      <main>
-        <h1>Products</h1>
+      <main >
+        <div className="input-box">
+        <FiSearch/>
         <input
           type="text"
           placeholder="Search by name..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        {productLoading ? (
+        </div>
+        
+        <div className="container">
+       
+            {productLoading ? (
           // <Skeleton length={10} />
           <p>Loading Product...</p>
         ) : (
-          <div className="search-product-list">
+          <div className="search-product-list row">
             {searchData?.products.map((i) => (
-              <ProductCard
-                key={i._id}
-                productId={i._id}
-                name={i.name}
-                price={i.price}
-                stock={i.stock}
-                category={i.category}
-                handler={addToCartHandler}
-                photo={i.photo}
-              />
+              <div key={i._id} className="col-12 col-md-4 mb-3 mt-product-card">
+                <ProductCard
+                  productId={i._id}
+                  name={i.name}
+                  price={i.price}
+                  stock={i.stock}
+                  category={i.category}
+                  handler={addToCartHandler}
+                  photo={i.photo}
+                />
+              </div>
             ))}
           </div>
         )}
+     
+        </div>
+        
 
         {searchData && searchData.totalPage > 1 && (
           <article>
@@ -139,6 +153,8 @@ const Search = () => {
         )}
       </main>
     </div>
+    <Footer/>
+    </>
   );
 };
 

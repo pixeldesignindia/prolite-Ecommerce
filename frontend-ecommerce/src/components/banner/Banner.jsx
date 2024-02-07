@@ -7,9 +7,8 @@ function Banner() {
   return (
    <div>
      <Carousel>
-      <Carousel.Item>
+      <Carousel.Item style={{ backgroundImage: `url(${banner1})`, backgroundRepeat:'no-repeat', backgroundPosition:'cover'}}>
         {/* <ExampleCarouselImage text={banner1} /> */}
-        <img src={banner1} alt="" />
         <Carousel.Caption>
           <h3 className='banner-head'>Proudly Manufactured in India</h3>
           <p className='banner-para'>We are the first Emergency Exit / Egress Route Lighting Systems manufacturer to be an ISO 9001:2015 Certified Company in the fields of R & D, Manufacturing, Marketing and Maintenance in the country.</p>

@@ -13,6 +13,8 @@ import { addToCart } from "../../redux/cart-reducer";
 import { CartItem } from "../../types/types";
 import Slider from "react-slick";
 import Brand from "../../components/brand/Brand";
+import Footer from '../../components/footer/Footer';
+
 const Home: React.FC = () => {
 
   const { isLoading, data, isError, error, isSuccess } =
@@ -36,6 +38,7 @@ const Home: React.FC = () => {
     slidesToScroll: 1,
     initialSlide: 0,
     arrows:true,
+    centerPadding:'100px',
     responsive: [
       {
         breakpoint: 1024,
@@ -64,7 +67,7 @@ const Home: React.FC = () => {
     ]
   };
   return (
-    <>
+    <div className="bg-blue">
     <Banner/>
 <div className="text-align-center">
   <h2 className="heading">Shop by brand</h2>
@@ -89,7 +92,6 @@ const Home: React.FC = () => {
           </Slider>
         </div>
 
-      // </MultipleItems>
     )}
     <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
 
@@ -118,7 +120,8 @@ const Home: React.FC = () => {
     )}
     <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
     <Brand/>
-    </>
+    <Footer/>
+    </div>
   );
 };
 
