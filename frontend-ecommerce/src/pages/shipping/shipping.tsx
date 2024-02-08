@@ -9,6 +9,9 @@ import { server } from "../../redux/store";
 import { RootState } from "../../redux/store";
 import { UserReducerInitialState } from "../../types/reducerTypes";
 import './shipping.css';
+import { MdDelete } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
+
 
 const Shipping = () => {
   const [addresses, setAddresses] = useState([]);
@@ -178,10 +181,11 @@ const Shipping = () => {
 
   return (
     <div className="shipping">
-      <button className="back-btn" onClick={() => navigate("/cart")}>
+      {/* <button className="back-btn" onClick={() => navigate("/cart")}>
         <BiArrowBack />
-      </button>
-      <h1>Shipping Address</h1>
+      </button> */}
+      <h1 style={{marginLeft:'3rem'}}>Shipping Address</h1>
+      <div className="ship-content bg-blue">
       <div className="container row">
         <div className="col-6">
           <div className="radio-container">
@@ -193,11 +197,10 @@ const Shipping = () => {
               checked={!showForm}
               onChange={() => setShowForm(false)}
             />
-            <label htmlFor="savedAddress" className="radio-label">Use Saved Address</label>
+            <label htmlFor="savedAddress" className="radio-label b"><h4>Saved Address</h4></label>
           </div>
           {addresses.length > 0 && (
             <div>
-              <h2>Saved Addresses</h2>
               {addresses.map((address, index) => (
                 <div key={index} className="address-box">
                   {editMode !== address._id ? (
@@ -213,7 +216,10 @@ const Shipping = () => {
                           disabled={showForm}
                           className="radio-item"
                         />
-                        <label htmlFor={`address${index}`} className="radio-label">
+                        <label
+                          htmlFor={`address${index}`}
+                          className={`radio-label redio-address ${selectedAddress === address._id ? 'selectedAddressLabel' : ''}`}
+                        >
                           <div>
                             <strong>Name : </strong> {address.name} <br />
                             <strong>Address : </strong> {address.address} <br />
@@ -225,8 +231,8 @@ const Shipping = () => {
                           </div>
                         </label>
                       </div>
-                      <button onClick={() => editAddress(address._id)}>Edit</button>
-                      <button onClick={() => deleteAddress(address._id)}>Delete</button>
+                      <button onClick={() => editAddress(address._id)} className="address-edit"><FaRegEdit/></button>
+                      <button onClick={() => deleteAddress(address._id)} className="address-delete"><MdDelete /></button>
                     </>
                   ) : (
                     <>
@@ -305,11 +311,13 @@ const Shipping = () => {
               checked={showForm}
               onChange={() => setShowForm(true)}
             />
-            <label htmlFor="newAddress" className="radio-label">Add New Address</label>
+            <label htmlFor="newAddress" className="radio-label b"> <h4>Add New Address</h4> </label>
           </div>
           {showForm && (
-            <form onSubmit={addAddress}>
-              <input
+            <div className="new-address">
+              <form onSubmit={addAddress}>
+                <div className="input-box-address">
+                <input
                 required
                 type="text"
                 placeholder="Name"
@@ -317,6 +325,9 @@ const Shipping = () => {
                 value={shippingInfo.name}
                 onChange={changeHandler}
               />
+                </div>
+              
+              <div className="input-box-address">
               <input
                 required
                 type="number"
@@ -325,6 +336,9 @@ const Shipping = () => {
                 value={shippingInfo.phoneNumber}
                 onChange={changeHandler}
               />
+              </div>
+              
+              <div className="input-box-address">
               <input
                 required
                 type="text"
@@ -333,6 +347,9 @@ const Shipping = () => {
                 value={shippingInfo.address}
                 onChange={changeHandler}
               />
+              </div>
+              
+              <div className="input-box-address">
               <input
                 required
                 type="text"
@@ -341,6 +358,9 @@ const Shipping = () => {
                 value={shippingInfo.city}
                 onChange={changeHandler}
               />
+              </div>
+              
+              <div className="input-box-address">
               <input
                 required
                 type="text"
@@ -349,6 +369,9 @@ const Shipping = () => {
                 value={shippingInfo.state}
                 onChange={changeHandler}
               />
+              </div>
+              
+              <div className="input-box-address">
               <select
                 name="country"
                 required
@@ -358,6 +381,9 @@ const Shipping = () => {
                 <option value="">Choose Country</option>
                 <option value="india">India</option>
               </select>
+              </div>
+              
+              <div className="input-box-address">
               <input
                 required
                 type="number"
@@ -365,12 +391,17 @@ const Shipping = () => {
                 name="pinCode"
                 value={shippingInfo.pinCode}
                 onChange={changeHandler}/>
-              <button type="submit">Add New Address</button>
+              </div>
+              
+              <button type="submit" className="checkout">Add New Address</button>
             </form>
+            </div>
+            
           )}
         </div>
       </div>
-      <button onClick={submitHandler}>Pay Now</button>
+      <div className="center"> <button className="checkout pay-now" onClick={submitHandler}>Pay Now</button></div>
+      </div>
     </div>
   );
 };

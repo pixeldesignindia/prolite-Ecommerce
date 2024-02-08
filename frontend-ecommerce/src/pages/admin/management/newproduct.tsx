@@ -26,15 +26,14 @@ const NewProduct = () => {
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = e.target.files;
     if (!selectedFiles) return;
-    else console.log(selectedFiles)
-
+  
     const newPreviews: string[] = [];
-    const newPhotos: File[] = [];
-
+    const newPhotos: { file: File; preview: string }[] = [];
+  
     for (let i = 0; i < selectedFiles.length; i++) {
       const file = selectedFiles[i];
       const reader = new FileReader();
-
+  
       reader.readAsDataURL(file);
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
@@ -42,12 +41,13 @@ const NewProduct = () => {
           setPhotoPreviews(newPreviews);
         }
       };
-
-      newPhotos.push(file);
+  
+      newPhotos.push({ file, preview: URL.createObjectURL(file) });
     }
-
+  
     setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
   };
+  
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,15 +61,15 @@ const NewProduct = () => {
     formData.append('stock', stock.toString());
     formData.append('category', category);
     formData.append('brand', brand);
-  
-    // Append each photo individually
+    
     photos.forEach((photo, index) => {
-      formData.append(`photo_${index}`, photo);
+      formData.append(`photo_${index}`, photo); // Ensure unique keys for each photo
     });
   
-    const res = await newProduct({ id: user?._id, formData });
+    const res = await newProduct({id:user?._id!,formData});
     responseToast(res, navigate, "/admin/product");
   };
+  
   
 
   return (

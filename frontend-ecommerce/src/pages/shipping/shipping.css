@@ -1,13 +1,15 @@
-.shipping{padding: 3rem;}
-.address-box{width: 50rem;border: 1px solid black;display: flex;align-items: center;}
+.shipping{padding: 3rem 0 0 0 ;}
+.shipping h1{margin: 2rem 0;}
+.address-box{width: 90%;display: flex;align-items: center;margin: 1rem 0;}
 /* Add this CSS to your shipping.css file */
 /* Add this CSS to your shipping.css file */
 .radio-container {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Adjust spacing between radio buttons */
+    width: 90%;
   }
-  
+  .ship-content{padding: 2rem;}
+  .redio-address{  padding: 1.2rem;box-shadow: rgba(2, 191, 238, 0.553) 0px 1px 3px, rgba(47, 162, 250, 0.24) 0px 1px 2px;width: 100%;background-color: rgba(192, 228, 255, 0.849);transition:.3s ease-in-out;border-radius: 5px;}
   .radio-container input[type="radio"] {
     display: none; /* Hide the default radio button */
   }
@@ -27,12 +29,18 @@
   .radio-container input[type="radio"]:checked + .radio-label::before {
     background-color: #007bff; /* Adjust radio button color when checked */
   }
-  
+  .selectedAddressLabel {
+    scale: 1.05;
+    background-color: rgba(98, 234, 161, 0.764);
+    box-shadow: rgba(2, 238, 116, 0.553) 0px 1px 3px, rgba(47, 250, 98, 0.24) 0px 1px 2px;
+    width: 100%;
+    /* Add any other styles you want for the selected address label */
+  }
   /* Change label color only when radio button is checked */
   .radio-container input[type="radio"]:checked + .radio-label {
     color: #000000; /* Adjust label color when radio button is checked */
   }
-
+.radio-label{display: flex; align-items: center;gap: 1rem;}
   /* Style for the "Use Saved Address" label */
   #savedAddress:checked  + .radio-label {
     color: #0b72bc; /* Adjust label color */
@@ -46,3 +54,27 @@
     cursor: pointer; /* Change cursor to pointer when hovering over label */
     font-size: 16px; /* Adjust label font size */
   }
+.address-edit svg{color: #0a76ce;height: 25px;width: 25px;margin-left: 1.5rem;}
+.address-delete svg{color: #e54830;height: 25px;width: 25px;margin-left: 1.5rem;}
+.pay-now{width: max-content !important;padding: 1rem 3rem;}
+.new-address{min-height: 50vh;padding: 1rem;display: flex;transition: .4s ease-in;}
+.new-address form{display: flex;flex-direction: column;background-color: #fff;width: 100%;box-shadow: 0.5rem 0.5rem #1176D0, -0.5rem -0.5rem #68CD3E ;
+;padding: 3rem;}
+.input-box-address>input{padding: .5rem 0; font-size: 1.1rem;}
+.input-box-address{margin: .2rem 0;}
+.input-box-address {
+  position: relative;
+}
+
+.input-box-address input,.input-box-address select {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+
+.input-box-address input:hover,
+.input-box-address input:focus {
+  border-color: #007bff;
+}
