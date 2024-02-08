@@ -12,8 +12,9 @@ export interface NewUserRequestBody {
 export interface NewProductRequestBody {
   name: string;
   category: string;
+  brand: string;
   description: string;
-  photo: string;
+  photos:string[];
   stock: number;
   price: number;
 }
@@ -51,6 +52,7 @@ export type InvalidateCacheProps = {
   addressId?: string;
   orderId?: string;
   productId?: string | string[];
+  category?:string;
 };
 
 export interface newAdressRequestBody{

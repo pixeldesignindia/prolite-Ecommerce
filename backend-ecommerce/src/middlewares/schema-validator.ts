@@ -1,4 +1,3 @@
-
 import { Request, Response,NextFunction } from "express";
 import { z, ZodError } from "zod";
 
@@ -13,6 +12,7 @@ export const validatation= (schema: z.ZodType) => async (
     next();
   } catch (err) {
     const statusCode= 400;
+    console.error(err);
     const message = (err as ZodError).issues[0].message;
 
     const error = {  message,statusCode};

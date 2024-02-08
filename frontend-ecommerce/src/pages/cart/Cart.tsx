@@ -1,8 +1,9 @@
 import axios from "axios";
+import './cart.css'
 import { useEffect, useState } from "react";
 import { VscError } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import CartItemCard from "../../components/cart-item/Cart-Item";
 import {
   addToCart,
@@ -17,7 +18,7 @@ const Cart = () => {
   const { cartItems, subtotal, tax, total, shippingCharges, discount } =
     useSelector((state: RootState) => state.cartReducer);
   const dispatch = useDispatch();
-
+const navigate = useNavigate()
   const [couponCode, setCouponCode] = useState<string>("");
   const [isValidCouponCode, setIsValidCouponCode] = useState<boolean>(false);
 
@@ -67,7 +68,7 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <main>
+      <main className="bg-blue ">
         {cartItems.length > 0 ? (
           cartItems.map((i, idx) => (
             <CartItemCard
@@ -82,25 +83,31 @@ const Cart = () => {
           <h1>No Items Added</h1>
         )}
       </main>
-      <aside>
-        <p>Subtotal: ₹{subtotal}</p>
-        {cartItems.length > 0 && <p>Shipping Charges: ₹{shippingCharges}</p>}
-        <p>Tax: ₹{tax}</p>
-        <p>
+      <aside className=" center">
+        
+        <div className="priceCard col-center">
+        <h3>Pricing</h3>
+        <div className="cartPriceBox">
+        <div className="cartBoxRow ">Subtotal: <span> ₹{subtotal}</span></div>
+        {cartItems.length > 0 && <div className="cartBoxRow ">Shipping Charges: <span>₹{shippingCharges}</span> </div>}
+        <div className="cartBoxRow ">Tax: <span>₹{tax}</span> </div>
+        <p className="cartBoxRow ">
           Discount: <em className="red"> - ₹{discount}</em>
         </p>
         <p>
-        {cartItems.length< 1 ? <b>Total:  ₹0</b>:<b>Total:  ₹{total}</b>}
+        {cartItems.length< 1 ? <div className="cartBoxRow b">Total: <span>₹0</span>  </div>:<div className="cartBoxRow b">Total: <span>₹{total}</span> </div>}
         </p>
-
-        <input
+<div className="center">
+<input
           type="text"
           placeholder="Coupon Code"
           value={couponCode}
           onChange={(e) => setCouponCode(e.target.value)}
+          className="coupon-code b"
         />
-
-        {couponCode &&
+</div>
+<div className="center">
+{couponCode &&
           (isValidCouponCode ? (
             <span className="green">
               ₹{discount} off using the <code>{couponCode}</code>
@@ -110,8 +117,12 @@ const Cart = () => {
               Invalid Coupon <VscError />
             </span>
           ))}
-
-        {cartItems.length > 0 && <Link to="/shipping">Checkout</Link>}
+</div>
+        
+<div>{cartItems.length > 0 && <button className="checkout center" onClick={()=>{navigate('/shipping')}}>Checkout</button> }</div>
+{/* <Link to="/shipping">Checkout</Link> */}
+        </div>
+        </div>
       </aside>
     </div>
   );

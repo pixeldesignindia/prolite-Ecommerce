@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 const schema = new mongoose.Schema({
     name: {
@@ -12,6 +13,10 @@ const schema = new mongoose.Schema({
     category: {
         type: String,
         required: [true, "Category is required"]
+    },
+    brand: {
+        type: String,
+        required: [true, "brand is required"]
     },
     price: {
         type: Number,

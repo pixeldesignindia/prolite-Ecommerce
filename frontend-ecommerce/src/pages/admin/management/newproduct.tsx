@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { useSelector } from "react-redux";
 import { UserReducerInitialState } from "../../../types/reducerTypes";
@@ -7,44 +7,68 @@ import { useNavigate } from "react-router-dom";
 import { responseToast } from "../../../utils/features";
 
 const NewProduct = () => {
-  const navigate=useNavigate()
-  const {user}= useSelector((state:{userReducer:UserReducerInitialState})=>state.userReducer)
+  const navigate = useNavigate();
+  const { user } = useSelector(
+    (state: { userReducer: UserReducerInitialState }) => state.userReducer
+  );
 
   const [name, setName] = useState<string>("");
-  const [discription, setDiscription] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
+  const [brand, setBrand] = useState<string>("autoglo");
   const [price, setPrice] = useState<number>(1000);
   const [stock, setStock] = useState<number>(1);
-  const [photoPrev, setPhotoPrev] = useState<string>("");
-  const [photo, setPhoto] = useState<File>();
+  const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
+  const [photos, setPhotos] = useState<File[]>([]); 
 
-const [newProduct]=useNewProductMutation()
+  const [newProduct] = useNewProductMutation();
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const file: File | undefined = e.target.files?.[0];
-
-    const reader: FileReader = new FileReader();
-
-    if (file) {
+    const selectedFiles = e.target.files;
+    if (!selectedFiles) return;
+  
+    const newPreviews: string[] = [];
+    const newPhotos: { file: File; preview: string }[] = [];
+  
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const file = selectedFiles[i];
+      const reader = new FileReader();
+  
       reader.readAsDataURL(file);
-      console.log(file)
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
-          setPhotoPrev(reader.result);
-          setPhoto(file);
+          newPreviews.push(reader.result);
+          setPhotoPreviews(newPreviews);
         }
       };
+  
+      newPhotos.push({ file, preview: URL.createObjectURL(file) });
     }
+  
+    setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
   };
+  
+
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name || !price || !stock || !photo || !category) return;
+    if (!name || !price || !stock || !photos.length || !category || !brand)
+      return;
   
-    const res = await newProduct({
-      id:user?._id,name, price, stock, category,discription,photo
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('price', price.toString());
+    formData.append('stock', stock.toString());
+    formData.append('category', category);
+    formData.append('brand', brand);
+    
+    photos.forEach((photo, index) => {
+      formData.append(`photo_${index}`, photo); // Ensure unique keys for each photo
     });
-    responseToast(res, navigate, '/admin/product');
-  }
+  
+    const res = await newProduct({id:user?._id!,formData});
+    responseToast(res, navigate, "/admin/product");
+  };
   
   
 
@@ -58,7 +82,7 @@ const [newProduct]=useNewProductMutation()
             <div>
               <label>Name</label>
               <input
-              required
+                required
                 type="text"
                 placeholder="Name"
                 value={name}
@@ -68,17 +92,17 @@ const [newProduct]=useNewProductMutation()
             <div>
               <label>Description</label>
               <input
-              required
+                required
                 type="text"
                 placeholder="Description"
-                value={discription}
-                onChange={(e) => setDiscription(e.target.value)}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div>
               <label>Price</label>
               <input
-              required
+                required
                 type="number"
                 placeholder="Price"
                 value={price}
@@ -88,7 +112,7 @@ const [newProduct]=useNewProductMutation()
             <div>
               <label>Stock</label>
               <input
-              required
+                required
                 type="number"
                 placeholder="Stock"
                 value={stock}
@@ -99,7 +123,7 @@ const [newProduct]=useNewProductMutation()
             <div>
               <label>Category</label>
               <input
-              required
+                required
                 type="text"
                 placeholder="eg. laptop, camera etc"
                 value={category}
@@ -108,11 +132,29 @@ const [newProduct]=useNewProductMutation()
             </div>
 
             <div>
-              <label>Photo</label>
-              <input type="file" required onChange={changeImageHandler} />
+              <label>Brand</label>
+              <select
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              >
+                <option value="autoglo">Autoglo</option>
+                <option value="prolite">Prolite</option>
+              </select>
             </div>
 
-            {photoPrev && <img src={photoPrev} alt="New Image" />}
+            <div>
+              <label>Photos</label>
+              <input
+                type="file"
+                required
+                onChange={changeImageHandler}
+                multiple // Allow multiple files
+              />
+            </div>
+
+            {photoPreviews.map((preview, index) => (
+              <img key={index} src={preview} alt={`Image ${index}`} />
+            ))}
             <button type="submit">Create</button>
           </form>
         </article>
