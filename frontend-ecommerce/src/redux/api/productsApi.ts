@@ -26,7 +26,7 @@ export const latestProductApi = createApi({
     productDetails:builder.query<ProductResponse,string>({query:(id)=>id,providesTags:['product']}),
 
     newProduct: builder.mutation<MessageResponse, NewProductRequest>({
-      query: ({ name, price, stock, category, discription, photo, id }) => ({
+      query: ({ name, price, stock, category, discription, photos, id,brand }) => ({
         url: `new?id=${id}`,
         method: 'POST',
         body: {
@@ -35,7 +35,8 @@ export const latestProductApi = createApi({
           stock,
           category,
           discription,
-          photo // Assuming 'photo' is a File object
+          photos,
+          brand
         }
       }),
       invalidatesTags: ['product']

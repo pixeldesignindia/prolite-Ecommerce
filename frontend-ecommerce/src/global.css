@@ -6,22 +6,23 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
     padding: 0;
     box-sizing: border-box;
   }
-
+  button{outline: none;border: 0;background-color: transparent;}
   a{text-decoration: none;font-family: Montserrat;}
 
 
   /* Center */
 .center{display: flex; justify-content: center; align-items: center; width: 100%;}
-.col-center{display: flex; justify-content: center; align-items: center; }
+.col-center{display: flex; justify-content: center; align-items: center;flex-direction: column; }
 
 /* Body styles */
   h1,h2,h3,h4,h5,h6 {font-family: Montserrat;}
   p{font-family: Montserrat;margin: 0 !important;}
   .b{font-weight: 600 !important;}
   .bg-blue{background: #F4FAFF;}
-
+.back-btn{background:rgb(0, 128, 255);border-radius: 50%;height: 3rem;width: 3rem;}
+.back-btn svg{color: #fff; font-size: 2rem;}
   .heading{text-transform: uppercase;}
 
 
   /* input */
-  input{background: transparent; outline: none;border:0 ; min-width:70%;}
+  input{background: transparent; outline: none;border:0 ;;}

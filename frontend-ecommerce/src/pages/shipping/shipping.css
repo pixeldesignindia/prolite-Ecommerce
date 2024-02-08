@@ -1,0 +1,48 @@
+.shipping{padding: 3rem;}
+.address-box{width: 50rem;border: 1px solid black;display: flex;align-items: center;}
+/* Add this CSS to your shipping.css file */
+/* Add this CSS to your shipping.css file */
+.radio-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adjust spacing between radio buttons */
+  }
+  
+  .radio-container input[type="radio"] {
+    display: none; /* Hide the default radio button */
+  }
+
+  /* Style for the custom radio button */
+  .radio-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px; /* Adjust radio button size */
+    height: 20px; /* Adjust radio button size */
+    border: 2px solid #0b71d0; /* Adjust radio button border color */
+    border-radius: 50%; /* Make the radio button circular */
+    margin-right: 10px; /* Adjust spacing between radio button and label */
+  }
+
+  /* Style for the radio button when checked */
+  .radio-container input[type="radio"]:checked + .radio-label::before {
+    background-color: #007bff; /* Adjust radio button color when checked */
+  }
+  
+  /* Change label color only when radio button is checked */
+  .radio-container input[type="radio"]:checked + .radio-label {
+    color: #000000; /* Adjust label color when radio button is checked */
+  }
+
+  /* Style for the "Use Saved Address" label */
+  #savedAddress:checked  + .radio-label {
+    color: #0b72bc; /* Adjust label color */
+    cursor: pointer; /* Change cursor to pointer when hovering over label */
+    font-size: 16px; /* Adjust label font size */
+  }
+
+  /* Style for the "Add New Address" label */
+  #newAddress:checked  + .radio-label {
+    color: #0a76ce; /* Adjust label color */
+    cursor: pointer; /* Change cursor to pointer when hovering over label */
+    font-size: 16px; /* Adjust label font size */
+  }
