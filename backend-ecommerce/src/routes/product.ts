@@ -19,7 +19,7 @@ import { productSchema } from "../validation/product-validation.js";
 
 
 //To Create New Product  - /api/v1/product/new
-app.post("/new",  multipleUpload,validatation(productSchema), newProduct);
+app.post("/new",  multipleUpload,validatation(productSchema) ,newProduct);
 
 //To get all Products with filters  - /api/v1/product/all
 app.get("/all", getAllProducts);
