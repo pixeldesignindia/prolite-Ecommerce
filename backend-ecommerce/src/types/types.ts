@@ -52,6 +52,7 @@ export type InvalidateCacheProps = {
   addressId?: string;
   orderId?: string;
   productId?: string | string[];
+  category?:string;
 };
 
 export interface newAdressRequestBody{

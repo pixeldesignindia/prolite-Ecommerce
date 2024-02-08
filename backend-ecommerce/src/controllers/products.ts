@@ -74,13 +74,57 @@ export const getAllCategories = TryCatch(async (req, res, next) => {
     categories,
   });
 });
+
+export const getAllCategoriesByBrand = TryCatch(async (req, res, next) => {
+  let categoriesByBrand;
+
+  if (myCache.has("categoriesByBrand")) {
+    categoriesByBrand = JSON.parse(myCache.get("categoriesByBrand") as string);
+  } else {
+    // Aggregate categories based on brands
+    categoriesByBrand = await Product.aggregate([
+      { $group: { _id: "$brand", categories: { $addToSet: "$category" } } }
+    ]);
+
+    myCache.set("categoriesByBrand", JSON.stringify(categoriesByBrand));
+  }
+
+  return res.status(200).json({
+    success: true,
+    categoriesByBrand,
+  });
+});
+export const getAllproductByCategory = TryCatch(async (req, res, next) => {
+   const { category }: { category?: string } = req.query;
+ if (!category){ return next(new ErrorHandler(" category name is required in query", 400))
+}
+let products;
+  if (myCache.has(`products-category-${category.toLowerCase()}`)) {
+      products = JSON.parse(myCache.get(`products-category-${category.toLowerCase()}`) as string);
+    } else {
+      products = await Product.find({
+        category:category.toLowerCase()
+      });
+
+      if (products.length === 0) {
+     return next(new ErrorHandler("product not found in this category", 404))
+      }
+
+      myCache.set(`products-category-${category.toLowerCase()}`, JSON.stringify(products));
+    }
+
+    return res.status(200).json({
+      success: true,
+      products,
+    });
+});
 export const getAllBrand = TryCatch(async (req, res, next) => {
   let brands;
 
   if (myCache.has("brands"))
     brands = JSON.parse(myCache.get("brands") as string);
   else {
-    brands = await Product.distinct("brands");
+    brands = await Product.distinct("brand");
     myCache.set("brands", JSON.stringify(brands));
   }
 
@@ -152,7 +196,10 @@ export const newProduct = TryCatch(
       brand:brand.toUpperCase()
     });
 
-     invalidateCache({ product: true, admin: true });
+     invalidateCache({ product: true, 
+      admin: true,
+      category: category.toLowerCase()
+     });
 
     return res.status(201).json({
       success: true,
@@ -190,6 +237,7 @@ export const updateProduct = TryCatch(async (req, res, next) => {
     product: true,
     productId: String(product._id),
     admin: true,
+    
   });
 
   return res.status(200).json({

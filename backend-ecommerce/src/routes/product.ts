@@ -6,7 +6,9 @@ import {
   getAdminProducts,
   getAllBrand,
   getAllCategories,
+  getAllCategoriesByBrand,
   getAllProducts,
+  getAllproductByCategory,
   getSingleProduct,
   getlatestProducts,
   getlatestProductsByBrand,
@@ -27,11 +29,12 @@ app.get("/all", getAllProducts);
 //To get last 10 Products  - /api/v1/product/latest
 app.get("/latest", getlatestProducts);
 app.get("/latestByBrand",getlatestProductsByBrand)
+app.get("/categoryByBrand",getAllCategoriesByBrand)
 
 //To get all unique Categories  - /api/v1/product/categories
 app.get("/brands",getAllBrand)
 app.get("/categories", getAllCategories);
-
+app.get("/getProductByCategory",getAllproductByCategory)
 
 //To get all Products   - /api/v1/product/admin-products
 app.get("/admin-products", adminOnly, getAdminProducts);
