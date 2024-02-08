@@ -18,7 +18,7 @@ const NewProduct = () => {
   const [brand, setBrand] = useState<string>("autoglo");
   const [price, setPrice] = useState<number>(1000);
   const [stock, setStock] = useState<number>(1);
-  const [photoPreviews, setPhotoPreviews] = useState<string[]>([]); // Array to store image previews
+  const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const [photos, setPhotos] = useState<File[]>([]); 
 
   const [newProduct] = useNewProductMutation();
@@ -53,11 +53,24 @@ const NewProduct = () => {
     e.preventDefault();
     if (!name || !price || !stock || !photos.length || !category || !brand)
       return;
-
-
-    const res = await newProduct({id:user?._id!,name ,price ,stock ,photos ,category ,brand});
+  
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('price', price.toString());
+    formData.append('stock', stock.toString());
+    formData.append('category', category);
+    formData.append('brand', brand);
+  
+    // Append each photo individually
+    photos.forEach((photo, index) => {
+      formData.append(`photo_${index}`, photo);
+    });
+  
+    const res = await newProduct({ id: user?._id, formData });
     responseToast(res, navigate, "/admin/product");
   };
+  
 
   return (
     <div className="admin-container">
