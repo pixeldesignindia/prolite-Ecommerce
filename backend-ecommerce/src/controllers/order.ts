@@ -23,8 +23,8 @@ export const allOrders = TryCatch(async (req, res, next) => {
 });
 export const myOrders = TryCatch(async (req, res, next) => {
 
-  const {id:user} = req.params
- const key = `my-orders-${user}`;
+const {id:user} = req.params
+const key = `my-orders-${user}`;
 
 
   let orders = [];
@@ -41,9 +41,9 @@ export const myOrders = TryCatch(async (req, res, next) => {
 });
 
 export const singleOrder = TryCatch(async (req, res, next) => {
- 
+
   const {id} = req.params
-   const key = `order-${id}`;
+  const key = `order-${id}`;
 
   let orders;
 
