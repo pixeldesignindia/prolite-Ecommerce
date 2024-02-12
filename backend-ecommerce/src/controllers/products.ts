@@ -173,7 +173,7 @@ export const newProduct = TryCatch(
   async (req: Request<{}, {}, NewProductRequestBody>, res, next) => {
     const { name, price, stock, category,description,brand } = req.body;
         const photos = req.files as Express.Multer.File[]; 
-
+        console.log(photos)
     if (!photos) return next(new ErrorHandler("Please add Photo", 400));
 
     if (!name || !price || !stock || !category || !description || !brand) {
