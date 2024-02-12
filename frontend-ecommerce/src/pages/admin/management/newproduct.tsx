@@ -24,35 +24,37 @@ const NewProduct = () => {
   const [newProduct] = useNewProductMutation();
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = e.target.files;
-    if (!selectedFiles) return;
+    const files: FileList | null = e.target.files;
   
-    const newPreviews: string[] = [];
-    const newPhotos: { file: File; preview: string }[] = [];
+    if (!files || files.length === 0) {
+      return; // No files selected
+    }
   
-    for (let i = 0; i < selectedFiles.length; i++) {
-      const file = selectedFiles[i];
+    const newPhotos: File[] = [];
+    const newPhotoPreviews: string[] = [];
+  
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
       const reader = new FileReader();
   
-      reader.readAsDataURL(file);
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
-          newPreviews.push(reader.result);
-          setPhotoPreviews(newPreviews);
+          newPhotoPreviews.push(reader.result);
         }
       };
   
-      newPhotos.push({ file, preview: URL.createObjectURL(file) });
+      reader.readAsDataURL(file);
+      newPhotos.push(file);
     }
   
     setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
+    setPhotoPreviews((prevPreviews) => [...prevPreviews, ...newPhotoPreviews]);
   };
   
-
+  
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name || !price || !stock || !photos.length || !category || !brand)
-      return;
+    if (!name || !price || !stock || !photos.length || !category || !brand) return;
   
     const formData = new FormData();
     formData.append('name', name);
@@ -61,14 +63,11 @@ const NewProduct = () => {
     formData.append('stock', stock.toString());
     formData.append('category', category);
     formData.append('brand', brand);
-    
-    photos.forEach((photo, index) => {
-      formData.append(`photo_${index}`, photo); // Ensure unique keys for each photo
-    });
-  
-    const res = await newProduct({id:user?._id!,formData});
+    formData.append('photos', JSON.stringify(photos));
+    const res = await newProduct({ id: user?._id!, formData });
     responseToast(res, navigate, "/admin/product");
   };
+  
   
   
 

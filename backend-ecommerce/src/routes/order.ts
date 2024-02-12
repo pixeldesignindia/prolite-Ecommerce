@@ -3,6 +3,7 @@ import { allOrders, deleteOrder, myOrders, newOroduct, processOrder, singleOrder
 import { adminOnly } from "../middlewares/auth.js";
 import { validatation } from "../middlewares/schema-validator.js";
 import { orderSchema } from "../validation/order-validation.js";
+// import { generateInvoice } from "../controllers/nodeMailer.js";
 
 const app = express.Router();
 
@@ -11,11 +12,12 @@ app.post("/new",validatation(orderSchema),newOroduct);
 app.get("/my/:id", myOrders);
 
 app.get("/all", adminOnly, allOrders);
+// app.get("/generateInvoice/:id",generateInvoice)
 
 app
   .route("/:id")
   .get(singleOrder)
   .put(adminOnly, processOrder)
-  .delete(adminOnly, deleteOrder);
+  .delete(adminOnly, deleteOrder)
 
 export default app;
