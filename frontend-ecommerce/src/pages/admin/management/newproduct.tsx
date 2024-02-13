@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { useSelector } from "react-redux";
 import { UserReducerInitialState } from "../../../types/reducerTypes";
@@ -7,45 +7,76 @@ import { useNavigate } from "react-router-dom";
 import { responseToast } from "../../../utils/features";
 
 const NewProduct = () => {
-  const navigate=useNavigate()
-  const {user}= useSelector((state:{userReducer:UserReducerInitialState})=>state.userReducer)
+  const navigate = useNavigate();
+  const { user } = useSelector(
+    (state: { userReducer: UserReducerInitialState }) => state.userReducer
+  );
 
   const [name, setName] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
+  const [productModel, setProductModel] = useState<string>("");
+  const [dimensions, setDimensions] = useState<string>("");
+  const [brand, setBrand] = useState<string>("autoglo");
   const [price, setPrice] = useState<number>(1000);
   const [stock, setStock] = useState<number>(1);
-  const [photoPrev, setPhotoPrev] = useState<string>("");
-  const [photo, setPhoto] = useState<File>();
+  const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
+  const [photos, setPhotos] = useState<File[]>([]); 
 
-const [newProduct]=useNewProductMutation()
+  const [newProduct] = useNewProductMutation();
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const file: File | undefined = e.target.files?.[0];
-
-    const reader: FileReader = new FileReader();
-
-    if (file) {
+    const selectedFiles = e.target.files;
+    if (!selectedFiles) return;
+  
+    const newPreviews: string[] = [];
+    const newPhotos: File[] = [];
+  
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const file = selectedFiles[i];
+      const reader = new FileReader();
+  
       reader.readAsDataURL(file);
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
-          setPhotoPrev(reader.result);
-          setPhoto(file);
+          newPreviews.push(reader.result);
+          setPhotoPreviews(newPreviews);
         }
       };
+  
+      newPhotos.push(file);
     }
+  
+    setPhotos(newPhotos); // Directly assign newPhotos to photos state
   };
-const submitHandler=async(e:FormEvent<HTMLFormElement>)=>{
-  e.preventDefault()
-  if(!name || !price || !stock || !photo || !category) return ;
-  const formData = new FormData()
-  formData.set('name', name);
-  formData.set('price', price.toString());
-  formData.set('stock', stock.toString());
-  formData.set('photo', photo);
-  formData.set('category', category);
-  const res=await newProduct({id:user?._id!,formData: formData})
-  responseToast(res,navigate,'/admin/product')
-}
+  
+  
+  
+
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!name || !price || !stock || !photos.length || !category || !brand) return;
+  console.log(photos);
+  
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('price', price.toString());
+    formData.append('stock', stock.toString());
+    formData.append('category', category);
+    formData.append('brand', brand);
+    formData.append('productModel', productModel);
+    formData.append('dimensions', dimensions);
+    photos.forEach((photo, index) => {
+      formData.append('photos', photo);
+    });
+  
+    const res = await newProduct({ id: user?._id!, formData });
+    responseToast(res, navigate, "/admin/product");
+  };
+  
+  
+  
 
   return (
     <div className="admin-container">
@@ -57,7 +88,7 @@ const submitHandler=async(e:FormEvent<HTMLFormElement>)=>{
             <div>
               <label>Name</label>
               <input
-              required
+                required
                 type="text"
                 placeholder="Name"
                 value={name}
@@ -65,9 +96,40 @@ const submitHandler=async(e:FormEvent<HTMLFormElement>)=>{
               />
             </div>
             <div>
+              <label>Description</label>
+              <input
+                required
+                type="text"
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+            <div>
+            {/* ,dimensions,productModel */}
+              <label>Model</label>
+              <input
+                required
+                type="text"
+                placeholder="Product Model"
+                value={productModel}
+                onChange={(e) => setProductModel(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Measurement</label>
+              <input
+                required
+                type="text"
+                placeholder="Dimensions"
+                value={dimensions}
+                onChange={(e) => setDimensions(e.target.value)}
+              />
+            </div>
+            <div>
               <label>Price</label>
               <input
-              required
+                required
                 type="number"
                 placeholder="Price"
                 value={price}
@@ -77,7 +139,7 @@ const submitHandler=async(e:FormEvent<HTMLFormElement>)=>{
             <div>
               <label>Stock</label>
               <input
-              required
+                required
                 type="number"
                 placeholder="Stock"
                 value={stock}
@@ -88,7 +150,7 @@ const submitHandler=async(e:FormEvent<HTMLFormElement>)=>{
             <div>
               <label>Category</label>
               <input
-              required
+                required
                 type="text"
                 placeholder="eg. laptop, camera etc"
                 value={category}
@@ -97,11 +159,29 @@ const submitHandler=async(e:FormEvent<HTMLFormElement>)=>{
             </div>
 
             <div>
-              <label>Photo</label>
-              <input type="file" required onChange={changeImageHandler} />
+              <label>Brand</label>
+              <select
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              >
+                <option value="autoglo">Autoglo</option>
+                <option value="prolite">Prolite</option>
+              </select>
             </div>
 
-            {photoPrev && <img src={photoPrev} alt="New Image" />}
+            <div>
+              <label>Photos</label>
+              <input
+                type="file"
+                required
+                onChange={changeImageHandler}
+                multiple // Allow multiple files
+              />
+            </div>
+
+            {photoPreviews.map((preview, index) => (
+              <img key={index} src={preview} alt={`Image ${index}`} />
+            ))}
             <button type="submit">Create</button>
           </form>
         </article>

@@ -50,7 +50,7 @@ const Products = () => {
   const { data,error,isError } = useAllProductsQuery(user?._id!);
   if (isError) {
     const err = error as CustomError;
-    console.log(err.data.message);
+    // console.log(err.data.message);
   }
   const [rows, setRows] = useState<DataType[]>([]);
 useEffect(()=>{  if (data) {

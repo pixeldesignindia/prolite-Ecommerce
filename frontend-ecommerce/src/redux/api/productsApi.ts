@@ -10,6 +10,7 @@ export const latestProductApi = createApi({
   tagTypes:['product'],
   endpoints: (builder) => ({
     latestProducts:builder.query<ProductsResponse,string>({query:()=>'latest',providesTags:['product']}),
+    latestProductsByBrand:builder.query<ProductsResponse,string>({query:()=>'latestByBrand',providesTags:['product']}),
 
     allProducts :builder.query<ProductsResponse,string>({query:(id)=>`admin-products?id=${id}`,providesTags:['product']}),
 
@@ -25,11 +26,14 @@ export const latestProductApi = createApi({
 
     productDetails:builder.query<ProductResponse,string>({query:(id)=>id,providesTags:['product']}),
 
-    newProduct:builder.mutation<MessageResponse,NewProductRequest>({query:({formData,id})=>({
-      url:`new?id=${id}`,
-      method:'POST',
-      body:formData
-    }),invalidatesTags:['product']}),
+    newProduct: builder.mutation<MessageResponse, NewProductRequest>({
+      query: ({ formData, id }) => ({
+        url: `new?id=${id}`,
+        method: 'POST',
+        body: formData, 
+      }),
+      invalidatesTags: ['product']
+    }),
 
     updateProduct:builder.mutation<MessageResponse,UpdateProductRequest>({query:({formData,userId,productId})=>({
       url:`${productId}?id=${userId}`,
@@ -44,4 +48,4 @@ export const latestProductApi = createApi({
 });
 
 
-export const { useLatestProductsQuery,useAllProductsQuery, useCategoriesQuery,useSearchProductsQuery,useNewProductMutation,useProductDetailsQuery,useUpdateProductMutation,useDeleteProductMutation} = latestProductApi;
+export const { useLatestProductsQuery,useAllProductsQuery, useCategoriesQuery,useSearchProductsQuery,useNewProductMutation,useProductDetailsQuery,useUpdateProductMutation,useDeleteProductMutation,useLatestProductsByBrandQuery} = latestProductApi;

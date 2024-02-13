@@ -3,16 +3,23 @@ import { useGetProductsQuery } from "../../redux/api/api";
 import { useDispatch } from "react-redux";
 // import { addToCart } from "../../redux/reducer";
 import "./home.css";
-import { useLatestProductsQuery } from "../../redux/api/productsApi";
+import Banner from '../../components/banner/Banner'
+import { useLatestProductsByBrandQuery } from "../../redux/api/productsApi";
 import toast from "react-hot-toast";
 import { server } from "../../redux/store";
 import { Product } from "../../types/types";
 import ProductCard from "../../components/productCard/ProductCard";
 import { addToCart } from "../../redux/cart-reducer";
 import { CartItem } from "../../types/types";
+import Slider from "react-slick";
+import Brand from "../../components/brand/Brand";
+import Footer from '../../components/footer/Footer';
+import { useNavigate } from "react-router-dom";
+
 const Home: React.FC = () => {
+const navigate=useNavigate()
   const { isLoading, data, isError, error, isSuccess } =
-    useLatestProductsQuery("");
+  useLatestProductsByBrandQuery("");
   // const {isLoading,data,isSuccess,error,isError}=useGetProductsQuery('')
   console.log(isLoading, data, isSuccess, error);
   if (isError) {
@@ -24,27 +31,98 @@ const Home: React.FC = () => {
     dispatch(addToCart(cartItem));
     toast.success("Added to cart");
   };
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    arrows:true,
+    centerPadding:'100px',
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
   return (
-    <>
-      <div className="product-container">
-        {isLoading ? (
-          <>loading</>
-        ) : data ? (
-          data.products?.map((i: Product) => (
-            <ProductCard
-              key={i._id}
-              productId={i._id}
-              name={i.name}
-              price={i.price}
-              stock={i.stock}
-              handler={addToCartHandler}
-              photo={i.photo}
-              category={i.category}
-            />
-          ))
-        ) : null}
+    <div className="bg-blue">
+    <Banner/>
+<div className="text-align-center">
+  <h2 className="heading">Shop by brand</h2>
+        <h4 className="para">AutoGlo</h4></div>
+      <div className=" slider-container">
+      {isSuccess && (
+      // <MultipleItems>
+        <div className=" slider-container">
+          <Slider {...settings}>
+            {data.products?.map((i: Product) => (
+              <ProductCard
+                key={i._id}
+                productId={i._id}
+                name={i.name}
+                price={i.price}
+                stock={i.stock}
+                handler={addToCartHandler}
+                photo={i.photo}
+                category={i.category}
+              />
+            ))}
+          </Slider>
+        </div>
+
+    )}
+    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button" onClick={()=>{navigate('/autoglo')}}>Explore All</button></div>
+
       </div>
-    </>
+      <h4 className="para" style={{color:'#014FB3'}}>Prolite</h4>
+      {isSuccess && (
+      // <MultipleItems>
+        <div className=" slider-container">
+          <Slider {...settings}>
+            {data.products?.map((i: Product) => (
+              <ProductCard
+                key={i._id}
+                productId={i._id}
+                name={i.name}
+                price={i.price}
+                stock={i.stock}
+                handler={addToCartHandler}
+                photo={i.photo}
+                category={i.category}
+              />
+            ))}
+          </Slider>
+        </div>
+
+      // </MultipleItems>
+    )}
+    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button" onClick={()=>{navigate('/prolite')}}>Explore All</button></div>
+    <Brand/>
+    <Footer/>
+    </div>
   );
 };
 

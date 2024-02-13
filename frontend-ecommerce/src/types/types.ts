@@ -48,3 +48,79 @@ export type CartItem = {
     };
     _id: string;
   };
+
+  type LatestTransaction = {
+    _id: string;
+    amount: number;
+    discount: number;
+    quantity: number;
+    status: string;
+  };
+
+  export type Stats = {
+    categoryCount: Record<string, number>[];
+    changePercent: CountAndChange;
+    count: CountAndChange;
+    chart: {
+      order: number[];
+      revenue: number[];
+    };
+    userRatio: {
+      male: number;
+      female: number;
+    };
+    latestTransaction: LatestTransaction[];
+  };
+
+  export type Pie = {
+    orderFullfillment: OrderFullfillment;
+    productCategories: Record<string, number>[];
+    stockAvailablity: {
+      inStock: number;
+      outOfStock: number;
+    };
+    revenueDistribution: RevenueDistribution;
+    usersAgeGroup: UsersAgeGroup;
+    adminCustomer: {
+      admin: number;
+      customer: number;
+    };
+  };
+  
+  export type Bar = {
+    users: number[];
+    products: number[];
+    orders: number[];
+  };
+  export type Line = {
+    users: number[];
+    products: number[];
+    discount: number[];
+    revenue: number[];
+  };
+  
+  type CountAndChange = {
+    revenue: number;
+    product: number;
+    user: number;
+    order: number;
+  };
+  type OrderFullfillment = {
+    processing: number;
+    shipped: number;
+    delivered: number;
+  };
+  
+  type RevenueDistribution = {
+    netMargin: number;
+    discount: number;
+    productionCost: number;
+    burnt: number;
+    marketingCost: number;
+  };
+  
+  type UsersAgeGroup = {
+    teen: number;
+    adult: number;
+    old: number;
+  };

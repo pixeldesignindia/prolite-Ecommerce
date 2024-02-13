@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./global.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header/Header";
@@ -15,9 +14,11 @@ import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 
 
 const Home = lazy(() => import("./pages/home/Home"));
+const Product = lazy(() => import("./pages/product/Product"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Cart = lazy(() => import("./pages/cart/Cart"));
-const Search = lazy(() => import("./pages/search/Search"));
+const Prolite = lazy(() => import("./pages/search/Prolite"));
+const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
 const Shipping = lazy(() => import("./pages/shipping/shipping"));
 const Orders = lazy(()=>import('./pages/orders/Orders'))
 const Checkout = lazy(()=>import('./pages/checkOut/checkout'))
@@ -54,13 +55,15 @@ else{dispatch(userNotExist())}
       <Suspense fallback={<h5>Loading...</h5>}>
         <Header user={user || null}/>
         <Routes>
+          <Route path="*" element={<>hi manas</>} />
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/product" element={<Search />} />
+          <Route path="/product/:id" element={<Product />} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
            {/* Logged In User Routes */}
           <Route element={<ProtectedRoute isAuthenticated={user ? true : false} />}>
-            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/prolite" element={<Prolite />} />
+            <Route path="/autoglo" element={<Autoglo/>} />
             <Route path="/orders" element={<Orders />} />
             {/* <Route path="/order/:id" element={<OrderDetails />} /> */}
             <Route path="/pay" element={<Checkout />} /> 
@@ -86,6 +89,7 @@ else{dispatch(userNotExist())}
           />
           </Route>;
         </Routes>
+        
       </Suspense>
       <Toaster position="top-right"/>
     </BrowserRouter>
