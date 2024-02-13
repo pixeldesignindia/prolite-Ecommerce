@@ -176,7 +176,7 @@ export const newProduct = TryCatch(
 
     if (!photos) return next(new ErrorHandler("Please add Photo", 400));
 
-    if (!name || !price || !stock || !category || !description || !brand) {
+    if (!name || !price || !stock || !category || !description || !brand ) {
      for (const photo of photos) {
         await unlink(photo.path);
       }
