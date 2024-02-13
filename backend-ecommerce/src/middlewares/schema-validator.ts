@@ -8,8 +8,12 @@ export const validatation= (schema: z.ZodType) => async (
   next: NextFunction
 ) => {
   try {
-    const parseBody = await schema.parseAsync(req.body);
-    req.body = parseBody;
+    const data = {
+      ...req.body,
+      photos:(req.files as Express.Multer.File[])?.map((file: Express.Multer.File) => file.path) // Assuming req.files contains the uploaded files
+    };
+    const parseBody = await schema.parseAsync(data);
+  req.body = parseBody;
     next();
   } catch (err) {
     const statusCode= 400;
