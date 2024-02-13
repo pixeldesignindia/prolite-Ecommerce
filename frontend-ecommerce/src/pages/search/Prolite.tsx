@@ -96,7 +96,9 @@ const Search = () => {
         </div>
       </aside>
       <main >
-        <div className="input-box">
+        <div className="row">
+          <div className="col-7" style={{display:'flex',alignItems:'center'}}><h2 className='b'>Product Category</h2> <h4 className='blue-text'>PROLITE</h4> </div>
+          <div className="col-5"><div className="input-box">
         <FiSearch/>
         <input
           type="text"
@@ -104,7 +106,9 @@ const Search = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        </div></div>
         </div>
+        
         
         <div className="container">
        

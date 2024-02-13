@@ -24,34 +24,31 @@ const NewProduct = () => {
   const [newProduct] = useNewProductMutation();
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const files: FileList | null = e.target.files;
+    const selectedFiles = e.target.files;
+    if (!selectedFiles) return;
   
-    if (!files || files.length === 0) {
-      return; // No files selected
-    }
+    const newPreviews: string[] = [];
+    const newPhotos: { file: File; preview: string }[] = [];
   
-    const newPhotos: File[] = [];
-    const newPhotoPreviews: string[] = [];
-  
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const file = selectedFiles[i];
       const reader = new FileReader();
   
+      reader.readAsDataURL(file);
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
-          newPhotoPreviews.push(reader.result);
+          newPreviews.push(reader.result);
+          setPhotoPreviews(newPreviews);
         }
       };
   
-      reader.readAsDataURL(file);
-      newPhotos.push(file);
+      newPhotos.push({ file, preview: URL.createObjectURL(file) });
     }
   
     setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
-    setPhotoPreviews((prevPreviews) => [...prevPreviews, ...newPhotoPreviews]);
   };
   
-  
+
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name || !price || !stock || !photos.length || !category || !brand) return;
@@ -63,7 +60,10 @@ const NewProduct = () => {
     formData.append('stock', stock.toString());
     formData.append('category', category);
     formData.append('brand', brand);
-    formData.append('photos', JSON.stringify(photos));
+    photos.forEach((photo, index) => {
+      formData.append('photos', photo);
+    });
+  
     const res = await newProduct({ id: user?._id!, formData });
     responseToast(res, navigate, "/admin/product");
   };

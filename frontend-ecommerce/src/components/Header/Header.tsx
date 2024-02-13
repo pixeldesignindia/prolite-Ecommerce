@@ -46,7 +46,8 @@ const Header = ({ user }: propestype) => {
           <Nav className="nav-Body">
             <div>
             <div className="link-center">
-            <Nav.Link href={"/product"}>Brands</Nav.Link>
+            <Nav.Link href={"/prolite"}>Prolite</Nav.Link>
+            <Nav.Link href={"/autoglo"}>Autoglo</Nav.Link>
             <Nav.Link href={"/orders"}>Orders</Nav.Link></div>
             </div>
       <Nav.Link href={"/cart"}>

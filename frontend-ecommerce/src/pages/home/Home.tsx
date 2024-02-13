@@ -14,9 +14,10 @@ import { CartItem } from "../../types/types";
 import Slider from "react-slick";
 import Brand from "../../components/brand/Brand";
 import Footer from '../../components/footer/Footer';
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
-
+const navigate=useNavigate()
   const { isLoading, data, isError, error, isSuccess } =
     useLatestProductsQuery("");
   // const {isLoading,data,isSuccess,error,isError}=useGetProductsQuery('')
@@ -93,7 +94,7 @@ const Home: React.FC = () => {
         </div>
 
     )}
-    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
+    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button" onClick={()=>{navigate('/autoglo')}}>Explore All</button></div>
 
       </div>
       <h4 className="para" style={{color:'#014FB3'}}>Prolite</h4>
@@ -118,7 +119,7 @@ const Home: React.FC = () => {
 
       // </MultipleItems>
     )}
-    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
+    <div className="btn-ex"><button className="Explore" id="explore-btn" type="button" onClick={()=>{navigate('/prolite')}}>Explore All</button></div>
     <Brand/>
     <Footer/>
     </div>
