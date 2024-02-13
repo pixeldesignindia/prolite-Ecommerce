@@ -195,7 +195,9 @@ export const newProduct = TryCatch(
       category: category.toLowerCase(),
       description,
       photos: photoPaths,
-      brand:brand.toUpperCase()
+      brand:brand.toUpperCase(),
+      productModel:productModel.toLowerCase(),
+      dimensions: dimensions
     });
 
      invalidateCache({ product: true, 
@@ -212,7 +214,7 @@ export const newProduct = TryCatch(
 
 export const updateProduct = TryCatch(async (req, res, next) => {
   const { id } = req.params;
-  const { name, price, stock, category ,description} = req.body;
+  const { name, price, stock, category ,description,dimensions,productModel} = req.body;
   const photos = req.files as  Express.Multer.File[];
   const product = await Product.findById(id);
 
@@ -232,6 +234,8 @@ export const updateProduct = TryCatch(async (req, res, next) => {
   if (stock) product.stock = stock;
   if (category) product.category = category;
   if (description) product.description = description;
+  if(dimensions) product.dimensions = dimensions;
+  if(productModel) product.productModel = productModel;
 
   await product.save();
 
