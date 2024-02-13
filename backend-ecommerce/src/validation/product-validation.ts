@@ -53,7 +53,7 @@ export const productSchema = z.object({
     })
     .trim()
     .min(1, { message: "Description is required" }),
-    prodoctModel: z
+    productModel: z
     .string({
       required_error:"product Model is required",
       invalid_type_error:"product Model must be string"
