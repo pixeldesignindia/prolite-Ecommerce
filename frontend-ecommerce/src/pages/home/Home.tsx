@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 // import { addToCart } from "../../redux/reducer";
 import "./home.css";
 import Banner from '../../components/banner/Banner'
-import { useLatestProductsQuery } from "../../redux/api/productsApi";
+import { useLatestProductsByBrandQuery } from "../../redux/api/productsApi";
 import toast from "react-hot-toast";
 import { server } from "../../redux/store";
 import { Product } from "../../types/types";
@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 const Home: React.FC = () => {
 const navigate=useNavigate()
   const { isLoading, data, isError, error, isSuccess } =
-    useLatestProductsQuery("");
+  useLatestProductsByBrandQuery("");
   // const {isLoading,data,isSuccess,error,isError}=useGetProductsQuery('')
   console.log(isLoading, data, isSuccess, error);
   if (isError) {

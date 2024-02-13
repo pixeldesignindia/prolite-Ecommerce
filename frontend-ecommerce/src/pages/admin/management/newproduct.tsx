@@ -15,6 +15,8 @@ const NewProduct = () => {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
+  const [productModel, setProductModel] = useState<string>("");
+  const [dimensions, setDimensions] = useState<string>("");
   const [brand, setBrand] = useState<string>("autoglo");
   const [price, setPrice] = useState<number>(1000);
   const [stock, setStock] = useState<number>(1);
@@ -60,6 +62,8 @@ const NewProduct = () => {
     formData.append('stock', stock.toString());
     formData.append('category', category);
     formData.append('brand', brand);
+    formData.append('productModel', productModel);
+    formData.append('dimensions', dimensions);
     photos.forEach((photo, index) => {
       formData.append('photos', photo);
     });
@@ -96,6 +100,27 @@ const NewProduct = () => {
                 placeholder="Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+            <div>
+            {/* ,dimensions,productModel */}
+              <label>Model</label>
+              <input
+                required
+                type="text"
+                placeholder="Product Model"
+                value={productModel}
+                onChange={(e) => setProductModel(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Measurement</label>
+              <input
+                required
+                type="text"
+                placeholder="Dimensions"
+                value={dimensions}
+                onChange={(e) => setDimensions(e.target.value)}
               />
             </div>
             <div>
