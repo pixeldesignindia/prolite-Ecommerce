@@ -17,6 +17,8 @@ export interface NewProductRequestBody {
   photos:string[];
   stock: number;
   price: number;
+  productModel:string;
+  dimensions:string;
 }
 
 export type ControllerType = (
