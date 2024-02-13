@@ -30,7 +30,7 @@ const NewProduct = () => {
     if (!selectedFiles) return;
   
     const newPreviews: string[] = [];
-    const newPhotos: { file: File; preview: string }[] = [];
+    const newPhotos: File[] = [];
   
     for (let i = 0; i < selectedFiles.length; i++) {
       const file = selectedFiles[i];
@@ -44,16 +44,19 @@ const NewProduct = () => {
         }
       };
   
-      newPhotos.push({ file, preview: URL.createObjectURL(file) });
+      newPhotos.push(file);
     }
   
-    setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
+    setPhotos(newPhotos); // Directly assign newPhotos to photos state
   };
+  
+  
   
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name || !price || !stock || !photos.length || !category || !brand) return;
+  console.log(photos);
   
     const formData = new FormData();
     formData.append('name', name);
