@@ -171,13 +171,13 @@ export const getSingleProduct = TryCatch(async (req, res, next) => {
 
 export const newProduct = TryCatch(
   async (req: Request<{}, {}, NewProductRequestBody>, res, next) => {
-    const { name, price, stock, category,description,brand } = req.body;
+    const { name, price, stock, category,description,brand,dimensions,productModel} = req.body;
         const photos = req.files as Express.Multer.File[]; 
       
 
     if (!photos) return next(new ErrorHandler("Please add Photo", 400));
 
-    if (!name || !price || !stock || !category || !description || !brand) {
+    if (!name || !price || !stock || !category || !description || !brand ||!dimensions ||!productModel) {
      for (const photo of photos) {
         await unlink(photo.path);
       }

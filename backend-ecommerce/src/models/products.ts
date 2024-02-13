@@ -31,7 +31,15 @@ const schema = new mongoose.Schema({
             type: String,
             required: [true, "Photo is required"]
         }
-    ]
+    ],
+    productModel:{
+        type: String,
+        required: [true, "Photo is required"]
+    },
+    dimensions:{
+        type:String,
+        required: [true, "Dimension is required"]
+    }
 }, { timestamps: true });
 
 export const Product = mongoose.model("Product", schema);

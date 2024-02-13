@@ -53,4 +53,20 @@ export const productSchema = z.object({
     })
     .trim()
     .min(1, { message: "Description is required" }),
+    prodoctModel: z
+    .string({
+      required_error:"product Model is required",
+      invalid_type_error:"product Model must be string"
+    })
+    .trim()
+    .min(1,{message:"product model atleast one character"})
+    .max(255,{message:"product model must not be more than 255 characters"}),
+    dimensions:z
+    .string({
+      required_error:"dimensions must be required",
+      invalid_type_error:"dimensions must be string"
+    })
+    .trim()
+    .min(1,{message:"product model atleast one character"})
+    .max(255,{message:"product model must not be more than 255 characters"}),
 });
