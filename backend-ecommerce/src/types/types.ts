@@ -19,6 +19,7 @@ export interface NewProductRequestBody {
   price: number;
   productModel:string;
   dimensions:string;
+  tags:string[];
 }
 
 export type ControllerType = (

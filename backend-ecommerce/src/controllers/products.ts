@@ -171,12 +171,12 @@ export const getSingleProduct = TryCatch(async (req, res, next) => {
 
 export const newProduct = TryCatch(
   async (req: Request<{}, {}, NewProductRequestBody>, res, next) => {
-      const { name, price, stock, category,description,brand,dimensions,productModel} = req.body;
+      const { name, price, stock, category,description,brand,dimensions,productModel,tags} = req.body;
         const photos = req.files as Express.Multer.File[]; 
 
     if (!photos) return next(new ErrorHandler("Please add Photo", 400));
 
-    if (!name || !price || !stock || !category || !description || !brand || !dimensions ||!productModel) {
+    if (!name || !price || !stock || !category || !description || !brand || !dimensions ||!productModel ||!tags) {
      for (const photo of photos) {
         await unlink(photo.path);
       }
@@ -196,6 +196,7 @@ export const newProduct = TryCatch(
       brand:brand.toUpperCase(),
       productModel: productModel.toLowerCase(),
       dimensions: dimensions,
+      tags:tags,
 
     });
 
@@ -213,7 +214,7 @@ export const newProduct = TryCatch(
 
 export const updateProduct = TryCatch(async (req, res, next) => {
   const { id } = req.params;
-  const { name, price, stock, category ,description,productModel,dimensions} = req.body;
+  const { name, price, stock, category ,description,productModel,dimensions,tags} = req.body;
   const photos = req.files as  Express.Multer.File[];
   const product = await Product.findById(id);
 
@@ -235,6 +236,7 @@ export const updateProduct = TryCatch(async (req, res, next) => {
   if (description) product.description = description;
   if(productModel) product.productModel = productModel;
   if(dimensions) product.dimensions = dimensions;
+  if(tags) product.tags = tags;
 
   await product.save();
 
@@ -306,7 +308,6 @@ export const getAllProducts = TryCatch(
       productsPromise,
       Product.find(baseQuery),
     ]);
-
     const totalPage = Math.ceil(filteredOnlyProduct.length / limit);
 
     return res.status(200).json({
