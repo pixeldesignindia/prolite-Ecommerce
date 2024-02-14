@@ -95,8 +95,8 @@ export const getAllCategoriesByBrand = TryCatch(async (req, res, next) => {
   });
 });
 export const getAllproductByCategory = TryCatch(async (req, res, next) => {
-   const { category }: { category?: string } = req.query;
- if (!category){ return next(new ErrorHandler(" category name is required in query", 400))
+  const { category }: { category?: string } = req.query;
+if (!category){ return next(new ErrorHandler(" category name is required in query", 400))
 }
 let products;
   if (myCache.has(`products-category-${category.toLowerCase()}`)) {
@@ -107,7 +107,7 @@ let products;
       });
 
       if (products.length === 0) {
-     return next(new ErrorHandler("product not found in this category", 404))
+    return next(new ErrorHandler("product not found in this category", 404))
       }
 
       myCache.set(`products-category-${category.toLowerCase()}`, JSON.stringify(products));

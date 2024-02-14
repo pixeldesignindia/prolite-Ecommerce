@@ -2,6 +2,7 @@ import './search.css'
 import React, { useEffect, useState } from "react";
 import {
   useCategoriesQuery,
+  useCategoryOfBrandQuery,
   useSearchProductsQuery,
 } from "../../redux/api/productsApi";
 import { CustomError } from "../../types/api-types";
@@ -25,7 +26,7 @@ const Search = () => {
     data: searchData,
     isError: productIsError,
     error: productError,
-  } = useSearchProductsQuery({ search, sort, category, page, price: maxPrice });
+  } = useSearchProductsQuery({ search, sort, category, page, price: maxPrice,brand:'AUTOGLO' });
   console.log(searchData);
 
 
@@ -41,7 +42,7 @@ const Search = () => {
     isLoading: loadingCategories,
     error,
     isError,
-  } = useCategoriesQuery("");
+  } = useCategoryOfBrandQuery("");
   console.log(categoriesResponse)
   if (isError) {
     const err = error as CustomError;
@@ -117,7 +118,7 @@ const Search = () => {
           <p>Loading Product...</p>
         ) : (
           <div className="search-product-list row">
-            {searchData?.products.map((i) => (
+            {searchData?.latestProductsByBrand?.AUTOGLO?.map((i) => (
               <div key={i._id} className="col-12 col-md-4 mb-3 mt-product-card">
                 <ProductCard
                   productId={i._id}
@@ -126,7 +127,7 @@ const Search = () => {
                   stock={i.stock}
                   category={i.category}
                   handler={addToCartHandler}
-                  photo={i.photo}
+                  photos={i.photos}
                 />
               </div>
             ))}

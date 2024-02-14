@@ -14,6 +14,7 @@ import './../../components/productCard/product.css'
 import ProductCard from "../../components/productCard/ProductCard";
 import "../home/home.css";
 import { useLatestProductsQuery } from "../../redux/api/productsApi";
+import { server } from "../../redux/store";
 const Product = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState(null);
@@ -46,23 +47,18 @@ const Product = () => {
     return <div>Loading...</div>;
   }
 
-  const imageUrls = [
-    "https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg",
-    "https://preview.redd.it/mbrbcccup8g11.jpg?width=1080&crop=smart&auto=webp&s=e240fa06f569810a69f6510af6f5cdb0ea0abf83",
-    "https://live.staticflickr.com/4289/34781285994_71774534bd.jpg",
-    "https://live.staticflickr.com/4289/34781285994_71774534bd.jpg",
-    "https://live.staticflickr.com/4289/34781285994_71774534bd.jpg",
-  ];
+
 
   const settings = {
     customPaging: function (i) {
       return (
         <a>
-          <img
-            src={imageUrls[i]}
+          <img src={`${server}/${product?.photos[i]}`} alt={`Slide`} className="product-active-img" style={{ height: "60px", width: "80px" }}/>
+          {/* <img
+            src={data?.latestProductsByBrand?.PROLIGHT[i]}
             style={{ height: "60px", width: "80px" }}
             alt={`Slide ${i}`}
-          />
+          /> */}
         </a>
       );
     },
@@ -117,13 +113,10 @@ const Product = () => {
         <div className="left-img-section-product col-6">
         <div className="slider-container-product">
           <Slider {...settings}>
-            {imageUrls.map((url, index) => (
+            {product?.photos?.map((url, index) => (
               <div key={index}>
-                <img
-                  src={url}
-                  alt={`Slide ${index}`}
-                  className="product-active-img"
-                />
+                <img src={`${server}/${url}`} alt={`Slide ${index}`} className="product-active-img"/>
+                
               </div>
             ))}
           </Slider>
@@ -132,8 +125,10 @@ const Product = () => {
       <div className="product-data-right col-6">
         <div className="center" style={{width:'100%'}}>
           <div className="card-body-product">
-            <div>
-            <p className="card-title">{product.name}</p>
+            <div className="product-top-text">
+            <p className="bluetxt b">{product.productModel}</p>
+            <h3 className="product-title b">{product.name}</h3>
+            <h5>{product.dimensions}</h5>
             <p className="stock">Stock : {product.stock}</p>
             <p className="card-text">&#x20b9;{product.price}</p>
             </div>
@@ -192,7 +187,7 @@ const Product = () => {
       // <MultipleItems>
         <div className=" slider-container">
           <Slider {...ssettings}>
-            {data.products?.map((i: Product) => (
+            {data?.latestProductsByBrand?.PROLIGHT?.map((i: Product) => (
               <ProductCard
                 key={i._id}
                 productId={i._id}
@@ -200,7 +195,7 @@ const Product = () => {
                 price={i.price}
                 stock={i.stock}
                 handler={addToCartHandler}
-                photo={i.photo}
+                photos={i.photos}
                 category={i.category}
               />
             ))}

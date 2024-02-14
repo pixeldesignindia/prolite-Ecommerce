@@ -44,7 +44,7 @@ const Header = ({ user }: propestype) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="nav-Body">
-            <div>
+            <div className="center"> 
             <div className="link-center">
             <Nav.Link href={"/prolite"}>Prolite</Nav.Link>
             <Nav.Link href={"/autoglo"}>Autoglo</Nav.Link>
@@ -54,8 +54,7 @@ const Header = ({ user }: propestype) => {
       <FaShoppingCart />
         {cartItems && cartItems.length>=1 && cartItems.length}
       </Nav.Link>
-      <div className='admin-logo'>{user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link><button className="logout" onClick={logOutHandler}>Logout</button></> : <button className="log" onClick={()=>{navigate('/login')}}>SignIn</button>}</div>
-      
+      <div className='admin-logo'>{user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link> <Nav.Link href={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Nav.Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}}>SignIn</button>}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>

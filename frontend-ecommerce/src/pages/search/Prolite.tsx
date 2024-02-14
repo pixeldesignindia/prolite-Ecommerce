@@ -25,7 +25,7 @@ const Search = () => {
     data: searchData,
     isError: productIsError,
     error: productError,
-  } = useSearchProductsQuery({ search, sort, category, page, price: maxPrice });
+  } = useSearchProductsQuery({ search, sort, category, page, price: maxPrice ,brand:"PROLIGHT" });
   console.log(searchData);
 
 

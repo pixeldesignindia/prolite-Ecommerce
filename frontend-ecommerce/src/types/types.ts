@@ -12,7 +12,7 @@ export interface Product{
     category:string;
     price: number;
     _id: string;
-    photo: string;
+    photos: string[];
     stock:number;
 }
 export type CartItem = {

@@ -15,14 +15,24 @@ export const latestProductApi = createApi({
     allProducts :builder.query<ProductsResponse,string>({query:(id)=>`admin-products?id=${id}`,providesTags:['product']}),
 
     categories :builder.query<CategoriesResponse,string>({query:()=>'categories',providesTags:['product']}),
+    categoryOfBrand :builder.query<CategoriesResponse,string>({query:()=>'categoryByBrand',providesTags:['product']}),
 
-    searchProducts :builder.query<SearchProductResponse,SearchProductRequest >({query:({price,search,sort,category,page})=>{
+    searchProducts :builder.query<SearchProductResponse,SearchProductRequest >({query:({price,search,sort,category,page,brand})=>{
       let base=`all?search=${search}&page=${page}`
       if(price) base+= `&price=${price}`
       if(sort) base+= `&sort=${sort}`
       if(category) base+= `&category=${category}`
+      if(brand) base+= `&brand=${brand}`
       return base
     },providesTags:['product']}),
+    // getProductByCategory :builder.query<SearchProductResponse,SearchProductRequest >({query:({price,search,sort,category,page,brand})=>{
+    //   let base=`getProductByCategory?search=${search}&page=${page}`
+    //   if(price) base+= `&price=${price}`
+    //   if(sort) base+= `&sort=${sort}`
+    //   if(category) base+= `&category=${category}`
+    //   if(brand) base+= `&brand=${brand}`
+    //   return base
+    // },providesTags:['product']}),
 
     productDetails:builder.query<ProductResponse,string>({query:(id)=>id,providesTags:['product']}),
 
@@ -48,4 +58,4 @@ export const latestProductApi = createApi({
 });
 
 
-export const { useLatestProductsQuery,useAllProductsQuery, useCategoriesQuery,useSearchProductsQuery,useNewProductMutation,useProductDetailsQuery,useUpdateProductMutation,useDeleteProductMutation,useLatestProductsByBrandQuery} = latestProductApi;
+export const { useLatestProductsQuery,useAllProductsQuery, useCategoriesQuery,useSearchProductsQuery,useNewProductMutation,useProductDetailsQuery,useUpdateProductMutation,useDeleteProductMutation,useLatestProductsByBrandQuery ,useCategoryOfBrandQuery} = latestProductApi;

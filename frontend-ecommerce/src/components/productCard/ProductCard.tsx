@@ -5,7 +5,7 @@ import { FaCartPlus } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 type ProductsProps = {
   productId: string;
-  photo: string;
+  photos: string[];
   name: string;
   price: number;
   stock: number;
@@ -18,7 +18,7 @@ const ProductCard = ({
   price,
   name,
   category,
-  photo,
+  photos,
   stock,
   handler,
 }: ProductsProps) => {
@@ -28,14 +28,14 @@ const ProductCard = ({
       {/* <p>ID: {productId}</p> */}
       <div className="img center" onClick={() => navigate(`/product/${productId}`)}>
 
-      <img src={`${server}/${photo}`} alt={name} />
+      <img src={`${server}/${photos[0]}`} alt={name} />
       </div>
       <div className="card-body">
       <p className="card-title">{name}</p>
       <p>Stock: {stock}</p>
       <p className="card-text">&#x20b9;{price}</p>
       {/* {category && <p>Category: {category}</p>} */}
-      <button onClick={() =>handler({ productId, price, name, photo, stock, quantity: 1 })} className="add-cart"><FaCartPlus /> Add To Cart</button>
+      <button onClick={() =>handler({ productId, price, name, photo:photos[0], stock, quantity: 1 })} className="add-cart"><FaCartPlus /> Add To Cart</button>
       </div>
       
     </div>

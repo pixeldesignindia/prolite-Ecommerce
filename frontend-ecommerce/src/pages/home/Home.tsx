@@ -78,7 +78,7 @@ const navigate=useNavigate()
       // <MultipleItems>
         <div className=" slider-container">
           <Slider {...settings}>
-            {data.products?.map((i: Product) => (
+            {data?.latestProductsByBrand?.AUTOGLO?.map((i: Product) => (
               <ProductCard
                 key={i._id}
                 productId={i._id}
@@ -86,7 +86,7 @@ const navigate=useNavigate()
                 price={i.price}
                 stock={i.stock}
                 handler={addToCartHandler}
-                photo={i.photo}
+                photos={i.photos}
                 category={i.category}
               />
             ))}
@@ -102,7 +102,7 @@ const navigate=useNavigate()
       // <MultipleItems>
         <div className=" slider-container">
           <Slider {...settings}>
-            {data.products?.map((i: Product) => (
+            {data?.latestProductsByBrand?.PROLITE?.map((i: Product) => (
               <ProductCard
                 key={i._id}
                 productId={i._id}
@@ -110,7 +110,7 @@ const navigate=useNavigate()
                 price={i.price}
                 stock={i.stock}
                 handler={addToCartHandler}
-                photo={i.photo}
+                photos={i.photos}
                 category={i.category}
               />
             ))}

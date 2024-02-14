@@ -33,6 +33,7 @@ const Linecharts = lazy(() => import("./pages/admin/charts/linecharts"));
 const Coupon = lazy(() => import("./pages/admin/apps/coupon"));
 const Stopwatch = lazy(() => import("./pages/admin/apps/stopwatch"));
 const Toss = lazy(() => import("./pages/admin/apps/toss"));
+const Profile = lazy(() => import("./pages/profile/Profile"));
 const NewProduct = lazy(() => import("./pages/admin/management/newproduct"));
 const ProductManagement = lazy(() => import("./pages/admin/management/productmanagement"));
 const TransactionManagement = lazy(() =>import("./pages/admin/management/transactionmanagement"));
@@ -64,6 +65,7 @@ else{dispatch(userNotExist())}
           <Route element={<ProtectedRoute isAuthenticated={user ? true : false} />}>
             <Route path="/prolite" element={<Prolite />} />
             <Route path="/autoglo" element={<Autoglo/>} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/orders" element={<Orders />} />
             {/* <Route path="/order/:id" element={<OrderDetails />} /> */}
             <Route path="/pay" element={<Checkout />} /> 
