@@ -39,7 +39,12 @@ const schema = new mongoose.Schema({
     dimensions:{
         type:String,
         required: [true, "Dimension is required"]
+    },
+    tags:[{
+        type:String,
+        required: [true, "Product tags is required"]
     }
+    ]
 }, { timestamps: true });
 
 export const Product = mongoose.model("Product", schema);
