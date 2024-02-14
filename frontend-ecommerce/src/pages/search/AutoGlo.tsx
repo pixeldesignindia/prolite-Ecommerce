@@ -56,11 +56,7 @@ const Search = () => {
     const err = productError as CustomError;
     toast.error(err?.data?.message||"Can`t find Products");
   }
-  useEffect(() => {
-    if (!loadingCategories && categoriesResponse && categoriesResponse.categoriesByBrand[0]?.categories.length > 0) {
-      setCategory(categoriesResponse.categoriesByBrand[0].categories[0]);
-    }
-  }, [loadingCategories, categoriesResponse]);
+
   return (
     <>
     <div className="product-search-page bg-blue">
@@ -93,7 +89,7 @@ const Search = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            {/* <option value="">ALL</option> */}
+            <option value="">ALL</option>
             {!loadingCategories &&
               categoriesResponse?.categoriesByBrand[0]?.categories.map((i) => (
                 <option key={i} value={i}>
