@@ -2,6 +2,7 @@ import './search.css'
 import React, { useEffect, useState } from "react";
 import {
   useCategoriesQuery,
+  useCategoryOfBrandQuery,
   useSearchProductsQuery,
 } from "../../redux/api/productsApi";
 import { CustomError } from "../../types/api-types";
@@ -41,7 +42,7 @@ const Search = () => {
     isLoading: loadingCategories,
     error,
     isError,
-  } = useCategoriesQuery("");
+  } = useCategoryOfBrandQuery("");
   console.log(categoriesResponse)
   if (isError) {
     const err = error as CustomError;
@@ -86,8 +87,8 @@ const Search = () => {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="">ALL</option>
-            {!loadingCategories &&
-              categoriesResponse?.categories.map((i) => (
+            {categoriesResponse &&
+              categoriesResponse?.categoriesByBrand[1]?.categories.map((i) => (
                 <option key={i} value={i}>
                   {i.toUpperCase()}
                 </option>

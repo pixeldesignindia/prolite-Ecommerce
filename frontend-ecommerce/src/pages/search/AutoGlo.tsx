@@ -88,7 +88,7 @@ const Search = () => {
           >
             <option value="">ALL</option>
             {!loadingCategories &&
-              categoriesResponse?.categories.map((i) => (
+              categoriesResponse?.categoriesByBrand[0]?.categories.map((i) => (
                 <option key={i} value={i}>
                   {i.toUpperCase()}
                 </option>
