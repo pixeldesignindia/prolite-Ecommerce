@@ -277,7 +277,7 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
 
 export const getAllProducts = TryCatch(
   async (req: Request<{}, {}, {}, SearchRequestQuery>, res, next) => {
-    const { search, sort, category, price } = req.query;
+    const { search, sort, category, price,brand } = req.query;
 
     const page = Number(req.query.page) || 1;
 
@@ -298,6 +298,9 @@ export const getAllProducts = TryCatch(
       };
 
     if (category) baseQuery.category = category;
+    if (!brand) return next(new ErrorHandler("brand name is required",400))
+    baseQuery.brand=brand.toUpperCase();
+
 
     const productsPromise = Product.find(baseQuery)
       .sort(sort && { price: sort === "asc" ? 1 : -1 })
