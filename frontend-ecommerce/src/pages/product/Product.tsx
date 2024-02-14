@@ -13,7 +13,7 @@ import { FaCartPlus } from "react-icons/fa";
 import './../../components/productCard/product.css'
 import ProductCard from "../../components/productCard/ProductCard";
 import "../home/home.css";
-import { useLatestProductsQuery } from "../../redux/api/productsApi";
+import { useLatestProductsByBrandQuery, useLatestProductsQuery } from "../../redux/api/productsApi";
 import { server } from "../../redux/store";
 const Product = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,11 @@ const Product = () => {
     dispatch(addToCart(cartItem));
     toast.success("Added to cart");
   };
+
+  const { data:brandData  } =
+  useLatestProductsByBrandQuery("");
+  // const {isLoading,data,isSuccess,error,isError}=useGetProductsQuery('')
+  console.log(brandData);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -186,8 +191,8 @@ const Product = () => {
       {isSuccess && (
       // <MultipleItems>
         <div className=" slider-container">
-          <Slider {...ssettings}>
-            {data?.latestProductsByBrand?.PROLIGHT?.map((i: Product) => (
+          {product.brand ==='PROLITE' ? <Slider {...ssettings}>
+            {brandData?.latestProductsByBrand?.PROLITE?.map((i: Product) => (
               <ProductCard
                 key={i._id}
                 productId={i._id}
@@ -199,7 +204,21 @@ const Product = () => {
                 category={i.category}
               />
             ))}
-          </Slider>
+          </Slider> : <Slider {...ssettings}>
+            {brandData?.latestProductsByBrand?.AUTOGLO?.map((i: Product) => (
+              <ProductCard
+                key={i._id}
+                productId={i._id}
+                name={i.name}
+                price={i.price}
+                stock={i.stock}
+                handler={addToCartHandler}
+                photos={i.photos}
+                category={i.category}
+              />
+            ))}
+          </Slider>}
+          
           <div className="btn-ex"><button className="Explore" id="explore-btn" type="button">Explore All</button></div>
         </div>
     )}

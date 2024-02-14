@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { UserReducerInitialState } from "../../types/reducerTypes";
 import "./profile.css";
-
+import ProfileSide from "../../components/sideNavProfile/ProfileSide";
 const Profile = () => {
     const { user } = useSelector((state: { userReducer: UserReducerInitialState }) => state.userReducer);
 
@@ -12,7 +12,7 @@ const Profile = () => {
 
     return (
         <div className="profile-page bg-blue">
-
+<ProfileSide name={user?.name}/>
             <div className="profileLeft center">
                 <div className="profileBody">
                     <div className="profileImg center">

@@ -1,6 +1,7 @@
 .pro-data-row{display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 1.2rem;}
 .profile-page{min-height: 95vh;}
-.profileLeft{height: 100%;width: 100%;padding-top: 5rem;}
-.profileBody{width: 30vw;padding: 3rem; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;background-color: #fff;border-radius: 1.2rem;}
+.profileLeft{height: 100%;width: 100%;}
+.profileBody{width: 30vw;padding: 3rem; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;background-color: #fff;border-radius: .5rem;}
 .profileImg>img{height: 8rem;width: 8rem; border-radius: 50%; border: 7px solid rgba(0, 115, 255,.3);}
 .profile-data>h3{margin: 2rem 0 3rem 0;}
+.profile-page{display: flex; gap: 3rem;padding: 5rem 3rem 0 3rem;}

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
   useCategoriesQuery,
   useCategoryOfBrandQuery,
+  useLatestProductsByBrandQuery,
   useSearchProductsQuery,
 } from "../../redux/api/productsApi";
 import { CustomError } from "../../types/api-types";
@@ -30,6 +31,7 @@ const Search = () => {
   console.log(searchData);
 
 
+
   const dispatch = useDispatch();
   const addToCartHandler = (cartItem: CartItem) => {
     if (cartItem.stock < 1) return toast.error("Out of Stock");
@@ -54,6 +56,11 @@ const Search = () => {
     const err = productError as CustomError;
     toast.error(err?.data?.message||"Can`t find Products");
   }
+  useEffect(() => {
+    if (!loadingCategories && categoriesResponse && categoriesResponse.categoriesByBrand[0]?.categories.length > 0) {
+      setCategory(categoriesResponse.categoriesByBrand[0].categories[0]);
+    }
+  }, [loadingCategories, categoriesResponse]);
   return (
     <>
     <div className="product-search-page bg-blue">
@@ -86,7 +93,7 @@ const Search = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="">ALL</option>
+            {/* <option value="">ALL</option> */}
             {!loadingCategories &&
               categoriesResponse?.categoriesByBrand[0]?.categories.map((i) => (
                 <option key={i} value={i}>
@@ -118,7 +125,7 @@ const Search = () => {
           <p>Loading Product...</p>
         ) : (
           <div className="search-product-list row">
-            {searchData?.latestProductsByBrand?.AUTOGLO?.map((i) => (
+            {searchData?.products?.map((i) => (
               <div key={i._id} className="col-12 col-md-4 mb-3 mt-product-card">
                 <ProductCard
                   productId={i._id}

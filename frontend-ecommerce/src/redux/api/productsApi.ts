@@ -16,7 +16,6 @@ export const latestProductApi = createApi({
 
     categories :builder.query<CategoriesResponse,string>({query:()=>'categories',providesTags:['product']}),
     categoryOfBrand :builder.query<CategoriesResponse,string>({query:()=>'categoryByBrand',providesTags:['product']}),
-
     searchProducts :builder.query<SearchProductResponse,SearchProductRequest >({query:({price,search,sort,category,page,brand})=>{
       let base=`all?search=${search}&page=${page}`
       if(price) base+= `&price=${price}`
