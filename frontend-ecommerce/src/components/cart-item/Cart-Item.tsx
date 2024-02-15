@@ -16,21 +16,31 @@ const CartItem = ({
   decrementHandler,
   removeHandler,
 }: CartItemProps) => {
-  const { photo, productId, name, price, quantity } = cartItem;
+  const { photo, productId, name, price, quantity,brand,category,dimension,model } = cartItem;
 
   return (
     <div className="cart-item">
+      <div className="cart-img-section col-center">
       <img src={`${server}/${photo}`} alt={name} className="cartImg" />
-      <article >
-        <Link to={`/product/${productId}`}>{name}</Link>
-        <span>₹{price}</span>
-      </article>
-
       <div className="i-d-btns">
         <button className="red-bg center" onClick={() => decrementHandler(cartItem)}>-</button>
         <p>{quantity}</p>
         <button className="center" onClick={() => incrementHandler(cartItem)}>+</button>
       </div>
+      </div>
+      
+      <article >
+        <div className="cart-pro-data">
+          <Link to={`/product/${productId}`} className="b">{name}</Link>
+          <p>Category : {category}</p>
+          <p>Dimension : {dimension}</p>
+          <p>Model : {model}</p>
+        </div>
+
+        <span>Price : ₹{price}</span>
+      </article>
+
+      
 
       <button className="delete-btn" onClick={() => removeHandler(productId)}>
         <FaTrash />

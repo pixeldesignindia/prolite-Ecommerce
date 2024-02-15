@@ -48,7 +48,8 @@ const Header = ({ user }: propestype) => {
             <div className="link-center">
             <Nav.Link href={"/prolite"}>Prolite</Nav.Link>
             <Nav.Link href={"/autoglo"}>Autoglo</Nav.Link>
-            <Nav.Link href={"/orders"}>Orders</Nav.Link></div>
+            {/* <Nav.Link href={"/orders"}>Orders</Nav.Link> */}
+            </div>
             </div>
       <Nav.Link href={"/cart"}>
       <FaShoppingCart />

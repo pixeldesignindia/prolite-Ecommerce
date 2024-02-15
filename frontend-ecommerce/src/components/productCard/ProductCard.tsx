@@ -10,6 +10,9 @@ type ProductsProps = {
   price: number;
   stock: number;
   category: string;
+  brand: string;
+    dimension:string;
+    model: string;
   handler: (cartItem: CartItem) => string | undefined;
 };
 
@@ -21,6 +24,9 @@ const ProductCard = ({
   photos,
   stock,
   handler,
+  brand,
+  dimension,
+  model
 }: ProductsProps) => {
   const navigate=useNavigate()
   return (
@@ -35,7 +41,9 @@ const ProductCard = ({
       <p>Stock: {stock}</p>
       <p className="card-text">&#x20b9;{price}</p>
       {/* {category && <p>Category: {category}</p>} */}
-      <button onClick={() =>handler({ productId, price, name, photo:photos[0], stock, quantity: 1 })} className="add-cart"><FaCartPlus /> Add To Cart</button>
+      <button onClick={() =>handler({ productId, price, name, photo:photos[0], stock, quantity: 1,brand,
+  dimension,
+  model,category })} className="add-cart"><FaCartPlus /> Add To Cart</button>
       </div>
       
     </div>

@@ -14,14 +14,15 @@ import { CartItem } from "../../types/types";
 import { useDispatch } from "react-redux";
 import Footer from '../../components/footer/Footer'
 import { FiSearch } from "react-icons/fi";
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
-  const [maxPrice, setMaxPrice] = useState(100000);
+  const [maxPrice, setMaxPrice] = useState(5000);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
-
+  const navigate=useNavigate()
   const {
     isLoading: productLoading,
     data: searchData,
@@ -37,6 +38,7 @@ const Search = () => {
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));
     toast.success("Added to cart");
+    navigate('/cart')
   };
 
   const {
@@ -76,7 +78,7 @@ const Search = () => {
           <input
             type="range"
             min={100}
-            max={100000}
+            max={5000}
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
             className='range-input'
@@ -131,6 +133,9 @@ const Search = () => {
                   category={i.category}
                   handler={addToCartHandler}
                   photos={i.photos}
+                  dimension={i.dimensions}
+                  model={i.productModel}
+                  brand={i.brand}
                 />
               </div>
             ))}

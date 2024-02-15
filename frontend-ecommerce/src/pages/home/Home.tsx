@@ -82,12 +82,15 @@ const navigate=useNavigate()
               <ProductCard
                 key={i._id}
                 productId={i._id}
-                name={i.name}
-                price={i.price}
-                stock={i.stock}
-                handler={addToCartHandler}
-                photos={i.photos}
-                category={i.category}
+                  name={i.name}
+                  price={i.price}
+                  stock={i.stock}
+                  category={i.category}
+                  handler={addToCartHandler}
+                  photos={i.photos}
+                  dimension={i.dimensions}
+                  model={i.productModel}
+                  brand={i.brand}
               />
             ))}
           </Slider>
@@ -106,12 +109,15 @@ const navigate=useNavigate()
               <ProductCard
                 key={i._id}
                 productId={i._id}
-                name={i.name}
-                price={i.price}
-                stock={i.stock}
-                handler={addToCartHandler}
-                photos={i.photos}
-                category={i.category}
+                  name={i.name}
+                  price={i.price}
+                  stock={i.stock}
+                  category={i.category}
+                  handler={addToCartHandler}
+                  photos={i.photos}
+                  dimension={i.dimensions}
+                  model={i.productModel}
+                  brand={i.brand}
               />
             ))}
           </Slider>

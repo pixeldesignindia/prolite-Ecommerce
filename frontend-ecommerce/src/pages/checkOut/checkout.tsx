@@ -77,7 +77,7 @@ const CheckOutForm = () => {
       const res = await newOrder(orderData);
       console.log('stwipe done')
       dispatch(resetCart());
-      responseToast(res, navigate, "/orders");
+      responseToast(res, navigate, "/profile/myOrders");
     }
     setIsProcessing(false);
   };
