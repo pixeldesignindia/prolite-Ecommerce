@@ -3,7 +3,7 @@ import './side.css'
 import { Link } from 'react-router-dom'
 
 
-const ProfileSide = ({name}) => {
+const ProfileSide = ({name,pic}) => {
     const logOutHandler = async () => {
         try {
           signOut(auth);
@@ -14,7 +14,7 @@ const ProfileSide = ({name}) => {
       };
   return (
     <div className='sideBar'>
-        <div className='w-box'><p>Hi, </p><h4>{name}</h4></div>
+        <div className='w-box'><p>Hi, </p> <h4><img src={pic} alt="" style={{height:'25px',width:'25px',borderRadius:'50%'}} /> {name}</h4></div>
         <div className='w-box m-h-s' style={{marginTop:'2rem'}}>
       <Link to='/profile'>MyDetails</Link>
       <Link to='/profile/myOrders'>My Orders</Link>

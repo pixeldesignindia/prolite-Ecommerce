@@ -63,7 +63,7 @@ const Search = () => {
       <aside>
         <h3 style={{color:'#014FB3'}}>Filters</h3>
         <div>
-          <h5>Sort</h5>
+          <h5 className='mb-2'>Sort</h5>
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value="">None</option>
             <option value="asc">Price (Low to High)</option>
@@ -84,7 +84,7 @@ const Search = () => {
         </div>
 
         <div>
-          <h5>Category</h5>
+          <h5 className='mb-2'>Category</h5>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}

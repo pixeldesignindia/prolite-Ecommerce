@@ -22,6 +22,11 @@ const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
 const Shipping = lazy(() => import("./pages/shipping/shipping"));
 const Orders = lazy(()=>import('./pages/orders/Orders'))
 const Checkout = lazy(()=>import('./pages/checkOut/checkout'))
+const Delivery = lazy(()=>import('./pages/delivery/Delivery'))
+const Payment = lazy(()=>import('./pages/payment/Payment'))
+const Privacy = lazy(()=>import('./pages/privacy/Privacy'))
+const Refund = lazy(()=>import('./pages/refund/Refund'))
+const Terms = lazy(()=>import('./pages/terms/Terms'))
 // Admin Imports
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 const Products = lazy(() => import("./pages/admin/products"));
@@ -61,6 +66,11 @@ else{dispatch(userNotExist())}
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/delivery" element={<Delivery />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/privacy" element={<Privacy/>} />
+          <Route path="/refund" element={<Refund/>} />
+          <Route path="/terms" element={<Terms/>} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
            {/* Logged In User Routes */}
           <Route element={<ProtectedRoute isAuthenticated={user ? true : false} />}>

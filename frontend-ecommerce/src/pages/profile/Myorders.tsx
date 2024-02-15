@@ -20,16 +20,21 @@ const Myorders = () => {
             <div className="profile-data">
             <h3 className="text-center">My Orders</h3>
             <div className="profile-myorder">
-                <Accordion >
+                <Accordion defaultActiveKey={['0']} alwaysOpen>
                 {data &&
                     data?.orders.map((order, i) => (
                         <Accordion.Item eventKey={i.toString()} key={i}>
                         <Accordion.Header><div className="row" style={{width:'100%'}}>
-                            <div className="col-4">{order._id}</div> 
-                            <div className="col-2">quantity: {order.orderItems.length}</div> 
+                            <div className="col-4 text-center">{order._id}</div> 
+                            <div className="col-2 text-center">Quantity: {order.orderItems.length}</div> 
                             <div className={
-                order.status === "Processing"? "col-2 red": order.status === "Shipped"? "col-2 green": "col-2 purple"}>{order.status}</div> 
-                            <div className="col-3">Total : {order.total}</div> 
+                order.status === "Processing"? "col-2 text-center red": order.status === "Shipped"? "col-2 green text-center": "col-2 purple text-center"}>{order.status}</div> 
+                            <div className="col-2 text-center">Total : {order.total}</div> 
+                            <div className="col-2 text-center">{new Date(order.createdAt).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    })}</div> 
                             </div></Accordion.Header>
                         <Accordion.Body>
                         <div className="row">

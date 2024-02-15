@@ -19,7 +19,7 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
   p{font-family: Montserrat;margin: 0 !important;}
   .b{font-weight: 600 !important;}
   .bg-blue{background: #F4FAFF;}
-.back-btn{background:rgb(0, 128, 255);border-radius: 50%;height: 3rem;width: 3rem;}
+.back-btn{background:rgb(1, 79, 179);border-radius: 50%;height: 3rem;width: 3rem;}
 .back-btn svg{color: #fff; font-size: 2rem;}
   .heading{text-transform: uppercase;}
 
@@ -28,8 +28,13 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
   input{background: transparent; outline: none;border:0 ;;}
 
   /* button */
-  .checkout{width: 100%;padding: 1rem;background-color: rgb(13, 194, 226);margin-top: 2rem;text-transform: uppercase;color: aliceblue;font-weight: 500;letter-spacing: .3rem;transition: box-shadow 0.3s ease;}
+  .checkout{width: 100%;padding: 1rem;background-color: rgb(1, 79, 179);margin-top: 2rem;text-transform: uppercase;color: aliceblue;font-weight: 500;letter-spacing: .3rem;transition: box-shadow 0.3s ease;}
     
     .checkout:hover {
-      box-shadow: 0 0 10px 3px rgba(0, 149, 255, 0.5); /* Yellow box shadow */
+      box-shadow: 0 0 10px 3px rgba(1, 79, 179, .5); /* Yellow box shadow */
     }
+    /* .slick-slider.slick-initialized {
+      background: url('/images/green.svg') left top no-repeat, url('/images/blue.svg') right bottom no-repeat;
+  } */
+  
+  

@@ -23,10 +23,11 @@ const Footer = () => {
           <div className="col-4 pt-5">
             <h2 className="f-head">Policy</h2>
             <ul className="ft-list">
-              <li><a href="">Shipping Policy</a></li>
-              <li><a href="">Store Policy</a></li>
-              <li><a href="">Payment Methods</a></li>
-              <li><a href="">Teams & Conditions</a></li>
+              <li><a href="/delivery">Shipping Policy</a></li>
+              <li><a href="/privacy">Store Policy</a></li>
+              <li><a href="/payment">Payment Methods</a></li>
+              <li><a href="/terms">Teams & Conditions</a></li>
+              <li><a href="/refund">Refund Policy</a></li>
             </ul>
           </div>
         </div>

@@ -12,7 +12,7 @@ const Profile = () => {
 
     return (
         <div className="profile-page bg-blue">
-<ProfileSide name={user?.name}/>
+<ProfileSide name={user?.name} pic={user?.photo}/>
             <div className="profileLeft center">
                 <div className="profileBody">
                     <div className="profileImg center">
