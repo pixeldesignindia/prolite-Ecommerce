@@ -71,6 +71,6 @@ export const productSchema = z.object({
     .min(1,{message:"product model atleast one character"})
     .max(255,{message:"product model must not be more than 255 characters"}),
     tags: z
-    .array(z.string())
+    .string()
   .min(1, "At least one tags is required"),
 });
