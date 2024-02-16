@@ -99,7 +99,7 @@ const Search = () => {
           </select>
         </div>
       </aside>
-      <main >
+      <main className='blue'>
         <div className="row">
           <div className="col-4" style={{display:'flex',alignItems:'center'}}><h2 className='b'>Product Category</h2></div>
           <div className="col-4 " style={{display:'flex',alignItems:'center ',justifyContent:'center'}}><h4 className='blue-text text-center'>PROLITE</h4> </div>

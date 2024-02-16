@@ -74,10 +74,10 @@ const navigate=useNavigate()
 <div className="text-align-center">
   <h2 className="heading">Shop by brand</h2>
         <h4 className="para">AutoGlo</h4></div>
-      <div className=" slider-container">
+      <div className=" slider-container ">
       {isSuccess && (
       // <MultipleItems>
-        <div className=" slider-container">
+        <div className=" slider-container blue">
           <Slider {...settings}>
             {data?.latestProductsByBrand?.AUTOGLO?.map((i: Product) => (
               <ProductCard
@@ -104,8 +104,8 @@ const navigate=useNavigate()
       <h4 className="para" style={{color:'#014FB3'}}>Prolite</h4>
       {isSuccess && (
       // <MultipleItems>
-        <div className=" slider-container">
-          <Slider {...settings}>
+        <div className=" slider-container ">
+          <Slider {...settings} className='grn'>
             {data?.latestProductsByBrand?.PROLITE?.map((i: Product) => (
               <ProductCard
                 key={i._id}

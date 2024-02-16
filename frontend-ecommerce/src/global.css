@@ -36,5 +36,11 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
     /* .slick-slider.slick-initialized {
       background: url('/images/green.svg') left top no-repeat, url('/images/blue.svg') right bottom no-repeat;
   } */
+    .blue {
+      background: url('/images/blue.svg') left top no-repeat;
+  }
+    .grn{
+      background: url('/images/green.svg') left top no-repeat;
+  }
   
   
