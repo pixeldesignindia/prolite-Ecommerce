@@ -87,5 +87,5 @@
   box-shadow: 0.5rem 0.5rem #1176D0, -0.5rem -0.5rem #68CD3E;
   padding: 2rem;gap: 1rem;width: 83%;}
   .edit-confirm{display: flex;align-items: center;justify-content: space-between;}
-  .save{padding: .6rem 1.3rem;background-color:rgb(1, 79, 179);}
-  .cancel{}
+  .save{padding: .6rem 1.3rem;background-color:rgb(1, 79, 179);font-weight: 500;color: #fff;border-radius: 2px;}
+  .cancel{padding: .6rem 1.3rem;background-color:#e54830;font-weight: 500;color: #fff;border-radius: 2px;}

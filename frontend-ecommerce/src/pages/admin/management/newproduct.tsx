@@ -81,8 +81,11 @@ const NewProduct = () => {
     formData.append("brand", brand);
     formData.append("productModel", productModel);
     formData.append("dimensions", dimensions);
-    formData.append("tags", JSON.stringify(tags)); 
+    // formData.append("tags", JSON.stringify(tags)); 
 
+    tags.forEach((tag, index) => {
+      formData.append("tags", tag);
+    });
     photos.forEach((photo, index) => {
       formData.append("photos", photo);
     });

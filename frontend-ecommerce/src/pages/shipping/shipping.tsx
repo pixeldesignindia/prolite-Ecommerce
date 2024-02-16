@@ -293,8 +293,8 @@ const Shipping = () => {
                         <option value="india">India</option>
                       </select>
                       
-                        <div className="edit-confirm"><button onClick={() => saveEditedAddress()} className="button">Save</button>
-                      <button onClick={() => cancelEdit()} className="button">Cancel</button></div>
+                        <div className="edit-confirm"><button onClick={() => saveEditedAddress()} className="button save">Save</button>
+                      <button onClick={() => cancelEdit()} className="button cancel">Cancel</button></div>
                       
                     </div>
                   )}
