@@ -13,6 +13,8 @@ const NewProduct = () => {
   );
 
   const [name, setName] = useState<string>("");
+  const [tags, setTags] = useState<string[]>([]);
+  const [newTag, setNewTag] = useState<string>(""); // State for new tag input
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [productModel, setProductModel] = useState<string>("");
@@ -21,21 +23,21 @@ const NewProduct = () => {
   const [price, setPrice] = useState<number>(1000);
   const [stock, setStock] = useState<number>(1);
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
-  const [photos, setPhotos] = useState<File[]>([]); 
+  const [photos, setPhotos] = useState<File[]>([]);
 
   const [newProduct] = useNewProductMutation();
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = e.target.files;
     if (!selectedFiles) return;
-  
+
     const newPreviews: string[] = [];
     const newPhotos: File[] = [];
-  
+
     for (let i = 0; i < selectedFiles.length; i++) {
       const file = selectedFiles[i];
       const reader = new FileReader();
-  
+
       reader.readAsDataURL(file);
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
@@ -43,40 +45,51 @@ const NewProduct = () => {
           setPhotoPreviews(newPreviews);
         }
       };
-  
+
       newPhotos.push(file);
     }
-  
+
     setPhotos(newPhotos); // Directly assign newPhotos to photos state
   };
-  
-  
-  
+
+  const handleAddTag = () => {
+    if (newTag.trim() !== "") {
+      setTags([...tags, newTag.trim()]);
+      setNewTag(""); // Clear the input field after adding the tag
+    }
+  };
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name || !price || !stock || !photos.length || !category || !brand) return;
-  console.log(photos);
-  
+    if (
+      !name ||
+      !price ||
+      !stock ||
+      !photos.length ||
+      !category ||
+      !brand ||
+      !tags.length
+    )
+      return;
+
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('description', description);
-    formData.append('price', price.toString());
-    formData.append('stock', stock.toString());
-    formData.append('category', category);
-    formData.append('brand', brand);
-    formData.append('productModel', productModel);
-    formData.append('dimensions', dimensions);
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price.toString());
+    formData.append("stock", stock.toString());
+    formData.append("category", category);
+    formData.append("brand", brand);
+    formData.append("productModel", productModel);
+    formData.append("dimensions", dimensions);
+    formData.append("tags", JSON.stringify(tags)); 
+
     photos.forEach((photo, index) => {
-      formData.append('photos', photo);
+      formData.append("photos", photo);
     });
-  
+
     const res = await newProduct({ id: user?._id!, formData });
     responseToast(res, navigate, "/admin/product");
   };
-  
-  
-  
 
   return (
     <div className="admin-container">
@@ -106,7 +119,7 @@ const NewProduct = () => {
               />
             </div>
             <div>
-            {/* ,dimensions,productModel */}
+              {/* ,dimensions,productModel */}
               <label>Model</label>
               <input
                 required
@@ -167,6 +180,24 @@ const NewProduct = () => {
                 <option value="autoglo">Autoglo</option>
                 <option value="prolite">Prolite</option>
               </select>
+            </div>
+
+            <div>
+              <label>Tags</label>
+              <div>
+                {tags.map((tag, index) => (
+                  <div key={index}>{tag}</div>
+                ))}
+                <input
+                  type="text"
+                  placeholder="Add Tag"
+                  value={newTag}
+                  onChange={(e) => setNewTag(e.target.value)}
+                />
+                <button type="button" onClick={handleAddTag}>
+                  +
+                </button>
+              </div>
             </div>
 
             <div>

@@ -235,47 +235,54 @@ const Shipping = () => {
                       <button onClick={() => deleteAddress(address._id)} className="address-delete"><MdDelete /></button>
                     </>
                   ) : (
-                    <>
-                      <input
+                    <div div className="edit-box">
+                      <div>Name : <input
                         required
                         type="text"
                         placeholder="Name"
                         name="name"
                         value={shippingInfo.name}
                         onChange={changeHandler}
-                      />
-                      <input
+                      /></div>
+                      <div>Phone Number : <input
                         required
                         type="number"
                         placeholder="Phone Number"
                         name="phoneNumber"
                         value={shippingInfo.phoneNumber}
                         onChange={changeHandler}
-                      />
-                      <input
+                      /></div>
+                      <div>Address : <input
                         required
                         type="text"
                         placeholder="Address"
                         name="address"
                         value={shippingInfo.address}
                         onChange={changeHandler}
-                      />
-                      <input
+                      /></div>
+                      <div>City : <input
                         required
                         type="text"
                         placeholder="City"
                         name="city"
                         value={shippingInfo.city}
                         onChange={changeHandler}
-                      />
-                      <input
+                      /></div>
+                      <div>State : <input
                         required
                         type="text"
                         placeholder="State"
                         name="state"
                         value={shippingInfo.state}
                         onChange={changeHandler}
-                      />
+                      /></div>
+                      <div>Pin Code : <input
+                        required
+                        type="number"
+                        placeholder="Pin Code"
+                        name="pinCode"
+                        value={shippingInfo.pinCode}
+                        onChange={changeHandler}/></div>
                       <select
                         name="country"
                         required
@@ -285,16 +292,11 @@ const Shipping = () => {
                         <option value="">Choose Country</option>
                         <option value="india">India</option>
                       </select>
-                      <input
-                        required
-                        type="number"
-                        placeholder="Pin Code"
-                        name="pinCode"
-                        value={shippingInfo.pinCode}
-                        onChange={changeHandler}/>
-                      <button onClick={() => saveEditedAddress()}>Save</button>
-                      <button onClick={() => cancelEdit()}>Cancel</button>
-                    </>
+                      
+                        <div className="edit-confirm"><button onClick={() => saveEditedAddress()} className="button">Save</button>
+                      <button onClick={() => cancelEdit()} className="button">Cancel</button></div>
+                      
+                    </div>
                   )}
                 </div>
               ))}

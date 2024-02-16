@@ -24,14 +24,6 @@ export const latestProductApi = createApi({
       if(brand) base+= `&brand=${brand}`
       return base
     },providesTags:['product']}),
-    // getProductByCategory :builder.query<SearchProductResponse,SearchProductRequest >({query:({price,search,sort,category,page,brand})=>{
-    //   let base=`getProductByCategory?search=${search}&page=${page}`
-    //   if(price) base+= `&price=${price}`
-    //   if(sort) base+= `&sort=${sort}`
-    //   if(category) base+= `&category=${category}`
-    //   if(brand) base+= `&brand=${brand}`
-    //   return base
-    // },providesTags:['product']}),
 
     productDetails:builder.query<ProductResponse,string>({query:(id)=>id,providesTags:['product']}),
 
