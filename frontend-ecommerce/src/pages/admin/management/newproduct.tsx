@@ -14,7 +14,7 @@ const NewProduct = () => {
 
   const [name, setName] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
-  const [newTag, setNewTag] = useState<string>(""); // State for new tag input
+  const [newTag, setNewTag] = useState<string>(""); 
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [productModel, setProductModel] = useState<string>("");
@@ -55,7 +55,7 @@ const NewProduct = () => {
   const handleAddTag = () => {
     if (newTag.trim() !== "") {
       setTags([...tags, newTag.trim()]);
-      setNewTag(""); // Clear the input field after adding the tag
+      setNewTag(""); 
     }
   };
 
