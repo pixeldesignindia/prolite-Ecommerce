@@ -37,16 +37,11 @@ export const getlatestProductsByBrand = TryCatch(async (req, res, next) => {
   if (myCache.has("latest-products")) {
     latestProductsByBrand = JSON.parse(myCache.get("latest-products") as string);
   } else {
-    const allProducts = await Product.find({}).sort({ createdAt: -1 });
+    const Autoglo =await Product.find({brand:"AUTOGLO"}).sort({createdAt:-1}).limit(5)
+    const Prolite = await Product.find({brand:"PROLITE"}).sort({createdAt:-1}).limit(5)
+     latestProductsByBrand["Autoglo"] = Autoglo;
+    latestProductsByBrand["Prolite"] = Prolite;
 
-    allProducts.forEach(product => {
-      const { brand } = product;
-      if (!latestProductsByBrand[brand]) {
-        latestProductsByBrand[brand] = [product];
-      } else if (latestProductsByBrand[brand].length < 5) {
-        latestProductsByBrand[brand].push(product);
-      }
-    });
 
     myCache.set("latest-products", JSON.stringify(latestProductsByBrand));
   }
