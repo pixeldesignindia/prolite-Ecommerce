@@ -100,11 +100,11 @@ const Search = () => {
         </div>
       </aside>
       <main className='blue'>
-        <div className="row">
+        <div className="row products-page-head">
           <div className="col-4" style={{display:'flex',alignItems:'center'}}><h2 className='b'>Product Category</h2></div>
           <div className="col-4 " style={{display:'flex',alignItems:'center ',justifyContent:'center'}}><h4 className='blue-text text-center'>PROLITE</h4> </div>
 
-          <div className="col-4"><div className="input-box">
+          <div className="col-4 search-pro"><div className="input-box">
         <FiSearch/>
         <input
           type="text"

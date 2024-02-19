@@ -10,3 +10,20 @@ select {width: 90%; padding: .8rem;border: 1px solid #ccc; border-radius: 4px; b
 .range-input{width: 90%;}
 option {font-size: 1rem;  background-color: #054aa4;font-family: Montserrat;}
 .blue-text{ color:#014FB3;letter-spacing: .2rem; font-weight: 600;}
+
+
+@media(max-width:500px){
+    .product-search-page{display: block;padding: 1rem;}
+    .product-search-page > aside{width: 100%;display: flex;align-items: center;flex-direction: row;border-right:none;padding: 0;}
+    .product-search-page > aside >h3{display: none;}
+    .product-search-page > aside >div{width: 33%;}
+    .product-search-page > aside >div select{padding:.2rem .8rem;font-size: .7rem;}
+    .product-search-page > aside >div h5{font-size: .9rem;}
+    .product-search-page>main {width: 100%;padding: 0 ;}
+    .products-page-head {margin-top: 1.2rem;}
+    .products-page-head .col-4{width: 50%;}
+    .products-page-head  h2{font-size: 1rem;}
+    .search-pro{width: 100% !important;padding: 0;}
+    .input-box{width:88%;padding: .5rem 0;margin-left:1rem}
+    .blue-text{font-size: 1rem;}
+}

@@ -37,7 +37,7 @@ const CartItem = ({
           <p>Model : {model}</p>
         </div>
 
-        <span>Price : ₹{price}</span>
+        <p>Price : <span className="green b">₹{price}</span></p>
       </article>
 
       

@@ -63,8 +63,8 @@ const Search = () => {
     <>
     <div className="product-search-page bg-blue">
       <aside>
-        <h3 style={{color:'#014FB3'}}>Filters</h3>
-        <div>
+        <h3 style={{color:'#014FB3'}} >Filters</h3>
+        <div >
           <h5>Sort</h5>
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value="">None</option>
@@ -102,11 +102,11 @@ const Search = () => {
         </div>
       </aside>
       <main className='grn'>
-      <div className="row">
+      <div className="row products-page-head">
           <div className="col-4" style={{display:'flex',alignItems:'center'}}><h2 className='b'>Product Category</h2></div>
           <div className="col-4 " style={{display:'flex',alignItems:'center ',justifyContent:'center'}}><h4 className='blue-text text-center'>AUTOGLO</h4> </div>
 
-          <div className="col-4"><div className="input-box">
+          <div className="col-4 search-pro"><div className="input-box">
         <FiSearch/>
         <input
           type="text"

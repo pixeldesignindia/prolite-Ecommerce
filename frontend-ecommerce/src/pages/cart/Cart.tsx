@@ -68,7 +68,7 @@ const navigate = useNavigate()
 
   return (
     <div className="cart">
-      <main className="bg-blue ">
+      <main className="bg-dark-blue">
         {cartItems.length > 0 ? (
           cartItems.map((i, idx) => (
             <CartItemCard
@@ -83,7 +83,7 @@ const navigate = useNavigate()
           <h1>No Items Added</h1>
         )}
       </main>
-      <aside className=" center">
+      <aside className="bg-blue center">
         
         <div className="priceCard col-center">
         <h3>Pricing</h3>

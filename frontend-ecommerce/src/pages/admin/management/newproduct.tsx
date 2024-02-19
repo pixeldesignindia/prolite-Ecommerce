@@ -61,16 +61,8 @@ const NewProduct = () => {
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (
-      !name ||
-      !price ||
-      !stock ||
-      !photos.length ||
-      !category ||
-      !brand ||
-      !tags.length
-    )
-      return;
+    if (!name ||!price ||!stock ||!photos.length ||!category ||!brand ||!tags.length) console.log('enter');
+    ;
 
     const formData = new FormData();
     formData.append("name", name);
@@ -81,7 +73,6 @@ const NewProduct = () => {
     formData.append("brand", brand);
     formData.append("productModel", productModel);
     formData.append("dimensions", dimensions);
-    // formData.append("tags", JSON.stringify(tags)); 
 
     tags.forEach((tag, index) => {
       formData.append("tags", tag);

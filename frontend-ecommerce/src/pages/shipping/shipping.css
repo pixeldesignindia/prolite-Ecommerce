@@ -1,6 +1,6 @@
-.shipping{padding: 3rem 0 0 0 ;}
-.shipping h1{margin: 2rem 0;}
-.address-box{width: 90%;display: flex;align-items: center;margin: 1rem 0;}
+/* .shipping{padding: 3rem 0 0 0 ;} */
+/* .shipping h1{margin: 2rem 0;} */
+.address-box{width: 90%;display: flex;align-items: center;margin: 1rem 0;justify-content: space-between;}
 
 .radio-container {
     display: flex;
@@ -8,12 +8,14 @@
     width: 90%;
   }
   .ship-content{padding: 2rem;}
-  .redio-address{  padding: 1.2rem;box-shadow: rgba(2, 191, 238, 0.553) 0px 1px 3px, rgba(47, 162, 250, 0.24) 0px 1px 2px;width: 100%;background-color: rgba(192, 228, 255, 0.849);transition:.3s ease-in-out;border-radius: 5px;}
+  /* .ship-r{background-color:  #0b72bc;} */
+  .ship-l{background-color:rgb(1, 79, 179);min-height: 85vh;}
+  .redio-address{  padding: 1.2rem;box-shadow: rgba(2, 191, 238, 0.553) 0px 1px 3px, rgba(47, 162, 250, 0.24) 0px 1px 2px;width: 100%;background-color:#fff;transition:.3s ease-in-out;border-radius: 5px;display: flex !important; justify-content: space-between;}
   .radio-container input[type="radio"] {
     display: none;
   }
-
-
+  /* .radio-label.redio-address div{color: #fff;} */
+  .radio-label.redio-address.selectedAddressLabel::before{background-color: #0a76ce;}
   .radio-label::before {
     content: '';
     display: inline-block;
@@ -26,11 +28,11 @@
 
 
   .radio-container input[type="radio"]:checked + .radio-label::before {
-    background-color: #007bff;
+    background-color: #ff00aa;
   }
   .selectedAddressLabel {
     scale: 1.05;
-    background-color: rgba(98, 234, 161, 0.764);
+    background-color: rgb(169, 255, 209);
     box-shadow: rgba(2, 238, 116, 0.553) 0px 1px 3px, rgba(47, 250, 98, 0.24) 0px 1px 2px;
     width: 100%;
 
@@ -51,8 +53,8 @@
     cursor: pointer; 
     font-size: 16px;
   }
-.address-edit svg{color: #0a76ce;height: 25px;width: 25px;margin-left: 1.5rem;}
-.address-delete svg{color: #e54830;height: 25px;width: 25px;margin-left: 1.5rem;}
+.address-edit svg{color: #4a4a4b;height: 25px;width: 25px;margin-left: 1.5rem;}
+.address-delete svg{color: rgb(254, 42, 42);height: 25px;width: 25px;margin-left: 1.5rem;}
 .pay-now{width: max-content !important;padding: 1rem 3rem;}
 .new-address{min-height: 50vh;padding: 1rem;display: flex;transition: .4s ease-in;}
 .new-address form{display: flex;flex-direction: column;background-color: #fff;width: 100%;box-shadow: 0.5rem 0.5rem #1176D0, -0.5rem -0.5rem #68CD3E ;
@@ -62,7 +64,8 @@
 .input-box-address {
   position: relative;
 }
-
+.user-add-row{display: flex;justify-content: space-between; align-items: center;}
+.user-address{width: 23rem;}
 .input-box-address input,.input-box-address select {
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -84,8 +87,19 @@
 .edit-box{background-color: #fff;display: flex;
   flex-direction: column;
   background-color: #fff;
-  box-shadow: 0.5rem 0.5rem #1176D0, -0.5rem -0.5rem #68CD3E;
+  box-shadow: 
+  inset 0.5rem 0.5rem #1176D0, 
+  inset -0.5rem -0.5rem #68CD3E, 
+  0.5rem 0.5rem 0 #1176D0, 
+  -0.5rem -0.5rem 0 #68CD3E;
+
   padding: 2rem;gap: 1rem;width: 83%;}
   .edit-confirm{display: flex;align-items: center;justify-content: space-between;}
   .save{padding: .6rem 1.3rem;background-color:rgb(1, 79, 179);font-weight: 500;color: #fff;border-radius: 2px;}
   .cancel{padding: .6rem 1.3rem;background-color:#e54830;font-weight: 500;color: #fff;border-radius: 2px;}
+
+  @media (max-width:500px) {
+    .ship-l{min-height: fit-content;}
+    .radio-label.redio-address {width: 110%;}
+    .user-address{width: 18rem;}
+  }

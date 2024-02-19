@@ -22,7 +22,7 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
 .back-btn{background:rgb(1, 79, 179);border-radius: 50%;height: 3rem;width: 3rem;}
 .back-btn svg{color: #fff; font-size: 2rem;}
   .heading{text-transform: uppercase;}
-
+.bg-dark-blue{background:rgb(1, 79, 179);}
 
   /* input */
   input{background: transparent; outline: none;border:0 ;;}
@@ -42,5 +42,8 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
     .grn{
       background: url('/images/green.svg') left top no-repeat;
   }
-  
-  
+
+  @media(max-width:768px){
+    .w100{width: 100%;}
+    .rowBlock{display: block;}
+  }

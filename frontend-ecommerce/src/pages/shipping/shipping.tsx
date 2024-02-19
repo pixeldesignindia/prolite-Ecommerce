@@ -16,7 +16,7 @@ import { FaRegEdit } from "react-icons/fa";
 const Shipping = () => {
   const [addresses, setAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const [editMode, setEditMode] = useState(null); 
   const { cartItems, total } = useSelector((state: RootState) => state.cartReducer);
   const { user } = useSelector((state: { userReducer: UserReducerInitialState }) => state.userReducer);
@@ -123,7 +123,7 @@ const Shipping = () => {
         country: "",
         pinCode: "",
       });
-      setShowForm(false); 
+      setShowForm(true); 
       getAddress()
     } catch (error) {
       console.log(error);
@@ -184,196 +184,81 @@ const Shipping = () => {
       {/* <button className="back-btn" onClick={() => navigate("/cart")}>
         <BiArrowBack />
       </button> */}
-      <h1 style={{marginLeft:'3rem'}}>Shipping Address</h1>
-      <div className="ship-content bg-blue">
-      <div className="container row">
-        <div className="col-6">
-          <div className="radio-container">
-            <input
-              type="radio"
-              id="savedAddress"
-              name="addressType"
-              value="savedAddress"
-              checked={!showForm}
-              onChange={() => setShowForm(false)}
-            />
-            <label htmlFor="savedAddress" className="radio-label b"><h4>Saved Address</h4></label>
-          </div>
-          {addresses.length > 0 && (
-            <div>
-              {addresses.map((address, index) => (
-                <div key={index} className="address-box">
-                  {editMode !== address._id ? (
-                    <>
-                      <div className="radio-container">
-                        <input
-                          type="radio"
-                          id={`address${index}`}
-                          name="selectedAddress"
-                          value={address._id}
-                          checked={selectedAddress === address._id}
-                          onChange={(e) => setSelectedAddress(e.target.value)}
-                          disabled={showForm}
-                          className="radio-item"
-                        />
-                        <label
-                          htmlFor={`address${index}`}
-                          className={`radio-label redio-address ${selectedAddress === address._id ? 'selectedAddressLabel' : ''}`}
-                        >
-                          <div>
-                            <strong>Name : </strong> {address.name} <br />
-                            <strong>Address : </strong> {address.address} <br />
-                            <strong>Phone Number : </strong> {address.phoneNumber} <br />
-                            <strong>City : </strong> {address.city} <br />
-                            <strong>State : </strong> {address.state} <br />
-                            <strong>Country : </strong> {address.country} <br />
-                            <strong>Pin Code : </strong> {address.pinCode} <br />
-                          </div>
-                        </label>
-                      </div>
-                      <button onClick={() => editAddress(address._id)} className="address-edit"><FaRegEdit/></button>
-                      <button onClick={() => deleteAddress(address._id)} className="address-delete"><MdDelete /></button>
-                    </>
-                  ) : (
-                    <div div className="edit-box">
-                      <div>Name : <input
-                        required
-                        type="text"
-                        placeholder="Name"
-                        name="name"
-                        value={shippingInfo.name}
-                        onChange={changeHandler}
-                      /></div>
-                      <div>Phone Number : <input
-                        required
-                        type="number"
-                        placeholder="Phone Number"
-                        name="phoneNumber"
-                        value={shippingInfo.phoneNumber}
-                        onChange={changeHandler}
-                      /></div>
-                      <div>Address : <input
-                        required
-                        type="text"
-                        placeholder="Address"
-                        name="address"
-                        value={shippingInfo.address}
-                        onChange={changeHandler}
-                      /></div>
-                      <div>City : <input
-                        required
-                        type="text"
-                        placeholder="City"
-                        name="city"
-                        value={shippingInfo.city}
-                        onChange={changeHandler}
-                      /></div>
-                      <div>State : <input
-                        required
-                        type="text"
-                        placeholder="State"
-                        name="state"
-                        value={shippingInfo.state}
-                        onChange={changeHandler}
-                      /></div>
-                      <div>Pin Code : <input
-                        required
-                        type="number"
-                        placeholder="Pin Code"
-                        name="pinCode"
-                        value={shippingInfo.pinCode}
-                        onChange={changeHandler}/></div>
-                      <select
-                        name="country"
-                        required
-                        value={shippingInfo.country}
-                        onChange={changeHandler}
-                      >
-                        <option value="">Choose Country</option>
-                        <option value="india">India</option>
-                      </select>
-                      
-                        <div className="edit-confirm"><button onClick={() => saveEditedAddress()} className="button save">Save</button>
-                      <button onClick={() => cancelEdit()} className="button cancel">Cancel</button></div>
-                      
-                    </div>
-                  )}
-                </div>
-              ))}
+      {/* <h1 style={{marginLeft:'3rem'}}>Shipping Address</h1> */}
+      <div className="bg-blue">
+      <div className=" row rowBlock">
+      <div className="col-6 w100">
+        <div className="ship-content ship-l">
+        <h4 style={{color:"#fff"}}>Saved Address</h4>
+  {addresses.length > 0 && (
+    <div>
+      {addresses.map((address, index) => (
+        <div key={index} className="address-box">
+          {editMode !== address._id ? (
+            <div onClick={() => setSelectedAddress(address._id)} className={`radio-label redio-address ${selectedAddress === address._id ? 'selectedAddressLabel' : ''}`}>
+              <div className="user-address">
+                <p className="user-add-row"><strong>Name :</strong> <span>{address.name}</span>  </p>
+                <p className="user-add-row"><strong>Address : </strong> <span> {address.address}</span>  </p>
+                <p className="user-add-row"><strong>Phone Number :</strong> <span>{address.phoneNumber} </span>  </p>
+                <p className="user-add-row"><strong>City :</strong> <span>{address.city} </span>  </p>
+                <p className="user-add-row"><strong>State :  </strong> <span>{address.state}</span>  </p>
+                <p className="user-add-row"><strong>Country :   </strong> <span>{address.country} </span>  </p>
+                <p className="user-add-row"><strong>Pin Code :</strong> <span>{address.pinCode}</span>  </p>
+              </div>
+              <div>
+              <button onClick={() => editAddress(address._id)} className="address-edit"><FaRegEdit/></button>
+          <button onClick={() => deleteAddress(address._id)} className="address-delete"><MdDelete /></button>
+              </div>
             </div>
-          )}
-        </div>
-        <div className="col-6">
-          <div className="radio-container">
-            <input
-              type="radio"
-              id="newAddress"
-              name="addressType"
-              value="newAddress"
-              checked={showForm}
-              onChange={() => setShowForm(true)}
-            />
-            <label htmlFor="newAddress" className="radio-label b"> <h4>Add New Address</h4> </label>
-          </div>
-          {showForm && (
-            <div className="new-address">
-              <form onSubmit={addAddress}>
-                <div className="input-box-address">
-                <input
+          ) : (
+            <div className="edit-box">
+              <div>Name : <input
                 required
                 type="text"
                 placeholder="Name"
                 name="name"
                 value={shippingInfo.name}
                 onChange={changeHandler}
-              />
-                </div>
-              
-              <div className="input-box-address">
-              <input
+              /></div>
+              <div>Phone Number : <input
                 required
                 type="number"
                 placeholder="Phone Number"
                 name="phoneNumber"
                 value={shippingInfo.phoneNumber}
                 onChange={changeHandler}
-              />
-              </div>
-              
-              <div className="input-box-address">
-              <input
+              /></div>
+              <div>Address : <input
                 required
                 type="text"
                 placeholder="Address"
                 name="address"
                 value={shippingInfo.address}
                 onChange={changeHandler}
-              />
-              </div>
-              
-              <div className="input-box-address">
-              <input
+              /></div>
+              <div>City : <input
                 required
                 type="text"
                 placeholder="City"
                 name="city"
                 value={shippingInfo.city}
                 onChange={changeHandler}
-              />
-              </div>
-              
-              <div className="input-box-address">
-              <input
+              /></div>
+              <div>State : <input
                 required
                 type="text"
                 placeholder="State"
                 name="state"
                 value={shippingInfo.state}
                 onChange={changeHandler}
-              />
-              </div>
-              
-              <div className="input-box-address">
+              /></div>
+              <div>Pin Code : <input
+                required
+                type="number"
+                placeholder="Pin Code"
+                name="pinCode"
+                value={shippingInfo.pinCode}
+                onChange={changeHandler}/></div>
               <select
                 name="country"
                 required
@@ -383,24 +268,109 @@ const Shipping = () => {
                 <option value="">Choose Country</option>
                 <option value="india">India</option>
               </select>
+              <div className="edit-confirm">
+                <button onClick={() => saveEditedAddress()} className="button save">Save</button>
+                <button onClick={() => cancelEdit()} className="button cancel">Cancel</button>
               </div>
               
-              <div className="input-box-address">
-              <input
-                required
-                type="number"
-                placeholder="Pin Code"
-                name="pinCode"
-                value={shippingInfo.pinCode}
-                onChange={changeHandler}/>
-              </div>
-              
-              <button type="submit" className="checkout">Add New Address</button>
-            </form>
             </div>
-            
           )}
+          {/* <button onClick={() => editAddress(address._id)} className="address-edit"><FaRegEdit/></button>
+          <button onClick={() => deleteAddress(address._id)} className="address-delete"><MdDelete /></button> */}
         </div>
+      ))}
+    </div>
+  )}
+        </div>
+
+</div>
+
+        <div className="col-6 w100">
+          <div className="ship-content ship-r">
+          <div className="radio-container">
+    <h4>Add New Address</h4>
+  </div>
+  {showForm && (
+    <div className="new-address">
+      <form onSubmit={addAddress}>
+        <div className="input-box-address">
+          <input
+            required
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={shippingInfo.name}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="input-box-address">
+          <input
+            required
+            type="number"
+            placeholder="Phone Number"
+            name="phoneNumber"
+            value={shippingInfo.phoneNumber}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="input-box-address">
+          <input
+            required
+            type="text"
+            placeholder="Address"
+            name="address"
+            value={shippingInfo.address}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="input-box-address">
+          <input
+            required
+            type="text"
+            placeholder="City"
+            name="city"
+            value={shippingInfo.city}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="input-box-address">
+          <input
+            required
+            type="text"
+            placeholder="State"
+            name="state"
+            value={shippingInfo.state}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="input-box-address">
+          <select
+            name="country"
+            required
+            value={shippingInfo.country}
+            onChange={changeHandler}
+          >
+            <option value="">Choose Country</option>
+            <option value="india">India</option>
+          </select>
+        </div>
+        <div className="input-box-address">
+          <input
+            required
+            type="number"
+            placeholder="Pin Code"
+            name="pinCode"
+            value={shippingInfo.pinCode}
+            onChange={changeHandler}
+          />
+        </div>
+        <button type="submit" className="checkout">Add New Address</button>
+      </form>
+    </div>
+  )}
+          </div>
+</div>
+
       </div>
       <div className="center"> <button className="checkout pay-now" onClick={submitHandler}>Pay Now</button></div>
       </div>

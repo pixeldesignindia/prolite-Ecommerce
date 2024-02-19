@@ -18,8 +18,12 @@ border: 2px solid rgba(8, 91, 176, 1);text-transform: uppercase;}
 .slick-prev:before, .slick-next:before {
     content: none;
 }
-.slick-next,.slick-next:hover {background: url('/images/rightArrow.svg');right: 50px;height: 70px;width: 70px;background-repeat: no-repeat;}
-.slick-prev,.slick-prev:hover  {background: url('/images/leftArrow.svg');left: 50px;height: 70px;width: 70px;background-repeat: no-repeat;}
+.slick-next ,.slick-next:hover, .slick-next:focus, .slick-next:hover, .slick-next:focus{background: url('/images/rightArrow.svg');right: 50px;height: 70px;width: 70px;background-repeat: no-repeat;z-index: 10;}
+.slick-prev ,.slick-prev, .slick-prev:hover, .slick-prev:focus{background: url('/images/leftArrow.svg');left: 50px;height: 70px;width: 70px;background-repeat: no-repeat;z-index: 10;}
 
-
+@media(max-width:500px){
+    .slick-list{margin: 0;}
+    .Explore{font-size: 1.1rem;}
+    .para{font-size: 1.5rem;}
+}
 

@@ -12,20 +12,20 @@ const Brand = () => {
       </div>
 
       <div className="container brand-box" >
-        <div className="row gx-4 ">
-          <div className="col-4 mt-5 mb-5 ">
+        <div className="row gx-4 rowBlock">
+          <div className="col-4 mt-5 mb-5 w100">
             <div className="three">
               <img src={checkout} alt="" />
               <h2 className="Why">Premium Brands</h2>
             </div>
           </div>
-          <div className="col-4  mt-5 mb-5 ">
+          <div className="col-4  mt-5 mb-5 w100">
             <div className="three">
               <img src={delivery} alt="" />
               <h2 className="Why">Fast Delivery</h2>
             </div>
           </div>
-          <div className="col-4  mt-5 mb-5 ">
+          <div className="col-4  mt-5 mb-5 w100">
             <div className="three">
               <img src={premium} alt="" />
               <h2 className="Why">Secure Checkout</h2>

@@ -4,3 +4,8 @@
 .heading{font-size: 50px;font-weight: 600;line-height: 55px;letter-spacing: 0em;color: #020202;}
 .why-us img{width: 100%;height: 100px;}
 .why-us .Why{font-size: 28px;font-weight: 600;line-height: 45px;letter-spacing: 0em;text-align: center;padding: 10px 0px;}
+
+@media (max-width: 768px) {
+    .heading{font-size: 2rem;}
+    .why-us .Why{font-size: 1.3rem;}
+}

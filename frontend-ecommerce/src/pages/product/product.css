@@ -22,3 +22,14 @@ li a .product-active-img{width: 90px !important;}
 .blue-text{color: rgba(1, 79, 179, 1) ;font-size: 1.1rem;margin-bottom: 1rem;}
 .tagbox{padding: .45rem 1rem;box-shadow: rgba(19, 85, 227, 0.225) 0px 1px 3px 0px, rgba(14, 90, 167, 0.34) 0px 0px 0px 1px;; border-radius: 5rem;display: flex;align-items: center;gap: .8rem;}
 .tag{display: flex; flex-wrap: wrap;gap: 1rem;}
+
+
+@media (max-width: 767px) {
+    .slider-container-product .slick-dots{bottom: 20px;}
+    .slick-dots li{width: 35px;}
+    li a .product-active-img{width: 50px !important;}
+    .card-body-product{padding: 2rem;}
+    .des{height: fit-content;}
+    .tags .col-2{width: 33%;letter-spacing: .1rem; font-size: .7rem;}
+    .product-active-img{width: 100% !important;}
+}

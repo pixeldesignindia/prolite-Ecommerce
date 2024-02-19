@@ -120,8 +120,8 @@ const Product = () => {
   return (
     <div className="bg-blue">
       <div className="product-top container">
-        <div className="row">
-          <div className="left-img-section-product col-6">
+        <div className="row rowBlock">
+          <div className="left-img-section-product col-6 w100">
             <div className="slider-container-product">
               <Slider {...settings}>
                 {product?.photos?.map((url, index) => (
@@ -136,7 +136,7 @@ const Product = () => {
               </Slider>
             </div>
           </div>
-          <div className="product-data-right col-6">
+          <div className="product-data-right col-6 w100">
             <div className="center" style={{ width: "100%" }}>
               <div className="card-body-product">
                 <div className="product-top-text">
@@ -195,8 +195,15 @@ const Product = () => {
           </p>
         </div>
         <h6 className="blue-text b">Tags</h6>
+
         <div className="tag">
-          <div className="tagbox">
+          {product.tags.length > 0 && product.tags.map((e,i)=>(
+            <div className="tagbox" key={i}>
+            <img src={dot} alt="dot" />
+            {e}
+          </div>
+          ))}
+          {/* <div className="tagbox">
             <img src={dot} alt="dot" />
             Fire Equipment Signage
           </div>
@@ -231,7 +238,7 @@ const Product = () => {
           <div className="tagbox">
             <img src={dot} alt="dot" />
             Aqua Safety Signage
-          </div>
+          </div> */}
         </div>
       </div>
       <h3 className="related">Related Poducts</h3>
