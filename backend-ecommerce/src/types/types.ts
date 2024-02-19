@@ -20,6 +20,7 @@ export interface NewProductRequestBody {
   productModel:string;
   dimensions:string;
   tags:string[];
+  displayPhoto:string[];
 }
 
 export type ControllerType = (

@@ -44,9 +44,9 @@ export const productSchema = z.object({
     .min(0, { message: "Price should be greater than or equal to 0" })
     .transform((val) => parseFloat(val)),
 
-  photos: z
-  .array(z.string())
-  .min(1, "At least one photo is required"),
+  // photos: z
+  // .array(z.string())
+  // .min(1, "At least one photo is required"),
   description: z
     .string({
       required_error: 'Description is required',

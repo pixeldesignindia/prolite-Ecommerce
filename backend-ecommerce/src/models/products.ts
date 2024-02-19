@@ -32,6 +32,12 @@ const schema = new mongoose.Schema({
             required: [true, "Photo is required"]
         }
     ],
+      displayPhoto: [
+        {
+            type: String,
+            required: [true, "Photo is required"]
+        }
+    ],
     productModel:{
         type: String,
         required: [true, "Product model is required"]
