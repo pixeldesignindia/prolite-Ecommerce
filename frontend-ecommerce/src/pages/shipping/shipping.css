@@ -56,8 +56,12 @@
 .address-edit svg{color: #4a4a4b;height: 25px;width: 25px;margin-left: 1.5rem;}
 .address-delete svg{color: rgb(254, 42, 42);height: 25px;width: 25px;margin-left: 1.5rem;}
 .pay-now{width: max-content !important;padding: 1rem 3rem;}
-.new-address{min-height: 50vh;padding: 1rem;display: flex;transition: .4s ease-in;}
-.new-address form{display: flex;flex-direction: column;background-color: #fff;width: 100%;box-shadow: 0.5rem 0.5rem #1176D0, -0.5rem -0.5rem #68CD3E ;
+.new-address{min-height: 50vh;padding: 1rem 0;display: flex;transition: .4s ease-in;}
+.new-address form{display: flex;flex-direction: column;background-color: #fff;width: 100%;box-shadow: 
+  inset 0.5rem 0.5rem #1176D0, 
+  inset -0.5rem -0.5rem #68CD3E, 
+  0.5rem 0.5rem 0 #1176D0, 
+  -0.5rem -0.5rem 0 #68CD3E;
 ;padding: 3rem;}
 .input-box-address>input{padding: .5rem 0; font-size: 1.1rem;}
 .input-box-address{margin: .2rem 0;}
@@ -87,11 +91,7 @@
 .edit-box{background-color: #fff;display: flex;
   flex-direction: column;
   background-color: #fff;
-  box-shadow: 
-  inset 0.5rem 0.5rem #1176D0, 
-  inset -0.5rem -0.5rem #68CD3E, 
-  0.5rem 0.5rem 0 #1176D0, 
-  -0.5rem -0.5rem 0 #68CD3E;
+  box-shadow: 0.5rem 0.5rem 0 0 #1176D0, -0.5rem -0.5rem 0 0 #68CD3E;
 
   padding: 2rem;gap: 1rem;width: 83%;}
   .edit-confirm{display: flex;align-items: center;justify-content: space-between;}

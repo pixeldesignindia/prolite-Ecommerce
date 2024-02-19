@@ -133,6 +133,7 @@ const Search = () => {
                   category={i.category}
                   handler={addToCartHandler}
                   photos={i.photos}
+                  displayPhoto={i.displayPhoto}
                   dimension={i.dimensions}
                   model={i.productModel}
                   brand={i.brand}

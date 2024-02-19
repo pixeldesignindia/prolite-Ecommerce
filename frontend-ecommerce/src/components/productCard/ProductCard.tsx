@@ -9,6 +9,7 @@ type ProductsProps = {
   name: string;
   price: number;
   stock: number;
+  displayPhoto:[];
   category: string;
   brand: string;
     dimension:string;
@@ -20,6 +21,7 @@ const ProductCard = ({
   productId,
   price,
   name,
+  displayPhoto,
   category,
   photos,
   stock,
@@ -34,14 +36,14 @@ const ProductCard = ({
       {/* <p>ID: {productId}</p> */}
       <div className="img center" onClick={() => navigate(`/product/${productId}`)}>
 
-      <img src={`${server}/${photos[0]}`} alt={name} />
+      <img src={`${server}/${displayPhoto[0]}`} alt={name} />
       </div>
       <div className="card-body">
       <p className="card-title">{name}</p>
       <p>Stock: {stock}</p>
       <p className="card-text">&#x20b9;{price}</p>
       {/* {category && <p>Category: {category}</p>} */}
-      <button onClick={() =>handler({ productId, price, name, photo:photos[0], stock, quantity: 1,brand,
+      <button onClick={() =>handler({ productId, price, name, photo:displayPhoto[0], stock, quantity: 1,brand,
   dimension,
   model,category })} className="add-cart"><FaCartPlus /> Add To Cart</button>
       </div>

@@ -162,10 +162,11 @@ const Product = () => {
                       productId: product._id,
                       price: product.price,
                       name: product.name,
-                      photo: product.photos[0],
+                      photo: product.displayPhoto[0],
                       stock: product.stock,
                       quantity: 1,
                       category:product.category,
+                      
                   dimension:product.dimensions,
                   model:product.productModel,
                   brand:product.brand,

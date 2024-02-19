@@ -24,8 +24,15 @@ const NewProduct = () => {
   const [stock, setStock] = useState<number>(1);
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const [photos, setPhotos] = useState<File[]>([]);
+  const [displayPhoto, setDisplayPhoto] = useState<File[]>([]);
 
   const [newProduct] = useNewProductMutation();
+  const changeDisplayPhotoHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setDisplayPhoto(file);
+    }
+  };
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = e.target.files;
@@ -61,7 +68,7 @@ const NewProduct = () => {
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name ||!price ||!stock ||!photos.length ||!category ||!brand ||!tags.length) console.log('enter');
+    if (!name ||!price ||!stock ||!photos.length ||!category ||!brand ||!tags.length || !displayPhoto) console.log('enter');
     ;
 
     const formData = new FormData();
@@ -73,7 +80,7 @@ const NewProduct = () => {
     formData.append("brand", brand);
     formData.append("productModel", productModel);
     formData.append("dimensions", dimensions);
-
+    formData.append("displayPhoto", displayPhoto);
     tags.forEach((tag, index) => {
       formData.append("tags", tag);
     });
@@ -194,6 +201,14 @@ const NewProduct = () => {
               </div>
             </div>
 
+            <div>
+              <label>Display Photo</label>
+              <input
+                type="file"
+                required
+                onChange={changeDisplayPhotoHandler}
+              />
+            </div>
             <div>
               <label>Photos</label>
               <input

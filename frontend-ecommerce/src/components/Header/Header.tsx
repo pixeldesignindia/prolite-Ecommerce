@@ -45,7 +45,7 @@ const Header = ({ user }: propestype) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="nav-Body">
             <div className="center"> 
-            <div className="link-center">
+            <div className="link-center res-link">
             <Nav.Link href={"/prolite"}>Prolite</Nav.Link>
             <Nav.Link href={"/autoglo"}>Autoglo</Nav.Link>
             {/* <Nav.Link href={"/orders"}>Orders</Nav.Link> */}
