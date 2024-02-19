@@ -24,21 +24,22 @@ const Myorders = () => {
                 {data &&
                     data?.orders.map((order, i) => (
                         <Accordion.Item eventKey={i.toString()} key={i}>
-                        <Accordion.Header><div className="row" style={{width:'100%'}}>
-                            <div className="col-4 text-center">{order._id}</div> 
-                            <div className="col-2 text-center">Quantity: {order.orderItems.length}</div> 
+                        <Accordion.Header><div className="row " style={{width:'100%'}}>
+                            <div className="col-5 text-center">{order._id}</div> 
+                            
                             <div className={
                 order.status === "Processing"? "col-2 text-center red": order.status === "Shipped"? "col-2 green text-center": "col-2 purple text-center"}>{order.status}</div> 
-                            <div className="col-2 text-center">Total : {order.total}</div> 
-                            <div className="col-2 text-center">{new Date(order.createdAt).toLocaleDateString('en-GB', {
+                            <div className="col-2 text-center">&#x20b9;{order.total}</div> 
+                            <div className="col-1 text-center">X{order.orderItems.length}</div> 
+                            <div className="col-2 text-center none">{new Date(order.createdAt).toLocaleDateString('en-GB', {
         day: 'numeric',
         month: 'short',
         year: 'numeric'
     })}</div> 
                             </div></Accordion.Header>
                         <Accordion.Body>
-                        <div className="row">
-                            <div className="col-6">
+                        <div className="row rowBlock">
+                            <div className="col-6 w100">
                             <h4 style={{marginBottom:"1.2rem"}}>Order Info</h4>
                             <div className="order-list">
                                 {
@@ -54,7 +55,7 @@ const Myorders = () => {
                                 }
                             </div>
                             </div>
-                            <div className="col-6 order-shipping-info" >
+                            <div className="col-6 order-shipping-info w100" >
                                 <h4 style={{marginBottom:"1.2rem"}}>Shipping Info</h4>
                                 <h6>
                                     Name : {order.shippingInfo.name}

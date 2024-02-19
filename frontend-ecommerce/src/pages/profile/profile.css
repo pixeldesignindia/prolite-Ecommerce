@@ -17,5 +17,20 @@
 
 
 @media (max-width: 500px) {
-
+    .profile-page{padding:2rem 1rem 0 1rem;gap: 0;display: block;}
+    .profileBody{width: 100% !important; padding: 1rem !important;margin-top: 2rem;}
+    .w-box.m-h-s{padding: 0;display: flex !important;flex-direction: row !important;}
+    .sideBar{padding: 0 !important;min-height: fit-content !important;}
+    .w-box{padding:1rem .2rem !important;width: max-content !important;height: fit-content !important;}
+    .w-box a{font-size: .7rem !important;}
+    .w-box h4{font-size: 1rem !important;}
+    .pro-data-row>p{font-size: .6rem !important;}
+    .profile-data>h3{font-size: 1.2rem !important;margin: 1.2rem 0;}
+    .profileImg>img{height: 5rem; width: 5rem;}
+    .m-h-s{min-height: max-content !important;}
+    .side-log-out{padding-top: 0 !important;width: max-content !important;}
+    .side-log-out button{font-size: .6rem !important; padding: .3rem .5rem;}
+    .accordion-button{font-size: .5rem !important;}
+    .fs{font-size: .6rem !important;}
+    .w-box.row{margin-left: 0!important;}
 }

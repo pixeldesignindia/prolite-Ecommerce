@@ -248,7 +248,7 @@ const Product = () => {
         <div className=" slider-container">
           {product.brand === "PROLITE" ? (
             <Slider {...ssettings}>
-              {brandData?.latestProductsByBrand?.PROLITE?.map((i: Product) => (
+              {brandData?.latestProductsByBrand?.Prolite?.map((i: Product) => (
                 <ProductCard
                   key={i._id}
                   productId={i._id}
@@ -266,7 +266,7 @@ const Product = () => {
             </Slider>
           ) : (
             <Slider {...ssettings}>
-              {brandData?.latestProductsByBrand?.AUTOGLO?.map((i: Product) => (
+              {brandData?.latestProductsByBrand?.Autoglo?.map((i: Product) => (
                 <ProductCard
                   key={i._id}
                   productId={i._id}

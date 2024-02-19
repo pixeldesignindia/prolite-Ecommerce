@@ -3,3 +3,6 @@
 .m-h-s{min-height: 50vh;}
 .w-box.m-h-s{display: flex; flex-direction: column; gap: .6rem; }
 .w-box.m-h-s >a{padding: .5rem; border-bottom: 1px solid #c6c6c6;font-size: 1.2rem;}
+.side-log-out{padding-top: 3rem;}
+.w-box.row{display: flex; align-items: center;}
+.w-box.row{margin-left: 0 !important;}

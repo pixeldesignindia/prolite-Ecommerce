@@ -46,4 +46,5 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
   @media(max-width:768px){
     .w100{width: 100%;}
     .rowBlock{display: block;}
+    .none{display: none;}
   }
