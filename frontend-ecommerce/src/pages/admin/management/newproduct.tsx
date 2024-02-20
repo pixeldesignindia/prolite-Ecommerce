@@ -185,7 +185,7 @@ const NewProduct = () => {
 
             <div>
               <label>Tags</label>
-              <div>
+             
                 {/* {tags.map((tag, index) => (
                   <div key={index}>{tag}</div>
                 ))} */}
@@ -199,7 +199,7 @@ const NewProduct = () => {
                 {/* <button type="button" onClick={handleAddTag}>
                   +
                 </button> */}
-              </div>
+              
             </div>
 
             <div>
