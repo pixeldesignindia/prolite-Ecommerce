@@ -15,11 +15,11 @@
 .fs{font-size: .8rem;display: flex;justify-content: center;align-items: center;}
 
 
-
+.orderId{display: none;}
 @media (max-width: 500px) {
     .profile-page{padding:2rem 1rem 0 1rem;gap: 0;display: block;}
     .profileBody{width: 100% !important; padding: 1rem !important;margin-top: 2rem;}
-    .w-box.m-h-s{padding: 0;display: flex !important;flex-direction: row !important;}
+    .w-box.m-h-s{padding: 0;display: flex !important;flex-direction: row !important;width: 92vw !important;}
     .sideBar{padding: 0 !important;min-height: fit-content !important;}
     .w-box{padding:1rem .2rem !important;width: max-content !important;height: fit-content !important;}
     .w-box a{font-size: .7rem !important;}
@@ -37,4 +37,6 @@
     .order-shipping-info p{font-size: .8rem;}
     .order-shipping-info h2{font-size: 1.1rem;margin-bottom: .5rem !important;}
     .order-shipping-info h4{font-size: 1rem;}
+    .orderId{display: block;}
+    .date{width: 33%;}
 }
