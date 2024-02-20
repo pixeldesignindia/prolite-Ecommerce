@@ -49,7 +49,7 @@ const Myorders = () => {
                                                 <div className="center"><img src={`${server}/${item.photo}`} alt="image" style={{height:'50px'}}/></div></div>
                                             <div className="col-3 fs ">{item.name}</div>
                                             <div className="col-3 fs ">Price : {item.price}</div>
-                                            <div className="col-3 fs ">Quantity : {item.quantity}</div>
+                                            <div className="col-3 fs ">X {item.quantity}</div>
                                         </div>
                                     ))
                                 }

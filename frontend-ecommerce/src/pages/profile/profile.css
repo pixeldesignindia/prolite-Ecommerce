@@ -33,4 +33,8 @@
     .accordion-button{font-size: .5rem !important;}
     .fs{font-size: .6rem !important;}
     .w-box.row{margin-left: 0!important;}
+    .order-shipping-info {padding-top: 1rem !important; border-top: .5px solid #c2c2c2;padding-left: 1rem;}
+    .order-shipping-info p{font-size: .8rem;}
+    .order-shipping-info h2{font-size: 1.1rem;margin-bottom: .5rem !important;}
+    .order-shipping-info h4{font-size: 1rem;}
 }

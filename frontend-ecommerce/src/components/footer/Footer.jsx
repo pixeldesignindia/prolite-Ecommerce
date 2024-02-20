@@ -36,16 +36,16 @@ const Footer = () => {
  
   
       <div className="container secondary-footer">
-        <div className="row">
-          <div className="col-6">
+        <div className="row res-col-center">
+          <div className="col-6 w100">
             <div className="second-left">
               <p> © Copyrights 2024, Prolite Auotglo Ltd. All rights reserved</p>
             </div>
           </div>
-          <div className="col-6">
+          <div className="col-6 w100">
             <div className="second-right">
-              <p> Design & Developed By - </p>
-              <a href=""> Pixel Design India </a>
+              <p> Design & Developed By - <a href=""> Pixel Design India </a> </p>
+              
             </div>
           </div>
         </div>

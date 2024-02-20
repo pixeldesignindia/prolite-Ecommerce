@@ -9,3 +9,14 @@
 .second-left{text-align: start;color: #fff;}
 .second-right{justify-content: end;color: #fff;display: flex;}
 .second-right a{color: #209920;}
+
+@media(max-width:500px){
+    .first .left-head{font-size: 1rem; line-height: 150%;padding:2rem 0 0 0 ;}
+    .f-head{font-size: 1rem;letter-spacing: .1rem;line-height: 20px;margin-bottom: 1.2rem;}
+    .ft-list{font-size: .9rem;line-height: 25px;}
+    .first button{padding: .4rem .7rem; margin-top: 2rem;font-size: .6rem;width: max-content;font-weight: 400;letter-spacing: .1rem;}
+    .res-col-center{display: flex; justify-content: center;align-items: center;flex-direction: column;}
+    .second-left p , .second-right p {text-align: center !important;font-size: .7rem;}
+    .second-right{justify-content: center;}
+    .secondary-footer{padding: .7rem 0;}
+}
