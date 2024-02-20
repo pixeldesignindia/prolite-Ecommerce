@@ -59,12 +59,12 @@ const NewProduct = () => {
     setPhotos(newPhotos); // Directly assign newPhotos to photos state
   };
 
-  const handleAddTag = () => {
-    if (newTag.trim() !== "") {
-      setTags([...tags, newTag.trim()]);
-      setNewTag(""); 
-    }
-  };
+  // const handleAddTag = () => {
+  //   if (newTag.trim() !== "") {
+  //     setTags([...tags, newTag.trim()]);
+  //     setNewTag(""); 
+  //   }
+  // };
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -186,18 +186,19 @@ const NewProduct = () => {
             <div>
               <label>Tags</label>
               <div>
-                {tags.map((tag, index) => (
+                {/* {tags.map((tag, index) => (
                   <div key={index}>{tag}</div>
-                ))}
+                ))} */}
                 <input
                   type="text"
                   placeholder="Add Tag"
-                  value={newTag}
-                  onChange={(e) => setNewTag(e.target.value)}
+                  value={tags.join(",")}
+                  onChange={(e) => setTags(e.target.value.split(","))}
                 />
-                <button type="button" onClick={handleAddTag}>
+                <p>(Please add 2 tags minimum. separated by ' , ')</p>
+                {/* <button type="button" onClick={handleAddTag}>
                   +
-                </button>
+                </button> */}
               </div>
             </div>
 

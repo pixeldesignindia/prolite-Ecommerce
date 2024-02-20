@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom';
 const Search = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
-  const [maxPrice, setMaxPrice] = useState(5000);
+  const [maxPrice, setMaxPrice] = useState(50000);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
   const navigate=useNavigate()
@@ -78,7 +78,7 @@ const Search = () => {
           <input
             type="range"
             min={100}
-            max={5000}
+            max={50000}
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
             className='range-input'

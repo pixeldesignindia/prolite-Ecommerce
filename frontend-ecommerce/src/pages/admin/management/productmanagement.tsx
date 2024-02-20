@@ -17,45 +17,28 @@ const Productmanagement = () => {
   const params = useParams();
   const { data, isLoading } = useProductDetailsQuery(params.id!);
 
-  const {
-    photos,
-    category,
-    stock,
-    price,
-    name,
-    brand,
-    displayPhoto,
-    dimensions,
-    description,
-    productModel,
-    tags,
-  } = data?.product || {
-    photos: [],
-    name: "",
-    category: "",
-    stock: 0,
-    tags: [],
-    price: 0,
-    brand: "",
-    dimensions: "",
-    description: "",
-    productModel: "",
-  };
-
-  const [priceUpdate, setPriceUpdate] = useState<number>(price);
-  const [stockUpdate, setStockUpdate] = useState<number>(stock);
-  const [nameUpdate, setNameUpdate] = useState<string>(name);
-  const [brandUpdate, setBrandUpdate] = useState<string>(brand);
-  const [dimensionsUpdate, setDimensionsUpdate] = useState<string>(dimensions);
-  const [tagsUpdate, setTagsUpdate] = useState<string[]>(tags);
-  const [productModelUpdate, setProductModelUpdate] = useState<string>(productModel);
-  const [categoryUpdate, setCategoryUpdate] = useState<string>(category);
-  const [photoUpdate, setPhotoUpdate] = useState<string>("");
+  const [priceUpdate, setPriceUpdate] = useState<number>(0);
+  const [stockUpdate, setStockUpdate] = useState<number>(0);
+  const [nameUpdate, setNameUpdate] = useState<string>("");
+  const [brandUpdate, setBrandUpdate] = useState<string>("");
+  const [dimensionsUpdate, setDimensionsUpdate] = useState<string>("");
+  const [tagsUpdate, setTagsUpdate] = useState<string[]>([]);
+  const [productModelUpdate, setProductModelUpdate] = useState<string>("");
+  const [categoryUpdate, setCategoryUpdate] = useState<string>("");
+  const [photoUpdate, setPhotoUpdate] = useState<string[]>([]);
   const [photoFile, setPhotoFile] = useState<File[]>([]);
+  const [displayPhotoFile, setDisplayPhotoFile] = useState<File | null>(null);
 
   const [updateProduct] = useUpdateProductMutation();
   const [deleteProduct] = useDeleteProductMutation();
 
+  const changeDisplayPhotoHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setDisplayPhotoFile(file);
+    }
+  };
+  
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const file: File | undefined = e.target.files?.[0];
 
@@ -65,7 +48,7 @@ const Productmanagement = () => {
       reader.readAsDataURL(file);
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
-          setPhotoUpdate(reader.result);
+          setPhotoUpdate([reader.result]);
           setPhotoFile([file]);
         }
       };
@@ -82,15 +65,20 @@ const Productmanagement = () => {
     formData.set("brand", brandUpdate);
     formData.set("dimensions", dimensionsUpdate);
     formData.set("productModel", productModelUpdate);
-    formData.set("description", description);
+    formData.set("description", data?.product.description || ""); // Ensure to send existing description data
+    if (displayPhotoFile) {
+      formData.set("displayPhoto", displayPhotoFile);
+    }
 
     if (tagsUpdate.length > 0) {
       tagsUpdate.forEach((tag, index) => {
-      formData.append("tags", tag);})
+        formData.append("tags", tag);
+      });
     }
     if (photoFile.length > 0) {
       photoFile.forEach((photo, index) => {
-      formData.append("photos", photo);})
+        formData.append("photos", photo);
+      });
     }
 
     const res = await updateProduct({
@@ -119,7 +107,7 @@ const Productmanagement = () => {
       setDimensionsUpdate(data.product.dimensions);
       setProductModelUpdate(data.product.productModel);
       setTagsUpdate(data.product.tags);
-      setPhotoUpdate(data.product.photos[0]);
+      setPhotoUpdate(data.product.photos);
     }
   }, [data]);
 
@@ -133,14 +121,14 @@ const Productmanagement = () => {
           <>
             <section>
               <strong>ID -{data?.product?._id}</strong>
-              <img src={`${server}/${displayPhoto[0]}`} alt="Product" />
-              <p>{name}</p>
-              {stock > 0 ? (
-                <span className="green">{stock} Available</span>
+              <img src={`${server}/${data?.product?.displayPhoto[0]}`} alt="Product" />
+              <p>{data?.product?.name}</p>
+              {data?.product?.stock > 0 ? (
+                <span className="green">{data?.product?.stock} Available</span>
               ) : (
                 <span className="red"> Not Available</span>
               )}
-              <h3>₹{price}</h3>
+              <h3>₹{data?.product?.price}</h3>
             </section>
             <article>
               <button className="product-delete-btn" onClick={deleteHandler}>
@@ -187,13 +175,12 @@ const Productmanagement = () => {
                 <div>
                   <label>Brand</label>
                   <select
-                value={brandUpdate}
-                onChange={(e) => setBrandUpdate(e.target.value)}
-              >
-                <option value="autoglo">Autoglo</option>
-                <option value="prolite">Prolite</option>
-              </select>
-                  
+                    value={brandUpdate}
+                    onChange={(e) => setBrandUpdate(e.target.value)}
+                  >
+                    <option value="autoglo">Autoglo</option>
+                    <option value="prolite">Prolite</option>
+                  </select>
                 </div>
                 <div>
                   <label>Dimensions</label>
@@ -215,7 +202,6 @@ const Productmanagement = () => {
                 </div>
                 <div>
                   <label>Tags</label>
-                  
                   <input
                     type="text"
                     placeholder="Tags"
@@ -223,11 +209,21 @@ const Productmanagement = () => {
                     onChange={(e) => setTagsUpdate(e.target.value.split(","))}
                   />
                 </div>
+                <p>(Please add 2 tags minimum. separated by ' , ')</p>
+                <div>
+                  <label>Display Photo</label>
+                  <input
+                    type="file"
+                    onChange={changeDisplayPhotoHandler}
+                  />
+                </div>
                 <div>
                   <label>Photo</label>
                   <input type="file" onChange={changeImageHandler} />
                 </div>
-                {photoUpdate && <img src={photoUpdate} alt="New Image" />}
+                {photoUpdate && photoUpdate.map((preview, index) => (
+                  <img key={index} src={preview} alt={`Image ${index}`} />
+                ))}
                 <button type="submit">Update</button>
               </form>
             </article>
