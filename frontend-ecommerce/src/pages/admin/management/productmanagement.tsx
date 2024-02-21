@@ -25,8 +25,8 @@ const Productmanagement = () => {
   const [tagsUpdate, setTagsUpdate] = useState<string[]>([]);
   const [productModelUpdate, setProductModelUpdate] = useState<string>("");
   const [categoryUpdate, setCategoryUpdate] = useState<string>("");
-  const [photoUpdate, setPhotoUpdate] = useState<string[]>([]);
-  const [photoFile, setPhotoFile] = useState<File[]>([]);
+  const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
+  const [photos, setPhotos] = useState<File[]>([]);
   const [displayPhotoFile, setDisplayPhotoFile] = useState<File | null>(null);
 
   const [updateProduct] = useUpdateProductMutation();
@@ -40,29 +40,28 @@ const Productmanagement = () => {
   };
   
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const files: FileList | null = e.target.files;
-  
-    if (files && files.length > 0) {
-      const newPhotos: string[] = [];
-      const newPhotoFiles: File[] = [];
-  
-      for (let i = 0; i < files.length; i++) {
-        const file: File = files[i];
-        const reader: FileReader = new FileReader();
-  
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-          if (typeof reader.result === "string") {
-            newPhotos.push(reader.result);
-            newPhotoFiles.push(file);
-            if (i === files.length - 1) {
-              setPhotoUpdate((prevPhotos) => [...prevPhotos, ...newPhotos]);
-              setPhotoFile((prevFiles) => [...prevFiles, ...newPhotoFiles]);
-            }
-          }
-        };
-      }
+    const selectedFiles = e.target.files;
+    if (!selectedFiles) return;
+
+    const newPreviews: string[] = [];
+    const newPhotos: File[] = [];
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const file = selectedFiles[i];
+      const reader = new FileReader();
+
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        if (typeof reader.result === "string") {
+          newPreviews.push(reader.result);
+          setPhotoPreviews(newPreviews);
+        }
+      };
+
+      newPhotos.push(file);
     }
+
+    setPhotos(newPhotos); 
   };
   
 
@@ -86,11 +85,9 @@ const Productmanagement = () => {
         formData.append("tags", tag);
       });
     }
-    if (photoFile.length > 0) {
-      photoFile.forEach((photo, index) => {
-        formData.append("photos", photo);
-      });
-    }
+    photos.forEach((photo, index) => {
+      formData.append("photos", photo);
+    });
 
     const res = await updateProduct({
       formData,
@@ -118,7 +115,8 @@ const Productmanagement = () => {
       setDimensionsUpdate(data.product.dimensions);
       setProductModelUpdate(data.product.productModel);
       setTagsUpdate(data.product.tags);
-      setPhotoUpdate(data.product.photos);
+      setPhotoPreviews(data.product.photos);
+      // setDisplayPhotoFile(data.product.displayPhoto);
     }
   }, [data]);
 
@@ -221,20 +219,26 @@ const Productmanagement = () => {
                   />
                 </div>
                 <p>(Please add 2 tags minimum. separated by ' , ')</p>
-                <div>
+                {/* <div>
                   <label>Display Photo</label>
                   <input
                     type="file"
                     onChange={changeDisplayPhotoHandler}
                   />
-                </div>
-                <div>
-                  <label>Photo</label>
-                  <input type="file" onChange={changeImageHandler} multiple/>
-                </div>
-                {photoUpdate && photoUpdate.map((preview, index) => (
-                  <img key={index} src={`${server}/${preview}`} alt={`Image ${index}`} />
-                ))}
+                </div> */}
+            <div>
+              <label>Photos</label>
+              <input
+                type="file"
+                required
+                onChange={changeImageHandler}
+                multiple 
+              />
+            </div>
+
+            {photoPreviews.map((preview, index) => (
+              <img key={index} src={preview} alt={`Image ${index}`} />
+            ))}
                 <button type="submit">Update</button>
               </form>
             </article>
