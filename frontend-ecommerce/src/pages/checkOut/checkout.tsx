@@ -77,19 +77,22 @@ const CheckOutForm = () => {
       const res = await newOrder(orderData);
       console.log('stwipe done')
       dispatch(resetCart());
-      responseToast(res, navigate, "/orders");
+      responseToast(res, navigate, "/profile/myOrders");
     }
     setIsProcessing(false);
   };
   
   return (
-    <div className="checkout-container">
-      <form onSubmit={submitHandler}>
-        <PaymentElement />
-        <button type="submit" disabled={isProcessing}>
-          {isProcessing ? "Processing..." : "Pay"}
-        </button>
-      </form>
+    <div className="center" style={{minHeight:'90vh'}}>
+      <div className="checkout-container">
+        <form onSubmit={submitHandler}>
+          <h3>Make Payment securely</h3>
+          <PaymentElement />
+          <button type="submit" disabled={isProcessing}>
+            {isProcessing ? "Processing..." : "Pay"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

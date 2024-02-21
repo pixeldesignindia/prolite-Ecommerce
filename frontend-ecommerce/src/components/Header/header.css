@@ -2,7 +2,7 @@ nav{display: flex; justify-content: space-between;padding: 1.5rem;background-col
 nav a{text-decoration: none; font-size: 1rem; color: black;}
 .nav-Body{display: flex; justify-content: space-between;width: 100%;}
 .admin-logo{display: flex;}
-.link-center{    display: flex;text-align: center;justify-content: center;align-items: center;width: 60rem;}
+.link-center{    display: flex;text-align: center;justify-content: center;align-items: center;width: 100%}
 .logo-img{height: 3rem;}
 .navbar-expand-lg{box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .log {
@@ -40,4 +40,12 @@ nav a{text-decoration: none; font-size: 1rem; color: black;}
     box-shadow: 0 0 20px rgba(221, 50, 35, 0.711);
     background-color: rgb(224, 85, 85);
   }
-  
+  .profile-img{height: 30px;width: 30px; border-radius: 50%;}
+  .navbar-expand-lg .navbar-nav .nav-link{display: flex; justify-content: center; align-items: center;}
+
+
+  @media(max-width:767px){
+    .link-center{width: fit-content;}
+    .res-link , .admin-logo{display: flex; flex-direction: column; justify-content: center; align-items: center;}
+    .logout{width: fit-content !important;}
+  }

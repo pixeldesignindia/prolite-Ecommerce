@@ -5,8 +5,6 @@ import ErrorHandler from "../utils/utility-class.js";
 import { Address } from "../models/address.js";
 import { invalidateCache } from "../utils/features.js";
 import { myCache } from "../app.js";
-import { set } from "mongoose";
-
 
 export const getAllAdressByUser =TryCatch(async(req,res,next)=>{
     const {id: user} = req.params
@@ -17,7 +15,7 @@ export const getAllAdressByUser =TryCatch(async(req,res,next)=>{
   if (myCache.has(key))
     getAllAdress = JSON.parse(myCache.get(key) as string);
 else{
-  getAllAdress  =  await Address.find({user:user}).sort({createdAt:-1});
+  getAllAdress  =  await Address.find({user:user,isDeleted:false}).sort({createdAt:-1});
     if(getAllAdress.length<1) return next(new ErrorHandler("You have no Address yet", 400));
      myCache.set(key, JSON.stringify(getAllAdress));
 }
@@ -30,6 +28,7 @@ else{
 export const deleteAdress = TryCatch(async (req, res, next) => {
   const { id } = req.params;
 
+
   const address = await Address.findById(id);
   if (!address) return next(new ErrorHandler("address  Not Found", 404));
 
@@ -39,7 +38,7 @@ export const deleteAdress = TryCatch(async (req, res, next) => {
   );
 
   invalidateCache({
-    addressId:String(address._id),
+    addressId:String(id),
     shippingAddress:true,
     userId: address.user,
     

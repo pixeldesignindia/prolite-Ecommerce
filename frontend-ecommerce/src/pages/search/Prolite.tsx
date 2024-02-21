@@ -2,6 +2,7 @@ import './search.css'
 import React, { useEffect, useState } from "react";
 import {
   useCategoriesQuery,
+  useCategoryOfBrandQuery,
   useSearchProductsQuery,
 } from "../../redux/api/productsApi";
 import { CustomError } from "../../types/api-types";
@@ -12,20 +13,21 @@ import { CartItem } from "../../types/types";
 import { useDispatch } from "react-redux";
 import Footer from '../../components/footer/Footer'
 import { FiSearch } from "react-icons/fi";
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
-  const [maxPrice, setMaxPrice] = useState(100000);
+  const [maxPrice, setMaxPrice] = useState(50000);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
-
+  const navigate=useNavigate()
   const {
     isLoading: productLoading,
     data: searchData,
     isError: productIsError,
     error: productError,
-  } = useSearchProductsQuery({ search, sort, category, page, price: maxPrice });
+  } = useSearchProductsQuery({ search, sort, category, page, price: maxPrice ,brand:"PROLITE" });
   console.log(searchData);
 
 
@@ -34,6 +36,7 @@ const Search = () => {
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));
     toast.success("Added to cart");
+    navigate('/cart')
   };
 
   const {
@@ -41,7 +44,7 @@ const Search = () => {
     isLoading: loadingCategories,
     error,
     isError,
-  } = useCategoriesQuery("");
+  } = useCategoryOfBrandQuery("");
   console.log(categoriesResponse)
   if (isError) {
     const err = error as CustomError;
@@ -53,13 +56,14 @@ const Search = () => {
     const err = productError as CustomError;
     toast.error(err?.data?.message||"Can`t find Products");
   }
+
   return (
     <>
     <div className="product-search-page bg-blue">
       <aside>
         <h3 style={{color:'#014FB3'}}>Filters</h3>
         <div>
-          <h5>Sort</h5>
+          <h5 className='mb-2'>Sort</h5>
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value="">None</option>
             <option value="asc">Price (Low to High)</option>
@@ -72,7 +76,7 @@ const Search = () => {
           <input
             type="range"
             min={100}
-            max={100000}
+            max={50000}
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
             className='range-input'
@@ -80,14 +84,14 @@ const Search = () => {
         </div>
 
         <div>
-          <h5>Category</h5>
+          <h5 className='mb-2'>Category</h5>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="">ALL</option>
-            {!loadingCategories &&
-              categoriesResponse?.categories.map((i) => (
+            {categoriesResponse &&
+              categoriesResponse?.categoriesByBrand[1]?.categories.map((i) => (
                 <option key={i} value={i}>
                   {i.toUpperCase()}
                 </option>
@@ -95,8 +99,12 @@ const Search = () => {
           </select>
         </div>
       </aside>
-      <main >
-        <div className="input-box">
+      <main className='blue'>
+        <div className="row products-page-head">
+          <div className="col-4" style={{display:'flex',alignItems:'center'}}><h2 className='b'>Product Category</h2></div>
+          <div className="col-4 " style={{display:'flex',alignItems:'center ',justifyContent:'center'}}><h4 className='blue-text text-center'>PROLITE</h4> </div>
+
+          <div className="col-4 search-pro"><div className="input-box">
         <FiSearch/>
         <input
           type="text"
@@ -104,7 +112,9 @@ const Search = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        </div></div>
         </div>
+        
         
         <div className="container">
        
@@ -122,7 +132,11 @@ const Search = () => {
                   stock={i.stock}
                   category={i.category}
                   handler={addToCartHandler}
-                  photo={i.photo}
+                  photos={i.photos}
+                  displayPhoto={i.displayPhoto}
+                  dimension={i.dimensions}
+                  model={i.productModel}
+                  brand={i.brand}
                 />
               </div>
             ))}

@@ -17,10 +17,16 @@ const Home = lazy(() => import("./pages/home/Home"));
 const Product = lazy(() => import("./pages/product/Product"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Cart = lazy(() => import("./pages/cart/Cart"));
-const Search = lazy(() => import("./pages/search/Prolite"));
+const Prolite = lazy(() => import("./pages/search/Prolite"));
+const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
 const Shipping = lazy(() => import("./pages/shipping/shipping"));
 const Orders = lazy(()=>import('./pages/orders/Orders'))
 const Checkout = lazy(()=>import('./pages/checkOut/checkout'))
+const Delivery = lazy(()=>import('./pages/delivery/Delivery'))
+const Payment = lazy(()=>import('./pages/payment/Payment'))
+const Privacy = lazy(()=>import('./pages/privacy/Privacy'))
+const Refund = lazy(()=>import('./pages/refund/Refund'))
+const Terms = lazy(()=>import('./pages/terms/Terms'))
 // Admin Imports
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 const Products = lazy(() => import("./pages/admin/products"));
@@ -32,6 +38,8 @@ const Linecharts = lazy(() => import("./pages/admin/charts/linecharts"));
 const Coupon = lazy(() => import("./pages/admin/apps/coupon"));
 const Stopwatch = lazy(() => import("./pages/admin/apps/stopwatch"));
 const Toss = lazy(() => import("./pages/admin/apps/toss"));
+const Profile = lazy(() => import("./pages/profile/Profile"));
+const Myorder = lazy(() => import("./pages/profile/Myorders"));
 const NewProduct = lazy(() => import("./pages/admin/management/newproduct"));
 const ProductManagement = lazy(() => import("./pages/admin/management/productmanagement"));
 const TransactionManagement = lazy(() =>import("./pages/admin/management/transactionmanagement"));
@@ -57,13 +65,21 @@ else{dispatch(userNotExist())}
           <Route path="*" element={<>hi manas</>} />
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/product" element={<Search />} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/delivery" element={<Delivery />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/privacy" element={<Privacy/>} />
+          <Route path="/refund" element={<Refund/>} />
+          <Route path="/terms" element={<Terms/>} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
            {/* Logged In User Routes */}
           <Route element={<ProtectedRoute isAuthenticated={user ? true : false} />}>
-            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/prolite" element={<Prolite />} />
+            <Route path="/autoglo" element={<Autoglo/>} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/myOrders" element={<Myorder />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/shipping" element={<Shipping/>} />
             {/* <Route path="/order/:id" element={<OrderDetails />} /> */}
             <Route path="/pay" element={<Checkout />} /> 
           </Route>

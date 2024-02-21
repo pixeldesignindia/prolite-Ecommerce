@@ -21,7 +21,7 @@ export const invalidateCache = ({
   addressId,
   orderId,
   productId,
-  category,
+  // category,
 
 }: InvalidateCacheProps) => {
   if (product) {
@@ -35,7 +35,7 @@ export const invalidateCache = ({
     ];
 
     if (typeof productId === "string") productKeys.push(`product-${productId}`);
-    if(typeof category === "string") productKeys.push(`products-category-${category.toLowerCase()}`)
+    // if(typeof category === "string") productKeys.push(`products-category-${category.toLowerCase()}`)
 
     if (typeof productId === "object")
       productId.forEach((i) => productKeys.push(`product-${i}`));

@@ -21,7 +21,7 @@ a {
 
 $color1: white;
 $color2: rgb(46, 46, 46);
-$color3: rgb(0, 104, 136);
+$color3:  rgb(1, 79, 179);
 
 .red {
   color: red;
@@ -123,7 +123,6 @@ $color3: rgb(0, 104, 136);
 
 .admin-container {
   @include grid(1fr 4fr, 2rem);
-  height: 100vh;
   background-color: rgb(247, 247, 247);
   > aside {
     width: 100%;
@@ -231,10 +230,10 @@ $color3: rgb(0, 104, 136);
     outline: none;
     border-radius: 10px;
     cursor: pointer;
-    background-color: rgba(0, 115, 255);
+    background-color: rgba(1, 79, 179, 1);
     color: white;
     &:disabled {
-      background-color: rgba(0, 115, 255, 0.1);
+      background-color: rgba(1, 79, 179, 1);
       cursor: not-allowed;
     }
   }
@@ -320,4 +319,7 @@ $color3: rgb(0, 104, 136);
   100% {
     opacity: 0.6;
   }
+}
+.product-management > article{
+  height:max-content !important;
 }

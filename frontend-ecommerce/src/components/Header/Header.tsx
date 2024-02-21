@@ -1,11 +1,11 @@
-import { FaSearch, FaShoppingBag, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { useNavigate} from "react-router-dom";
 import "./header.css";
 import { User } from "../../types/types";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import toast from "react-hot-toast";
-import { RootState, server } from "../../redux/store";
+import { RootState} from "../../redux/store";
 import { useSelector } from "react-redux";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -44,17 +44,18 @@ const Header = ({ user }: propestype) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="nav-Body">
-            <div>
-            <div className="link-center">
-            <Nav.Link href={"/product"}>Brands</Nav.Link>
-            <Nav.Link href={"/orders"}>Orders</Nav.Link></div>
+            <div className="center"> 
+            <div className="link-center res-link">
+            <Nav.Link href={"/prolite"}>Prolite</Nav.Link>
+            <Nav.Link href={"/autoglo"}>Autoglo</Nav.Link>
+            {/* <Nav.Link href={"/orders"}>Orders</Nav.Link> */}
+            </div>
             </div>
       <Nav.Link href={"/cart"}>
       <FaShoppingCart />
         {cartItems && cartItems.length>=1 && cartItems.length}
       </Nav.Link>
-      <div className='admin-logo'>{user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link><button className="logout" onClick={logOutHandler}>Logout</button></> : <button className="log" onClick={()=>{navigate('/login')}}>SignIn</button>}</div>
-      
+      <div className='admin-logo'>{user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link> <Nav.Link href={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Nav.Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}}>SignIn</button>}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>

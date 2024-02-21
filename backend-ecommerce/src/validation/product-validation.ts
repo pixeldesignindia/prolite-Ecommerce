@@ -44,8 +44,9 @@ export const productSchema = z.object({
     .min(0, { message: "Price should be greater than or equal to 0" })
     .transform((val) => parseFloat(val)),
 
-  photos: z.array(z.string()).min(1, "At least one photo is required").optional(),
-
+  // photos: z
+  // .array(z.string())
+  // .min(1, "At least one photo is required"),
   description: z
     .string({
       required_error: 'Description is required',
@@ -53,4 +54,23 @@ export const productSchema = z.object({
     })
     .trim()
     .min(1, { message: "Description is required" }),
+    productModel: z
+    .string({
+      required_error:"product Model is required",
+      invalid_type_error:"product Model must be string"
+    })
+    .trim()
+    .min(1,{message:"product model atleast one character"})
+    .max(255,{message:"product model must not be more than 255 characters"}),
+    dimensions:z
+    .string({
+      required_error:"dimensions must be required",
+      invalid_type_error:"dimensions must be string"
+    })
+    .trim()
+    .min(1,{message:"product model atleast one character"})
+    .max(255,{message:"product model must not be more than 255 characters"}),
+    tags: z
+    .array(z.string())
+  .min(1, "At least one tags is required"),
 });

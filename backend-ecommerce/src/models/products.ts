@@ -31,6 +31,25 @@ const schema = new mongoose.Schema({
             type: String,
             required: [true, "Photo is required"]
         }
+    ],
+      displayPhoto: [
+        {
+            type: String,
+            required: [true, "displayPhoto is required"]
+        }
+    ],
+    productModel:{
+        type: String,
+        required: [true, "Product model is required"]
+    },
+    dimensions:{
+        type:String,
+        required: [true, "Dimension is required"]
+    },
+    tags:[{
+        type:String,
+        required: [true, "Product tags is required"]
+    }
     ]
 }, { timestamps: true });
 

@@ -1,0 +1,42 @@
+.pro-data-row{display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 1.2rem;}
+.profile-page{min-height: 95vh;}
+.profileLeft{height: 100%;width: 100%;}
+.profileBody{width: 30vw;padding: 3rem; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;background-color: #fff;border-radius: .5rem;}
+.profileImg>img{height: 8rem;width: 8rem; border-radius: 50%; border: 7px solid rgba(0, 115, 255,.3);}
+.profile-data>h3{margin: 2rem 0 3rem 0;}
+.profile-page{display: flex; gap: 3rem;padding: 5rem 3rem 0 3rem;}
+
+
+
+/* Orders */
+.profileBody.orderBody{width: 100%;}
+.order-list{padding-right: 1.2rem;}
+.order-shipping-info{padding-left: 1.2rem;}
+.fs{font-size: .8rem;display: flex;justify-content: center;align-items: center;}
+
+
+.orderId{display: none;}
+@media (max-width: 500px) {
+    .profile-page{padding:2rem 1rem 0 1rem;gap: 0;display: block;}
+    .profileBody{width: 100% !important; padding: 1rem !important;margin-top: 2rem;}
+    .w-box.m-h-s{padding: 0;display: flex !important;flex-direction: row !important;width: 92vw !important;}
+    .sideBar{padding: 0 !important;min-height: fit-content !important;}
+    .w-box{padding:1rem .2rem !important;width: max-content !important;height: fit-content !important;}
+    .w-box a{font-size: .7rem !important;}
+    .w-box h4{font-size: 1rem !important;}
+    .pro-data-row>p{font-size: .6rem !important;}
+    .profile-data>h3{font-size: 1.2rem !important;margin: 1.2rem 0;}
+    .profileImg>img{height: 5rem; width: 5rem;}
+    .m-h-s{min-height: max-content !important;}
+    .side-log-out{padding-top: 0 !important;width: max-content !important;}
+    .side-log-out button{font-size: .6rem !important; padding: .3rem .5rem;}
+    .accordion-button{font-size: .5rem !important;}
+    .fs{font-size: .6rem !important;}
+    .w-box.row{margin-left: 0!important;}
+    .order-shipping-info {padding-top: 1rem !important; border-top: .5px solid #c2c2c2;padding-left: 1rem;}
+    .order-shipping-info p{font-size: .8rem;}
+    .order-shipping-info h2{font-size: 1.1rem;margin-bottom: .5rem !important;}
+    .order-shipping-info h4{font-size: 1rem;}
+    .orderId{display: block;}
+    .date{width: 33%;}
+}

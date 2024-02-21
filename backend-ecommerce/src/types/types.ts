@@ -17,6 +17,10 @@ export interface NewProductRequestBody {
   photos:string[];
   stock: number;
   price: number;
+  productModel:string;
+  dimensions:string;
+  tags:string[];
+  displayPhoto:string[];
 }
 
 export type ControllerType = (
@@ -32,6 +36,7 @@ export type SearchRequestQuery = {
   category?: string;
   sort?: string;
   page?: string;
+  brand?: string;
 };
 
 export interface BaseQuery {
@@ -41,6 +46,7 @@ export interface BaseQuery {
   };
   price?: { $lte: number };
   category?: string;
+  brand?: string;
 }
 export type InvalidateCacheProps = {
   product?: boolean;

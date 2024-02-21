@@ -37,16 +37,11 @@ export const getlatestProductsByBrand = TryCatch(async (req, res, next) => {
   if (myCache.has("latest-products")) {
     latestProductsByBrand = JSON.parse(myCache.get("latest-products") as string);
   } else {
-    const allProducts = await Product.find({}).sort({ createdAt: -1 });
+    const Autoglo =await Product.find({brand:"AUTOGLO"}).sort({createdAt:-1}).limit(5)
+    const Prolite = await Product.find({brand:"PROLITE"}).sort({createdAt:-1}).limit(5)
+     latestProductsByBrand["Autoglo"] = Autoglo;
+    latestProductsByBrand["Prolite"] = Prolite;
 
-    allProducts.forEach(product => {
-      const { brand } = product;
-      if (!latestProductsByBrand[brand]) {
-        latestProductsByBrand[brand] = [product];
-      } else if (latestProductsByBrand[brand].length < 5) {
-        latestProductsByBrand[brand].push(product);
-      }
-    });
 
     myCache.set("latest-products", JSON.stringify(latestProductsByBrand));
   }
@@ -171,20 +166,25 @@ export const getSingleProduct = TryCatch(async (req, res, next) => {
 
 export const newProduct = TryCatch(
   async (req: Request<{}, {}, NewProductRequestBody>, res, next) => {
-    const { name, price, stock, category,description,brand } = req.body;
-        const photos = req.files as Express.Multer.File[]; 
+    const { name, price, stock, category, description, brand, dimensions, productModel, tags } = req.body;
 
-    if (!photos) return next(new ErrorHandler("Please add Photo", 400));
 
-    if (!name || !price || !stock || !category || !description || !brand) {
-     for (const photo of photos) {
+const { photos, displayPhoto } = req.files as { photos: Express.Multer.File[], displayPhoto: Express.Multer.File[] } || {};
+
+    if (!photos || photos.length === 0) return next(new ErrorHandler("Please add Photos", 400));
+
+    if (!name || !price || !stock || !category || !description || !brand || !dimensions || !productModel || !tags || !displayPhoto || displayPhoto.length === 0) {
+      for (const photo of photos) {
+        await unlink(photo.path);
+      }
+      for (const photo of displayPhoto) {
         await unlink(photo.path);
       }
 
       return next(new ErrorHandler('Please enter all fields', 400));
     }
-
     const photoPaths = photos.map((photo) => photo.path);
+    const displayPhotoPath = displayPhoto.map((photo) => photo.path);
 
     await Product.create({
       name,
@@ -193,13 +193,14 @@ export const newProduct = TryCatch(
       category: category.toLowerCase(),
       description,
       photos: photoPaths,
-      brand:brand.toUpperCase()
+      brand: brand.toUpperCase(),
+      productModel: productModel.toLowerCase(),
+      dimensions,
+      tags,
+      displayPhoto: displayPhotoPath
     });
 
-     invalidateCache({ product: true, 
-      admin: true,
-      category: category.toLowerCase()
-     });
+    invalidateCache({ product: true, admin: true, category: category.toLowerCase() });
 
     return res.status(201).json({
       success: true,
@@ -208,28 +209,43 @@ export const newProduct = TryCatch(
   }
 );
 
+
+
+
 export const updateProduct = TryCatch(async (req, res, next) => {
   const { id } = req.params;
-  const { name, price, stock, category ,description} = req.body;
-  const photos = req.files as  Express.Multer.File[];
+  const { name, price, stock, category ,description,productModel,dimensions,tags} = req.body;
+  const { photos, displayPhoto } = req.files as { photos: Express.Multer.File[], displayPhoto: Express.Multer.File[] } || {};
   const product = await Product.findById(id);
 
   if (!product) return next(new ErrorHandler("Product Not Found", 404));
 
   if (photos) {
-     for (const photo of photos) {
-        await unlink(photo.path);
-      }
+     const oldPhotos = product.photos;
+  for (const photo of oldPhotos) {
+    await unlink(photo);
+  }
       const photoPaths = photos.map((photo) => photo.path);
       product.photos = photoPaths
     }
-  
+
+      if (displayPhoto) {
+     const oldPhotos = product.displayPhoto;
+  for (const photo of oldPhotos) {
+    await unlink(photo);
+  }
+      const photoPaths = displayPhoto.map((photo) => photo.path);
+      product.displayPhoto = photoPaths
+    }
 
   if (name) product.name = name;
   if (price) product.price = price;
   if (stock) product.stock = stock;
   if (category) product.category = category;
   if (description) product.description = description;
+  if(productModel) product.productModel = productModel;
+  if(dimensions) product.dimensions = dimensions;
+  if(tags) product.tags = tags;
 
   await product.save();
 
@@ -270,7 +286,7 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
 
 export const getAllProducts = TryCatch(
   async (req: Request<{}, {}, {}, SearchRequestQuery>, res, next) => {
-    const { search, sort, category, price } = req.query;
+    const { search, sort, category, price,brand } = req.query;
 
     const page = Number(req.query.page) || 1;
 
@@ -291,6 +307,9 @@ export const getAllProducts = TryCatch(
       };
 
     if (category) baseQuery.category = category;
+    if (!brand) return next(new ErrorHandler("brand name is required",400))
+    baseQuery.brand=brand.toUpperCase();
+
 
     const productsPromise = Product.find(baseQuery)
       .sort(sort && { price: sort === "asc" ? 1 : -1 })
@@ -301,7 +320,6 @@ export const getAllProducts = TryCatch(
       productsPromise,
       Product.find(baseQuery),
     ]);
-
     const totalPage = Math.ceil(filteredOnlyProduct.length / limit);
 
     return res.status(200).json({

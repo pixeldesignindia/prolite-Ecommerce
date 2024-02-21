@@ -12,8 +12,11 @@ export interface Product{
     category:string;
     price: number;
     _id: string;
-    photo: string;
+    photos: string[];
     stock:number;
+    dimension:string;
+    model:string;
+    brand:string
 }
 export type CartItem = {
     productId: string;
@@ -22,6 +25,10 @@ export type CartItem = {
     price: number;
     quantity: number;
     stock: number;
+    brand: string;
+    dimension:string;
+    model: string;
+    category: string;
   };
 
   export type ShippingInfo = {

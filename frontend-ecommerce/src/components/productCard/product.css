@@ -14,3 +14,10 @@
 .cardC .img img{padding: 10px;max-width: 90%;max-height: 90%;}
 #button{width: 50px;padding: 10px; border-radius: 50%;}
 #button i{border: 1px solid #151414;padding: 10px;border-radius: 50px;}
+
+@media(max-width:500px){
+    .cardC .img{height: 200px;}
+    .cardC {height: 25.5rem;}
+    .card-text {font-size: 20px;padding: 5px 0;}
+    .card-title{font-size: 19px;}
+}
