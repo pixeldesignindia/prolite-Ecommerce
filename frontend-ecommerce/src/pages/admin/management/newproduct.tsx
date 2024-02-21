@@ -14,7 +14,6 @@ const NewProduct = () => {
 
   const [name, setName] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
-  const [newTag, setNewTag] = useState<string>(""); 
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [productModel, setProductModel] = useState<string>("");

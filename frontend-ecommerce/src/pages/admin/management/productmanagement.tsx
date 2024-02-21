@@ -40,20 +40,31 @@ const Productmanagement = () => {
   };
   
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const file: File | undefined = e.target.files?.[0];
-
-    const reader: FileReader = new FileReader();
-
-    if (file) {
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        if (typeof reader.result === "string") {
-          setPhotoUpdate([reader.result]);
-          setPhotoFile([file]);
-        }
-      };
+    const files: FileList | null = e.target.files;
+  
+    if (files && files.length > 0) {
+      const newPhotos: string[] = [];
+      const newPhotoFiles: File[] = [];
+  
+      for (let i = 0; i < files.length; i++) {
+        const file: File = files[i];
+        const reader: FileReader = new FileReader();
+  
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          if (typeof reader.result === "string") {
+            newPhotos.push(reader.result);
+            newPhotoFiles.push(file);
+            if (i === files.length - 1) {
+              setPhotoUpdate((prevPhotos) => [...prevPhotos, ...newPhotos]);
+              setPhotoFile((prevFiles) => [...prevFiles, ...newPhotoFiles]);
+            }
+          }
+        };
+      }
     }
   };
+  
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -219,7 +230,7 @@ const Productmanagement = () => {
                 </div>
                 <div>
                   <label>Photo</label>
-                  <input type="file" onChange={changeImageHandler} />
+                  <input type="file" onChange={changeImageHandler} multiple/>
                 </div>
                 {photoUpdate && photoUpdate.map((preview, index) => (
                   <img key={index} src={preview} alt={`Image ${index}`} />
