@@ -145,7 +145,7 @@ const upload = multer({
     fileFilter: fileFilter
 }).fields([
     { name: 'photos', maxCount: 6 },
-    { name: 'displayPhoto', maxCount: 3}
+    { name: 'displayPhoto', maxCount:1}
 ]);
 console.log(upload)
 export const uploadMiddleware = (req: Request, res: Response, next: NextFunction) => {
