@@ -58,21 +58,27 @@ const Productmanagement = () => {
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.set("name", nameUpdate);
-    formData.set("price", priceUpdate.toString());
-    formData.set("stock", stockUpdate.toString());
-    formData.set("category", categoryUpdate);
-    formData.set("brand", brandUpdate);
-    formData.set("dimensions", dimensionsUpdate);
-    formData.set("productModel", productModelUpdate);
-    formData.set("description", data?.product.description || ""); // Ensure to send existing description data
+    const appendIfNotEmpty = (key: string, value: any) => {
+      if (value !== null && value !== undefined && value !== '') {
+        formData.append(key, value.toString());
+      }
+    };
+  
+    appendIfNotEmpty("name", nameUpdate);
+    appendIfNotEmpty("price", priceUpdate);
+    appendIfNotEmpty("stock", stockUpdate);
+    appendIfNotEmpty("category", categoryUpdate);
+    appendIfNotEmpty("brand", brandUpdate);
+    appendIfNotEmpty("dimensions", dimensionsUpdate);
+    appendIfNotEmpty("productModel", productModelUpdate);
+    appendIfNotEmpty("description", data?.product.description || ""); // Ensure to send existing description data
     if (displayPhotoFile) {
-      formData.set("displayPhoto", displayPhotoFile);
+      formData.append("displayPhoto", displayPhotoFile);
     }
-
+  
     if (tagsUpdate.length > 0) {
       tagsUpdate.forEach((tag, index) => {
-        formData.append("tags", tag);
+        appendIfNotEmpty("tags", tag);
       });
     }
     if (photoFile.length > 0) {
@@ -80,7 +86,7 @@ const Productmanagement = () => {
         formData.append("photos", photo);
       });
     }
-
+  
     const res = await updateProduct({
       formData,
       userId: user?._id!,
@@ -88,6 +94,7 @@ const Productmanagement = () => {
     });
     responseToast(res, navigate, "/admin/product");
   };
+  
 
   const deleteHandler = async () => {
     const res = await deleteProduct({
@@ -97,19 +104,19 @@ const Productmanagement = () => {
     responseToast(res, navigate, "/admin/product");
   };
 
-  useEffect(() => {
-    if (data) {
-      setNameUpdate(data.product.name);
-      setStockUpdate(data.product.stock);
-      setPriceUpdate(data.product.price);
-      setCategoryUpdate(data.product.category);
-      setBrandUpdate(data.product.brand);
-      setDimensionsUpdate(data.product.dimensions);
-      setProductModelUpdate(data.product.productModel);
-      setTagsUpdate(data.product.tags);
-      setPhotoUpdate(data.product.photos);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setNameUpdate(data.product.name);
+  //     setStockUpdate(data.product.stock);
+  //     setPriceUpdate(data.product.price);
+  //     setCategoryUpdate(data.product.category);
+  //     setBrandUpdate(data.product.brand);
+  //     setDimensionsUpdate(data.product.dimensions);
+  //     setProductModelUpdate(data.product.productModel);
+  //     setTagsUpdate(data.product.tags);
+  //     setPhotoUpdate(data.product.photos);
+  //   }
+  // }, [data]);
 
   return (
     <div className="admin-container">
