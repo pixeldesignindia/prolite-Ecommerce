@@ -2,13 +2,13 @@ nav{display: flex; justify-content: space-between;padding: 1.5rem;background-col
 nav a{text-decoration: none; font-size: 1rem; color: black;}
 .nav-Body{display: flex; justify-content: space-between;width: 100%;}
 .admin-logo{display: flex;}
-.link-center{    display: flex;text-align: center;justify-content: center;align-items: center;width: 100%}
+.link-center{display: flex;text-align: center;justify-content: center;align-items: center;width: 100%;font-size: 18px; font-weight: 500; text-transform: uppercase;}
 .logo-img{height: 3rem;}
 .navbar-expand-lg{box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .log {
-    color: rgb(104, 85, 224);
-    background-color: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(104, 85, 224, 1);
+    color: #fff;
+    background-color: #1176D0;
+    /* border: 1px solid rgba(104, 85, 224, 1); */
     border-radius: 4px;
   font-weight: 600;
   margin: 0 10px;
@@ -17,10 +17,10 @@ nav a{text-decoration: none; font-size: 1rem; color: black;}
   transition: 0.4s;
   }
 .logout {
-    color: rgb(224, 85, 85);
-    background-color: rgba(255, 255, 255, 1);
-    border: 1px solid rgb(224, 99, 85);
-    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    background-color: #1176D0;
+    /* border: 1px solid rgb(224, 99, 85); */
+  border-radius: 4px;
   font-weight: 600;
   margin: 0 10px;
   padding: 10px 1rem;
@@ -31,14 +31,13 @@ nav a{text-decoration: none; font-size: 1rem; color: black;}
   .log:hover {
     color: white;
 
-    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
-    background-color: rgba(104, 85, 224, 1);
+    box-shadow: 0 0 20px rgba(85, 224, 173, 0.6);
+    background-color: rgb(11, 143, 77);
   }
   .logout:hover {
     color: white;
-
-    box-shadow: 0 0 20px rgba(221, 50, 35, 0.711);
-    background-color: rgb(224, 85, 85);
+    /* box-shadow: 0 0 20px rgba(35, 221, 134, 0.711); */
+    background-color: #3AA20F;
   }
   .profile-img{height: 30px;width: 30px; border-radius: 50%;}
   .navbar-expand-lg .navbar-nav .nav-link{display: flex; justify-content: center; align-items: center;}
