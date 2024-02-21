@@ -100,15 +100,15 @@
 
 import { Request, Response, NextFunction } from "express";
 import multer from "multer";
-import path from 'path'
 import ErrorHandler from "../utils/utility-class.js";
+
 
 const storage = multer.diskStorage({
     destination: function(req: Request, file: Express.Multer.File, cb) {
         if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'||file.mimetype === 'image/webp') {
             cb(null,"uploads");
         } else {
-            cb(null, path.join(__dirname, '../public/document'));
+          console.log("invalid photo type")
         }
     },
     filename: function(req, file: Express.Multer.File, cb) {
@@ -147,7 +147,7 @@ const upload = multer({
     { name: 'photos', maxCount: 6 },
     { name: 'displayPhoto', maxCount: 3}
 ]);
-
+console.log(upload)
 export const uploadMiddleware = (req: Request, res: Response, next: NextFunction) => {
     upload(req, res, function (err: any) {
         if (err instanceof multer.MulterError) {
@@ -157,16 +157,8 @@ export const uploadMiddleware = (req: Request, res: Response, next: NextFunction
             // Handle other errors
             return res.status(500).json({ message: 'Internal Server Error' });
         }
-        // if (!req.files || !('displayPhoto' in req.files)) {
-        //     return res.status(400).json({ message: 'No display photo uploaded' });
-        // }
-        // const displayPhotoFiles = req.files['displayPhoto'] as Express.Multer.File[];
-        // console.log(displayPhotoFiles.length)
-        // if (displayPhotoFiles.length > 1) {
-        //     return res.status(400).json({ message: 'You can upload only a single display photo' });
-        // }
-
-        // No errors, proceed to the next middleware
+      
+     
         next();
     });
 };

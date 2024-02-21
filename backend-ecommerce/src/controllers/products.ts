@@ -214,28 +214,29 @@ const { photos, displayPhoto } = req.files as { photos: Express.Multer.File[], d
 
 export const updateProduct = TryCatch(async (req, res, next) => {
   const { id } = req.params;
-  const { name, price, stock, category ,description,productModel,dimensions,tags,displayPhoto} = req.body;
-  const photos = req.files as  Express.Multer.File[];
+  const { name, price, stock, category ,description,productModel,dimensions,tags} = req.body;
+  const { photos, displayPhoto } = req.files as { photos: Express.Multer.File[], displayPhoto: Express.Multer.File[] } || {};
   const product = await Product.findById(id);
 
   if (!product) return next(new ErrorHandler("Product Not Found", 404));
 
   if (photos) {
-     for (const photo of photos) {
-        await unlink(photo.path);
-      }
+     const oldPhotos = product.photos;
+  for (const photo of oldPhotos) {
+    await unlink(photo);
+  }
       const photoPaths = photos.map((photo) => photo.path);
       product.photos = photoPaths
     }
 
       if (displayPhoto) {
-     for (const photo of displayPhoto) {
-        await unlink(photo.path);
-      }
-      const photoPaths = photos.map((photo) => photo.path);
+     const oldPhotos = product.displayPhoto;
+  for (const photo of oldPhotos) {
+    await unlink(photo);
+  }
+      const photoPaths = displayPhoto.map((photo) => photo.path);
       product.displayPhoto = photoPaths
     }
-  
 
   if (name) product.name = name;
   if (price) product.price = price;

@@ -14,7 +14,7 @@ import {
   newProduct,
   updateProduct,
 } from "../controllers/products.js";
-import { uploadMiddleware } from "../middlewares/multer.js";
+import { uploadMiddleware} from "../middlewares/multer.js";
 import { validatation } from "../middlewares/schema-validator.js";
 import { productSchema } from "../validation/product-validation.js";
 
@@ -41,7 +41,7 @@ app.get("/admin-products", adminOnly, getAdminProducts);
 app
   .route("/:id")
   .get(getSingleProduct)
-  .put(adminOnly, uploadMiddleware,validatation(productSchema), updateProduct)
+  .put( uploadMiddleware,validatation(productSchema), updateProduct)
   .delete(adminOnly, deleteProduct);
 
 export default app;
