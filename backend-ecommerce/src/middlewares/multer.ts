@@ -157,14 +157,14 @@ export const uploadMiddleware = (req: Request, res: Response, next: NextFunction
             // Handle other errors
             return res.status(500).json({ message: 'Internal Server Error' });
         }
-        if (!req.files || !('displayPhoto' in req.files)) {
-            return res.status(400).json({ message: 'No display photo uploaded' });
-        }
-        const displayPhotoFiles = req.files['displayPhoto'] as Express.Multer.File[];
-        console.log(displayPhotoFiles.length)
-        if (displayPhotoFiles.length > 1) {
-            return res.status(400).json({ message: 'You can upload only a single display photo' });
-        }
+        // if (!req.files || !('displayPhoto' in req.files)) {
+        //     return res.status(400).json({ message: 'No display photo uploaded' });
+        // }
+        // const displayPhotoFiles = req.files['displayPhoto'] as Express.Multer.File[];
+        // console.log(displayPhotoFiles.length)
+        // if (displayPhotoFiles.length > 1) {
+        //     return res.status(400).json({ message: 'You can upload only a single display photo' });
+        // }
 
         // No errors, proceed to the next middleware
         next();
