@@ -233,7 +233,7 @@ const Productmanagement = () => {
                   <input type="file" onChange={changeImageHandler} multiple/>
                 </div>
                 {photoUpdate && photoUpdate.map((preview, index) => (
-                  <img key={index} src={preview} alt={`Image ${index}`} />
+                  <img key={index} src={`${server}/${preview}`} alt={`Image ${index}`} />
                 ))}
                 <button type="submit">Update</button>
               </form>
