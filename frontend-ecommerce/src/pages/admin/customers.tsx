@@ -8,7 +8,6 @@ import { RootState } from "../../redux/store";
 import { useAllUsersQuery, useDeleteUserMutation } from "../../redux/api/userApi";
 import { CustomError } from "../../types/api-types";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
 import { responseToast } from "../../utils/features";
 
 interface DataType {
@@ -49,7 +48,7 @@ const columns: Column<DataType>[] = [
 
 const Customers = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-  const { isLoading, data, isError, error } = useAllUsersQuery(user?._id!);
+  const { data, isError, error } = useAllUsersQuery(user?._id!);
   const [rows, setRows] = useState<DataType[]>([]);
   if (isError) {
     const err = error as CustomError;
@@ -63,7 +62,7 @@ const Customers = () => {
   useEffect(() => {
     if (data)
       setRows(
-        data.users.map((user) => ({
+        data.users.map((user:any) => ({
           avatar: <img src={user.photo} alt={user.name} style={{borderRadius:'50%'}}/>,
           name: user.name,
           email: user.email,

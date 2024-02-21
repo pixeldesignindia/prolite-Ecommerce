@@ -10,7 +10,7 @@ select {width: 90%; padding: .8rem;border: 1px solid #ccc; border-radius: 4px; b
 .range-input{width: 90%;}
 option {font-size: 1rem;  background-color: #054aa4;font-family: Montserrat;}
 .blue-text{ color:#014FB3;letter-spacing: .2rem; font-weight: 600;}
-
+.s-m-t{margin-top: 1rem;}
 
 @media(max-width:500px){
     .product-search-page{display: block;padding: 1rem;}
@@ -24,6 +24,8 @@ option {font-size: 1rem;  background-color: #054aa4;font-family: Montserrat;}
     .products-page-head .col-4{width: 50%;}
     .products-page-head  h2{font-size: 1rem;}
     .search-pro{width: 100% !important;padding: 0;}
-    .input-box{width:88%;padding: .5rem 0;margin-left:1rem}
+    .input-box{width:88%;padding: .5rem 0;margin-left:1rem;margin-top: .5rem;}
     .blue-text{font-size: 1rem;}
+    .s-m-t{margin-top: .5rem;}
+    .s-m-t>option{font-size: .6rem;padding:.1rem;min-height: 1rem;}
 }

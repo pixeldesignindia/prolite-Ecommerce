@@ -17,9 +17,12 @@
 
 
 @media (max-width: 768px) {
-    .banner-para{padding: 0;font-size:.9rem;font-weight: 400;line-height: 30px;}
+    .banner-para{padding: 0;font-size:.9rem;font-weight: 400;line-height: 30px;width: 15rem;}
     .banner-head{font-size: 2rem;font-weight: 600;line-height: 40px;}
     .banner-btn{padding: .7rem 1.5rem;font-size: 1rem;font-weight: 600; color: #000000;border-radius: 5px;text-transform: uppercase;letter-spacing: 4px;background-color: #fff;border: 0px;margin-top: 20px;}
     .box{padding: 0 1rem;height: 100px;}
     .col-3.mt-5.mb-5{width: 100%;margin: 1rem 0 !important;}
+    .carousel-control-prev{left: 10px;}
+    .carousel-control-next{right: 10px;}
+    .carousel-caption{display: flex;flex-direction: column; justify-content: center;align-items: center;}
 }

@@ -5,13 +5,24 @@ import { Bar, CartItem, Line, Order, Pie, Product, ShippingInfo, Stats, User } f
     message: string;
     };
     export type ProductsResponse = {
-    success: boolean;
-    products: Product[];
+      success: boolean;
+      products:Product[];
+      latestProductsByBrand: {
+        Prolite?: Product[]; 
+        Autoglo?: Product[]; 
+
+      };
     };
+    export type Category = {
+      categories: string[];
+    };
+    
     export type CategoriesResponse = {
-    success: boolean;
-    categories: string[];
+      success: boolean;
+      categories: string[];
+      categoriesByBrand: Category[];
     };
+    
     export type CustomError = {
     status: number;
     data: {
@@ -30,6 +41,7 @@ import { Bar, CartItem, Line, Order, Pie, Product, ShippingInfo, Stats, User } f
         category:string;
         sort:string;
         search:string;
+        brand:string
     }
     export type ProductResponse = {
         success: boolean;

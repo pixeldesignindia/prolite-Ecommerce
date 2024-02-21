@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { useSelector } from "react-redux";
 import { UserReducerInitialState } from "../../../types/reducerTypes";
@@ -23,8 +23,7 @@ const NewProduct = () => {
   const [stock, setStock] = useState<number>(1);
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const [photos, setPhotos] = useState<File[]>([]);
-  const [displayPhoto, setDisplayPhoto] = useState<File[]>([]);
-
+  const [displayPhoto, setDisplayPhoto] = useState<File | null>(null); 
   const [newProduct] = useNewProductMutation();
   const changeDisplayPhotoHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -55,20 +54,16 @@ const NewProduct = () => {
       newPhotos.push(file);
     }
 
-    setPhotos(newPhotos); // Directly assign newPhotos to photos state
+    setPhotos(newPhotos);
   };
-
-  // const handleAddTag = () => {
-  //   if (newTag.trim() !== "") {
-  //     setTags([...tags, newTag.trim()]);
-  //     setNewTag(""); 
-  //   }
-  // };
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name ||!price ||!stock ||!photos.length ||!category ||!brand ||!tags.length || !displayPhoto) console.log('enter');
-    ;
+    // Check if any required field is empty or null
+    if (!name || !price || !stock || !photos.length || !category || !brand || !tags.length || !displayPhoto) {
+      console.log('Please fill out all required fields');
+      return;
+    }
 
     const formData = new FormData();
     formData.append("name", name);
@@ -79,11 +74,13 @@ const NewProduct = () => {
     formData.append("brand", brand);
     formData.append("productModel", productModel);
     formData.append("dimensions", dimensions);
-    formData.append("displayPhoto", displayPhoto);
-    tags.forEach((tag, index) => {
+    if (displayPhoto) {
+      formData.append("displayPhoto", displayPhoto);
+    }
+    tags.forEach((tag) => {
       formData.append("tags", tag);
     });
-    photos.forEach((photo, index) => {
+    photos.forEach((photo) => {
       formData.append("photos", photo);
     });
 
@@ -119,10 +116,8 @@ const NewProduct = () => {
               />
             </div>
             <div>
-              {/* ,dimensions,productModel */}
               <label>Model</label>
               <input
-                required
                 type="text"
                 placeholder="Product Model"
                 value={productModel}
@@ -132,7 +127,6 @@ const NewProduct = () => {
             <div>
               <label>Measurement</label>
               <input
-                required
                 type="text"
                 placeholder="Dimensions"
                 value={dimensions}
@@ -159,7 +153,6 @@ const NewProduct = () => {
                 onChange={(e) => setStock(Number(e.target.value))}
               />
             </div>
-
             <div>
               <label>Category</label>
               <input
@@ -170,7 +163,6 @@ const NewProduct = () => {
                 onChange={(e) => setCategory(e.target.value)}
               />
             </div>
-
             <div>
               <label>Brand</label>
               <select
@@ -181,26 +173,16 @@ const NewProduct = () => {
                 <option value="prolite">Prolite</option>
               </select>
             </div>
-
             <div>
               <label>Tags</label>
-             
-                {/* {tags.map((tag, index) => (
-                  <div key={index}>{tag}</div>
-                ))} */}
-                <input
-                  type="text"
-                  placeholder="Add Tag"
-                  value={tags.join(",")}
-                  onChange={(e) => setTags(e.target.value.split(","))}
-                />
-                <p>(Please add 2 tags minimum. separated by ' , ')</p>
-                {/* <button type="button" onClick={handleAddTag}>
-                  +
-                </button> */}
-              
+              <input
+                type="text"
+                placeholder="Add Tag"
+                value={tags.join(",")}
+                onChange={(e) => setTags(e.target.value.split(","))}
+              />
+              <p>(Please add 2 tags minimum. separated by ' , ')</p>
             </div>
-
             <div>
               <label>Display Photo</label>
               <input
@@ -215,10 +197,9 @@ const NewProduct = () => {
                 type="file"
                 required
                 onChange={changeImageHandler}
-                multiple // Allow multiple files
+                multiple
               />
             </div>
-
             {photoPreviews.map((preview, index) => (
               <img key={index} src={preview} alt={`Image ${index}`} />
             ))}

@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Column } from "react-table";
 import AdminSidebar from "../../components/admin/AdminSidebar";
 import TableHOC from "../../components/admin/TableHOC";
@@ -9,7 +9,7 @@ import { server } from "../../redux/store";
 import { useSelector } from "react-redux";
 import { UserReducerInitialState } from "../../types/reducerTypes";
 import { CustomError } from "../../types/api-types";
-import toast from "react-hot-toast";
+
 interface DataType {
   photo: ReactElement;
   name: string;
@@ -50,7 +50,7 @@ const Products = () => {
   const { data,error,isError } = useAllProductsQuery(user?._id!);
   if (isError) {
     const err = error as CustomError;
-    // console.log(err.data.message);
+    console.log(err);
   }
   const [rows, setRows] = useState<DataType[]>([]);
 useEffect(()=>{  if (data) {

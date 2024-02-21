@@ -8,6 +8,7 @@ export interface User{
     dob: string;
 }
 export interface Product{
+  productId:string;
     name:string;
     category:string;
     price: number;
@@ -16,7 +17,15 @@ export interface Product{
     stock:number;
     dimension:string;
     model:string;
-    brand:string
+    brand:string;
+    description:string;
+    dimensions:string;
+    productModel:string;
+    tags:string[];
+    displayPhoto:string[];
+    photo:string;
+    quantity:number;
+
 }
 export type CartItem = {
     productId: string;
@@ -37,6 +46,9 @@ export type CartItem = {
     state: string;
     country: string;
     pinCode: string;
+    name:string;
+    phoneNumber: string;
+    createdAt: string,
   };
   export type OrderItem = Omit<CartItem, "stock"> & { _id: string };
 
@@ -49,6 +61,7 @@ export type CartItem = {
     discount: number;
     total: number;
     status: string;
+    createdAt:string;
     user: {
       name: string;
       _id: string;

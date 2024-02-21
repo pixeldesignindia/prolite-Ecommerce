@@ -1,3 +1,6 @@
 .privacy-policy p{font-size: 18px; font-weight: 400;}
 .privacy-policy-head{font-size: 24px;font-weight: 600;}
 .privacy-policy-para .disc-list {padding-left: 18px;line-height: 70px;}
+@media(max-width:500px){
+    .privacy-policy-para .disc-list{line-height: 190%;}
+}

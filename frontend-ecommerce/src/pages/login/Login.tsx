@@ -1,6 +1,6 @@
 import { signInWithPopup } from 'firebase/auth'
 import { GoogleAuthProvider } from 'firebase/auth'
-import React,{useState} from 'react'
+import {useState} from 'react'
 import './login.css'
 import toast from 'react-hot-toast'
 import {FcGoogle} from 'react-icons/fc'

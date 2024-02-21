@@ -10,9 +10,7 @@
     .cartBoxRow{display: flex;justify-content: space-between;}
     
     .coupon-code{padding: .5rem; border-radius: 5px;border: .5px solid rgb(225, 215, 29);margin-top: 1.5rem;transition: box-shadow 0.3s ease;}
-    .coupon-code:hover {
-        box-shadow: 0 0 10px 3px rgba(255, 255, 0, 0.5); /* Yellow box shadow */
-      }
+
 
       @media(max-width:500px){
         .cart{max-height: fit-content;}

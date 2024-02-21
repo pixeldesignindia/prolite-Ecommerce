@@ -1,4 +1,4 @@
-import React from 'react'
+
 import checkout from '/images/checkout.svg'
 import delivery from '/images/delivery.svg'
 import premium from '/images/premium.svg'

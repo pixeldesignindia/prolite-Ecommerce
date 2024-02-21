@@ -1,4 +1,4 @@
-import React from 'react';
+
 import'./banner.css'
 import Carousel from 'react-bootstrap/Carousel';
 import banner1 from '/images/banner1.svg'
@@ -17,19 +17,19 @@ function Banner() {
       </Carousel.Item>
     </Carousel>
     
-    <div class="container text-center">
-      <div class="row gx-4 ">
-        <div class="col-3 mt-5 mb-5">
-          <h2 class="box blue">AutoGlo</h2>
+    <div className="container text-center">
+      <div className="row gx-4 ">
+        <div className="col-3 mt-5 mb-5">
+          <h2 className="box blue">AutoGlo</h2>
         </div>
-        <div class="col-3 mt-5 mb-5">
-          <h2 class="box green">Prolite</h2>
+        <div className="col-3 mt-5 mb-5">
+          <h2 className="box green">Prolite</h2>
         </div>
-        <div class="col-3 mt-5 mb-5">
-          <h2 class="box blue">AutoGlo</h2>
+        <div className="col-3 mt-5 mb-5">
+          <h2 className="box blue">AutoGlo</h2>
         </div>
-        <div class="col-3 mt-5 mb-5">
-          <h2 class="box green">Prolite</h2>
+        <div className="col-3 mt-5 mb-5">
+          <h2 className="box green">Prolite</h2>
         </div>
       </div>
     </div>

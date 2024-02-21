@@ -1,9 +1,9 @@
-import React from 'react'
+
 import './delivery.css'
 import Footer from '../../components/footer/Footer'
 const Delivery = () => {
   return (
-
+<>
           <section className="shipping">
         <div className="container shipping mt-5 mb-5">
             <div className="head">
@@ -22,9 +22,10 @@ const Delivery = () => {
                 <li>Goods once sold cannot be returned or exchanged.</li>
             </ul>
         </div>
-        <Footer/>
+        
     </section>
-
+    <Footer/>
+    </>
   )
 }
 
