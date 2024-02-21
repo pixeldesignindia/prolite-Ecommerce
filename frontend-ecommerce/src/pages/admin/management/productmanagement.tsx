@@ -116,7 +116,7 @@ const Productmanagement = () => {
       setProductModelUpdate(data.product.productModel);
       setTagsUpdate(data.product.tags);
       setPhotoPreviews(data.product.photos);
-      // setDisplayPhotoFile(data.product.displayPhoto);
+      setDisplayPhotoFile(data.product.displayPhoto);
     }
   }, [data]);
 
@@ -237,7 +237,7 @@ const Productmanagement = () => {
             </div>
 
             {photoPreviews.map((preview, index) => (
-              <img key={index} src={preview} alt={`Image ${index}`} />
+              <img key={index} src={`${server}/${preview}`} alt={`Image ${index}`} />
             ))}
                 <button type="submit">Update</button>
               </form>

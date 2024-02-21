@@ -1,11 +1,11 @@
-import { FaSearch, FaShoppingBag, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { useNavigate} from "react-router-dom";
 import "./header.css";
 import { User } from "../../types/types";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import toast from "react-hot-toast";
-import { RootState, server } from "../../redux/store";
+import { RootState} from "../../redux/store";
 import { useSelector } from "react-redux";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';

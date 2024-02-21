@@ -23,7 +23,6 @@ const ProductCard = ({
   name,
   displayPhoto,
   category,
-  photos,
   stock,
   handler,
   brand,

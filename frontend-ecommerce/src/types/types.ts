@@ -28,6 +28,7 @@ export type CartItem = {
     brand: string;
     dimension:string;
     model: string;
+    category: string;
   };
 
   export type ShippingInfo = {
