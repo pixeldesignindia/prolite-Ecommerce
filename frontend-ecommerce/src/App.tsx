@@ -72,7 +72,6 @@ else{dispatch(userNotExist())}
           <Route path="/refund" element={<Refund/>} />
           <Route path="/terms" element={<Terms/>} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
-     
             <Route path="/prolite" element={<Prolite />} />
             <Route path="/autoglo" element={<Autoglo/>} />
             <Route path="/profile" element={<Profile />} />
