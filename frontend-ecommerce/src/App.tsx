@@ -21,28 +21,28 @@ const Prolite = lazy(() => import("./pages/search/Prolite"));
 const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
 const Shipping = lazy(() => import("./pages/shipping/shipping"));
 const Orders = lazy(()=>import('./pages/orders/Orders'))
-const Checkout = lazy(()=>import('./pages/checkOut/checkout'))
+const Checkout = lazy(()=>import('./pages/checkOut/Checkout'))
 const Delivery = lazy(()=>import('./pages/delivery/Delivery'))
 const Payment = lazy(()=>import('./pages/payment/Payment'))
 const Privacy = lazy(()=>import('./pages/privacy/Privacy'))
 const Refund = lazy(()=>import('./pages/refund/Refund'))
 const Terms = lazy(()=>import('./pages/terms/Terms'))
 // Admin Imports
-const Dashboard = lazy(() => import("./pages/admin/dashboard"));
-const Products = lazy(() => import("./pages/admin/products"));
-const Customers = lazy(() => import("./pages/admin/customers"));
-const Transaction = lazy(() => import("./pages/admin/transaction"));
-const Barcharts = lazy(() => import("./pages/admin/charts/barcharts"));
-const Piecharts = lazy(() => import("./pages/admin/charts/piecharts"));
-const Linecharts = lazy(() => import("./pages/admin/charts/linecharts"));
+const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
+const Products = lazy(() => import("./pages/admin/Products"));
+const Customers = lazy(() => import("./pages/admin/Customers"));
+const Transaction = lazy(() => import("./pages/admin/Transaction"));
+const Barcharts = lazy(() => import("./pages/admin/charts/Barcharts"));
+const Piecharts = lazy(() => import("./pages/admin/charts/Piecharts"));
+const Linecharts = lazy(() => import("./pages/admin/charts/Linecharts"));
 const Coupon = lazy(() => import("./pages/admin/apps/coupon"));
 const Stopwatch = lazy(() => import("./pages/admin/apps/stopwatch"));
 const Toss = lazy(() => import("./pages/admin/apps/toss"));
 const Profile = lazy(() => import("./pages/profile/Profile"));
 const Myorder = lazy(() => import("./pages/profile/Myorders"));
-const NewProduct = lazy(() => import("./pages/admin/management/newproduct"));
-const ProductManagement = lazy(() => import("./pages/admin/management/productmanagement"));
-const TransactionManagement = lazy(() =>import("./pages/admin/management/transactionmanagement"));
+const NewProduct = lazy(() => import("./pages/admin/management/Newproduct"));
+const ProductManagement = lazy(() => import("./pages/admin/management/Productmanagement"));
+const TransactionManagement = lazy(() =>import("./pages/admin/management/Transactionmanagement"));
 
 const App = () => {
 
