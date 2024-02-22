@@ -98,7 +98,6 @@ const Productmanagement = () => {
       setStockUpdate(data.product.stock);
       setPriceUpdate(data.product.price);
       setCategoryUpdate(data.product.category);
-      setBrandUpdate(data.product.brand);
       setDimensionsUpdate(data.product.dimensions);
       setProductModelUpdate(data.product.productModel);
       setTagsUpdate(data.product.tags);
