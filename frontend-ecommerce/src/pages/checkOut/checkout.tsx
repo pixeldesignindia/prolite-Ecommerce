@@ -1,4 +1,4 @@
-import { RootState } from "@reduxjs/toolkit/query";
+import { RootState } from "../../redux/store";
 import {
   Elements,
   PaymentElement,

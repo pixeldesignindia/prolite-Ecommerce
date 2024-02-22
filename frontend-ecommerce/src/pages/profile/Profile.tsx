@@ -5,14 +5,14 @@ import ProfileSide from "../../components/sideNavProfile/ProfileSide";
 const Profile = () => {
     const { user } = useSelector((state: { userReducer: UserReducerInitialState }) => state.userReducer);
 
-    const formatDate = (isoDate) => {
+    const formatDate = (isoDate:any) => {
         const date = new Date(isoDate);
         return date.toLocaleDateString(); 
     };
 
     return (
         <div className="profile-page bg-blue">
-<ProfileSide name={user?.name} pic={user?.photo}/>
+<ProfileSide name={user?.name as string} pic={user?.photo as string} />
             <div className="profileLeft center">
                 <div className="profileBody">
                     <div className="profileImg center">

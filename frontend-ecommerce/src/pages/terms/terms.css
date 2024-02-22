@@ -1,2 +1,6 @@
 .term-head{font-size: 24px; font-weight: 600;}
 .term-list{font-size: 18px;padding-left: 18px;font-weight: 400;color: #777c87;line-height: 70px;margin-top: 3rem;}
+
+@media(max-width:500px){
+    .term-list{line-height: 190%;}
+}

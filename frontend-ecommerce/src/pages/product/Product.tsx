@@ -1,45 +1,43 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Slider from "react-slick";
-import dot from "/images/blueDot.svg";
+import dot from "/images/blueDot.svg"; // Assuming the correct path to the image
 import "./product.css";
 import toast from "react-hot-toast";
 import { addToCart } from "../../redux/cart-reducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
-import "./../../components/productCard/product.css";
+import "../../components/productCard/product.css";
 import ProductCard from "../../components/productCard/ProductCard";
 import "../home/home.css";
 import {
   useLatestProductsByBrandQuery,
-  useLatestProductsQuery,
 } from "../../redux/api/productsApi";
 import { server } from "../../redux/store";
+import { CartItem, Product } from "../../types/types";
+
 const Product = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
-  const { id } = useParams();
-  const { isLoading, data, isError, error, isSuccess } =
-    useLatestProductsQuery("");
-  const addToCartHandler = (cartItem) => {
+  const [product, setProduct] = useState<Product | null>(null); 
+  const { id } = useParams<{ id: string }>(); 
+  const addToCartHandler = (cartItem: CartItem) => { 
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));
     toast.success("Added to cart");
     navigate("/cart");
   };
 
-  const { data: brandData } = useLatestProductsByBrandQuery("");
-  // const {isLoading,data,isSuccess,error,isError}=useGetProductsQuery('')
+  const {isLoading, data: brandData } = useLatestProductsByBrandQuery(""); 
   console.log(brandData);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.get<{ product: Product }>(
           `http://localhost:4000/api/v1/product/${id}`
         );
         setProduct(response.data.product);
@@ -55,9 +53,25 @@ const Product = () => {
   if (!product) {
     return <div>Loading...</div>;
   }
-
-  const settings = {
-    customPaging: function (i) {
+  interface SliderSettings {
+    customPaging: (i: number) => JSX.Element;
+    dots: boolean;
+    dotsClass: string;
+    infinite: boolean;
+    speed: number;
+    slidesToShow: number;
+    slidesToScroll: number;
+    initialSlide?: number;
+    arrows?: boolean;
+    centerPadding?: string;
+    responsive?: {
+      breakpoint: number;
+      settings: SliderSettings;
+    }[];
+  }
+  
+  var settings: SliderSettings = { // Type annotation for settings
+    customPaging: function (i: number) {
       return (
         <a>
           <img
@@ -66,11 +80,6 @@ const Product = () => {
             className="product-active-img"
             style={{ height: "60px", width: "80px" }}
           />
-          {/* <img
-            src={data?.latestProductsByBrand?.PROLIGHT[i]}
-            style={{ height: "60px", width: "80px" }}
-            alt={`Slide ${i}`}
-          /> */}
         </a>
       );
     },
@@ -81,7 +90,8 @@ const Product = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  var ssettings = {
+
+  var settings: SliderSettings = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -98,6 +108,11 @@ const Product = () => {
           slidesToScroll: 3,
           infinite: true,
           dots: true,
+          customPaging: function (): JSX.Element {
+            throw new Error("Function not implemented.");
+          },
+          dotsClass: "",
+          speed: 0
         },
       },
       {
@@ -106,6 +121,13 @@ const Product = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
+          customPaging: function (): JSX.Element {
+            throw new Error("Function not implemented.");
+          },
+          dots: false,
+          dotsClass: "",
+          infinite: false,
+          speed: 0
         },
       },
       {
@@ -113,10 +135,22 @@ const Product = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          customPaging: function (): JSX.Element {
+            throw new Error("Function not implemented.");
+          },
+          dots: false,
+          dotsClass: "",
+          infinite: false,
+          speed: 0
         },
       },
     ],
+    customPaging: function (): JSX.Element {
+      throw new Error("Function not implemented.");
+    },
+    dotsClass: ""
   };
+
   return (
     <div className="bg-blue">
       <div className="product-top container">
@@ -165,11 +199,10 @@ const Product = () => {
                       photo: product.displayPhoto[0],
                       stock: product.stock,
                       quantity: 1,
-                      category:product.category,
-                      
-                  dimension:product.dimensions,
-                  model:product.productModel,
-                  brand:product.brand,
+                      category: product.category,
+                      dimension: product.dimensions,
+                      model: product.productModel,
+                      brand: product.brand,
                     })
                   }
                   className="add-cart"
@@ -243,11 +276,11 @@ const Product = () => {
         </div>
       </div>
       <h3 className="related">Related Poducts</h3>
-      {isSuccess && (
+      {!isLoading && (
         // <MultipleItems>
         <div className=" slider-container">
           {product.brand === "PROLITE" ? (
-            <Slider {...ssettings}>
+            <Slider {...settings}>
               {brandData?.latestProductsByBrand?.Prolite?.map((i: Product) => (
                 <ProductCard
                   key={i._id}
@@ -260,12 +293,11 @@ const Product = () => {
                   photos={i.photos}
                   dimension={i.dimensions}
                   model={i.productModel}
-                  brand={i.brand}
-                />
+                  brand={i.brand} displayPhoto={[]}                />
               ))}
             </Slider>
           ) : (
-            <Slider {...ssettings}>
+            <Slider {...settings}>
               {brandData?.latestProductsByBrand?.Autoglo?.map((i: Product) => (
                 <ProductCard
                   key={i._id}
@@ -278,8 +310,7 @@ const Product = () => {
                   photos={i.photos}
                   dimension={i.dimensions}
                   model={i.productModel}
-                  brand={i.brand}
-                />
+                  brand={i.brand} displayPhoto={[]}                />
               ))}
             </Slider>
           )}
@@ -297,3 +328,19 @@ const Product = () => {
 };
 
 export default Product;
+// interface SliderSettings { // Interface for SliderSettings
+//   customPaging: (i: number) => JSX.Element;
+//   dots: boolean;
+//   dotsClass: string;
+//   infinite: boolean;
+//   speed: number;
+//   slidesToShow: number;
+//   slidesToScroll: number;
+//   initialSlide?: number;
+//   arrows?: boolean;
+//   centerPadding?: string;
+//   responsive?: {
+//     breakpoint: number;
+//     settings: SliderSettings;
+//   }[];
+// }

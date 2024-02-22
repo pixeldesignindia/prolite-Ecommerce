@@ -1,11 +1,10 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
-import { UserReducerInitialState } from "../../../types/reducerTypes";
 import { useSelector } from "react-redux";
+import { UserReducerInitialState } from "../../../types/reducerTypes";
 import { useProductDetailsQuery, useUpdateProductMutation, useDeleteProductMutation } from "../../../redux/api/productsApi";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
 import { server } from "../../../redux/store";
 import { responseToast } from "../../../utils/features";
 
@@ -20,25 +19,16 @@ const Productmanagement = () => {
   const [priceUpdate, setPriceUpdate] = useState<number>(0);
   const [stockUpdate, setStockUpdate] = useState<number>(0);
   const [nameUpdate, setNameUpdate] = useState<string>("");
-  const [brandUpdate, setBrandUpdate] = useState<string>("");
   const [dimensionsUpdate, setDimensionsUpdate] = useState<string>("");
   const [tagsUpdate, setTagsUpdate] = useState<string[]>([]);
   const [productModelUpdate, setProductModelUpdate] = useState<string>("");
   const [categoryUpdate, setCategoryUpdate] = useState<string>("");
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const [photos, setPhotos] = useState<File[]>([]);
-  const [displayPhotoFile, setDisplayPhotoFile] = useState<File | null>(null);
 
   const [updateProduct] = useUpdateProductMutation();
   const [deleteProduct] = useDeleteProductMutation();
 
-  const changeDisplayPhotoHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setDisplayPhotoFile(file);
-    }
-  };
-  
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = e.target.files;
     if (!selectedFiles) return;
@@ -61,7 +51,7 @@ const Productmanagement = () => {
       newPhotos.push(file);
     }
 
-    setPhotos(newPhotos); 
+    setPhotos(newPhotos);
   };
   
 
@@ -72,22 +62,19 @@ const Productmanagement = () => {
     formData.set("price", priceUpdate.toString());
     formData.set("stock", stockUpdate.toString());
     formData.set("category", categoryUpdate);
-    formData.set("brand", brandUpdate);
     formData.set("dimensions", dimensionsUpdate);
     formData.set("productModel", productModelUpdate);
     formData.set("description", data?.product.description || ""); // Ensure to send existing description data
-    if (displayPhotoFile) {
-      formData.set("displayPhoto", displayPhotoFile);
-    }
 
     if (tagsUpdate.length > 0) {
-      tagsUpdate.forEach((tag, index) => {
+      tagsUpdate.forEach((tag) => {
         formData.append("tags", tag);
       });
     }
-    photos.forEach((photo, index) => {
+    if(photos){
+    photos.forEach((photo) => {
       formData.append("photos", photo);
-    });
+    });}
 
     const res = await updateProduct({
       formData,
@@ -115,8 +102,6 @@ const Productmanagement = () => {
       setDimensionsUpdate(data.product.dimensions);
       setProductModelUpdate(data.product.productModel);
       setTagsUpdate(data.product.tags);
-      setPhotoPreviews(data.product.photos);
-      setDisplayPhotoFile(data.product.displayPhoto);
     }
   }, [data]);
 
@@ -132,7 +117,7 @@ const Productmanagement = () => {
               <strong>ID -{data?.product?._id}</strong>
               <img src={`${server}/${data?.product?.displayPhoto[0]}`} alt="Product" />
               <p>{data?.product?.name}</p>
-              {data?.product?.stock > 0 ? (
+              {data?.product?.stock ?? 0 > 0 ? (
                 <span className="green">{data?.product?.stock} Available</span>
               ) : (
                 <span className="red"> Not Available</span>
@@ -181,16 +166,7 @@ const Productmanagement = () => {
                     onChange={(e) => setCategoryUpdate(e.target.value)}
                   />
                 </div>
-                <div>
-                  <label>Brand</label>
-                  <select
-                    value={brandUpdate}
-                    onChange={(e) => setBrandUpdate(e.target.value)}
-                  >
-                    <option value="autoglo">Autoglo</option>
-                    <option value="prolite">Prolite</option>
-                  </select>
-                </div>
+
                 <div>
                   <label>Dimensions</label>
                   <input
@@ -219,25 +195,18 @@ const Productmanagement = () => {
                   />
                 </div>
                 <p>(Please add 2 tags minimum. separated by ' , ')</p>
-                {/* <div>
-                  <label>Display Photo</label>
+
+                <div>
+                  <label>Photos</label>
                   <input
                     type="file"
-                    onChange={changeDisplayPhotoHandler}
+                    onChange={changeImageHandler}
+                    multiple 
                   />
-                </div> */}
-            <div>
-              <label>Photos</label>
-              <input
-                type="file"
-                required
-                onChange={changeImageHandler}
-                multiple 
-              />
-            </div>
+                </div>
 
-            {photoPreviews.map((preview, index) => (
-              <img key={index} src={`${server}/${preview}`} alt={`Image ${index}`} />
+                {photoPreviews.map((preview, index) => (
+              <img key={index} src={preview} alt={`Image ${index}`} />
             ))}
                 <button type="submit">Update</button>
               </form>

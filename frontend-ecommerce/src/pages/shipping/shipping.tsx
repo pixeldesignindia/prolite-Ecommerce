@@ -1,5 +1,4 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { BiArrowBack } from "react-icons/bi";
+import  { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,10 +13,10 @@ import { FaRegEdit } from "react-icons/fa";
 
 
 const Shipping = () => {
-  const [addresses, setAddresses] = useState([]);
-  const [selectedAddress, setSelectedAddress] = useState(null);
-  const [showForm, setShowForm] = useState(true);
-  const [editMode, setEditMode] = useState(null); 
+  const [addresses, setAddresses] = useState<any[]>([]); // Define addresses as an array of any type
+  const [selectedAddress, setSelectedAddress] = useState<any | null>(null); // Define selectedAddress as string or null
+  const [showForm, setShowForm] = useState<boolean>(true); // Define showForm as a boolean
+  const [editMode, setEditMode] = useState<string | null>(null); // Define editMode as string or null
   const { cartItems, total } = useSelector((state: RootState) => state.cartReducer);
   const { user } = useSelector((state: { userReducer: UserReducerInitialState }) => state.userReducer);
   const navigate = useNavigate();
@@ -77,9 +76,9 @@ const Shipping = () => {
     }
   };
 
-  const deleteAddress = async (_id) => {
+  const deleteAddress = async (_id: string) => { // Define _id as string
     try {
-      const addressData = await axios.delete(
+      await axios.delete(
         `${server}/api/v1/address/${_id}`
       );
       getAddress();
@@ -104,7 +103,7 @@ const Shipping = () => {
   const addAddress = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const data = await axios.post(`${server}/api/v1/address/new`, {
+      await axios.post(`${server}/api/v1/address/new`, {
         user: user?._id,
         name: shippingInfo.name,
         phoneNumber: shippingInfo.phoneNumber,
@@ -124,14 +123,14 @@ const Shipping = () => {
         pinCode: "",
       });
       setShowForm(true); 
-      getAddress()
+      getAddress();
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
     }
   };
 
-  const editAddress = (id) => {
+  const editAddress = (id: string) => { // Define id as string
     setEditMode(id);
     const editedAddress = addresses.find((address) => address._id === id);
     if (editedAddress) {

@@ -1,21 +1,6 @@
 
-// import multer from "multer";
-// import { v4 as uuid } from "uuid";
-
-// const storage = multer.diskStorage({
-//   destination(req, file, callback) {
-//     callback(null, "uploads");
-//   },
-//   filename(req, file, callback) {
-//     const id = uuid();
-//     const extName = file.originalname.split(".").pop();
-//     callback(null, `${id}.${extName}`);
-//   },
-// });
-
 // export const singleUpload = multer({ storage }).single("photo");
 
-// export const multipleUpload = multer({ storage }).array('photos');
 // import { Request, Response, NextFunction } from "express"; // Import Request, Response, and NextFunction types from express
 // import multer from "multer";
 // import { v4 as uuid } from "uuid";
@@ -117,6 +102,7 @@ const storage = multer.diskStorage({
     }
 });
 
+
 const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
     if (file.fieldname === "photos") {
         (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'|| file.mimetype ==="image/webp")
@@ -147,7 +133,7 @@ const upload = multer({
     { name: 'photos', maxCount: 6 },
     { name: 'displayPhoto', maxCount:1}
 ]);
-console.log(upload)
+
 export const uploadMiddleware = (req: Request, res: Response, next: NextFunction) => {
     upload(req, res, function (err: any) {
         if (err instanceof multer.MulterError) {
@@ -162,4 +148,4 @@ export const uploadMiddleware = (req: Request, res: Response, next: NextFunction
         next();
     });
 };
-
+ export const multipleUpload = multer({ storage }).array('photos');

@@ -1,9 +1,7 @@
 import './search.css'
-import React, { useEffect, useState } from "react";
+import  {  useState } from "react";
 import {
-  useCategoriesQuery,
   useCategoryOfBrandQuery,
-  useLatestProductsByBrandQuery,
   useSearchProductsQuery,
 } from "../../redux/api/productsApi";
 import { CustomError } from "../../types/api-types";
@@ -66,7 +64,7 @@ const Search = () => {
         <h3 style={{color:'#014FB3'}} >Filters</h3>
         <div >
           <h5>Sort</h5>
-          <select value={sort} onChange={(e) => setSort(e.target.value)}>
+          <select value={sort} onChange={(e) => setSort(e.target.value)} className='s-m-t'>
             <option value="">None</option>
             <option value="asc">Price (Low to High)</option>
             <option value="dsc">Price (High to Low)</option>
@@ -81,7 +79,7 @@ const Search = () => {
             max={50000}
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
-            className='range-input'
+            className='range-input s-m-t'
           />
         </div>
 
@@ -89,11 +87,11 @@ const Search = () => {
           <h5>Category</h5>
           <select
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={(e) => setCategory(e.target.value)} className='s-m-t'
           >
             <option value="">ALL</option>
             {!loadingCategories &&
-              categoriesResponse?.categoriesByBrand[0]?.categories.map((i) => (
+              categoriesResponse?.categoriesByBrand[0]?.categories.map((i:string) => (
                 <option key={i} value={i}>
                   {i.toUpperCase()}
                 </option>

@@ -2,7 +2,6 @@ import { FaTrash } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
-
 import {
   useDeleteOrderMutation,
   useOrderDetailsQuery,
@@ -19,7 +18,12 @@ const defaultData: Order = {
     state: "",
     country: "",
     pinCode: "",
+    name:'',
+    phoneNumber:'',
+    createdAt: "",
+    
   },
+  createdAt: "",
   status: "",
   subtotal: 0,
   discount: 0,
@@ -34,13 +38,12 @@ const defaultData: Order = {
 const TransactionManagement = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
 
-  const params = useParams();
+  const params = useParams<{ id: string }>();
   const navigate = useNavigate();
 
   const { isLoading, data, isError } = useOrderDetailsQuery(params.id!);
-console.log(isLoading, data, isError)
+
   const {
-    // shippingInfo: { address, city, state, country, pinCode },
     orderItems,
     user: { name },
     status,
@@ -87,7 +90,7 @@ console.log(isLoading, data, isError)
             >
               <h2>Order Items</h2>
 
-              {orderItems.map((i) => (
+              {orderItems.map((i:any) => (
                 <ProductCard
                   key={i._id}
                   name={i.name}
@@ -96,6 +99,10 @@ console.log(isLoading, data, isError)
                   _id={i._id}
                   quantity={i.quantity}
                   price={i.price}
+                  brand={i.brand}
+                  dimension={i.dimension}
+                  model={i.model}
+                  category={i.category}
                 />
               ))}
             </section>
@@ -144,13 +151,14 @@ console.log(isLoading, data, isError)
   );
 };
 
-const ProductCard = ({
+const ProductCard: React.FC<OrderItem> = ({
   name,
   photo,
   price,
   quantity,
   productId,
-}: OrderItem) => (
+
+}) => (
   <div className="transaction-product-card">
     <img src={photo} alt={name} />
     <Link to={`/product/${productId}`}>{name}</Link>
