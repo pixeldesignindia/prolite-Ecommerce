@@ -26,6 +26,7 @@ import orderRouter from "./routes/order.js"
 import paymentRouter from "./routes/payment.js"
 import statisticsRouter from "./routes/statistics.js"
 import path from "path";
+import { fileURLToPath } from "url";
 const app = express();
 app.use(express.json());
 app.use(cors({
@@ -41,11 +42,17 @@ app.use("/api/v1/payments",paymentRouter)
 app.use("/api/v1/statistics",statisticsRouter)
 
 app.use("/uploads", express.static("uploads"));
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "ui")));
+
+// Define a route for the homepage
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "ui/index.html"));
 });
+
 app.use(errorMiddleware);
 app.listen(port, () => {
 console.log(`express listening on port ${port}`);

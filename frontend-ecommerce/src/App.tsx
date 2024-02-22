@@ -19,7 +19,7 @@ const Login = lazy(() => import("./pages/login/Login"));
 const Cart = lazy(() => import("./pages/cart/Cart"));
 const Prolite = lazy(() => import("./pages/search/Prolite"));
 const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
-const Shipping = lazy(() => import("./pages/shipping/shipping"));
+const Shipping = lazy(() => import("./pages/shipping/Shipping"));
 const Orders = lazy(()=>import('./pages/orders/Orders'))
 const Checkout = lazy(()=>import('./pages/checkOut/Checkout'))
 const Delivery = lazy(()=>import('./pages/delivery/Delivery'))
@@ -35,9 +35,9 @@ const Barcharts = lazy(() => import("./pages/admin/charts/Barcharts"));
 const Piecharts = lazy(() => import("./pages/admin/charts/Piecharts"));
 const Linecharts = lazy(() => import("./pages/admin/charts/Linecharts"));
 const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
-const Coupon = lazy(() => import("./pages/admin/apps/coupon"));
-const Stopwatch = lazy(() => import("./pages/admin/apps/stopwatch"));
-const Toss = lazy(() => import("./pages/admin/apps/toss"));
+const Coupon = lazy(() => import("./pages/admin/apps/Coupon"));
+const Stopwatch = lazy(() => import("./pages/admin/apps/Stopwatch"));
+const Toss = lazy(() => import("./pages/admin/apps/Toss"));
 const Profile = lazy(() => import("./pages/profile/Profile"));
 const Myorder = lazy(() => import("./pages/profile/Myorders"));
 const NewProductPage = lazy(() => import("./pages/admin/management/Newproduct"));
@@ -72,8 +72,7 @@ else{dispatch(userNotExist())}
           <Route path="/refund" element={<Refund/>} />
           <Route path="/terms" element={<Terms/>} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
-           {/* Logged In User Routes */}
-          {/* <Route element={<ProtectedRoute isAuthenticated={user ? true : false} />}> */}
+     
             <Route path="/prolite" element={<Prolite />} />
             <Route path="/autoglo" element={<Autoglo/>} />
             <Route path="/profile" element={<Profile />} />
