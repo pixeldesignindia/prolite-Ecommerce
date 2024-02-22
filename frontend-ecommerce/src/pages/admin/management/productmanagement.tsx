@@ -19,7 +19,6 @@ const Productmanagement = () => {
   const [priceUpdate, setPriceUpdate] = useState<number>(0);
   const [stockUpdate, setStockUpdate] = useState<number>(0);
   const [nameUpdate, setNameUpdate] = useState<string>("");
-  const [brandUpdate, setBrandUpdate] = useState<string>("");
   const [dimensionsUpdate, setDimensionsUpdate] = useState<string>("");
   const [tagsUpdate, setTagsUpdate] = useState<string[]>([]);
   const [productModelUpdate, setProductModelUpdate] = useState<string>("");
@@ -63,7 +62,6 @@ const Productmanagement = () => {
     formData.set("price", priceUpdate.toString());
     formData.set("stock", stockUpdate.toString());
     formData.set("category", categoryUpdate);
-    formData.set("brand", brandUpdate);
     formData.set("dimensions", dimensionsUpdate);
     formData.set("productModel", productModelUpdate);
     formData.set("description", data?.product.description || ""); // Ensure to send existing description data
@@ -168,16 +166,7 @@ const Productmanagement = () => {
                     onChange={(e) => setCategoryUpdate(e.target.value)}
                   />
                 </div>
-                <div>
-                  <label>Brand</label>
-                  <select
-                    value={brandUpdate}
-                    onChange={(e) => setBrandUpdate(e.target.value)}
-                  >
-                    <option value="autoglo">Autoglo</option>
-                    <option value="prolite">Prolite</option>
-                  </select>
-                </div>
+
                 <div>
                   <label>Dimensions</label>
                   <input
