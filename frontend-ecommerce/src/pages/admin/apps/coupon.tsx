@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { MdOutlineDeleteForever } from "react-icons/md";
@@ -21,7 +21,7 @@ const Coupon = () => {
       code: prefix,
       amount: amount,
     })
-    .then(response => {
+    .then(() => {
       setCoupon(prefix);
       setPrefix("");
       setAmount(0);
