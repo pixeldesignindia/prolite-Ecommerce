@@ -27,7 +27,7 @@ export const newCoupon =  TryCatch(async (req,res,next) => {
     
     if(!amount||!code) return next(new ErrorHandler("Please enter all fields",400))
 
-    await Coupon.create(code,amount)
+    await Coupon.create({code,amount})
 
     return res.status(201).json({status:true,message:"sucessfully create coupon"})
 

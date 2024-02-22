@@ -6,7 +6,7 @@ import axios from "axios";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
-    baseUrl:'http://localhost:4000/api/v1/users',
+    baseUrl:`${process.env.VITE_API_URL}api/v1/users`,
   }),
   tagTypes:['users'],
   endpoints: (builder) => ({

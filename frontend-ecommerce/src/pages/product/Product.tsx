@@ -38,7 +38,7 @@ const Product = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get<{ product: Product }>(
-          `http://localhost:4000/api/v1/product/${id}`
+          `${process.env.VITE_API_URL}api/v1/product/${id}`
         );
         setProduct(response.data.product);
         console.log(response.data.product);

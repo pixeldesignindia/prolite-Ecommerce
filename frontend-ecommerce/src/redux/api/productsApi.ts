@@ -5,7 +5,7 @@ import { CategoriesResponse, ProductsResponse, SearchProductResponse,SearchProdu
 export const latestProductApi = createApi({
   reducerPath: "latestProductApi",
   baseQuery: fetchBaseQuery({
-    baseUrl:'http://localhost:4000/api/v1/product/',
+    baseUrl:`${process.env.VITE_API_URL}api/v1/product/`,
     }),
   tagTypes:['product'],
   endpoints: (builder) => ({

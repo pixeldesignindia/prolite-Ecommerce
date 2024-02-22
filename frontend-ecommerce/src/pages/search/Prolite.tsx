@@ -115,7 +115,7 @@ const Search = () => {
         
         
         <div className="container">
-       
+      
             {productLoading ? (
           // <Skeleton length={10} />
           <p>Loading Product...</p>
