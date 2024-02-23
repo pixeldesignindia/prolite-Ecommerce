@@ -38,7 +38,7 @@ const Product = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get<{ product: Product }>(
-          `http://localhost:4000/api/v1/product/${id}`
+          `${import.meta.env.VITE_API_URL}api/v1/product/${id}`
         );
         setProduct(response.data.product);
         console.log(response.data.product);
@@ -75,7 +75,7 @@ const Product = () => {
       return (
         <a>
           <img
-            src={`${server}/${product?.photos[i]}`}
+            src={`${server}/${product?.displayPhoto[i]}`}
             alt={`Slide`}
             className="product-active-img"
             style={{ height: "60px", width: "80px" }}
@@ -293,7 +293,8 @@ const Product = () => {
                   photos={i.photos}
                   dimension={i.dimensions}
                   model={i.productModel}
-                  brand={i.brand} displayPhoto={[]}                />
+                  brand={i.brand}
+                  displayPhoto={i.displayPhoto}                />
               ))}
             </Slider>
           ) : (
