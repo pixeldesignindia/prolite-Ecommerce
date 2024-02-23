@@ -49,7 +49,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "ui")));
 
 // Define a route for the homepage
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "ui/index.html"));
 });
 
