@@ -51,5 +51,6 @@ nav a{text-decoration: none; font-size: 1rem; color: black;}
     .link-center{width: fit-content;}
     .res-link , .admin-logo{display: flex; flex-direction: column; justify-content: center; align-items: center;}
     .logout{width: fit-content !important;}
-    .admin-logo{margin-bottom:1.5rem ;}
+    .admin-logo{margin:1.2rem 0 1.5rem 0;}
+    .link-center{gap: 1.2rem;}
   }

@@ -47,7 +47,7 @@ toast.success(res.data.message);
         <h1>Login</h1>
         <div>
             <label>Gender</label>
-            <select value={gender} onChange={(e)=>setGender(e.target.value)}>
+            <select value={gender} onChange={(e)=>setGender(e.target.value)} className='login-select'>
                 <option value="">Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>

@@ -70,17 +70,17 @@ const Product = () => {
     }[];
   }
   
-  var settings: SliderSettings = { // Type annotation for settings
+  var seettings: SliderSettings = { // Type annotation for settings
     customPaging: function (i: number) {
       return (
         <a>
-          <img
-            src={`${server}/${product?.displayPhoto[i]}`}
-            alt={`Slide`}
-            className="product-active-img"
-            style={{ height: "60px", width: "80px" }}
-          />
-        </a>
+        <img
+          src={`${server}/${product?.photos[i]}`} // Assuming `product.photos` is an array of image URLs
+          alt={`Slide`}
+          className="product-active-img"
+          style={{ height: "60px", width: "80px" }}
+        />
+      </a>
       );
     },
     dots: true,
@@ -100,51 +100,51 @@ const Product = () => {
     initialSlide: 0,
     arrows: true,
     centerPadding: "100px",
-    // responsive: [
-    //   {
-    //     breakpoint: 1024,
-    //     settings: {
-    //       slidesToShow: 3,
-    //       slidesToScroll: 3,
-    //       infinite: true,
-    //       dots: true,
-    //       customPaging: function (): JSX.Element {
-    //         throw new Error("Function not implemented.");
-    //       },
-    //       dotsClass: "",
-    //       speed: 0
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 600,
-    //     settings: {
-    //       slidesToShow: 2,
-    //       slidesToScroll: 2,
-    //       initialSlide: 2,
-    //       customPaging: function (): JSX.Element {
-    //         throw new Error("Function not implemented.");
-    //       },
-    //       dots: false,
-    //       dotsClass: "",
-    //       infinite: false,
-    //       speed: 0
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 480,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //       customPaging: function (): JSX.Element {
-    //         throw new Error("Function not implemented.");
-    //       },
-    //       dots: false,
-    //       dotsClass: "",
-    //       infinite: false,
-    //       speed: 0
-    //     },
-    //   },
-    // ],
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+          customPaging: function (): JSX.Element {
+            throw new Error("Function not implemented.");
+          },
+          dotsClass: "",
+          speed: 0
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+          customPaging: function (): JSX.Element {
+            throw new Error("Function not implemented.");
+          },
+          dots: false,
+          dotsClass: "",
+          infinite: false,
+          speed: 0
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          customPaging: function (): JSX.Element {
+            throw new Error("Function not implemented.");
+          },
+          dots: false,
+          dotsClass: "",
+          infinite: false,
+          speed: 0
+        },
+      },
+    ],
     customPaging: function (): JSX.Element {
       throw new Error("Function not implemented.");
     },
@@ -157,7 +157,7 @@ const Product = () => {
         <div className="row rowBlock">
           <div className="left-img-section-product col-6 w100">
             <div className="slider-container-product">
-              <Slider {...settings}>
+              <Slider {...seettings}>
                 {product?.photos?.map((url, index) => (
                   <div key={index}>
                     <img
@@ -181,14 +181,14 @@ const Product = () => {
                   <p className="card-text">&#x20b9;{product.price}</p>
                 </div>
                 <p className="des">
-                  {/* {product.description} */}
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  {product.description}
+                  {/* Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Consectetur, aut praesentium. Tempore illo dolores adipisci
                   omnis provident iure, placeat quasi.
                   <p style={{ paddingTop: "1rem" }}>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Necessitatibus eaque amet, excepturi libero sapiente labore?
-                  </p>
+                  </p> */}
                 </p>
                 <button
                   onClick={() =>
