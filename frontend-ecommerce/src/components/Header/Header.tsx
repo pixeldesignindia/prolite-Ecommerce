@@ -53,7 +53,7 @@ const Header = ({ user }: propestype) => {
             </div>
       
       <div className='admin-logo'>
-      <Link to={"/cart"}>
+      <Link to={"/cart"} style={{display:'flex',alignItems:'center'}}>
       <FaShoppingCart style={{color:'#1176D0'}} />
         {cartItems && cartItems.length>=1 && cartItems.length}
       </Link>

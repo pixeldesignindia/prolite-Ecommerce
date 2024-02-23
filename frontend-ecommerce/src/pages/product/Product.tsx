@@ -100,51 +100,51 @@ const Product = () => {
     initialSlide: 0,
     arrows: true,
     centerPadding: "100px",
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-          customPaging: function (): JSX.Element {
-            throw new Error("Function not implemented.");
-          },
-          dotsClass: "",
-          speed: 0
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-          customPaging: function (): JSX.Element {
-            throw new Error("Function not implemented.");
-          },
-          dots: false,
-          dotsClass: "",
-          infinite: false,
-          speed: 0
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          customPaging: function (): JSX.Element {
-            throw new Error("Function not implemented.");
-          },
-          dots: false,
-          dotsClass: "",
-          infinite: false,
-          speed: 0
-        },
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       slidesToScroll: 3,
+    //       infinite: true,
+    //       dots: true,
+    //       customPaging: function (): JSX.Element {
+    //         throw new Error("Function not implemented.");
+    //       },
+    //       dotsClass: "",
+    //       speed: 0
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 2,
+    //       initialSlide: 2,
+    //       customPaging: function (): JSX.Element {
+    //         throw new Error("Function not implemented.");
+    //       },
+    //       dots: false,
+    //       dotsClass: "",
+    //       infinite: false,
+    //       speed: 0
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //       customPaging: function (): JSX.Element {
+    //         throw new Error("Function not implemented.");
+    //       },
+    //       dots: false,
+    //       dotsClass: "",
+    //       infinite: false,
+    //       speed: 0
+    //     },
+    //   },
+    // ],
     customPaging: function (): JSX.Element {
       throw new Error("Function not implemented.");
     },
