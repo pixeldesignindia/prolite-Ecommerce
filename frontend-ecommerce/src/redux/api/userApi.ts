@@ -37,7 +37,7 @@ export const userApi = createApi({
 export const getUser = async (id: string) => {
   try {
     const { data } = await axios.get(
-    `http://localhost:4000/api/v1/users/${id}`
+      `${import.meta.env.VITE_API_URL}api/v1/users/${id}`
     );
     return data;
   } catch(error) {console.log(error)}
