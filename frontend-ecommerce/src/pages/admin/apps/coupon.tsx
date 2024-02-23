@@ -17,7 +17,7 @@ const Coupon = () => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
   const generateCoupon = () => {
-    axios.post(`${process.env.VITE_API_URL}api/v1/payments/new/coupon`, {
+    axios.post(`${import.meta.env.VITE_API_URL}api/v1/payments/new/coupon`, {
       code: prefix,
       amount: amount,
     })
@@ -34,7 +34,7 @@ const Coupon = () => {
   };
 
   const getCoupons = () => {
-    axios.get(`${process.env.VITE_API_URL}api/v1/payments/Coupons/all`)
+    axios.get(`${import.meta.env.VITE_API_URL}api/v1/payments/Coupons/all`)
     .then(response => {
       console.log(response);
       setCoupons(response.data.coupons);
@@ -48,7 +48,7 @@ const Coupon = () => {
   };
   
   const deleteCoupon = (id: string) => {
-    axios.delete(`${process.env.VITE_API_URL}api/v1/payments/coupon/${id}`)
+    axios.delete(`${import.meta.env.VITE_API_URL}api/v1/payments/coupon/${id}`)
       .then(() => getCoupons())
       .catch(error => {
         console.error("Error deleting coupon:", error);

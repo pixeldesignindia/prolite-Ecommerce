@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header/Header";
 import { Toaster } from "react-hot-toast";
@@ -58,7 +58,7 @@ else{dispatch(userNotExist())}
 })},[]);
 
   return (
-    <HashRouter>
+    <BrowserRouter >
       <Suspense fallback={<h5>Loading...</h5>}>
         <Header user={user || null}/>
         <Routes>
@@ -105,7 +105,7 @@ else{dispatch(userNotExist())}
         
       </Suspense>
       <Toaster position="top-right"/>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

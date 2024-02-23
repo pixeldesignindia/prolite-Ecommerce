@@ -9,7 +9,7 @@ import {
 export const dashboardApi = createApi({
   reducerPath: "dashboardApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.VITE_API_URL}api/v1/statistics/`,
+    baseUrl: `${import.meta.env.VITE_API_URL}api/v1/statistics/`,
   }),
   endpoints: (builder) => ({
     stats: builder.query<StatsResponse, string>({
