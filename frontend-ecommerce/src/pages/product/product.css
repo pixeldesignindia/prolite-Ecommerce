@@ -3,7 +3,7 @@
 .slider-container-product .slick-arrow{display: none !important;}
 .slider-container-product .slick-active.slick-current{display: flex; justify-content: center;align-items: center;}
 .product-top .slick-list{margin: 0 !important;}
-.product-active-img{width: 23rem !important;}
+.product-active-img{width: 23rem !important;max-height: 17rem;}
 li a .product-active-img{width: 90px !important;}
 .slider-container-product .slick-dots{width: 100%;display: flex;gap:.8rem;right: 200px;bottom: -10px;left: -80px;}
 .product-top-text{display: flex;flex-direction: column;gap: .3rem;}

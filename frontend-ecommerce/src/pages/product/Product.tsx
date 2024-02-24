@@ -320,7 +320,7 @@ const Product = () => {
                   photos={i.photos}
                   dimension={i.dimensions}
                   model={i.productModel}
-                  brand={i.brand} displayPhoto={[]}                />
+                  brand={i.brand} displayPhoto={i.displayPhoto}                />
               ))}
             </Slider>
           )}
