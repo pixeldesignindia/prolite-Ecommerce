@@ -78,7 +78,7 @@ const Product = () => {
           src={`${server}/${product?.photos[i]}`} // Assuming `product.photos` is an array of image URLs
           alt={`Slide`}
           className="product-active-img"
-          style={{ height: "60px", width: "80px" }}
+          style={{ height: "80px", width: "110px" }}
         />
       </a>
       );
