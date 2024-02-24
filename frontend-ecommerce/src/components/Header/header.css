@@ -45,7 +45,7 @@ nav a{text-decoration: none; font-size: 1rem; color: black;}
   }
   .profile-img{height: 30px;width: 30px; border-radius: 50%;}
   .navbar-expand-lg .navbar-nav .nav-link{display: flex; justify-content: center; align-items: center;}
-
+  .navbar-toggler:focus{box-shadow: none;}
 
   @media(max-width:767px){
     .link-center{width: fit-content;}
