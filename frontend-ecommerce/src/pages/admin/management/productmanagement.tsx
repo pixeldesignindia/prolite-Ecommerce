@@ -25,7 +25,8 @@ const Productmanagement = () => {
   const [categoryUpdate, setCategoryUpdate] = useState<string>("");
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const [photos, setPhotos] = useState<File[]>([]);
-
+  const[brand,setBrand] = useState<string>('');
+  const[description,setDescription] = useState<string>('');
   const [updateProduct] = useUpdateProductMutation();
   const [deleteProduct] = useDeleteProductMutation();
 
@@ -63,8 +64,9 @@ const Productmanagement = () => {
     formData.set("stock", stockUpdate.toString());
     formData.set("category", categoryUpdate);
     formData.set("dimensions", dimensionsUpdate);
+    formData.set("brand",brand);
     formData.set("productModel", productModelUpdate);
-    formData.set("description", data?.product.description || ""); // Ensure to send existing description data
+    formData.set("description", description);
 
     if (tagsUpdate.length > 0) {
       tagsUpdate.forEach((tag) => {
@@ -101,6 +103,8 @@ const Productmanagement = () => {
       setDimensionsUpdate(data.product.dimensions);
       setProductModelUpdate(data.product.productModel);
       setTagsUpdate(data.product.tags);
+      setBrand(data.product.brand);
+      setDescription(data.product.description);
     }
   }, [data]);
 
@@ -157,6 +161,15 @@ const Productmanagement = () => {
                   />
                 </div>
                 <div>
+                  <label>Description</label>
+                  <input
+                    type="text"
+                    placeholder="Description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </div>
+                <div>
                   <label>Category</label>
                   <input
                     type="text"
@@ -165,7 +178,6 @@ const Productmanagement = () => {
                     onChange={(e) => setCategoryUpdate(e.target.value)}
                   />
                 </div>
-
                 <div>
                   <label>Dimensions</label>
                   <input

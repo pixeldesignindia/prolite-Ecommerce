@@ -156,19 +156,28 @@ const Product = () => {
       <div className="product-top container">
         <div className="row rowBlock">
           <div className="left-img-section-product col-6 w100">
-            <div className="slider-container-product">
-              <Slider {...seettings}>
-                {product?.photos?.map((url, index) => (
-                  <div key={index}>
-                    <img
-                      src={`${server}/${url}`}
-                      alt={`Slide ${index}`}
+            
+            {product?.photos?.length===1  ? <div className="center mx-h-img" style={{height:'100%'}}><img
+                      src={`${server}/${product.photos[0]}`}
+                      alt='product'
                       className="product-active-img"
-                    />
+                    /></div>:
+                    <div className="slider-container-product">
+                    <Slider {...seettings}>
+                    {product?.photos?.map((url, index) => (
+                      <div key={index}>
+                        <img
+                          src={`${server}/${url}`}
+                          alt={`Slide ${index}`}
+                          className="product-active-img"
+                        />
+                      </div>
+                    ))}
+                  </Slider>
                   </div>
-                ))}
-              </Slider>
-            </div>
+            }
+              
+            
           </div>
           <div className="product-data-right col-6 w100">
             <div className="center" style={{ width: "100%" }}>
