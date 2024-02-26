@@ -13,7 +13,7 @@ option {font-size: 1rem;  background-color: #054aa4;font-family: Montserrat;}
 .s-m-t{margin-top: 1rem;}
 
 @media(max-width:500px){
-    .product-search-page{display: block;padding: 1rem;}
+    .product-search-page{display: block;padding: 1.7rem 1rem;}
     .product-search-page > aside{width: 100%;display: flex;align-items: center;flex-direction: row;border-right:none;padding: 0;}
     .product-search-page > aside >h3{display: none;}
     .product-search-page > aside >div{width: 33%;}
