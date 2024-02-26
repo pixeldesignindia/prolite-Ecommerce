@@ -37,7 +37,7 @@ const CartItem = ({
           <p>Model : {model}</p>
         </div>
 
-        <p>Price : <span className="green b">₹{price}</span></p>
+        <p>Price : <span className=" b" style={{color:'#46923c'}}>₹{price}</span></p>
       </article>
 
       

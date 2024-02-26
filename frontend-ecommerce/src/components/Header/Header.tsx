@@ -1,5 +1,5 @@
 import { FaUser } from "react-icons/fa";
-import { useNavigate} from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 import "./header.css";
 import { User } from "../../types/types";
 import { signOut } from "firebase/auth";
@@ -46,16 +46,18 @@ const Header = ({ user }: propestype) => {
           <Nav className="nav-Body">
             <div className="center"> 
             <div className="link-center res-link">
-            <Nav.Link href={"/prolite"}>Prolite</Nav.Link>
-            <Nav.Link href={"/autoglo"}>Autoglo</Nav.Link>
+            <Link to={"/prolite"}>Prolite</Link>
+            <Link to={"/autoglo"}>Autoglo</Link>
             {/* <Nav.Link href={"/orders"}>Orders</Nav.Link> */}
             </div>
             </div>
-      <Nav.Link href={"/cart"}>
-      <FaShoppingCart />
+      
+      <div className='admin-logo'>
+      <Link to={"/cart"} style={{display:'flex',alignItems:'center'}}>
+      <FaShoppingCart style={{color:'#1176D0'}} />
         {cartItems && cartItems.length>=1 && cartItems.length}
-      </Nav.Link>
-      <div className='admin-logo'>{user?._id ? <><Nav.Link href={"/admin/product"}><FaUser /></Nav.Link> <Nav.Link href={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Nav.Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}}>SignIn</button>}</div>
+      </Link>
+        {user?._id ? <><Link to={"/admin/product"}><FaUser /></Link> <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}}>SignIn</button>}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>

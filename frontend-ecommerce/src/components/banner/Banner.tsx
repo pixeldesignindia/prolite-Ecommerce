@@ -23,13 +23,13 @@ function Banner() {
           <h2 className="box blue">AutoGlo</h2>
         </div>
         <div className="col-3 mt-5 mb-5">
-          <h2 className="box green">Prolite</h2>
+          <h2 className="box green-box">Prolite</h2>
         </div>
         <div className="col-3 mt-5 mb-5">
           <h2 className="box blue">AutoGlo</h2>
         </div>
         <div className="col-3 mt-5 mb-5">
-          <h2 className="box green">Prolite</h2>
+          <h2 className="box green-box">Prolite</h2>
         </div>
       </div>
     </div>

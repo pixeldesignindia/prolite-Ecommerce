@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom'
 import './footer.css'
 const Footer = () => {
     return (
@@ -15,26 +16,24 @@ const Footer = () => {
           <div className="col-4 pt-5">
             <h2 className="f-head">The Company</h2>
             <ul className="ft-list">
-              <li><a href="">Shop</a></li>
-              <li><a href="">About Us</a></li>
-              <li><a href="">Contact</a></li>
+              <li><Link to="">Shop</Link></li>
+              <li><Link to="">About Us</Link></li>
+              <li><Link to="">Contact</Link></li>
             </ul>
           </div>
           <div className="col-4 pt-5">
             <h2 className="f-head">Policy</h2>
             <ul className="ft-list">
-              <li><a href="/delivery">Shipping Policy</a></li>
-              <li><a href="/privacy">Store Policy</a></li>
-              <li><a href="/payment">Payment Methods</a></li>
-              <li><a href="/terms">Teams & Conditions</a></li>
-              <li><a href="/refund">Refund Policy</a></li>
+              <li><Link to={"/delivery"}>Shipping Policy</Link></li>
+              <li><Link to={"/privacy"}>Store Policy</Link></li>
+              <li><Link to={"/payment"}>Payment Methods</Link></li>
+              <li><Link to={"/terms"}>Teams & Conditions</Link></li>
+              <li><Link to={"/refund"}>Refund Policy</Link></li>
             </ul>
           </div>
         </div>
       </div>
 
- 
-  
       <div className="container secondary-footer">
         <div className="row res-col-center">
           <div className="col-6 w100">
@@ -44,7 +43,7 @@ const Footer = () => {
           </div>
           <div className="col-6 w100">
             <div className="second-right">
-              <p> Design & Developed By - <a href=""> Pixel Design India </a> </p>
+              <p> Design & Developed By - <Link to=""> Pixel Design India </Link> </p>
               
             </div>
           </div>

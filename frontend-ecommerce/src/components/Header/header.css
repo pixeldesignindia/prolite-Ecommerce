@@ -1,8 +1,12 @@
 nav{display: flex; justify-content: space-between;padding: 1.5rem;background-color: rgb(161, 214, 236);}
 nav a{text-decoration: none; font-size: 1rem; color: black;}
 .nav-Body{display: flex; justify-content: space-between;width: 100%;}
-.admin-logo{display: flex;}
-.link-center{display: flex;text-align: center;justify-content: center;align-items: center;width: 100%;font-size: 18px; font-weight: 500; text-transform: uppercase;}
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.link-center{display: flex;text-align: center;justify-content: center;align-items: center;width: 100%;font-size: 18px; font-weight: 500; text-transform: uppercase;gap: 2rem;}
 .logo-img{height: 3rem;}
 .navbar-expand-lg{box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .log {
@@ -27,7 +31,7 @@ nav a{text-decoration: none; font-size: 1rem; color: black;}
   box-shadow: 0 0 10px rgba(224, 85, 85, 0.2);
   transition: 0.4s;width: 6rem;
   }
-  
+  /* .res-link{display: flex;gap: 2rem;} */
   .log:hover {
     color: white;
 
@@ -41,11 +45,12 @@ nav a{text-decoration: none; font-size: 1rem; color: black;}
   }
   .profile-img{height: 30px;width: 30px; border-radius: 50%;}
   .navbar-expand-lg .navbar-nav .nav-link{display: flex; justify-content: center; align-items: center;}
-
-
+  .navbar-toggler:focus{box-shadow: none;}
+  .logout , .log{width: max-content;}
   @media(max-width:767px){
     .link-center{width: fit-content;}
     .res-link , .admin-logo{display: flex; flex-direction: column; justify-content: center; align-items: center;}
     .logout{width: fit-content !important;}
-    .admin-logo{margin-bottom:1.5rem ;}
+    .admin-logo{margin:1.2rem 0 1.5rem 0;}
+    .link-center{gap: 1.2rem;}
   }

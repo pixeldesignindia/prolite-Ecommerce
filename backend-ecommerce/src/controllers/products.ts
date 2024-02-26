@@ -215,20 +215,30 @@ const { photos, displayPhoto } = req.files as { photos: Express.Multer.File[], d
 export const updateProduct = TryCatch(async (req, res, next) => {
   const { id } = req.params;
   const { name, price, stock, category ,description,productModel,dimensions,tags} = req.body;
-  const  photos = req.files as Express.Multer.File[]
+  // const  photos = req.files as Express.Multer.File[]
   const product = await Product.findById(id);
 
   if (!product) return next(new ErrorHandler("Product Not Found", 404));
 
-  if (photos) {
-     const oldPhotos = product.photos;
-  for (const photo of oldPhotos) {
-    await unlink(photo);
-  }
-      const photoPaths = photos.map((photo) => photo.path);
-      product.photos = photoPaths
+ let photos: Express.Multer.File[] = [];
+
+    // Check if req.files contains photos and if so, assign them to the photos array
+    if (req.files && 'photos' in req.files) {
+        const photosObject = req.files.photos;
+        photos = Array.isArray(photosObject) ? photosObject : [photosObject];
     }
 
+    if (photos.length > 0) {
+        console.log(photos);
+        const oldPhotos = product.photos;
+        if (oldPhotos && oldPhotos.length > 0) {
+            for (const photo of oldPhotos) {
+                await unlink(photo);
+            }
+        }
+        const photoPaths = photos.map((photo) => photo.path);
+        product.photos = photoPaths;
+    }
   if (name) product.name = name;
   if (price) product.price = price;
   if (stock) product.stock = stock;

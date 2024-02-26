@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header/Header";
 import { Toaster } from "react-hot-toast";
@@ -19,30 +19,30 @@ const Login = lazy(() => import("./pages/login/Login"));
 const Cart = lazy(() => import("./pages/cart/Cart"));
 const Prolite = lazy(() => import("./pages/search/Prolite"));
 const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
-const Shipping = lazy(() => import("./pages/shipping/shipping"));
+const Shipping = lazy(() => import("./pages/shipping/Shipping"));
 const Orders = lazy(()=>import('./pages/orders/Orders'))
-const Checkout = lazy(()=>import('./pages/checkOut/checkout'))
+const Checkout = lazy(()=>import('./pages/checkOut/Checkout'))
 const Delivery = lazy(()=>import('./pages/delivery/Delivery'))
 const Payment = lazy(()=>import('./pages/payment/Payment'))
 const Privacy = lazy(()=>import('./pages/privacy/Privacy'))
 const Refund = lazy(()=>import('./pages/refund/Refund'))
 const Terms = lazy(()=>import('./pages/terms/Terms'))
 // Admin Imports
-const Dashboard = lazy(() => import("./pages/admin/dashboard"));
-const Products = lazy(() => import("./pages/admin/products"));
-const Customers = lazy(() => import("./pages/admin/customers"));
-const Transaction = lazy(() => import("./pages/admin/transaction"));
-const Barcharts = lazy(() => import("./pages/admin/charts/barcharts"));
-const Piecharts = lazy(() => import("./pages/admin/charts/piecharts"));
-const Linecharts = lazy(() => import("./pages/admin/charts/linecharts"));
-const Coupon = lazy(() => import("./pages/admin/apps/coupon"));
-const Stopwatch = lazy(() => import("./pages/admin/apps/stopwatch"));
-const Toss = lazy(() => import("./pages/admin/apps/toss"));
+const Products = lazy(() => import("./pages/admin/Products"));
+const Customers = lazy(() => import("./pages/admin/Customers"));
+const Transaction = lazy(() => import("./pages/admin/Transaction"));
+const Barcharts = lazy(() => import("./pages/admin/charts/Barcharts"));
+const Piecharts = lazy(() => import("./pages/admin/charts/Piecharts"));
+const Linecharts = lazy(() => import("./pages/admin/charts/Linecharts"));
+const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
+const Coupon = lazy(() => import("./pages/admin/apps/Coupon"));
+const Stopwatch = lazy(() => import("./pages/admin/apps/Stopwatch"));
+const Toss = lazy(() => import("./pages/admin/apps/Toss"));
 const Profile = lazy(() => import("./pages/profile/Profile"));
 const Myorder = lazy(() => import("./pages/profile/Myorders"));
-const NewProduct = lazy(() => import("./pages/admin/management/newproduct"));
-const ProductManagement = lazy(() => import("./pages/admin/management/productmanagement"));
-const TransactionManagement = lazy(() =>import("./pages/admin/management/transactionmanagement"));
+const NewProductPage = lazy(() => import("./pages/admin/management/Newproduct"));
+const ProductManagement = lazy(() => import("./pages/admin/management/Productmanagement"));
+const TransactionManagement = lazy(() =>import("./pages/admin/management/Transactionmanagement"));
 
 const App = () => {
 
@@ -58,7 +58,7 @@ else{dispatch(userNotExist())}
 })},[]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <Suspense fallback={<h5>Loading...</h5>}>
         <Header user={user || null}/>
         <Routes>
@@ -72,8 +72,6 @@ else{dispatch(userNotExist())}
           <Route path="/refund" element={<Refund/>} />
           <Route path="/terms" element={<Terms/>} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
-           {/* Logged In User Routes */}
-          <Route element={<ProtectedRoute isAuthenticated={user ? true : false} />}>
             <Route path="/prolite" element={<Prolite />} />
             <Route path="/autoglo" element={<Autoglo/>} />
             <Route path="/profile" element={<Profile />} />
@@ -82,7 +80,7 @@ else{dispatch(userNotExist())}
             <Route path="/shipping" element={<Shipping/>} />
             {/* <Route path="/order/:id" element={<OrderDetails />} /> */}
             <Route path="/pay" element={<Checkout />} /> 
-          </Route>
+          {/* </Route> */}
           {/* Admin Routes */}
           <Route element={<ProtectedRoute isAuthenticated={true} adminOnly={true} admin={user?.role==="admin" ? true : false} />}>
           <Route path="/admin/dashboard" element={<Dashboard />} />
@@ -98,7 +96,7 @@ else{dispatch(userNotExist())}
           <Route path="/admin/app/stopwatch" element={<Stopwatch />} />
           <Route path="/admin/app/toss" element={<Toss />} />
           {/* Management */}
-          <Route path="/admin/product/new" element={<NewProduct />} />
+          <Route path="/admin/product/new" element={<NewProductPage/>} />
           <Route path="/admin/product/:id" element={<ProductManagement />} />
           <Route path="/admin/transaction/:id" element={<TransactionManagement />}
           />

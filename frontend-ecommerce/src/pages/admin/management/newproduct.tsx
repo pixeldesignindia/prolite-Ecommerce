@@ -19,12 +19,13 @@ const NewProduct = () => {
   const [productModel, setProductModel] = useState<string>("");
   const [dimensions, setDimensions] = useState<string>("");
   const [brand, setBrand] = useState<string>("autoglo");
-  const [price, setPrice] = useState<number>(1000);
-  const [stock, setStock] = useState<number>(1);
+  const [price, setPrice] = useState<string>('');
+  const [stock, setStock] = useState<string>('');
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const [photos, setPhotos] = useState<File[]>([]);
   const [displayPhoto, setDisplayPhoto] = useState<File | null>(null); 
   const [newProduct] = useNewProductMutation();
+
   const changeDisplayPhotoHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -47,14 +48,14 @@ const NewProduct = () => {
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
           newPreviews.push(reader.result);
-          setPhotoPreviews(newPreviews);
+          setPhotoPreviews((prevPreviews:any) => [...prevPreviews, reader.result]);
         }
       };
 
       newPhotos.push(file);
     }
 
-    setPhotos(newPhotos);
+    setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
   };
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
@@ -140,7 +141,7 @@ const NewProduct = () => {
                 type="number"
                 placeholder="Price"
                 value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
+                onChange={(e) => setPrice(e.target.value)}
               />
             </div>
             <div>
@@ -150,7 +151,7 @@ const NewProduct = () => {
                 type="number"
                 placeholder="Stock"
                 value={stock}
-                onChange={(e) => setStock(Number(e.target.value))}
+                onChange={(e) => setStock(e.target.value)}
               />
             </div>
             <div>
@@ -195,7 +196,6 @@ const NewProduct = () => {
               <label>Photos</label>
               <input
                 type="file"
-                required
                 onChange={changeImageHandler}
                 multiple
               />

@@ -156,7 +156,15 @@ $color3:  rgb(1, 79, 179);
     }
   }
 }
-
+.coupon>section{
+  height: max-content !important;
+}
+.coupon-list{
+  display: flex;flex-direction: column;
+  >.coupon-item{
+    display: flex;gap: 1rem;
+  }
+}
 .table {
   border-collapse: collapse;
   width: 100%;

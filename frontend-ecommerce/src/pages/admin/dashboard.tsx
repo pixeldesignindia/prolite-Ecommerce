@@ -1,5 +1,4 @@
 import { BiMaleFemale } from "react-icons/bi";
-import { FaRegBell } from "react-icons/fa";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import AdminSidebar from "../../components/admin/AdminSidebar";
@@ -36,8 +35,9 @@ const Dashboard = () => {
             <div className="bar">
               {/* <BsSearch />
               <input type="text" placeholder="Search for data, users, docs" /> */}
-              <FaRegBell />
+              
               <img src={user?.photo || userImg} alt="User" />
+              <h4>{user?.name}</h4>
             </div>
 
             <section className="widget-container">

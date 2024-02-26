@@ -40,7 +40,24 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
     .grn{
       background: url('/images/green.svg') left top no-repeat;
   }
+  input[type="number"] {
+    -moz-appearance: textfield;
+}
+.txt-contact{border:1px solid #5B5B5B;}
+/* For older versions of Edge */
+input[type="number"]::-ms-inner-spin-button,
+input[type="number"]::-ms-outer-spin-button {
+    appearance: none;
+}
+input[type="number"] {
+	-moz-appearance: textfield; /* Firefox */
+}
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
   @media(max-width:768px){
     .w100{width: 100%;}
     .rowBlock{display: block;}
