@@ -36,5 +36,5 @@ li a .product-active-img{width: 90px !important;}
     .tags .col-2{width: 33%;letter-spacing: .1rem; font-size: .7rem;}
     .product-active-img{width: 100% !important;}
     .des{height: max-content;}
-    .add-cart{margin-top: 2rem;}
+    .product-add-cart{margin-top: 2rem;}
 }

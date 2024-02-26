@@ -220,7 +220,7 @@ const Product = () => {
                       brand: product.brand,
                     })
                   }
-                  className="add-cart"
+                  className="add-cart product-add-cart"
                 >
                   <FaCartPlus /> Add To Cart
                 </button>
@@ -258,7 +258,7 @@ const Product = () => {
         {activeTab === "video" && (
             <div>
               <div className="des-bot">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/Snn2eMrvme0?si=b7Hg0SVR9lsrEXDb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/Snn2eMrvme0?si=b7Hg0SVR9lsrEXDb" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
               </div>
             </div>
           )}

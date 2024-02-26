@@ -34,7 +34,7 @@ const ProductCard = ({
 
   return (
     <div className="cardC">
-      <div className="img center" onClick={() => navigate(`/product/${productId}`)}>
+      <div className="img center" onClick={() => navigate(`/product/${productId}`)} style={{cursor:'pointer'}}>
         <img src={`${server}/${displayPhoto[0]}`} alt={name} />
       </div>
       <div className="card-body">

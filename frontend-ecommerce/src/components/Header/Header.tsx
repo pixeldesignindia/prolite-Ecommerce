@@ -37,7 +37,7 @@ const Header = ({ user }: propestype) => {
     //   </Link>
     //   {user?._id ? <><Link to={"/admin/product"}><FaUser /></Link><button onClick={logOutHandler}>Log Out</button></> : <Link to={"/logIn"}>SignIn</Link>}
     // </nav>
-  <>
+  <div className="no-print">
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="/"><img src={logo} alt="logo"  className='logo-img' /></Navbar.Brand>
@@ -62,7 +62,7 @@ const Header = ({ user }: propestype) => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  </>
+  </div>
   );
 };
 

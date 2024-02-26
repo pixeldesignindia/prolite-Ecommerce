@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './footer.css'
 const Footer = () => {
     return (
-        <div>
+        <div className='no-print'>
             <footer id="footer-main">
       <div className="container first">
         <div className="row">

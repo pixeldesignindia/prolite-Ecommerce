@@ -9,7 +9,11 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
   button{outline: none;border: 0;background-color: transparent;}
   a{text-decoration: none;font-family: Montserrat;}
 
-
+  @media print {
+    .no-print {
+      display: none;
+    }
+  }
   /* Center */
 .center{display: flex; justify-content: center; align-items: center; width: 100%;}
 .col-center{display: flex; justify-content: center; align-items: center;flex-direction: column; }
