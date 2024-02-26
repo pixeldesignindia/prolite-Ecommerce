@@ -20,6 +20,12 @@ import { server } from "../../redux/store";
 import { CartItem, Product } from "../../types/types";
 
 const Product = () => {
+  const [activeTab, setActiveTab] = useState("description");
+
+  // function to handle tab click
+  const handleTabClick = (tabName:string) => {
+    setActiveTab(tabName);
+  };
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null); 
@@ -70,12 +76,12 @@ const Product = () => {
     }[];
   }
   
-  var seettings: SliderSettings = { // Type annotation for settings
+  var seettings: SliderSettings = {
     customPaging: function (i: number) {
       return (
         <a>
         <img
-          src={`${server}/${product?.photos[i]}`} // Assuming `product.photos` is an array of image URLs
+          src={`${server}/${product?.photos[i]}`} 
           alt={`Slide`}
           className="product-active-img"
           style={{ height: "80px", width: "110px" }}
@@ -224,21 +230,21 @@ const Product = () => {
         </div>
       </div>
       <div className="tags container">
-        <div className="row">
-          <div className="col-2">DESCRIPTION</div>
-          <div className="col-2">ATTACHMENT</div>
-          <div className="col-2">VIDEO</div>
+      <div className="row">
+          <div className={`col-2 ${activeTab === "description" ? "activeTab" : "bbb"}`} onClick={() => handleTabClick("description")}>DESCRIPTION</div>
+          <div className={`col-2 ${activeTab === "attachment" ? "activeTab" : "bbb"}`} onClick={() => handleTabClick("attachment")}>ATTACHMENT</div>
+          <div className={`col-2 ${activeTab === "video" ? "activeTab" : "bbb"}`} onClick={() => handleTabClick("video")}>VIDEO</div>
+          <div className="col-6 bbb none"></div>
         </div>
-        <div className="des-bot">
+        <div className="tab-content">
+        {activeTab === "description" && (
+            <div>
+              <div className="des-bot">
           <p>
-            {/* {product.description} */}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas fugit
-            consequatur ipsum nam mollitia quam nulla quibusdam voluptate
-            aspernatur vel.
+            {product.description}
           </p>
         </div>
         <h6 className="blue-text b">Tags</h6>
-
         <div className="tag">
           {product.tags.length > 0 && product.tags.map((e,i)=>(
             <div className="tagbox" key={i}>
@@ -246,42 +252,21 @@ const Product = () => {
             {e}
           </div>
           ))}
-          {/* <div className="tagbox">
-            <img src={dot} alt="dot" />
-            Fire Equipment Signage
-          </div>
-          <div className="tagbox">
-            <img src={dot} alt="dot" />
-            Warning Signage
-          </div>
-          <div className="tagbox">
-            <img src={dot} alt="dot" />
-            Safety Signage
-          </div>
-          <div className="tagbox">
-            <img src={dot} alt="dot" />
-            IMO Fire Control Signage
-          </div>
-          <div className="tagbox">
-            <img src={dot} alt="dot" />
-            General Signage
-          </div>
-          <div className="tagbox">
-            <img src={dot} alt="dot" />
-            Row Alphabets And Seat Numbers
-          </div>
-          <div className="tagbox">
-            <img src={dot} alt="dot" />
-            Prohibition Signage
-          </div>
-          <div className="tagbox">
-            <img src={dot} alt="dot" />
-            Direction Signage
-          </div>
-          <div className="tagbox">
-            <img src={dot} alt="dot" />
-            Aqua Safety Signage
-          </div> */}
+        </div>
+            </div>
+          )}
+        {activeTab === "video" && (
+            <div>
+              <div className="des-bot">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/Snn2eMrvme0?si=b7Hg0SVR9lsrEXDb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            </div>
+          )}
+        {activeTab === "attachment" && (
+            <div className="des-bot">
+              Content for attachment tab
+            </div>
+          )}
         </div>
       </div>
       <h3 className="related">Related Poducts</h3>

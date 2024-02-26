@@ -57,7 +57,7 @@ const Header = ({ user }: propestype) => {
       <FaShoppingCart style={{color:'#1176D0'}} />
         {cartItems && cartItems.length>=1 && cartItems.length}
       </Link>
-        {user?._id ? <><Link to={"/admin/product"}><FaUser /></Link> <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}}>SignIn</button>}</div>
+        {user?._id ? <><Link to={"/admin/product"}><FaUser /></Link> <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}} >SignIn</button>}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>

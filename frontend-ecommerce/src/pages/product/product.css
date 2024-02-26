@@ -5,7 +5,7 @@
 .product-top .slick-list{margin: 0 !important;}
 .product-active-img{width: 23rem !important;max-height: 17rem;}
 li a .product-active-img{width: 90px !important;}
-.slider-container-product .slick-dots{width: 100%;display: flex;gap:6rem;right: 200px;bottom: 0;left: -80px;}
+.slider-container-product .slick-dots{width: 100%;display: flex;gap:6rem;right: 70px;bottom: 0;}
 .product-top-text{display: flex;flex-direction: column;gap: .3rem;}
 .slider-container-product .slick-dots{display: flex !important;width: 100%;justify-content: center;padding: 0 0 0 6rem;}
 .card-body-product{padding:0 2.5rem;display: flex;flex-direction: column;gap: 1rem;width: 100%;height: 100%;}
@@ -15,7 +15,10 @@ li a .product-active-img{width: 90px !important;}
 .left-img-section-product{box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 2rem;background: #fff;}
 .related{ color: rgba(1, 79, 179, 1); text-transform: uppercase;letter-spacing: .25rem;text-align: center;margin: 2rem !important;font-weight: 600;}
 .tags{padding: 2rem; background: #fff;box-shadow: rgba(31, 101, 253, 0.16) 0px 1px 4px;;border-radius: 8px;}
-.tags .row{padding-bottom:1rem ;border-bottom: 2px solid  rgba(1, 79, 179, 1) ;}
+.tags .row{padding-bottom:1rem ;}
+.bbb{border-bottom: 2px solid  rgba(1, 79, 179, 1) ;}
+.activeTab{border-bottom: 2px solid  rgb(222, 70, 36) ;}
+.activeTab , .bbb{text-align: center;padding-bottom: .6rem;}
 .tags .col-2{color: rgba(1, 79, 179, 1) ; text-transform: uppercase; letter-spacing: .23rem;}
 .des-bot{margin: 1rem 0;font-size: 1.2rem;}
 .bluetxt{color: rgba(1, 79, 179, 1) ;font-size: 1.2rem;margin-bottom: 1rem; text-transform: uppercase; letter-spacing: .25rem;font-weight: 500;}
@@ -25,12 +28,13 @@ li a .product-active-img{width: 90px !important;}
 .mx-h-img > img{max-height: 20rem;}
 
 @media (max-width: 767px) {
-    .slider-container-product .slick-dots{bottom: 20px;}
+    .slider-container-product .slick-dots{bottom: 20px;gap: 1.2rem;left: none;right: 50px;}
     .slick-dots li{width: 35px;}
-    li a .product-active-img{width: 50px !important;}
+    li a .product-active-img{width: 50px !important;height: 60px !important;}
     .card-body-product{padding: 2rem;}
     .des{height: fit-content;}
     .tags .col-2{width: 33%;letter-spacing: .1rem; font-size: .7rem;}
     .product-active-img{width: 100% !important;}
     .des{height: max-content;}
+    .add-cart{margin-top: 2rem;}
 }
