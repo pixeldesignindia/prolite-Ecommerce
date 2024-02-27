@@ -9,7 +9,8 @@ import { orderApi } from "./api/orderApi";
 import { dashboardApi } from "./api/dashboardApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
-export const server = "http://cosmotradelive.in";
+// export const server = "https://cosmotradelive.in";
+export const server = "http://localhost:4000";
 
 const persistConfig = {
   key: 'root',

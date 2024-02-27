@@ -5,7 +5,9 @@ import Accordion from "react-bootstrap/Accordion";
 import ProfileSide from "../../components/sideNavProfile/ProfileSide";
 import { useMyOrdersQuery } from "../../redux/api/orderApi";
 import { server } from "../../redux/store";
+import { useNavigate } from "react-router-dom";
 const Myorders = () => {
+    const navigate = useNavigate()
     const { user } = useSelector(
     (state: { userReducer: UserReducerInitialState }) => state.userReducer
     );
@@ -22,7 +24,7 @@ const Myorders = () => {
             <div className="profile-myorder">
                 <Accordion defaultActiveKey={['0']} alwaysOpen>
                 {data &&
-                    data?.orders.map((order, i) => (
+                    data?.orders.map((order:any, i) => (
                         <Accordion.Item eventKey={i.toString()} key={i}>
                         <Accordion.Header><div className="row " style={{width:'100%'}}>
                             <div className="col-5 text-center none">{order._id}</div> 
@@ -43,9 +45,10 @@ const Myorders = () => {
                             <div className="col-6 w100">
                             <h4 style={{marginBottom:"1.2rem"}}>Order Info</h4>
                             <p className="orderId fs">Order Id : {order._id}</p>
+                            <button onClick={() => navigate(`/order/${order._id}`)} className="log mb-3">View Invoice</button>
                             <div className="order-list">
                                 {
-                                    order.orderItems.map((item,i)=>(
+                                    order.orderItems.map((item:any,i:any)=>(
                                         <div className="row" key={i}>
                                             <div className="col-3">
                                                 <div className="center"><img src={`${server}/${item.photo}`} alt="image" style={{height:'50px'}}/></div></div>

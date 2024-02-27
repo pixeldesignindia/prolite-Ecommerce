@@ -53,6 +53,7 @@ export type CartItem = {
   export type OrderItem = Omit<CartItem, "stock"> & { _id: string };
 
   export type Order = {
+    paymentMethod: ReactNode;
     orderItems: OrderItem[];
     shippingInfo: ShippingInfo;
     subtotal: number;

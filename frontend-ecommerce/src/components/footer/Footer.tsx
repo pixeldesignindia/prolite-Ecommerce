@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom'
 import './footer.css'
 const Footer = () => {
     return (
-        <div>
+        <div className='no-print'>
             <footer id="footer-main">
-    
-
       <div className="container first">
-        <div className="row gx-5">
+        <div className="row">
           <div className="col-4 pt-5">
             <h2 className="left-head">Get Featured On Our Website</h2>
             <button>Enquiry Now</button>

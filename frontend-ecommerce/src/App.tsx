@@ -21,6 +21,7 @@ const Prolite = lazy(() => import("./pages/search/Prolite"));
 const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
 const Shipping = lazy(() => import("./pages/shipping/Shipping"));
 const Orders = lazy(()=>import('./pages/orders/Orders'))
+const Order = lazy(()=>import('./pages/order/Order'))
 const Checkout = lazy(()=>import('./pages/checkOut/Checkout'))
 const Delivery = lazy(()=>import('./pages/delivery/Delivery'))
 const Payment = lazy(()=>import('./pages/payment/Payment'))
@@ -66,6 +67,7 @@ else{dispatch(userNotExist())}
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/order/:id" element={<Order />} />
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/privacy" element={<Privacy/>} />

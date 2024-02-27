@@ -37,7 +37,7 @@ const Header = ({ user }: propestype) => {
     //   </Link>
     //   {user?._id ? <><Link to={"/admin/product"}><FaUser /></Link><button onClick={logOutHandler}>Log Out</button></> : <Link to={"/logIn"}>SignIn</Link>}
     // </nav>
-  <>
+  <div className="no-print">
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="/"><img src={logo} alt="logo"  className='logo-img' /></Navbar.Brand>
@@ -57,12 +57,12 @@ const Header = ({ user }: propestype) => {
       <FaShoppingCart style={{color:'#1176D0'}} />
         {cartItems && cartItems.length>=1 && cartItems.length}
       </Link>
-        {user?._id ? <><Link to={"/admin/product"}><FaUser /></Link> <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}}>SignIn</button>}</div>
+        {user?._id ? <><Link to={"/admin/product"}><FaUser /></Link> <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}} >SignIn</button>}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  </>
+  </div>
   );
 };
 

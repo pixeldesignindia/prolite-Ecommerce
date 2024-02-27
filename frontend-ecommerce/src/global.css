@@ -9,11 +9,15 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
   button{outline: none;border: 0;background-color: transparent;}
   a{text-decoration: none;font-family: Montserrat;}
 
-
+  @media print {
+    .no-print {
+      display: none;
+    }
+  }
   /* Center */
 .center{display: flex; justify-content: center; align-items: center; width: 100%;}
 .col-center{display: flex; justify-content: center; align-items: center;flex-direction: column; }
-
+.log.center{width: max-content !important;}
 /* Body styles */
   h1,h2,h3,h4,h5,h6 {font-family: Montserrat;margin: 0 }
   p{font-family: Montserrat;margin: 0 !important;}
@@ -63,4 +67,5 @@ input[type="number"]::-webkit-outer-spin-button {
     .rowBlock{display: block;}
     .none{display: none;}
     .res-col-center{display: flex; justify-content: center;align-items: center;flex-direction: column;}
+    .log.center{width: max-content !important;}
   }
