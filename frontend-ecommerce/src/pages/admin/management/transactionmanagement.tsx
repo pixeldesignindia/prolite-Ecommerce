@@ -27,6 +27,7 @@ const defaultData: Order = {
   status: "",
   subtotal: 0,
   discount: 0,
+  paymentMethod:'',
   shippingCharges: 0,
   tax: 0,
   total: 0,

@@ -51,7 +51,7 @@ const Myorders = () => {
                                     order.orderItems.map((item:any,i:any)=>(
                                         <div className="row" key={i}>
                                             <div className="col-3">
-                                                <div className="center"><img src={`${server}/${item.photo}`} alt="image" style={{height:'50px'}}/></div></div>
+                                                <div className="center"><img src={`${server}/${item.photo}`} alt="image" style={{height:'50px',maxWidth:'100px'}}/></div></div>
                                             <div className="col-3 fs ">{item.name}</div>
                                             <div className="col-3 fs ">Price : {item.price}</div>
                                             <div className="col-3 fs ">X {item.quantity}</div>

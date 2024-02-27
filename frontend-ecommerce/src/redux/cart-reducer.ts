@@ -43,17 +43,23 @@ export const cartReducer = createSlice({
         (total, item) => total + item.price * item.quantity,
         0
       );
-
+    
       state.subtotal = subtotal;
       state.shippingCharges = state.subtotal > 1000 ? 0 : 100;
       state.tax = Math.round(state.subtotal * 0.18);
       state.total =
         state.subtotal + state.tax + state.shippingCharges - state.discount;
     },
+    
 
-    discountApplied: (state, action: PayloadAction<number>) => {
-      state.discount = action.payload;
+    discountApplied: (state, action: PayloadAction<number | null>) => {
+      if (action.payload !== null && action.payload !== undefined) {
+        state.discount = action.payload;
+      } else {
+        state.discount = 0; 
+      }
     },
+    
     saveShippingInfo: (state, action: PayloadAction<ShippingInfo>) => {
       state.shippingInfo = action.payload;
     },

@@ -1,4 +1,5 @@
 import { RootState } from "../../redux/store";
+import './pay.css'
 import {
   Elements,
   PaymentElement,
@@ -36,13 +37,13 @@ const CheckOutForm = () => {
   } = useSelector((state: RootState) => state.cartReducer);
 
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [paymentMethod, setPaymentMethod] = useState<string>("");
 
   const [newOrder] = useNewOrderMutation();
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
-    if (!stripe || !elements) return;
     setIsProcessing(true);
   
     const orderData: NewOrderRequest = {
@@ -53,44 +54,72 @@ const CheckOutForm = () => {
       discount,
       shippingCharges,
       total,
-      paymentMethod:'CARD',
+      paymentMethod,
       user: user?._id!,
     };
   
-    console.log("Order Data:", orderData); // Log the orderData object
+    console.log("Order Data:", orderData);
   
-    const { paymentIntent, error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: { 
-        return_url: window.location.origin,
-      },
-      redirect: "if_required",
-    });
+    if (paymentMethod === 'CARD') {
+      if (!stripe || !elements) return setIsProcessing(false);
   
-    if (error) {
-      setIsProcessing(false);
-      console.log(error)
-      return toast.error(error.message || "Something Went Wrong");
-    }
+      const { paymentIntent, error } = await stripe.confirmPayment({
+        elements,
+        confirmParams: { 
+          return_url: window.location.origin,
+        },
+        redirect: "if_required",
+      });
   
-    if (paymentIntent.status === "succeeded") {
+      if (error) {
+        setIsProcessing(false);
+        console.log(error);
+        return toast.error(error.message || "Something Went Wrong");
+      }
+  
+      if (paymentIntent.status === "succeeded") {
+        const res = await newOrder(orderData);
+        console.log('Stripe payment done');
+        dispatch(resetCart());
+        responseToast(res, navigate, "/profile/myOrders");
+      }
+    } else if (paymentMethod === 'CASH') {
+      // Handle payment without Stripe confirmation
       const res = await newOrder(orderData);
-      console.log('stwipe done')
+      console.log('Order placed with cash payment');
       dispatch(resetCart());
       responseToast(res, navigate, "/profile/myOrders");
     }
+  
     setIsProcessing(false);
   };
+  
   
   return (
     <div className="center" style={{minHeight:'90vh'}}>
       <div className="checkout-container">
         <form onSubmit={submitHandler}>
-          <h3>Make Payment securely</h3>
+          <h3 className="mt-4 text-center">MAKE PAYMENT</h3>
+          <h5 className="mt-3">Please Select Payment Method First.</h5>
+          <select
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+          required className="payselect">
+            <option value="">Select Payment Method</option>
+            <option value="CARD">Credit Card</option>
+            <option value="CASH">Cash On Delivery</option>
+          </select>
+          {paymentMethod === 'CASH' ? <>
+          <button type="submit" disabled={isProcessing}>
+            {isProcessing ? "Processing..." : "Pay"}
+          </button>
+          </>:<>
           <PaymentElement />
           <button type="submit" disabled={isProcessing}>
             {isProcessing ? "Processing..." : "Pay"}
           </button>
+          </>}
+          
         </form>
       </div>
     </div>
