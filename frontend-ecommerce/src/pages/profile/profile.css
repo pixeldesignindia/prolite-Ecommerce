@@ -13,7 +13,7 @@
 .order-list{padding-right: 1.2rem;}
 .order-shipping-info{padding-left: 1.2rem;}
 .fs{font-size: .8rem;display: flex;justify-content: center;align-items: center;}
-
+.order-list .row{margin-bottom: .5rem;}
 
 .orderId{display: none;}
 @media (max-width: 500px) {

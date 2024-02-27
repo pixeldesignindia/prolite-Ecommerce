@@ -219,14 +219,15 @@ const Shipping = () => {
                 value={shippingInfo.name}
                 onChange={changeHandler}
               /></div>
-              <div>Phone Number : <input
-                required
-                type="number"
-                placeholder="Phone Number"
-                name="phoneNumber"
-                value={shippingInfo.phoneNumber}
-                onChange={changeHandler}
-              /></div>
+              <div>Phone Number :<input
+              required
+              type="text"
+              placeholder="Phone Number"
+              name="phoneNumber"
+              value={shippingInfo.phoneNumber}
+              onChange={(e) => {const value = e.target.value;
+if (/^\d{0,10}$/.test(value)) {setShippingInfo((prev) => ({ ...prev, phoneNumber: value }));}}}
+      /></div>
               <div>Address : <input
                 required
                 type="text"
@@ -303,14 +304,15 @@ const Shipping = () => {
           />
         </div>
         <div className="input-box-address">
-          <input
-            required
-            type="number"
-            placeholder="Phone Number"
-            name="phoneNumber"
-            value={shippingInfo.phoneNumber}
-            onChange={changeHandler}
-          />
+            <input
+              required
+              type="text"
+              placeholder="Phone Number"
+              name="phoneNumber"
+              value={shippingInfo.phoneNumber}
+              onChange={(e) => {const value = e.target.value;
+if (/^\d{0,10}$/.test(value)) {setShippingInfo((prev) => ({ ...prev, phoneNumber: value }));}}}
+      />
         </div>
         <div className="input-box-address">
           <input

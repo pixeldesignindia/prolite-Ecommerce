@@ -51,7 +51,7 @@ console.log(data?.orders);
   <h1 className='text-center no-print'>Invoice</h1>
   
   <div className="table-container">
-    <h4>Order Details</h4>
+    <h6>Order Details</h6>
     <table>
       <tbody>
         <tr>
@@ -72,17 +72,17 @@ console.log(data?.orders);
   </div>
   
   <div className="table-container">
-    <h4>Order Items</h4>
+    <h6>Order Items</h6>
     <table>
       <thead>
-        <tr>
+        <tr className='row-tble'>
           <th>Photo</th>
           <th>Name</th>
           <th>Price</th>
           <th>Quantity</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         {data?.orders?.orderItems?.map((item, index) => (
           <tr key={index}>
             <td><img src={`${server}/${item.photo}`} alt={item.name} className='table-row-image'/></td>
@@ -96,7 +96,7 @@ console.log(data?.orders);
   </div>
   
   <div className="table-container">
-    <h4>Summary</h4>
+    <h6>Summary</h6>
     <table>
       <tbody>
         <tr>
@@ -124,9 +124,9 @@ console.log(data?.orders);
   </div>
   
   <div className="table-container">
-    <h4>Shipping Information</h4>
+    <h6>Shipping Information</h6>
     <table>
-      <tbody>
+      <tbody >
         <tr>
           <th>Name</th>
           <td>{data?.orders?.shippingInfo?.name}</td>
@@ -158,7 +158,7 @@ console.log(data?.orders);
       </tbody>
     </table>
     <div className="print no-print center">
-        <button onClick={handlePrint}>Download <FaDownload /></button>
+        <button onClick={handlePrint} className='no-print'>Download <FaDownload /></button>
     </div>
   </div>
 </div>
