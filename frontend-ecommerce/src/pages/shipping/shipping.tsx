@@ -373,7 +373,7 @@ if (/^\d{0,10}$/.test(value)) {setShippingInfo((prev) => ({ ...prev, phoneNumber
 </div>
 
       </div>
-      <div className="center mb-5"> <button className="checkout pay-now" onClick={submitHandler}>Pay Now</button></div>
+      <div className="center"> <button className="checkout pay-now  mb-5 mt-2" onClick={submitHandler}>Pay Now</button></div>
       </div>
       <Footer />
     </div>
