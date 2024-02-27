@@ -14,9 +14,12 @@ import {
 import { RootState, server } from "../../redux/store";
 import { CartItem } from "../../types/types";
 import Footer from "../../components/footer/Footer";
+import { UserReducerInitialState } from "../../types/reducerTypes";
+import toast from "react-hot-toast";
 
 
 const Cart = () => {
+  const {user}= useSelector((state:{userReducer:UserReducerInitialState})=>state.userReducer)
   const { cartItems, subtotal, tax, total, shippingCharges, discount } =
     useSelector((state: RootState) => state.cartReducer);
   const dispatch = useDispatch();
@@ -67,7 +70,10 @@ const navigate = useNavigate()
   useEffect(() => {
     dispatch(calculatePrice());
   }, [cartItems]);
-
+const loginFirst=()=>{
+  toast.error('Please login first')
+  navigate('/login')
+}
   return (
     <>
     <div className="cart res-col-center" >
@@ -121,8 +127,8 @@ const navigate = useNavigate()
             </span>
           ))}
 </div>
-        
-<div>{cartItems.length > 0 && <button className="checkout center" onClick={()=>{navigate('/shipping')}}>Checkout</button> }</div>
+        {user?<div>{cartItems.length > 0 && <button className="checkout center" onClick={()=>{navigate('/shipping')}}>Checkout</button> }</div>:<div> <button className="checkout center" onClick={loginFirst}>Checkout</button> </div>}
+
 {/* <Link to="/shipping">Checkout</Link> */}
         </div>
         </div>
