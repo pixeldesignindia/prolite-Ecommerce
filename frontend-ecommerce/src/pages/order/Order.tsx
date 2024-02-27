@@ -4,31 +4,31 @@ import { useParams } from "react-router-dom";
 import { server } from '../../redux/store';
 import { FaDownload } from "react-icons/fa6";
 import './order.css'
-interface Invoicedata {
-    _id: string;
-    status: string;
-    createdAt: string;
-    orderItems: {
-        name: string;
-        photo: string;
-        price: number;
-        quantity: number;
-    }[];
-    subtotal: number;
-    discount: number;
-    shippingCharges: number;
-    tax: number;
-    total: number;
-    name: string;
-    phoneNumber: number;
-    shippingInfo: {
-        address: string;
-        city: string;
-        pinCode: number;
-        state: string;
-        country: string;
-    };
-}
+// interface Invoicedata {
+//     _id: string;
+//     status: string;
+//     createdAt: string;
+//     orderItems: {
+//         name: string;
+//         photo: string;
+//         price: number;
+//         quantity: number;
+//     }[];
+//     subtotal: number;
+//     discount: number;
+//     shippingCharges: number;
+//     tax: number;
+//     total: number;
+//     name: string;
+//     phoneNumber: number;
+//     shippingInfo: {
+//         address: string;
+//         city: string;
+//         pinCode: number;
+//         state: string;
+//         country: string;
+//     };
+// }
 
 const Order: React.FC = () => {
     const { id } = useParams<{ id: string }>(); 
