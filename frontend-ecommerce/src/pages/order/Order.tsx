@@ -85,7 +85,7 @@ console.log(data?.orders);
       <tbody>
         {data?.orders?.orderItems?.map((item, index) => (
           <tr key={index}>
-            <td><img src={`${server}/${item.photo}`} alt={item.name} /></td>
+            <td><img src={`${server}/${item.photo}`} alt={item.name} className='table-row-image'/></td>
             <td>{item.name}</td>
             <td>{item.price}</td>
             <td>{item.quantity}</td>

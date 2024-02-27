@@ -1,0 +1,9 @@
+.payselect {
+    width: 100%;
+    padding: .8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #014FB3;
+    font-size: 1rem;
+    color: #fff;
+  }
