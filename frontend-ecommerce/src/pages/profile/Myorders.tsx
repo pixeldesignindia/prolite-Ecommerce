@@ -45,7 +45,7 @@ const Myorders = () => {
                             <div className="col-6 w100">
                             <h4 style={{marginBottom:"1.2rem"}}>Order Info</h4>
                             <p className="orderId fs">Order Id : {order._id}</p>
-                            <button onClick={() => navigate(`/order/${order._id}`)} className="log mb-3">View Invoice</button>
+                            <button onClick={() => navigate(`/order/${order._id}`)} className="log mb-2 mt-2">View Invoice</button>
                             <div className="order-list">
                                 {
                                     order.orderItems.map((item:any,i:any)=>(
@@ -62,14 +62,14 @@ const Myorders = () => {
                             </div>
                             <div className="col-6 order-shipping-info w100" >
                                 <h4 style={{marginBottom:"1.2rem"}}>Shipping Info</h4>
-                                <h6>
-                                    Name : {order.shippingInfo.name}
+                                <h6 className="res-sbtn">
+                                    Name : <span>{order.shippingInfo.name}</span> 
                                 </h6>
-                                <p>Phone : {order.shippingInfo.phoneNumber}</p>
-                                <p>Address : {order.shippingInfo.address}</p>
-                                <p>City : {order.shippingInfo.city}</p>
-                                <p>Pin code : {order.shippingInfo.pinCode}</p>
-                                <p>State : {order.shippingInfo.state}</p>
+                                <p className="res-sbtn">Phone : <span>{order.shippingInfo.phoneNumber}</span></p>
+                                <p className="res-sbtn">Address : <span>{order.shippingInfo.address}</span></p>
+                                <p className="res-sbtn">City : <span>{order.shippingInfo.city}</span></p>
+                                <p className="res-sbtn">Pin code : <span>{order.shippingInfo.pinCode}</span></p>
+                                <p className="res-sbtn">State : <span>{order.shippingInfo.state}</span></p>
                             </div>
                         </div>
                         </Accordion.Body>

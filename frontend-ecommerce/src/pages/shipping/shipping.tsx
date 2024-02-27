@@ -10,7 +10,7 @@ import { UserReducerInitialState } from "../../types/reducerTypes";
 import './shipping.css';
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
-
+import Footer from "../../components/footer/Footer";
 
 const Shipping = () => {
   const [addresses, setAddresses] = useState<any[]>([]); // Define addresses as an array of any type
@@ -198,7 +198,7 @@ const Shipping = () => {
               <div className="user-address">
                 <p className="user-add-row"><strong>Name :</strong> <span>{address.name}</span>  </p>
                 <p className="user-add-row"><strong>Address : </strong> <span> {address.address}</span>  </p>
-                <p className="user-add-row"><strong>Phone Number :</strong> <span>{address.phoneNumber} </span>  </p>
+                <p className="user-add-row"><strong>Phone :</strong> <span>{address.phoneNumber} </span>  </p>
                 <p className="user-add-row"><strong>City :</strong> <span>{address.city} </span>  </p>
                 <p className="user-add-row"><strong>State :  </strong> <span>{address.state}</span>  </p>
                 <p className="user-add-row"><strong>Country :   </strong> <span>{address.country} </span>  </p>
@@ -219,14 +219,15 @@ const Shipping = () => {
                 value={shippingInfo.name}
                 onChange={changeHandler}
               /></div>
-              <div>Phone Number : <input
-                required
-                type="number"
-                placeholder="Phone Number"
-                name="phoneNumber"
-                value={shippingInfo.phoneNumber}
-                onChange={changeHandler}
-              /></div>
+              <div>Phone Number :<input
+              required
+              type="text"
+              placeholder="Phone Number"
+              name="phoneNumber"
+              value={shippingInfo.phoneNumber}
+              onChange={(e) => {const value = e.target.value;
+if (/^\d{0,10}$/.test(value)) {setShippingInfo((prev) => ({ ...prev, phoneNumber: value }));}}}
+      /></div>
               <div>Address : <input
                 required
                 type="text"
@@ -303,14 +304,15 @@ const Shipping = () => {
           />
         </div>
         <div className="input-box-address">
-          <input
-            required
-            type="number"
-            placeholder="Phone Number"
-            name="phoneNumber"
-            value={shippingInfo.phoneNumber}
-            onChange={changeHandler}
-          />
+            <input
+              required
+              type="text"
+              placeholder="Phone Number"
+              name="phoneNumber"
+              value={shippingInfo.phoneNumber}
+              onChange={(e) => {const value = e.target.value;
+if (/^\d{0,10}$/.test(value)) {setShippingInfo((prev) => ({ ...prev, phoneNumber: value }));}}}
+      />
         </div>
         <div className="input-box-address">
           <input
@@ -363,7 +365,7 @@ const Shipping = () => {
             onChange={changeHandler}
           />
         </div>
-        <button type="submit" className="checkout">Add New Address</button>
+        <button type="submit" className="checkout res-fs">Add New Address</button>
       </form>
     </div>
   )}
@@ -371,8 +373,9 @@ const Shipping = () => {
 </div>
 
       </div>
-      <div className="center"> <button className="checkout pay-now" onClick={submitHandler}>Pay Now</button></div>
+      <div className="center"> <button className="checkout pay-now  mb-5 mt-2" onClick={submitHandler}>Pay Now</button></div>
       </div>
+      <Footer />
     </div>
   );
 };

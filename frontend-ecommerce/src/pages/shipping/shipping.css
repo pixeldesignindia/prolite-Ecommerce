@@ -101,6 +101,10 @@
   @media (max-width:500px) {
     .ship-l{min-height: fit-content;}
     .radio-label.redio-address {width: 110%;}
-    .user-address{width: 18rem;}
-
+    .user-address{width:21rem;}
+    .radio-label::before{height: 15px;}
+    .user-add-row{font-size: .8rem;}
+    .address-edit svg{margin-bottom: 2rem;}
+    .edit-box{width: 100%;}
+    .res-fs{font-size: .7rem;}
   }

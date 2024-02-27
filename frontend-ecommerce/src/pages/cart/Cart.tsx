@@ -13,6 +13,8 @@ import {
 } from "../../redux/cart-reducer";
 import { RootState, server } from "../../redux/store";
 import { CartItem } from "../../types/types";
+import Footer from "../../components/footer/Footer";
+
 
 const Cart = () => {
   const { cartItems, subtotal, tax, total, shippingCharges, discount } =
@@ -67,6 +69,7 @@ const navigate = useNavigate()
   }, [cartItems]);
 
   return (
+    <>
     <div className="cart res-col-center" >
       <main className="bg-dark-blue w100">
         {cartItems.length > 0 ? (
@@ -125,6 +128,7 @@ const navigate = useNavigate()
         </div>
       </aside>
     </div>
+    <Footer/></>
   );
 };
 

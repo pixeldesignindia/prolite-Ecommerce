@@ -13,9 +13,10 @@
 .order-list{padding-right: 1.2rem;}
 .order-shipping-info{padding-left: 1.2rem;}
 .fs{font-size: .8rem;display: flex;justify-content: center;align-items: center;}
-
-
+.order-list .row{margin-bottom: .5rem;}
+.res-sbtn{display: flex;justify-content: space-between;align-items: center;width: 100%;}
 .orderId{display: none;}
+.log.mb-2.mt-2{margin: 0;}
 @media (max-width: 500px) {
     .profile-page{padding:2rem 1rem 0 1rem;gap: 0;display: block;}
     .profileBody{width: 100% !important; padding: 1rem !important;margin-top: 2rem;}
@@ -39,4 +40,6 @@
     .order-shipping-info h4{font-size: 1rem;}
     .orderId{display: block;}
     .date{width: 33%;}
+    .log.mb-2.mt-2{font-size: .8rem;padding: 5px 10px; font-weight: 500;margin: 0;}
+    
 }

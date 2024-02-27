@@ -23,10 +23,12 @@
   
   .invoice  table th,.invoice  table td {
     border: 1px solid #ddd;
-    padding: 8px;
-  }
+    padding: 3px;
   
+  }
+  .invoice  table td{text-align: center;font-size: .65rem;}
   .invoice table th {
+    font-size: .6rem;
     background-color: #f2f2f2;
   }
   
@@ -37,7 +39,7 @@
   }
   
   .subtotal p, .shipping-info p {
-    margin: 5px 0;
+    margin: 3px 0;
   }
   
   .subtotal p:last-child, .shipping-info p:last-child {
@@ -45,9 +47,11 @@
   }
   .invoice .items table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    font-size: .6rem;
+    padding: 3px;
     text-align: center; /* Center align content */
   }
-  .table-row-image{max-width: 200px;max-height: 100px;}
+  .table-row-image{max-width: 100px;max-height:50px;}
   .print > button{margin-top: 2rem; padding: .7rem 2rem; background: #1176d0;border-radius: 6px;display: flex; align-items: center;color: #fff; font-size: 1rem; text-transform: uppercase;gap: 1.2rem;letter-spacing: 0.2rem;} 
-  .invoice h4{margin-bottom: 1rem;}
+  .invoice h6{margin-bottom: .5rem;}
+  .row-tble th{text-align: center !important; font-weight: 600;}
