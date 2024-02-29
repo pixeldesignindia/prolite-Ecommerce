@@ -45,7 +45,7 @@ const navigate = useNavigate()
 
     const timeOutID = setTimeout(() => {
       axios
-        .get(`${server}/api/v1/payment/discount?coupon=${couponCode}`, {
+        .get(`${server}/api/v1/payments/discount?coupon=${couponCode}`, {
           cancelToken,
         })
         .then((res) => {

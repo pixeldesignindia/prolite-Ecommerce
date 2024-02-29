@@ -2,6 +2,8 @@ import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { MdOutlineDeleteForever } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { UserReducerInitialState } from "../../../types/reducerTypes";
 
 interface CouponType {
   _id: string;
@@ -15,9 +17,11 @@ const Coupon = () => {
   const [amount, setAmount] = useState<number>(0);
   const [coupon, setCoupon] = useState<string>("");
   const [isCopied, setIsCopied] = useState<boolean>(false);
-
+  const { user } = useSelector(
+    (state: { userReducer: UserReducerInitialState }) => state.userReducer
+  );
   const generateCoupon = () => {
-    axios.post(`${import.meta.env.VITE_API_URL}api/v1/payments/new/coupon`, {
+    axios.post(`${import.meta.env.VITE_API_URL}api/v1/payments/new/coupon?id=${user?._id}`, {
       code: prefix,
       amount: amount,
     })
@@ -34,7 +38,7 @@ const Coupon = () => {
   };
 
   const getCoupons = () => {
-    axios.get(`${import.meta.env.VITE_API_URL}api/v1/payments/Coupons/all`)
+    axios.get(`${import.meta.env.VITE_API_URL}api/v1/payments/Coupons/all?id=${user?._id}`)
     .then(response => {
       console.log(response);
       setCoupons(response.data.coupons);
@@ -48,7 +52,7 @@ const Coupon = () => {
   };
   
   const deleteCoupon = (id: string) => {
-    axios.delete(`${import.meta.env.VITE_API_URL}api/v1/payments/coupon/${id}`)
+    axios.delete(`${import.meta.env.VITE_API_URL}api/v1/payments/coupon/${id}?id=${user?._id}`)
       .then(() => getCoupons())
       .catch(error => {
         console.error("Error deleting coupon:", error);
