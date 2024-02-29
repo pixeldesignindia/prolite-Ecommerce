@@ -26,7 +26,13 @@ li a .product-active-img{width: 90px !important;}
 .tagbox{padding: .45rem 1rem;box-shadow: rgba(19, 85, 227, 0.225) 0px 1px 3px 0px, rgba(14, 90, 167, 0.34) 0px 0px 0px 1px;; border-radius: 5rem;display: flex;align-items: center;gap: .8rem;}
 .tag{display: flex; flex-wrap: wrap;gap: 1rem;}
 .mx-h-img > img{max-height: 20rem;}
-
+.productBrand {
+    text-transform: lowercase; /* Convert text to lowercase */
+  }
+  
+  .productBrand::first-letter {
+    text-transform: uppercase; /* Convert first letter to uppercase */
+  }
 @media (max-width: 767px) {
     .slider-container-product .slick-dots{bottom: 20px;gap: 1.2rem;left: none;right: 50px;}
     .slick-dots li{width: 35px;}

@@ -59,9 +59,9 @@ const Search = () => {
   return (
     <>
     <div className="top-nav ">
-    <Link to='/'>Home</Link>
+    <p>Home</p>
     <GoChevronRight />
-    <p>Prolite</p>
+    <p className="lastP">Prolite</p>
     </div>
     <div className="product-search-page bg-blue">
       <aside>

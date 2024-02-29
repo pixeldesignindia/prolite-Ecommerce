@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Slider from "react-slick";
-import { RxDividerVertical } from "react-icons/rx";
 import dot from "/images/blueDot.svg"; // Assuming the correct path to the image
 import "./product.css";
 import { GoChevronRight } from "react-icons/go";
@@ -162,13 +161,11 @@ const Product = () => {
   return (
     <>
     <div className="top-nav ">
-    <Link to='/'>Home</Link>
+    <p>Home</p>
     <GoChevronRight />
-    <Link to='/prolite'>Prolite</Link>
-    <RxDividerVertical />
-    <Link to='/autoglo'>Autoglo</Link>
+    <p className="productBrand">{product.brand}</p>
     <GoChevronRight />
-    <p>{product.name}</p>
+    <p  className="lastP">{product.name}</p>
     </div>
     <div className="bg-blue">
       <div className="product-top container">
