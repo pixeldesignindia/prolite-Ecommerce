@@ -39,7 +39,8 @@ const ProductCard = ({
       </div>
       <div className="card-body">
         <p className="card-title">{name}</p>
-        <p>Stock: {stock}</p>
+        {stock>0?<p >Stock: {stock}</p>:<p style={{color:"red"}}>Out Of Stock</p>}
+        
         <p className="card-text">&#x20b9;{price}</p>
         {/* {category && <p>Category: {category}</p>} */}
         <button onClick={() => handler({

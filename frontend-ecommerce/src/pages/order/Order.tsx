@@ -47,6 +47,7 @@ console.log(data?.orders);
       };
     
     return (
+<div className="incoContainer">
 <div className="invoice">
   <h1 className='text-center no-print'>Invoice</h1>
   
@@ -158,9 +159,11 @@ console.log(data?.orders);
       </tbody>
     </table>
     <div className="print no-print center">
-        <button onClick={handlePrint} className='no-print'>Download <FaDownload /></button>
+    <button onClick={handlePrint} className='no-print print-button'><FaDownload /></button>
+
     </div>
   </div>
+</div>
 </div>
 
     );

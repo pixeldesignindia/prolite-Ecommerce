@@ -74,15 +74,20 @@ else{dispatch(userNotExist())}
           <Route path="/refund" element={<Refund/>} />
           <Route path="/terms" element={<Terms/>} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
+
             <Route path="/prolite" element={<Prolite />} />
             <Route path="/autoglo" element={<Autoglo/>} />
+            
+            <Route
+            element={<ProtectedRoute isAuthenticated={user ? true : false} />}
+          >
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/myOrders" element={<Myorder />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/shipping" element={<Shipping/>} />
             {/* <Route path="/order/:id" element={<OrderDetails />} /> */}
             <Route path="/pay" element={<Checkout />} /> 
-          {/* </Route> */}
+          </Route> 
           {/* Admin Routes */}
           <Route element={<ProtectedRoute isAuthenticated={true} adminOnly={true} admin={user?.role==="admin" ? true : false} />}>
           <Route path="/admin/dashboard" element={<Dashboard />} />

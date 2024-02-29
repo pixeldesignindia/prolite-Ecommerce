@@ -55,3 +55,10 @@
   .print > button{margin-top: 2rem; padding: .7rem 2rem; background: #1176d0;border-radius: 6px;display: flex; align-items: center;color: #fff; font-size: 1rem; text-transform: uppercase;gap: 1.2rem;letter-spacing: 0.2rem;} 
   .invoice h6{margin-bottom: .5rem;}
   .row-tble th{text-align: center !important; font-weight: 600;}
+  .incoContainer{padding-top: 2rem;}
+  @media print {
+    .print-button {
+      display: none;
+    }
+  }
+  
