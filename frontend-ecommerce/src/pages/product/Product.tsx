@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Slider from "react-slick";
+import { RxDividerVertical } from "react-icons/rx";
 import dot from "/images/blueDot.svg"; // Assuming the correct path to the image
 import "./product.css";
+import { GoChevronRight } from "react-icons/go";
 import toast from "react-hot-toast";
 import { addToCart } from "../../redux/cart-reducer";
 import { useDispatch } from "react-redux";
@@ -158,6 +160,16 @@ const Product = () => {
   };
 
   return (
+    <>
+    <div className="top-nav ">
+    <Link to='/'>Home</Link>
+    <GoChevronRight />
+    <Link to='/prolite'>Prolite</Link>
+    <RxDividerVertical />
+    <Link to='/autoglo'>Autoglo</Link>
+    <GoChevronRight />
+    <p>{product.name}</p>
+    </div>
     <div className="bg-blue">
       <div className="product-top container">
         <div className="row rowBlock">
@@ -319,6 +331,7 @@ const Product = () => {
       )}
       <Footer />
     </div>
+    </>
   );
 };
 

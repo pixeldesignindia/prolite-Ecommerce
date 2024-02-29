@@ -62,7 +62,13 @@ input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
 }
+
+/* Top Nav */
+.top-nav{padding: 1rem 4rem;background: #ebf8ff;display: flex; gap: 1rem;align-items: center;color: rgb(0, 187, 255);}
+.top-nav a{color: rgb(0, 187, 255);}
+.top-nav p{color: rgb(169, 169, 169);}
   @media(max-width:768px){
+    .top-nav{padding: .6rem 1rem; gap: .5rem;}
     .w100{width: 100%;}
     .rowBlock{display: block;}
     .none{display: none;}

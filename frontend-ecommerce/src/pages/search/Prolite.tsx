@@ -12,7 +12,8 @@ import { CartItem } from "../../types/types";
 import { useDispatch } from "react-redux";
 import Footer from '../../components/footer/Footer'
 import { FiSearch } from "react-icons/fi";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { GoChevronRight } from 'react-icons/go';
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -57,6 +58,11 @@ const Search = () => {
 
   return (
     <>
+    <div className="top-nav ">
+    <Link to='/'>Home</Link>
+    <GoChevronRight />
+    <p>Prolite</p>
+    </div>
     <div className="product-search-page bg-blue">
       <aside>
         <h3 style={{color:'#014FB3'}}>Filters</h3>
