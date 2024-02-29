@@ -1,86 +1,76 @@
 import { useSelector } from "react-redux";
 import { UserReducerInitialState } from "../../types/reducerTypes";
 import "./profile.css";
-import Accordion from "react-bootstrap/Accordion";
 import ProfileSide from "../../components/sideNavProfile/ProfileSide";
 import { useMyOrdersQuery } from "../../redux/api/orderApi";
 import { server } from "../../redux/store";
 import { useNavigate } from "react-router-dom";
+
+
 const Myorders = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const { user } = useSelector(
-    (state: { userReducer: UserReducerInitialState }) => state.userReducer
+        (state: { userReducer: UserReducerInitialState }) => state.userReducer
     );
-    const { isLoading, data, isError, error } = useMyOrdersQuery(user?._id!);
-    console.log(isLoading, data, isError, error);
+    const {data} = useMyOrdersQuery(user?._id!);
+    console.log(data)
 
     return (
-    <div className="profile-page bg-blue">
-    <ProfileSide name={user?.name as string} pic={user?.photo as string} />
-        <div className="profileLeft center">
-        <div className="profileBody orderBody">
-            <div className="profile-data">
-            <h3 className="text-center">My Orders</h3>
-            <div className="profile-myorder">
-                <Accordion defaultActiveKey={['0']} alwaysOpen>
-                {data &&
-                    data?.orders.map((order:any, i) => (
-                        <Accordion.Item eventKey={i.toString()} key={i}>
-                        <Accordion.Header><div className="row " style={{width:'100%'}}>
-                            <div className="col-5 text-center none">{order._id}</div> 
-                            <div className="col-2 text-center date">{new Date(order.createdAt).toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric'
-    })}</div> 
-                            
-                            <div className="col-2 text-center">&#x20b9;{order.total}</div> 
-                            <div className="col-1 text-center">X{order.orderItems.length}</div> 
-                            
-    <div className={
-                order.status === "Processing"? "col-2 text-center red": order.status === "Shipped"? "col-2 green text-center": "col-2 purple text-center"}>{order.status}</div> 
-                            </div></Accordion.Header>
-                        <Accordion.Body>
-                        <div className="row rowBlock">
-                            <div className="col-6 w100">
-                            <h4 style={{marginBottom:"1.2rem"}}>Order Info</h4>
-                            <p className="orderId fs">Order Id : {order._id}</p>
-                            <button onClick={() => navigate(`/order/${order._id}`)} className="log mb-2 mt-2">View Invoice</button>
-                            <div className="order-list">
-                                {
-                                    order.orderItems.map((item:any,i:any)=>(
-                                        <div className="row" key={i}>
-                                            <div className="col-3">
-                                                <div className="center"><img src={`${server}/${item.photo}`} alt="image" style={{height:'50px',maxWidth:'100px'}}/></div></div>
-                                            <div className="col-3 fs ">{item.name}</div>
-                                            <div className="col-3 fs ">Price : {item.price}</div>
-                                            <div className="col-3 fs ">X {item.quantity}</div>
+        <div className="profile-page bg-blue">
+            <ProfileSide name={user?.name as string} pic={user?.photo as string} />
+            <div className="profileLeft center">
+                <div className="profileBody orderBody">
+                    <div className="profile-data">
+                        <h3 className="text-center">My Orders</h3>
+                        <div className="profile-myorder">
+                            {data &&
+                                data?.orders.map((order: any, i) => (
+                                    <div className="amazon-order" key={i}>
+                                        <div className="amazon-order-header">
+                                            <div className="amazon-order-id">Order Id #{order._id}</div>
+                                            <div className="amazon-order-status order-fs" style={{color: order.status === "Processing" ? "#1c39bb" : order.status === "Shipped" ? "#69359c" : order.status === "Delivered" ? "#0bda51" : "black" , fontWeight:'500'}}>{order.status}</div>
                                         </div>
-                                    ))
-                                }
-                            </div>
-                            </div>
-                            <div className="col-6 order-shipping-info w100" >
-                                <h4 style={{marginBottom:"1.2rem"}}>Shipping Info</h4>
-                                <h6 className="res-sbtn">
-                                    Name : <span>{order.shippingInfo.name}</span> 
-                                </h6>
-                                <p className="res-sbtn">Phone : <span>{order.shippingInfo.phoneNumber}</span></p>
-                                <p className="res-sbtn">Address : <span>{order.shippingInfo.address}</span></p>
-                                <p className="res-sbtn">City : <span>{order.shippingInfo.city}</span></p>
-                                <p className="res-sbtn">Pin code : <span>{order.shippingInfo.pinCode}</span></p>
-                                <p className="res-sbtn">State : <span>{order.shippingInfo.state}</span></p>
-                            </div>
+                                        <div className="amazon-order-body">
+                                        <div className="amazon-order-items">
+                                            {order.orderItems.map((item: any, j: any) => (
+                                                <div className="amazon-order-item" key={j}>
+                                                    <div className="amazon-order-item-image">
+                                                        <img src={`${server}/${item.photo}`} alt="Product" />
+                                                    </div>
+                                                    <div className="amazon-order-item-details">
+                                                        <div>
+                                                        <div className="amazon-order-item-name order-fs">{item.name}</div>
+                                                        <div className="amazon-order-item-price order-fs">Price : {item.price}</div>
+                                                        <div className="amazon-order-item-quantity order-fs">Quantity : {item.quantity}</div>
+                                                        </div>
+                                                        
+                                                        <div><button className="log" onClick={()=>{navigate(`/product/${item.productId}`)}}>View Product</button></div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="amazon-order-shipping order-fs">
+                                            <h4>Shipping Info</h4>
+                                            <p>Ordered At : <span> {new Date(order.createdAt).toLocaleString()}</span></p>
+                                            <p>Name :  <span>{order.shippingInfo.name}</span>  </p>
+                                            <p>Phone :  <span>{order.shippingInfo.phoneNumber}</span>  </p>
+                                            <p>Address :  <span>{order.shippingInfo.address}</span>  </p>
+                                            <p>City :  <span>{order.shippingInfo.city}</span>  </p>
+                                            <p>Pin code :  <span>{order.shippingInfo.pinCode}</span>  </p>
+                                            <p>State :  <span>{order.shippingInfo.state}</span>  </p>
+                                        </div>
+                                        <div className="amazon-order-actions">
+                                            <button onClick={() => navigate(`/order/${order._id}`)} className="log">View Details</button>
+                                        </div>
+                                        </div>
+                                        
+                                    </div>
+                                ))}
                         </div>
-                        </Accordion.Body>
-                        </Accordion.Item>
-                    ))}
-                </Accordion>
-            </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
     );
 };
 
