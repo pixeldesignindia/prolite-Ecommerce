@@ -10,7 +10,7 @@
   .ship-content{padding: 2rem;}
   /* .ship-r{background-color:  #0b72bc;} */
   .ship-l{background-color:rgb(1, 79, 179);min-height: 85vh;}
-  .redio-address{  padding: 1.2rem;box-shadow: rgba(2, 191, 238, 0.553) 0px 1px 3px, rgba(47, 162, 250, 0.24) 0px 1px 2px;width: 100%;background-color:#fff;transition:.3s ease-in-out;border-radius: 5px;display: flex !important; justify-content: space-between;}
+  .redio-address{  padding: 1.2rem;border: 1px solid rgba(101, 101, 101, 0.2);width: 100%;background-color:#fff;transition:.3s ease-in-out;border-radius: 5px;display: flex !important; justify-content: space-between;}
   .radio-container input[type="radio"] {
     display: none;
   }
@@ -31,9 +31,7 @@
     background-color: #ff00aa;
   }
   .selectedAddressLabel {
-    scale: 1.05;
     background-color: rgb(169, 255, 209);
-    box-shadow: rgba(2, 238, 116, 0.553) 0px 1px 3px, rgba(47, 250, 98, 0.24) 0px 1px 2px;
     width: 100%;
 
   }

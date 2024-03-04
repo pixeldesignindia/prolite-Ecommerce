@@ -187,7 +187,7 @@ const Shipping = () => {
       <div className="bg-blue">
       <div className=" row rowBlock">
       <div className="col-6 w100">
-        <div className="ship-content ship-l">
+        <div className="ship-content">
         <h4 style={{color:"#fff"}}>Saved Address</h4>
   {addresses.length > 0 && (
     <div>

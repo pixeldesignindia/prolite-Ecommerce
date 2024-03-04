@@ -16,7 +16,7 @@ import { CartItem } from "../../types/types";
 import Footer from "../../components/footer/Footer";
 import { UserReducerInitialState } from "../../types/reducerTypes";
 import toast from "react-hot-toast";
-
+import empty from '/images/empty-cart.png'
 
 const Cart = () => {
   const {user}= useSelector((state:{userReducer:UserReducerInitialState})=>state.userReducer)
@@ -76,7 +76,7 @@ const loginFirst=()=>{
 }
   return (
     <>
-    <div className="cart res-col-center" >
+    <div className="cart res-col-center bg-blue" >
       <main className="bg-dark-blue w100">
         {cartItems.length > 0 ? (
           cartItems.map((i, idx) => (
@@ -89,10 +89,12 @@ const loginFirst=()=>{
             />
           ))
         ) : (
-          <h1>No Items Added</h1>
+          <div className="center ">
+            <img src={empty} alt="" />
+          </div>
         )}
       </main>
-      <aside className="center w100">
+      <aside className=" w100">
         
         <div className="priceCard col-center">
         <h3>Pricing</h3>

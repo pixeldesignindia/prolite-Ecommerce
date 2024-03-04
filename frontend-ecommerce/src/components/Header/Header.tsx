@@ -12,7 +12,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '/images/logo.svg';
-import { FaShoppingCart } from "react-icons/fa";
+import search from '/images/search.svg';
 interface propestype {
   user: User | null;
 }
@@ -54,11 +54,16 @@ const Header = ({ user }: propestype) => {
             </div>
       
       <div className='admin-logo'>
-      <Link to={"/cart"} style={{display:'flex',alignItems:'center'}}>
+      <Link to={"#"} style={{display:'flex',alignItems:'center'}}>
+      <img src={search} alt='cart' style={{height:'1.2rem'}}/>
+      
+      </Link>
+        {user?._id ? <><Link to={"/admin/product"}> <img src={userIcon} alt="" style={{height:'2rem'}}/> </Link>
+        <Link to={"/cart"} style={{display:'flex',alignItems:'center'}}>
       <img src={cart} alt='cart' style={{height:'1.5rem'}}/>
         {cartItems && cartItems.length>=1 && cartItems.length}
       </Link>
-        {user?._id ? <><Link to={"/admin/product"}> <img src={userIcon} alt="" style={{height:'2rem'}}/> </Link> <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}} >SignIn</button>}</div>
+         <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}} >SignIn</button>}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>

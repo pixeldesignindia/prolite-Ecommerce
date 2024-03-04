@@ -1,12 +1,12 @@
 .cartImg{height: 7rem;max-width: 10rem;}
-.cart-item{display: flex;align-items: center;justify-content: space-between;padding: 1rem;border: 1px solid rgba(0, 0, 0,.2);background: #fff;}
+.cart-item{display: flex;align-items: center;justify-content: space-between;padding: 1rem;border: 1px solid rgba(123, 123, 123, 0.2);background: #fff;}
 .cart-item >article{width: 25rem;display: flex;justify-content: space-between;font-size: 1.2rem;align-items: center;}
 .i-d-btns{display: flex;gap: 1.5rem;align-items: center;margin-top: 1rem;}
 .i-d-btns button{border-radius: 3px;height: 30px;width: 30px;background-color: rgb(7, 215, 146,.5);color: aliceblue;font-weight: 600;font-size: 1.5rem;}
 .i-d-btns p{width: 1rem;text-align: center;}
 .red-bg{background-color: rgba(242, 50, 50, .5) !important;}
 .delete-btn>svg{color: rgba(206, 59, 59, 0.905);font-size: 1.7rem;}
-.address-delete>svg{color: rgba(206, 59, 59, 0.905) !important;font-size: 1.7rem;}
+.address-delete>svg{color: rgba(206, 59, 59, 0.905) !important;font-size: 1.5rem;}
 .cart-img-section{gap: 1rem;width: 10rem !important;}
 .cart-pro-data >p{font-size: .9rem; font-weight: 400; color: #808080;}
 @media (max-width:500px) {
