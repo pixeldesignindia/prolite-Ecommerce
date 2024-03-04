@@ -2,8 +2,9 @@
 import'./banner.css'
 import Carousel from 'react-bootstrap/Carousel';
 import banner1 from '/images/banner1.svg'
-
+import { useNavigate } from 'react-router-dom';
 function Banner() {
+  const navigate=useNavigate()
   return (
    <div>
      <Carousel>
@@ -19,16 +20,16 @@ function Banner() {
     
     <div className="container text-center">
       <div className="row gx-4 ">
-        <div className="col-3 mt-5 mb-5">
+        <div className="col-3 mt-5 mb-5" onClick={()=>{navigate('/autoglo')}} style={{cursor:'pointer'}}>
           <h2 className="box blue">AutoGlo</h2>
         </div>
-        <div className="col-3 mt-5 mb-5">
+        <div className="col-3 mt-5 mb-5" onClick={()=>{navigate('/prolite')}} style={{cursor:'pointer'}}>
           <h2 className="box green-box">Prolite</h2>
         </div>
-        <div className="col-3 mt-5 mb-5">
+        <div className="col-3 mt-5 mb-5" onClick={()=>{navigate('/autoglo')}} style={{cursor:'pointer'}}>
           <h2 className="box blue">AutoGlo</h2>
         </div>
-        <div className="col-3 mt-5 mb-5">
+        <div className="col-3 mt-5 mb-5" onClick={()=>{navigate('/prolite')}} style={{cursor:'pointer'}}>
           <h2 className="box green-box">Prolite</h2>
         </div>
       </div>

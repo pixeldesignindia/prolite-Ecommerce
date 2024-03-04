@@ -202,7 +202,7 @@ const Product = () => {
                   <h3 className="product-title b">{product.name}</h3>
                   <h5>{product.dimensions}</h5>
                   <p className="stock">Stock : {product.stock}</p>
-                  <p className="card-text">&#x20b9;{product.price}</p>
+                  <p className="card-text">&#x20b9;{product.price.toFixed(2)}</p>
                 </div>
                 <p className="des">
                   {product.description}
