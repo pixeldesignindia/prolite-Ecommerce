@@ -17,8 +17,8 @@ export const userSchema = z.object({
     .min(3, { message: 'Email must be at least 3 characters' })
     .max(255, { message: 'Email must not be more than 255 characters' }),
   photo: z
-  .string({ required_error: 'Photo is required' })
-  .url({message:"invalidimage url"}), 
+  .string({ required_error: 'Photo is required' }),
+  // .url({message:"invalidimage url"}), 
   // gender: z
   // .enum(['male', 'female'],{required_error:"gender must be required"}),
   // dob: z

@@ -55,11 +55,13 @@
 .address-delete svg{color: rgb(254, 42, 42);height: 25px;width: 25px;margin-left: 1.5rem;}
 .pay-now{width: max-content !important;padding: 1rem 3rem;}
 .new-address{min-height: 50vh;padding: 1rem 0;display: flex;transition: .4s ease-in;}
-.new-address form{display: flex;flex-direction: column;background-color: #fff;width: 100%;box-shadow: 
+.new-address form{display: flex;flex-direction: column;background-color: #fff;width: 100%;
+  border:1px solid rgba(91, 145, 253, 0.2)
+  /* box-shadow: 
   inset 0.5rem 0.5rem #1176D0, 
   inset -0.5rem -0.5rem #68CD3E, 
   0.5rem 0.5rem 0 #1176D0, 
-  -0.5rem -0.5rem 0 #68CD3E;
+  -0.5rem -0.5rem 0 #68CD3E; */
 ;padding: 3rem;}
 .input-box-address>input{padding: .5rem 0; font-size: 1.1rem;}
 .input-box-address{margin: .2rem 0;}
@@ -95,7 +97,8 @@
   .edit-confirm{display: flex;align-items: center;justify-content: space-between;}
   .save{padding: .6rem 1.3rem;background-color:rgb(1, 79, 179);font-weight: 500;color: #fff;border-radius: 2px;}
   .cancel{padding: .6rem 1.3rem;background-color:#e54830;font-weight: 500;color: #fff;border-radius: 2px;}
-
+.sm-address input,.sm-address select{width: 48%;}
+.sm-address{display: flex;align-items: center;justify-content: space-between;}
   @media (max-width:500px) {
     .ship-l{min-height: fit-content;}
     .radio-label.redio-address {width: 110%;}

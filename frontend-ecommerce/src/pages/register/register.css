@@ -1,7 +1,6 @@
 .login>main{border-radius: 1rem;}
 .login-select{color: black !important;background-color: #fff !important;}
 .login-select option{color: black !important;background-color: #fff !important;}
-.toggle-password-btn{text-align: right;cursor: pointer;}
 @media(max-width:'500px'){
     .login{padding: 0 1.2rem;}
 }

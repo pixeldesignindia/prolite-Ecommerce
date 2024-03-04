@@ -7,20 +7,24 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import toast from "react-hot-toast";
 import { RootState} from "../../redux/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '/images/logo.svg';
 import search from '/images/search.svg';
+import { userNotExist } from '../../redux/userReducer';
 interface propestype {
   user: User | null;
 }
 const Header = ({ user }: propestype) => {
+  
+const dispatch= useDispatch()
   const { cartItems } =useSelector((state: RootState) => state.cartReducer);
   const logOutHandler = async () => {
     try {
       signOut(auth);
+      dispatch(userNotExist())
       toast.success("Log Out Successful");
     } catch (err) {
       toast.error("Log Out Failed");
@@ -58,7 +62,9 @@ const Header = ({ user }: propestype) => {
       <img src={search} alt='cart' style={{height:'1.2rem'}}/>
       
       </Link>
-        {user?._id ? <><Link to={"/admin/product"}> <img src={userIcon} alt="" style={{height:'2rem'}}/> </Link>
+        {user?._id ? <>
+        {user.role==='admin' && <Link to={"/admin/product"}> <img src={userIcon} alt="" style={{height:'2rem'}}/> </Link>}
+        
         <Link to={"/cart"} style={{display:'flex',alignItems:'center'}}>
       <img src={cart} alt='cart' style={{height:'1.5rem'}}/>
         {cartItems && cartItems.length>=1 && cartItems.length}

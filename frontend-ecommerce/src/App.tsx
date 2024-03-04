@@ -17,6 +17,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 const Product = lazy(() => import("./pages/product/Product"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Cart = lazy(() => import("./pages/cart/Cart"));
+const Register = lazy(() => import("./pages/register/Register"));
 const Prolite = lazy(() => import("./pages/search/Prolite"));
 const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
 const Shipping = lazy(() => import("./pages/shipping/Shipping"));
@@ -74,6 +75,7 @@ else{dispatch(userNotExist())}
           <Route path="/refund" element={<Refund/>} />
           <Route path="/terms" element={<Terms/>} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
+          <Route path="/register" element={<ProtectedRoute isAuthenticated={user?false:true}><Register/></ProtectedRoute> } />
 
             <Route path="/prolite" element={<Prolite />} />
             <Route path="/autoglo" element={<Autoglo/>} />

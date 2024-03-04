@@ -31,7 +31,6 @@ export const newUser = TryCatch(
       photo,
       password,
       _id,
-
     });
 
     return res.status(201).json({

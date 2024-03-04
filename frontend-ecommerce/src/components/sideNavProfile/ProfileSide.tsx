@@ -3,15 +3,19 @@ import { Link } from 'react-router-dom';
 import { signOut} from 'firebase/auth'; 
 import toast from 'react-hot-toast';
 import { auth } from '../../firebase';
+import { userNotExist } from '../../redux/userReducer';
+import { useDispatch } from 'react-redux';
 type ProfileSideProps = {
   name: string;
   pic: string;
 };
 
 const ProfileSide = ({ name, pic }: ProfileSideProps) => {
+  const dispatch=useDispatch()
   const logOutHandler = async () => {
     try {
       await signOut(auth);
+      dispatch(userNotExist())
       toast.success("Log Out Successful");
     } catch (err) {
       toast.error("Log Out Failed");

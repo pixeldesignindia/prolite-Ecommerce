@@ -5,10 +5,6 @@ import ProfileSide from "../../components/sideNavProfile/ProfileSide";
 const Profile = () => {
     const { user } = useSelector((state: { userReducer: UserReducerInitialState }) => state.userReducer);
 
-    const formatDate = (isoDate:any) => {
-        const date = new Date(isoDate);
-        return date.toLocaleDateString(); 
-    };
 
     return (
         <div className="profile-page bg-blue">
@@ -21,8 +17,7 @@ const Profile = () => {
                     <div className="profile-data">
                         <h3 className="text-center">{user?.name}</h3>
                         <div className="pro-data-row"><p>Email : </p> <p className="b">{user?.email}</p> </div>
-                        <div className="pro-data-row"><p>Gender : </p> <p className="b">{user?.gender}</p> </div>
-                        <div className="pro-data-row"><p>Date of Birth : </p> <p className="b">{user ? formatDate(user.dob) : ""}</p></div>
+                        
                     </div>
                 </div>
             </div>
