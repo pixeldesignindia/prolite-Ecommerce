@@ -20,13 +20,8 @@ const CartItem = ({
 
   return (
     <div className="cart-item">
-      <div className="cart-img-section col-center">
+      <div className="cart-img-section center">
       <img src={`${server}/${photo}`} alt={name} className="cartImg" />
-      <div className="i-d-btns">
-        <button className="red-bg center" onClick={() => decrementHandler(cartItem)}>-</button>
-        <p>{quantity}</p>
-        <button className="center" onClick={() => incrementHandler(cartItem)}>+</button>
-      </div>
       </div>
       
       <article >
@@ -35,6 +30,11 @@ const CartItem = ({
           <p>Category : {category}</p>
           <p>Dimension : {dimension}</p>
           <p>Model : {model}</p>
+          <div className="i-d-btns">
+        <button className="red-bg center" onClick={() => decrementHandler(cartItem)}>-</button>
+        <p>{quantity}</p>
+        <button className="center" onClick={() => incrementHandler(cartItem)}>+</button>
+      </div>
         </div>
 
         <p>Price : <span className=" b" style={{color:'#46923c'}}>₹{price}</span></p>

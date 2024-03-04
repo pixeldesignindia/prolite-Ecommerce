@@ -1,5 +1,5 @@
 
-.cardC{height: 32rem;margin: 0;padding: 20px;align-items: center;border: 0px;border-radius: 13px;background: #FFFFFF;margin: 0 10px;box-shadow: rgba(27, 85, 171, 0.421) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
+.cardC{height: 32rem;margin: 0;padding: 20px;align-items: center;border: 0px;border-radius: 13px;background: #FFFFFF;margin: 0 10px;box-shadow: 0 0 20px #e7e7e7}
 .card-body{height: 172px;text-align: center;padding: 20px 0;}
 .card .img{height: 390px;display:flex;align-items: center;background: #F4FAFF;border-radius: 13px;padding: 0 15px;}
 .card-title{color: rgba(0, 0, 0, 1);font-size: 22px;text-transform: uppercase;font-weight: 600;}

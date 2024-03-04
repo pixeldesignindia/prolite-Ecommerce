@@ -1,6 +1,7 @@
-import { FaUser } from "react-icons/fa";
+import cart from '/images/cart.svg'
 import { useNavigate , Link} from "react-router-dom";
 import "./header.css";
+import userIcon from '/images/user.svg'
 import { User } from "../../types/types";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
@@ -54,10 +55,10 @@ const Header = ({ user }: propestype) => {
       
       <div className='admin-logo'>
       <Link to={"/cart"} style={{display:'flex',alignItems:'center'}}>
-      <FaShoppingCart style={{color:'#1176D0'}} />
+      <img src={cart} alt='cart' style={{height:'1.5rem'}}/>
         {cartItems && cartItems.length>=1 && cartItems.length}
       </Link>
-        {user?._id ? <><Link to={"/admin/product"}><FaUser /></Link> <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}} >SignIn</button>}</div>
+        {user?._id ? <><Link to={"/admin/product"}> <img src={userIcon} alt="" style={{height:'2rem'}}/> </Link> <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}} >SignIn</button>}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>

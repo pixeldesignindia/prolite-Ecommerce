@@ -3,6 +3,7 @@ import { server } from "../../redux/store";
 import { CartItem } from "../../types/types";
 import { FaCartPlus } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
+import cart from '/images/add-cart.svg'
 
 type ProductsProps = {
   productId: string;
@@ -41,7 +42,7 @@ const ProductCard = ({
         <p className="card-title">{name}</p>
         {stock>0?<p >Stock: {stock}</p>:<p style={{color:"red"}}>Out Of Stock</p>}
         
-        <p className="card-text">&#x20b9;{price}</p>
+        <p className="card-text">&#x20b9;{price.toFixed(2)}</p>
         {/* {category && <p>Category: {category}</p>} */}
         <button onClick={() => handler({
           productId,
@@ -54,7 +55,7 @@ const ProductCard = ({
           dimension,
           model,
           category: category || '' // Default value if category is not provided
-        })} className="add-cart"><FaCartPlus /> Add To Cart</button>
+        })} className="add-cart"><FaCartPlus  /> Add To Cart</button>
       </div>
     </div>
   );

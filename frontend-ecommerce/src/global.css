@@ -26,7 +26,6 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
 .back-btn{background:rgb(1, 79, 179);border-radius: 50%;height: 3rem;width: 3rem;}
 .back-btn svg{color: #fff; font-size: 2rem;}
   .heading{text-transform: uppercase;}
-.bg-dark-blue{background:rgb(1, 79, 179);}
 
   /* input */
   input{background: transparent; outline: none;border:0 ;;}
@@ -62,7 +61,13 @@ input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
 }
+
+/* Top Nav */
+.top-nav{padding: 1rem 4rem;background: #ebf8ff;display: flex; gap: 1rem;align-items: center;color: rgb(0, 187, 255);}
+.top-nav p{color: rgb(0, 187, 255);}
+.top-nav .lastP{color: rgb(169, 169, 169) !important;}
   @media(max-width:768px){
+    .top-nav{padding: .6rem 1rem; gap: .5rem;}
     .w100{width: 100%;}
     .rowBlock{display: block;}
     .none{display: none;}
