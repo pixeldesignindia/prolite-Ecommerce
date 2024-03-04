@@ -1,4 +1,4 @@
-.cartImg{height: 7rem;max-width: 10rem;}
+.cartImg{height: 8rem;max-width: 10rem;}
 .cart-item{display: flex;align-items: center;justify-content: space-between;padding: 1rem;border: 1px solid rgba(123, 123, 123, 0.2);background: #fff;}
 .cart-item >article{width: 25rem;display: flex;justify-content: space-between;font-size: 1.2rem;align-items: center;}
 .i-d-btns{display: flex;gap: 1.5rem;align-items: center;margin-top: 1rem;}
@@ -9,6 +9,10 @@
 .address-delete>svg{color: rgba(206, 59, 59, 0.905) !important;font-size: 1.5rem;}
 .cart-img-section{gap: 1rem;width: 10rem !important;}
 .cart-pro-data >p{font-size: .9rem; font-weight: 400; color: #808080;}
+.delete-btn{background-color:rgba(206, 59, 59, 0.905) ; padding: .5rem 1.2rem; color: #fff}
 @media (max-width:500px) {
     .cart-img-section{width: 5.5rem !important;}
+    .delete-btn{ padding: .3rem .7rem;font-size: .7rem;}
+    .i-d-btns{margin-top: .5rem;}
+    .cart-pro-data{margin-left: 2rem;}
 }

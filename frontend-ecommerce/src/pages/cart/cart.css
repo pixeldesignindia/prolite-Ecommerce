@@ -8,7 +8,7 @@
     .priceCard>h3{padding-bottom: 2rem;}
     .cartPriceBox{width: 100%;}
     .cartBoxRow{display: flex;justify-content: space-between;padding: 2px 0px;}
-    
+    .empty{width: 50vw;}
     .coupon-code{padding: .5rem; border-radius: 5px;border: .5px solid rgb(214, 213, 210);margin-top: 1.5rem;transition: box-shadow 0.3s ease;text-align: center;}
     .coupon-code:hover {
         box-shadow: 0 0 10px 3px rgba(255, 255, 0, 0.5); /* Yellow box shadow */
@@ -25,4 +25,5 @@
         .i-d-btns{gap: .5rem !important;}
         .i-d-btns button{height: 20px !important;width: 20px !important;}
         .delete-btn > svg{font-size: 1.3rem !important;}
+        .empty{width: 100vw;}
       }

@@ -30,6 +30,7 @@ const CartItem = ({
           <p>Category : {category}</p>
           <p>Dimension : {dimension}</p>
           <p>Model : {model}</p>
+          <p>Price : <span className=" b" style={{color:'#46923c'}}>₹{price.toFixed(2)}</span></p>
           <div className="i-d-btns">
         <button className="red-bg center" onClick={() => decrementHandler(cartItem)}>-</button>
         <p>{quantity}</p>
@@ -37,13 +38,13 @@ const CartItem = ({
       </div>
         </div>
 
-        <p>Price : <span className=" b" style={{color:'#46923c'}}>₹{price}</span></p>
+        
       </article>
 
       
 
       <button className="delete-btn" onClick={() => removeHandler(productId)}>
-        <FaTrash />
+        Remove
       </button>
     </div>
   );

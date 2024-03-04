@@ -90,7 +90,7 @@ const loginFirst=()=>{
           ))
         ) : (
           <div className="center ">
-            <img src={empty} alt="" />
+            <img src={empty} alt="" className="empty"/>
           </div>
         )}
       </main>
