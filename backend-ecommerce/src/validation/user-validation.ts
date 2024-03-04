@@ -19,8 +19,12 @@ export const userSchema = z.object({
   photo: z
   .string({ required_error: 'Photo is required' })
   .url({message:"invalidimage url"}), 
-  gender: z
-  .enum(['male', 'female'],{required_error:"gender must be required"}),
-  dob: z
-  .string({ required_error: 'Date of birth is required' }),
+  // gender: z
+  // .enum(['male', 'female'],{required_error:"gender must be required"}),
+  // dob: z
+  // .string({ required_error: 'Date of birth is required' }),
+  password: z
+  .string({ required_error: 'password is required' })
+  .min(3, { message: 'password must be at least 3 characters' })
+  .max(255, { message: 'Password must not be more than 255 characters' }),
 });
