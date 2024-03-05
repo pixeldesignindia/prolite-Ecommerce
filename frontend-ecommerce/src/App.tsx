@@ -23,6 +23,9 @@ const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
 const Shipping = lazy(() => import("./pages/shipping/Shipping"));
 const Orders = lazy(()=>import('./pages/orders/Orders'))
 const Order = lazy(()=>import('./pages/order/Order'))
+const GenerateOtp = lazy(()=>import('./pages/register/Forgot'))
+const VerifyOtp = lazy(()=>import('./pages/register/VerifyOtp'))
+const ChangePassword = lazy(()=>import('./pages/register/Change'))
 const Checkout = lazy(()=>import('./pages/checkOut/Checkout'))
 const Delivery = lazy(()=>import('./pages/delivery/Delivery'))
 const Payment = lazy(()=>import('./pages/payment/Payment'))
@@ -76,6 +79,9 @@ else{dispatch(userNotExist())}
           <Route path="/terms" element={<Terms/>} />
           <Route path="/login" element={<ProtectedRoute isAuthenticated={user?false:true}><Login /></ProtectedRoute> } />
           <Route path="/register" element={<ProtectedRoute isAuthenticated={user?false:true}><Register/></ProtectedRoute> } />
+          <Route path="/generateOtp" element={<ProtectedRoute isAuthenticated={user?false:true}><GenerateOtp/></ProtectedRoute> } />
+          <Route path="/verifyOtp" element={<ProtectedRoute isAuthenticated={user?false:true}><VerifyOtp/></ProtectedRoute> } />
+          <Route path="/changePassword" element={<ProtectedRoute isAuthenticated={user?false:true}><ChangePassword/></ProtectedRoute> } />
 
             <Route path="/prolite" element={<Prolite />} />
             <Route path="/autoglo" element={<Autoglo/>} />

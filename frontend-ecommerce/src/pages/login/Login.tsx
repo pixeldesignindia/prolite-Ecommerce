@@ -83,7 +83,7 @@ const Login = () => {
                         </p>
                 </div>
                 <p>New User? <span onClick={() => navigate('/register')} style={{ color: '#1176d0', cursor: 'pointer' }}>Register Here</span></p>
-                <p>Forgot Password? <span onClick={() => navigate('/reset-password')} style={{ color: '#1176d0', cursor: 'pointer' }}>Reset Password</span></p>
+                <p>Forgot Password? <span onClick={() => navigate('/generateOtp')} style={{ color: '#1176d0', cursor: 'pointer' }}>Reset Password</span></p>
                 <div>
                     <button onClick={manualLoginHandler} style={{ background: ' linear-gradient(102.08deg, #68CD3E 12.37%, #3AA20F 84.78%)', border: '0' }}>Login</button>
                     <button onClick={loginHandler}>Sign in With Google <FcGoogle /> </button>
