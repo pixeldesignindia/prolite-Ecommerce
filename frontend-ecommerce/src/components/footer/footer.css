@@ -1,13 +1,13 @@
 #footer-main{background-color: #1F242B;}
 .first .left-head{font-size: 45px;font-weight: 600;line-height: 63px;letter-spacing: 0em;text-align: left;padding: 30px 0 0 0;color: #fff;}
-.first button{padding: 12px 24px;width: 374px;background-color: #014FB3;color: #fff;border: 0px;border-radius: 5px;text-transform: uppercase;font-size: 20px;font-weight: 500;letter-spacing: 2px;margin-top: 10px;}
+.first button{padding: 12px 24px;width: 374px;background-color: #014FB3;color: #fff;border: 0px;border-radius: 5px;text-transform: uppercase;font-size: 16px;font-weight: 500;letter-spacing: 2px;margin-top: 10px;}
 
-.f-head{color: #525A66;text-transform: uppercase;font-size: 28px;font-weight: 500;line-height: 42px;letter-spacing: 0.1em;text-align: left;}
+.f-head{color: #525A66;text-transform: uppercase;font-size: 20px;font-weight: 500;line-height: 42px;letter-spacing: 0.1em;text-align: left;}
 .ft-list{padding: 0;font-size: 20px;font-weight: 300;line-height: 43px;letter-spacing: 0em;text-align: left;}
 .ft-list a{color: #FFFFFF;text-decoration: none;}
 .secondary-footer{border-top: 1px solid rgb(89 87 87);padding: 20px 0px;}
-.second-left{text-align: start;color: #fff;}
-.second-right{justify-content: end;color: #fff;display: flex;}
+.second-left{text-align: start;color: #9f9f9ff8;}
+.second-right{justify-content: end;color: #9f9f9ff8;display: flex;}
 .second-right a{color: #209920;}
 
 @media(max-width:500px){

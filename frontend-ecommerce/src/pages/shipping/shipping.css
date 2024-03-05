@@ -31,7 +31,7 @@
     background-color: #ff00aa;
   }
   .selectedAddressLabel {
-    background-color: rgba(209, 253, 229, 0.537);
+    background-color: rgba(221, 221, 221, 0.748);
     width: 100%;
 
   }
@@ -70,7 +70,7 @@
   position: relative;
 }
 .user-add-row{display: flex;justify-content: space-between; align-items: center;}
-.user-address{width: 31rem;}
+.user-address{width: 36rem;}
 .input-box-address input,.input-box-address select {
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -102,11 +102,11 @@
 .sm-address{display: flex;align-items: center;justify-content: space-between;}
 .sm-address select{background-color: #fff;color: #000;}
 
-.ed-btn{display: flex;align-items: center;justify-content: center;flex-direction: column;gap: 7rem;}
+.ed-btn{display: flex;align-items: center;justify-content:space-between;margin-top: 1rem;}
   @media (max-width:500px) {
-    .ed-btn{gap: 4.5rem;}
+    /* .ed-btn{gap: 4.5rem;} */
     .ship-l{min-height: fit-content;}
-    .user-address{width:16rem;}
+    .user-address{width:18rem;}
     .radio-label::before{height: 19px;}
     .user-add-row{font-size: .8rem;}
     .address-edit svg{margin-bottom: 2rem;}

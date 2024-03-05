@@ -76,7 +76,7 @@ const loginFirst=()=>{
 }
   return (
     <>
-    <div className="cart res-col-center bg-blue" >
+    <div className="cart res-col-center " >
       <main className="bg-dark-blue w100">
         {cartItems.length > 0 ? (
           cartItems.map((i, idx) => (

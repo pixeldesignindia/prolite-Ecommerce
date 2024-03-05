@@ -45,7 +45,7 @@ const dispatch= useDispatch()
   <div className="no-print">
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/"><img src={logo} alt="logo"  className='logo-img' /></Navbar.Brand>
+        <Link to="/"><img src={logo} alt="logo"  className='logo-img' /></Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="nav-Body">
@@ -62,14 +62,20 @@ const dispatch= useDispatch()
       <img src={search} alt='cart' style={{height:'1.2rem'}}/>
       
       </Link>
-        {user?._id ? <>
-        {user.role==='admin' && <Link to={"/admin/product"}> <img src={userIcon} alt="" style={{height:'2rem'}}/> </Link>}
+
+        {user?.role==='admin' && <Link to={"/admin/product"}> <img src={userIcon} alt="" style={{height:'2rem'}}/> </Link>}
         
-        <Link to={"/cart"} style={{display:'flex',alignItems:'center'}}>
+         <Link to={"/cart"} style={{display:'flex',alignItems:'center'}}>
       <img src={cart} alt='cart' style={{height:'1.5rem'}}/>
-        {cartItems && cartItems.length>=1 && cartItems.length}
+      <p className='cartCount'>{cartItems && cartItems.length>=1 && cartItems.length}</p>
+        
       </Link>
-         <Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link>  <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}} >SignIn</button>}</div>
+      {user?._id ? <>
+{user?.photo===''?<Link to={"/profile"}> <img src={userIcon} alt="" className="profile-img" /> </Link> :<Link to={"/profile"}> <img src={user.photo} alt="" className="profile-img" /> </Link> }
+         
+         
+          <button className="logout center" onClick={logOutHandler}>Logout</button></> : <button className="log center" onClick={()=>{navigate('/login')}} >SignIn</button>}
+         </div>
           </Nav>
         </Navbar.Collapse>
       </Container>

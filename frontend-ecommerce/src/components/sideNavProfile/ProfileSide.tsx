@@ -4,6 +4,7 @@ import { signOut} from 'firebase/auth';
 import toast from 'react-hot-toast';
 import { auth } from '../../firebase';
 import { userNotExist } from '../../redux/userReducer';
+import userIcon from '/images/user.svg'
 import { useDispatch } from 'react-redux';
 type ProfileSideProps = {
   name: string;
@@ -26,7 +27,8 @@ const ProfileSide = ({ name, pic }: ProfileSideProps) => {
     <div className='sideBar'>
       <div className='w-box row'>
         <div className='col-2'>
-          <img src={pic} alt="" style={{ height: '25px', width: '25px', borderRadius: '50%' }} />
+          {pic===''?<img src={userIcon} alt="" style={{ height: '25px', width: '25px', borderRadius: '50%' }} />:<img src={pic} alt="" style={{ height: '25px', width: '25px', borderRadius: '50%' }} />}
+          
         </div>
         <div className='col-10'>
           <p>Hi,</p>
