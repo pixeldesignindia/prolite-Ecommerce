@@ -8,8 +8,6 @@ import { server } from "../../redux/store";
 import { RootState } from "../../redux/store";
 import { UserReducerInitialState } from "../../types/reducerTypes";
 import './shipping.css';
-import { MdDelete } from "react-icons/md";
-import { FaRegEdit } from "react-icons/fa";
 import Footer from "../../components/footer/Footer";
 
 const Shipping = () => {

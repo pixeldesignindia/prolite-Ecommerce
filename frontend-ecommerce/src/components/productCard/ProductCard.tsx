@@ -3,7 +3,7 @@ import { server } from "../../redux/store";
 import { CartItem } from "../../types/types";
 import { FaCartPlus } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
-import cart from '/images/add-cart.svg'
+// import cart from '/images/add-cart.svg'
 
 type ProductsProps = {
   productId: string;

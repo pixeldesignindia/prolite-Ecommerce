@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Slider from "react-slick";
 import dot from "/images/blueDot.svg"; // Assuming the correct path to the image

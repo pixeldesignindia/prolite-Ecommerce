@@ -5,7 +5,6 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [showPassword, setShowPassword] = useState(false);
     const navigate =useNavigate()
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -50,9 +49,7 @@ const Login = () => {
             toast.error('Registration failed');
         }
     };
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
+
 
     return (
         <div className='login'>

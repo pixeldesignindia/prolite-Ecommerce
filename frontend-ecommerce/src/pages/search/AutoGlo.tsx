@@ -12,7 +12,7 @@ import { CartItem } from "../../types/types";
 import { useDispatch } from "react-redux";
 import Footer from '../../components/footer/Footer'
 import { FiSearch } from "react-icons/fi";
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { GoChevronRight } from 'react-icons/go';
 
 const Search = () => {
