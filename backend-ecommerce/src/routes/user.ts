@@ -11,6 +11,7 @@ import {
   newUser,
   resetPassword,
   sendOtp,
+  signUp,
   verifyOtp,
 } from "../controllers/user.js";
 import { adminOnly } from "../middlewares/auth.js";
@@ -19,6 +20,7 @@ import { userSchema } from "../validation/user-validation.js";
 
 
 app.post("/new",validatation(userSchema),newUser)
+app.post("/register",validatation(userSchema),signUp)
 app.post("/login",login)
 app.get("/all",adminOnly,getAllUsers)
 
