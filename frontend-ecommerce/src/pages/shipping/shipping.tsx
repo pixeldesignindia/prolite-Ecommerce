@@ -12,6 +12,7 @@ import Footer from "../../components/footer/Footer";
 
 const Shipping = () => {
   const [addresses, setAddresses] = useState<any[]>([]); // Define addresses as an array of any type
+  const [editAble, setEditAble] = useState<boolean>(false); // Define addresses as an array of any type
   const [selectedAddress, setSelectedAddress] = useState<any | null>(null); // Define selectedAddress as string or null
   const { cartItems, total } = useSelector((state: RootState) => state.cartReducer);
   const { user } = useSelector((state: { userReducer: UserReducerInitialState }) => state.userReducer);
@@ -85,6 +86,7 @@ const Shipping = () => {
 
   const editAddress = (id: string) => { 
     setSelectedAddress(id);
+    setEditAble(true)
     const editedAddress = addresses.find((address) => address._id === id);
     if (editedAddress) {
       setShippingInfo({
@@ -170,11 +172,12 @@ const Shipping = () => {
                           <p className="user-add-row"><strong>State :  </strong> <span>{address.state}</span>  </p>
                           <p className="user-add-row"><strong>Country :   </strong> <span>{address.country} </span>  </p>
                           <p className="user-add-row"><strong>Pin Code :</strong> <span>{address.pinCode}</span>  </p>
-                        </div>
-                        <div className="ed-btn">
+                          <div className="ed-btn">
                           <button onClick={() => editAddress(address._id)} className="address-edit">Edit</button>
                           <button onClick={() => deleteAddress(address._id)} className="address-delete">Remove</button>
                         </div>
+                        </div>
+                        
                       </div>
                     </div>
                   ))}
@@ -186,7 +189,7 @@ const Shipping = () => {
           <div className="col-6 w100">
             <div className="ship-content ship-r">
               <div className="radio-container">
-                <h4> { selectedAddress ? 'Edit Address':'Add New Address'}</h4>
+                <h4> { editAble ? 'Edit Address':'Add New Address'}</h4>
               </div>
               <div className="new-address">
                 <form onSubmit={addOrUpdateAddress}>
@@ -258,7 +261,7 @@ const Shipping = () => {
                       onChange={changeHandler}
                     />
                   </div>
-                  <button type="submit" className="checkout res-fs"> { selectedAddress ? 'Save Address':'Add New Address'} </button>
+                  <button type="submit" className="checkout res-fs"> { editAble ? 'Save Address':'Add New Address'} </button>
                 </form>
               </div>
             </div>
