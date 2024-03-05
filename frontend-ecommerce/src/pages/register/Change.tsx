@@ -22,7 +22,7 @@ const Change = () => {
             }
             const verifiedToken = sessionStorage.getItem('codeOne');
             const res = await axios.post(
-                `${import.meta.env.VITE_API_URL}api/v1/users/forgetPassword`, { verifiedToken, newPassword }
+                `${import.meta.env.VITE_API_URL}api/v1/users/resetPassword`, { verifiedToken, newPassword }
             );
             console.log(res);
             if ('data' in res) {

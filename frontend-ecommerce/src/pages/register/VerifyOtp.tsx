@@ -14,7 +14,7 @@ const Verify = () => {
         try {
             const otpToken = sessionStorage.getItem('codeOne');
             const  res  = await axios.post(
-                `${import.meta.env.VITE_API_URL}api/v1/users/forgetPassword`,{otp,otpToken}
+                `${import.meta.env.VITE_API_URL}api/v1/users/verifyOtp`,{otp,otpToken}
             );
             console.log(res);
             
