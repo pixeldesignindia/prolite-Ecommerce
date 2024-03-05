@@ -68,10 +68,10 @@ const Login = () => {
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type={showPassword ? "text" : "password"}  value={password} onChange={(e) => setPassword(e.target.value)} required placeholder='Password'/>
-                    <p className="toggle-password-btn" onClick={togglePasswordVisibility}>
+                    <input type="text"  value={password} onChange={(e) => setPassword(e.target.value)} required placeholder='Password'/>
+                    {/* <p className="toggle-password-btn" onClick={togglePasswordVisibility}>
                             {showPassword ? "Hide" : "Show"}
-                        </p>
+                        </p> */}
                 </div>
                 <div>
                     <label>Confirm Password</label>

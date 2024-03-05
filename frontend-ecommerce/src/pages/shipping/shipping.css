@@ -1,16 +1,16 @@
 /* .shipping{padding: 3rem 0 0 0 ;} */
 /* .shipping h1{margin: 2rem 0;} */
-.address-box{width: 90%;display: flex;align-items: center;margin: 1rem 0;justify-content: space-between;}
+.address-box{width: 100%;display: flex;align-items: center;justify-content: space-between;}
 
 .radio-container {
     display: flex;
     align-items: center;
     width: 90%;
   }
-  .ship-content{padding: 2rem;}
+  .ship-content{padding: 2rem 0 2rem 2rem;}
   /* .ship-r{background-color:  #0b72bc;} */
   .ship-l{background-color:rgb(1, 79, 179);min-height: 85vh;}
-  .redio-address{  padding: 1.2rem;border: 1px solid rgba(101, 101, 101, 0.2);width: 100%;background-color:#fff;transition:.3s ease-in-out;border-radius: 5px;display: flex !important; justify-content: space-between;}
+  .redio-address{  padding: 1.2rem;border: 1px solid rgba(101, 101, 101, 0.2);width: 100%;background-color:#fff;transition:.3s ease-in-out;display: flex !important; justify-content: space-between;}
   .radio-container input[type="radio"] {
     display: none;
   }
@@ -31,7 +31,7 @@
     background-color: #ff00aa;
   }
   .selectedAddressLabel {
-    background-color: rgb(169, 255, 209);
+    background-color: rgba(209, 253, 229, 0.537);
     width: 100%;
 
   }
@@ -51,8 +51,9 @@
     cursor: pointer; 
     font-size: 16px;
   }
-.address-edit svg{color: #4a4a4b;height: 25px;width: 25px;margin-left: 1.5rem;}
-.address-delete svg{color: rgb(254, 42, 42);height: 25px;width: 25px;margin-left: 1.5rem;}
+.address-edit {width:6rem;padding:1rem;color:#fff;background-color: #0a76ce;padding: .3rem;}
+.address-delete {background-color: rgb(254, 42, 42);width:6rem;padding:.3rem;color:#fff}
+
 .pay-now{width: max-content !important;padding: 1rem 3rem;}
 .new-address{min-height: 50vh;padding: 1rem 0;display: flex;transition: .4s ease-in;}
 .new-address form{display: flex;flex-direction: column;background-color: #fff;width: 100%;
@@ -69,7 +70,7 @@
   position: relative;
 }
 .user-add-row{display: flex;justify-content: space-between; align-items: center;}
-.user-address{width: 23rem;}
+.user-address{width: 31rem;}
 .input-box-address input,.input-box-address select {
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -99,13 +100,22 @@
   .cancel{padding: .6rem 1.3rem;background-color:#e54830;font-weight: 500;color: #fff;border-radius: 2px;}
 .sm-address input,.sm-address select{width: 48%;}
 .sm-address{display: flex;align-items: center;justify-content: space-between;}
+.sm-address select{background-color: #fff;color: #000;}
+
+.ed-btn{display: flex;align-items: center;justify-content: center;flex-direction: column;gap: 7rem;}
   @media (max-width:500px) {
+    .ed-btn{gap: 4.5rem;}
     .ship-l{min-height: fit-content;}
-    .radio-label.redio-address {width: 110%;}
-    .user-address{width:21rem;}
-    .radio-label::before{height: 15px;}
+    .user-address{width:16rem;}
+    .radio-label::before{height: 19px;}
     .user-add-row{font-size: .8rem;}
     .address-edit svg{margin-bottom: 2rem;}
     .edit-box{width: 100%;}
+    .address-edit,.address-delete{font-size: .6rem;width: 3.5rem;}
     .res-fs{font-size: .7rem;}
+    .address-edit{gap: .2rem;}
+    .radio-label.redio-address{width: 100%;}
+    .shipping{overflow-x: hidden;}
+    .new-address form{padding: 2rem;}
+    .ship-content{padding: 1rem;}
   }

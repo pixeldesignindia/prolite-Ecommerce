@@ -24,7 +24,7 @@ const Forgot = () => {
             return res;}
         } catch (error) {
             console.log(error);
-            toast.error('Registration failed');
+            toast.error('Otp Cannot Generate due to Technical Issue');
         }
     };
 

@@ -1,7 +1,10 @@
-.login>main{border-radius: 1rem;}
+.login>main{border-radius: 1rem;background-color: #fff;}
+.login{background: rgb(72,252,99);
+    background: linear-gradient(90deg, rgba(72,252,99,1) 0%, rgba(68,85,233,1) 100%);}
 .login-select{color: black !important;background-color: #fff !important;}
 .login-select option{color: black !important;background-color: #fff !important;}
 .toggle-password-btn{text-align: right;cursor: pointer;}
+.login > main > div > p{text-align: right;color: rgb(0, 74, 193);}
 @media(max-width:'500px'){
     .login{padding: 0 1.2rem;}
 }

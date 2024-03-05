@@ -19,7 +19,7 @@ const Verify = () => {
             console.log(res);
             
             if('data' in res) {
-                sessionStorage.setItem('codeOne',res.data.data)
+                sessionStorage.setItem('codeOne',res.data.data.verifiedToken)
                 toast.success(`${res.data.message} `);
                 navigate('/changePassword')
             return res;}

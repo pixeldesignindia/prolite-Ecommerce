@@ -158,9 +158,9 @@ const Shipping = () => {
         <div className="row rowBlock">
           <div className="col-6 w100">
             <div className="ship-content">
-              <h4 style={{color:"#fff"}}>Saved Address</h4>
+              <h4 style={{color:"#000"}}>Saved Address</h4>
               {addresses.length > 0 && (
-                <div>
+                <div className="mt-3">
                   {addresses.map((address, index) => (
                     <div key={index} className="address-box">
                       <div onClick={() => setSelectedAddress(address._id)} className={`radio-label redio-address ${selectedAddress === address._id ? 'selectedAddressLabel' : ''}`}>
@@ -173,9 +173,9 @@ const Shipping = () => {
                           <p className="user-add-row"><strong>Country :   </strong> <span>{address.country} </span>  </p>
                           <p className="user-add-row"><strong>Pin Code :</strong> <span>{address.pinCode}</span>  </p>
                         </div>
-                        <div>
-                          <button onClick={() => editAddress(address._id)} className="address-edit"><FaRegEdit/></button>
-                          <button onClick={() => deleteAddress(address._id)} className="address-delete"><MdDelete /></button>
+                        <div className="ed-btn">
+                          <button onClick={() => editAddress(address._id)} className="address-edit">Edit</button>
+                          <button onClick={() => deleteAddress(address._id)} className="address-delete">Remove</button>
                         </div>
                       </div>
                     </div>
@@ -260,7 +260,7 @@ const Shipping = () => {
                       onChange={changeHandler}
                     />
                   </div>
-                  <button type="submit" className="checkout res-fs"> { selectedAddress ? 'Edit Address':'Add New Address'} </button>
+                  <button type="submit" className="checkout res-fs"> { selectedAddress ? 'Save Address':'Add New Address'} </button>
                 </form>
               </div>
             </div>
