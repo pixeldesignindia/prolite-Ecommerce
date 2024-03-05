@@ -37,7 +37,7 @@ const Login = () => {
             }
             const userId = generateId();
             const  res  = await axios.post(
-                `${import.meta.env.VITE_API_URL}api/v1/users/new`,
+                `${import.meta.env.VITE_API_URL}api/v1/users/register`,
                 { name, email, password,_id:userId,photo:'' }
             );
             if('data' in res) {
@@ -46,7 +46,7 @@ const Login = () => {
             return res;}
         } catch (error) {
             console.log(error);
-            toast.error('Registration failed');
+            toast.error('This Email Id already exist');
         }
     };
 
