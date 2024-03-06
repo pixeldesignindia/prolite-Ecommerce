@@ -37,7 +37,7 @@ const Login = () => {
             }
             const userId = generateId();
             const  res  = await axios.post(
-                `${import.meta.env.VITE_API_URL}api/v1/users/new`,
+                `${import.meta.env.VITE_API_URL}api/v1/users/register`,
                 { name, email, password,_id:userId,photo:'' }
             );
             if('data' in res) {
@@ -46,7 +46,7 @@ const Login = () => {
             return res;}
         } catch (error) {
             console.log(error);
-            toast.error('Registration failed');
+            toast.error('This Email Id already exist');
         }
     };
 
@@ -65,14 +65,14 @@ const Login = () => {
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type="text"  value={password} onChange={(e) => setPassword(e.target.value)} required placeholder='Password'/>
+                    <input type="password"  value={password} onChange={(e) => setPassword(e.target.value)} required placeholder='Password'/>
                     {/* <p className="toggle-password-btn" onClick={togglePasswordVisibility}>
                             {showPassword ? "Hide" : "Show"}
                         </p> */}
                 </div>
                 <div>
                     <label>Confirm Password</label>
-                    <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required placeholder='Confirm Password'/>
+                    <input type="text" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required placeholder='Confirm Password'/>
                 </div>
                 <div>
                     <button onClick={register}>Register</button>

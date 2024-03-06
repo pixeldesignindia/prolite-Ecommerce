@@ -20,15 +20,34 @@ export const cartReducer = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
       state.loading = true;
-
+    
       const index = state.cartItems.findIndex(
         (i) => i.productId === action.payload.productId
       );
-
-      if (index !== -1) state.cartItems[index] = action.payload;
-      else state.cartItems.push(action.payload);
+    
+      if (index !== -1) {
+        // If item already exists in the cart, increment its quantity by 1
+        state.cartItems[index].quantity += 1;
+      } else {
+        // If item is not present, add it to the cart
+        state.cartItems.push(action.payload);
+      }
+    
       state.loading = false;
+    
+      // Recalculate prices
+      const subtotal = state.cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+    
+      state.subtotal = subtotal;
+      state.shippingCharges = state.subtotal > 1000 ? 0 : 100;
+      state.tax = Math.round(state.subtotal * 0.18);
+      state.total =
+        state.subtotal + state.tax + state.shippingCharges - state.discount;
     },
+    
 
     removeCartItem: (state, action: PayloadAction<string>) => {
       state.loading = true;

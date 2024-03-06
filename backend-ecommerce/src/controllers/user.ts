@@ -22,6 +22,8 @@ export const newUser = TryCatch(
         message: `Welcome, ${user.name}`,
       });
 
+  
+       
     if (!_id || !name || !email)
       return next(new ErrorHandler("Please add all fields", 400));
 
@@ -39,6 +41,26 @@ export const newUser = TryCatch(
     });
   }
 );
+export const signUp = TryCatch(async (req, res, next) => {
+  const {name,email,password,_id ,photo} = req.body;
+  if(!email || !password ||!name ||!_id||photo)  return next(new ErrorHandler("Please Enter all field", 400));
+  const user = await User.findOne({email});
+  if(user) return next(new ErrorHandler(" Email Id already exist", 400));
+  const newUser = await User.create({
+      name,
+      email,
+      password,
+      _id,
+      photo
+    });
+
+
+  return res.status(200).json({
+    success: true,
+     message: `Welcome, ${newUser.name}`,
+  });
+});
+
 export const login = TryCatch(async (req, res, next) => {
   const {email,password } = req.body;
   if(!email || !password)  return next(new ErrorHandler("Please Enter all field", 400));

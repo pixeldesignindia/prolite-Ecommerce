@@ -1,4 +1,4 @@
-import  { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -11,8 +11,9 @@ import './shipping.css';
 import Footer from "../../components/footer/Footer";
 
 const Shipping = () => {
-  const [addresses, setAddresses] = useState<any[]>([]); // Define addresses as an array of any type
-  const [selectedAddress, setSelectedAddress] = useState<any | null>(null); // Define selectedAddress as string or null
+  const [addresses, setAddresses] = useState<any[]>([]);
+  const [editAble, setEditAble] = useState<boolean>(false);
+  const [selectedAddress, setSelectedAddress] = useState<any | null>(null);
   const { cartItems, total } = useSelector((state: RootState) => state.cartReducer);
   const { user } = useSelector((state: { userReducer: UserReducerInitialState }) => state.userReducer);
   const navigate = useNavigate();
@@ -72,7 +73,7 @@ const Shipping = () => {
     }
   };
 
-  const deleteAddress = async (_id: string) => { // Define _id as string
+  const deleteAddress = async (_id: string) => {
     try {
       await axios.delete(
         `${server}/api/v1/address/${_id}`
@@ -83,8 +84,9 @@ const Shipping = () => {
     }
   };
 
-  const editAddress = (id: string) => { 
+  const editAddress = (id: string) => {
     setSelectedAddress(id);
+    setEditAble(true);
     const editedAddress = addresses.find((address) => address._id === id);
     if (editedAddress) {
       setShippingInfo({
@@ -99,15 +101,10 @@ const Shipping = () => {
     }
   };
 
-  useEffect(() => {
-    getAddress();
-    if (cartItems.length <= 0) return navigate("/cart");
-  }, [cartItems]);
-
   const addOrUpdateAddress = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      if (selectedAddress) {
+      if (editAble && selectedAddress) {
         // Update address
         await axios.put(`${server}/api/v1/address/${selectedAddress}`, {
           name: shippingInfo.name,
@@ -144,11 +141,17 @@ const Shipping = () => {
       });
       setSelectedAddress(null);
       getAddress();
+      setEditAble(false); // Reset edit mode
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
     }
   };
+
+  useEffect(() => {
+    getAddress();
+    if (cartItems.length <= 0) return navigate("/cart");
+  }, [cartItems]);
 
   return (
     <div className="shipping">
@@ -170,10 +173,10 @@ const Shipping = () => {
                           <p className="user-add-row"><strong>State :  </strong> <span>{address.state}</span>  </p>
                           <p className="user-add-row"><strong>Country :   </strong> <span>{address.country} </span>  </p>
                           <p className="user-add-row"><strong>Pin Code :</strong> <span>{address.pinCode}</span>  </p>
-                        </div>
-                        <div className="ed-btn">
-                          <button onClick={() => editAddress(address._id)} className="address-edit">Edit</button>
-                          <button onClick={() => deleteAddress(address._id)} className="address-delete">Remove</button>
+                          <div className="ed-btn">
+                            <button onClick={() => editAddress(address._id)} className="address-edit">Edit</button>
+                            <button onClick={() => deleteAddress(address._id)} className="address-delete">Remove</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -186,7 +189,7 @@ const Shipping = () => {
           <div className="col-6 w100">
             <div className="ship-content ship-r">
               <div className="radio-container">
-                <h4> { selectedAddress ? 'Edit Address':'Add New Address'}</h4>
+                <h4> { editAble ? 'Edit Address':'Add New Address'}</h4>
               </div>
               <div className="new-address">
                 <form onSubmit={addOrUpdateAddress}>
@@ -258,7 +261,7 @@ const Shipping = () => {
                       onChange={changeHandler}
                     />
                   </div>
-                  <button type="submit" className="checkout res-fs"> { selectedAddress ? 'Save Address':'Add New Address'} </button>
+                  <button type="submit" className="checkout res-fs"> { editAble ? 'Save Address':'Add New Address'} </button>
                 </form>
               </div>
             </div>

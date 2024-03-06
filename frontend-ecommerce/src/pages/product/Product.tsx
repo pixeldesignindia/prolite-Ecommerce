@@ -9,7 +9,7 @@ import { GoChevronRight } from "react-icons/go";
 import toast from "react-hot-toast";
 import { addToCart } from "../../redux/cart-reducer";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import "../../components/productCard/product.css";
 import ProductCard from "../../components/productCard/ProductCard";
@@ -28,14 +28,14 @@ const Product = () => {
     setActiveTab(tabName);
   };
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null); 
   const { id } = useParams<{ id: string }>(); 
   const addToCartHandler = (cartItem: CartItem) => { 
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));
     toast.success("Added to cart");
-    navigate("/cart");
+    // navigate("/cart");
   };
 
   const {isLoading, data: brandData } = useLatestProductsByBrandQuery(""); 
