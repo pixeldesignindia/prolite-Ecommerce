@@ -18,7 +18,7 @@ import { GoChevronRight } from 'react-icons/go';
 const Search = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
-  const [maxPrice, setMaxPrice] = useState(50000);
+  const [maxPrice, setMaxPrice] = useState(10000);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
   // const navigate=useNavigate()
@@ -80,7 +80,7 @@ const Search = () => {
           <input
             type="range"
             min={100}
-            max={50000}
+            max={10000}
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
             className='range-input s-m-t'
