@@ -24,7 +24,9 @@ border: 1px solid rgba(8, 91, 176, 1);text-transform: uppercase;}
 
 @media(max-width:500px){
     .slider-container .slick-track{height: 420px;}
-    .slick-prev, .slick-next{top: 74%;background-size: 50px;}
+    .slick-prev, .slick-next{top: 75%;background-size: 50px;}
+    .slick-prev ,.slick-prev, .slick-prev:hover, .slick-prev:focus{background-size: 50px;}
+    .slick-next ,.slick-next:hover, .slick-next:focus, .slick-next:hover, .slick-next:focus{background-size: 50px;}
     .slick-list{margin: 0;}
     .Explore{font-size: 1.1rem;}
     .para{font-size: 1.5rem;}
