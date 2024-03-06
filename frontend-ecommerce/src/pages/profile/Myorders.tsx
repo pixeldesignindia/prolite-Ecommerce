@@ -18,8 +18,8 @@ const Myorders = () => {
     return (
         <div className="profile-page bg-blue">
             <ProfileSide name={user?.name as string} pic={user?.photo as string} />
-            <div className="profileLeft center">
-                <div className="profileBody orderBody">
+            <div className="profileLeft center " style={{justifyContent:'flex-end'}}>
+                <div className="profileBody orderBody ">
                     <div className="profile-data">
                         <h3 className="text-center">My Orders</h3>
                         <div className="profile-myorder">
@@ -44,7 +44,7 @@ const Myorders = () => {
                                                         <div className="amazon-order-item-quantity order-fs">Quantity : {item.quantity}</div>
                                                         </div>
                                                         
-                                                        <div><button className="log" onClick={()=>{navigate(`/product/${item.productId}`)}}>View Product</button></div>
+                                                        <div className="log-btn-c"><button className="log" onClick={()=>{navigate(`/product/${item.productId}`)}}>View Product</button></div>
                                                     </div>
                                                 </div>
                                             ))}

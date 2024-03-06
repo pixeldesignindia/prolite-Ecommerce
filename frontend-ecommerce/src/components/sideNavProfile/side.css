@@ -6,3 +6,13 @@
 .side-log-out{padding-top: 3rem;}
 .w-box.row{display: flex; align-items: center;}
 .w-box.row{margin-left: 0 !important;}
+.sideBar{
+    position: fixed;
+    top: 145px;
+    min-height: 100vh;
+  }
+  @media(max-width:500px){
+    .sideBar{
+        position: static ;
+      }
+  }

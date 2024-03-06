@@ -1,9 +1,9 @@
 
-.cardC{height: 32rem;margin: 0;padding: 20px;align-items: center;border: 0px;border-radius: 13px;background: #FFFFFF;margin: 0 10px;box-shadow: 0 0 20px #e7e7e7}
+.cardC{min-height: 31rem;margin: 0;padding: 20px;align-items: center;border: 0px;border-radius: 13px;background: #FFFFFF;margin: 0 10px;box-shadow: 0 0 20px #e7e7e7}
 .card-body{height: 172px;text-align: center;padding: 20px 0;}
 .card .img{height: 390px;display:flex;align-items: center;background: #F4FAFF;border-radius: 13px;padding: 0 15px;}
-.card-title{color: rgba(0, 0, 0, 1);font-size: 22px;text-transform: uppercase;font-weight: 600;}
-.card-text{font-family: Montserrat; font-size: 28px;font-weight: 700;color: rgba(53, 180, 119, 1);padding: 10px 0;}
+.card-title{color: rgba(0, 0, 0, 1);font-size: 17px;text-transform: uppercase;font-weight: 700;}
+.card-text{font-family: Montserrat; font-size: 20px;font-weight: 700;color: rgba(53, 180, 119, 1);padding: 10px 0;}
 
 .add-cart{background: rgba(1, 79, 179, 1);display: flex;width: 100%;justify-content: center;align-items: center;padding: 10px 0;border-radius:20px; color: #FFFFFF;border: 0px;font-size: 18px;display: flex;gap: 1.2rem;}
 .add{color: white;font-size: 18px;text-transform: uppercase;margin-bottom: 0px;}

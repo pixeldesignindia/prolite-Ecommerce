@@ -1,6 +1,5 @@
 .login>main{border-radius: 1rem;background-color: #fff;}
-.login{background: rgb(72,252,99);
-    background: linear-gradient(90deg, rgba(72,252,99,1) 0%, rgba(68,85,233,1) 100%);}
+.login{background: #f4faff;}
 .login-select{color: black !important;background-color: #fff !important;}
 .login-select option{color: black !important;background-color: #fff !important;}
 .toggle-password-btn{text-align: right;cursor: pointer;}

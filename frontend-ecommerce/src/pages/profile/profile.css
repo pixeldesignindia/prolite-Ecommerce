@@ -1,13 +1,13 @@
-.pro-data-row{display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 1.2rem;}
+.pro-data-row{display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;}
 .profile-page{min-height: 95vh;}
-.profileLeft{height: 100%;width: 100%;}
+/* .profileLeft{justify-content: flex-end !important;} */
 .profileBody{width: 45vw;padding: 3rem; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;background-color: #fff;border-radius: .5rem;}
 .profileImg>img{height: 8rem;width: 8rem; border-radius: 50%; border: 7px solid rgba(0, 115, 255,.3);}
 .profile-data>h3{margin: 2rem 0 3rem 0;}
 .profile-page{display: flex; gap: 3rem;padding: 5rem 3rem 0 3rem;}
-
-
-
+.proprofile{margin-left: 22rem;margin-bottom: 8rem;}
+.log-btn-c{display: flex; align-items: center;}
+.profile-page{position:relative}
 /* Orders */
 .amazon-order {
     border: 1px solid #ddd;
@@ -72,7 +72,7 @@
     font-weight: bold;
 }
 .amazon-order-header{padding:20px; background: #ededed;}
-.profileBody.orderBody{width: 100%;}
+.profileBody.orderBody{width: 74%;}
 .order-list{padding-right: 1.2rem;}
 .order-shipping-info{padding-left: 1.2rem;}
 .fs{font-size: .8rem;display: flex;justify-content: center;align-items: center;}
@@ -122,6 +122,8 @@
     .fs{font-size: .6rem !important;}
     .w-box.row{margin-left: 0!important;}
     .order-shipping-info {padding-top: 1rem !important; border-top: .5px solid #c2c2c2;padding-left: 1rem;}
+    .proprofileCenter{justify-content: center !important;}
+    .proprofile{margin-left: 0;}
     .order-shipping-info p{font-size: .8rem;}
     .order-shipping-info h2{font-size: 1.1rem;margin-bottom: .5rem !important;}
     .order-shipping-info h4{font-size: 1rem;}

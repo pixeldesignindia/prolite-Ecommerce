@@ -10,8 +10,8 @@ const Profile = () => {
     return (
         <div className="profile-page bg-blue">
 <ProfileSide name={user?.name as string} pic={user?.photo as string} />
-            <div className="profileLeft center">
-                <div className="profileBody">
+            <div className="profileLeft center proprofileCenter" style={{justifyContent:'center'}}>
+                <div className="profileBody proprofile">
                     <div className="profileImg center">
                         {user?.photo===''?<img src={userIcon} alt="" />:<img src={user?.photo} alt="" />}
                         

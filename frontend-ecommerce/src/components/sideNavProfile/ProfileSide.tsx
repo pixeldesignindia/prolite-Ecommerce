@@ -38,7 +38,7 @@ const ProfileSide = ({ name, pic }: ProfileSideProps) => {
       <div className='w-box m-h-s' style={{ marginTop: '2rem' }}>
         <Link to='/profile'>MyDetails</Link>
         <Link to='/profile/myOrders'>My Orders</Link>
-        <Link to='/profile'>My Transactions</Link>
+        {/* <Link to='/profile'>My Transactions</Link> */}
         <div className="center side-log-out">
           <button className="logout center" onClick={logOutHandler}>Logout</button>
         </div>
