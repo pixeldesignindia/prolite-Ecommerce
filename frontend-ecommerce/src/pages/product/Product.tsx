@@ -9,8 +9,7 @@ import { GoChevronRight } from "react-icons/go";
 import toast from "react-hot-toast";
 import { addToCart } from "../../redux/cart-reducer";
 import { useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-import { FaCartPlus } from "react-icons/fa";
+import cart from '/images/addToCart.svg'
 import "../../components/productCard/product.css";
 import ProductCard from "../../components/productCard/ProductCard";
 import "../home/home.css";
@@ -231,7 +230,7 @@ const Product = () => {
                   }
                   className="add-cart product-add-cart"
                 >
-                  <FaCartPlus /> Add To Cart
+                  <img src={cart} alt='cart'  /> Add To Cart
                 </button>
               </div>
             </div>
