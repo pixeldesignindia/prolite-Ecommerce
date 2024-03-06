@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./redux/api/userApi";
 import { UserReducerInitialState } from "./types/reducerTypes";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
+import LoadIng from "./components/pageLoader/LoadIng";
 
 
 const Home = lazy(() => import("./pages/home/Home"));
@@ -64,7 +65,7 @@ else{dispatch(userNotExist())}
 
   return (
     <BrowserRouter >
-      <Suspense fallback={<h5>Loading...</h5>}>
+      <Suspense fallback={<><LoadIng/></>}>
         <Header user={user || null}/>
         <Routes>
           <Route path="*" element={<>hi manas</>} />
