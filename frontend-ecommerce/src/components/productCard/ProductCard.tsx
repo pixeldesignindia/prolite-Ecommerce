@@ -1,9 +1,8 @@
 import './product.css';
 import { server } from "../../redux/store";
 import { CartItem } from "../../types/types";
-import { FaCartPlus } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
-// import cart from '/images/add-cart.svg'
+import cart from '/images/addToCart.svg'
 
 type ProductsProps = {
   productId: string;
@@ -55,7 +54,7 @@ const ProductCard = ({
           dimension,
           model,
           category: category || '' // Default value if category is not provided
-        })} className="add-cart"><FaCartPlus  /> Add To Cart</button>
+        })} className="add-cart"><img src={cart} alt='cart'  /> Add To Cart</button>
       </div>
     </div>
   );
