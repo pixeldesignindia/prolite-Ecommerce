@@ -26,7 +26,7 @@ const Home: React.FC = () => {
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));
     toast.success("Added to cart");
-    navigate("/cart");
+    // navigate("/cart");
   };
 
   var settings = {
