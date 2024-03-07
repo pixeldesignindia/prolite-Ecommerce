@@ -16,7 +16,7 @@ const Myorders = () => {
     console.log(data)
 
     return (
-        <div className="profile-page bg-blue">
+        <div className="profile-page ">
             <ProfileSide name={user?.name as string} pic={user?.photo as string} />
             <div className="profileLeft center " style={{justifyContent:'flex-end'}}>
                 <div className="profileBody orderBody ">

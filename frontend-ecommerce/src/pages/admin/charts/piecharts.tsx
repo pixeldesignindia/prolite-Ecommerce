@@ -77,7 +77,7 @@ const PieCharts = () => {
               <h2> Stock Availability</h2>
             </section>
 
-            <section>
+            {/* <section>
               <div>
                 <DoughnutChart
                   labels={[
@@ -106,9 +106,9 @@ const PieCharts = () => {
                 />
               </div>
               <h2>Revenue Distribution</h2>
-            </section>
+            </section> */}
 
-            <section>
+            {/* <section>
               <div>
                 <PieChart
                   labels={[
@@ -126,7 +126,7 @@ const PieCharts = () => {
                 />
               </div>
               <h2>Users Age Group</h2>
-            </section>
+            </section> */}
 
             <section>
               <div>

@@ -21,7 +21,10 @@ const Dashboard = () => {
   console.log( isLoading, data, isError )
 
   const stats = data?.stats!;
+  console.log(stats); // Add this line to check the structure of stats
 
+
+  
   // if (isError) return <Navigate to={"/"} />;
 
   return (
@@ -42,28 +45,28 @@ const Dashboard = () => {
 
             <section className="widget-container">
               <WidgetItem
-                percent={stats.changePercent.revenue}
+                percent={stats?.changePercent?.revenue}
                 amount={true}
-                value={stats.count.revenue}
+                value={stats?.count?.revenue}
                 heading="Revenue"
                 color="rgb(0, 115, 255)"
               />
               <WidgetItem
-                percent={stats.changePercent.user}
-                value={stats.count.user}
+                percent={stats?.changePercent?.user}
+                value={stats?.count?.user}
                 color="rgb(0 198 202)"
                 heading="Users"
               />
               <WidgetItem
-                percent={stats.changePercent.order}
-                value={stats.count.order}
+                percent={stats?.changePercent?.order}
+                value={stats?.count?.order}
                 color="rgb(255 196 0)"
                 heading="Transactions"
               />
 
               <WidgetItem
-                percent={stats.changePercent.product}
-                value={stats.count.product}
+                percent={stats?.changePercent?.product}
+                value={stats?.count?.product}
                 color="rgb(76 0 255)"
                 heading="Products"
               />
@@ -74,8 +77,8 @@ const Dashboard = () => {
                 <h2>Revenue & Transaction</h2>
                 <BarChart
                   labels={months}
-                  data_1={stats.chart.revenue}
-                  data_2={stats.chart.order}
+                  data_1={stats?.chart?.revenue}
+                  data_2={stats?.chart?.order}
                   title_1="Revenue"
                   title_2="Transaction"
                   bgColor_1="rgb(0, 115, 255)"
@@ -87,7 +90,7 @@ const Dashboard = () => {
                 <h2>Inventory</h2>
 
                 <div>
-                  {stats.categoryCount.map((i) => {
+                  {stats?.categoryCount?.map((i) => {
                     const [heading, value] = Object.entries(i)[0];
                     return (
                       <CategoryItem
@@ -103,7 +106,7 @@ const Dashboard = () => {
             </section>
 
             <section className="transaction-container">
-              <div className="gender-chart">
+              {/* <div className="gender-chart">
                 <h2>Gender Ratio</h2>
                 <DoughnutChart
                   labels={["Female", "Male"]}
@@ -117,8 +120,8 @@ const Dashboard = () => {
                 <p>
                   <BiMaleFemale />
                 </p>
-              </div>
-              <Table data={stats.latestTransaction} />
+              </div> */}
+              <Table data={stats?.latestTransaction} />
             </section>
           </>
         )}
