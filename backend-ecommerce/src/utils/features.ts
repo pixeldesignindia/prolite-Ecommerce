@@ -3,6 +3,7 @@ import { myCache } from "../app.js";
 import { InvalidateCacheProps, OrderItemType } from "../types/types.js";
 import { Product } from "../models/products.js";
 
+
 export const connectDB = (uri: string) => {
   mongoose
     .connect(uri, {
@@ -18,10 +19,9 @@ export const invalidateCache = ({
   order,
   admin,
   userId,
-  addressId,
   orderId,
   productId,
-  // category,
+  date,
 
 }: InvalidateCacheProps) => {
   if (product) {
@@ -58,6 +58,8 @@ export const invalidateCache = ({
       "admin-pie-charts",
       "admin-bar-charts",
       "admin-line-charts",
+      `admin-dateWise-Transactions${date}`,
+      "admin-dateWise-Transactions"
     ]);
   }
     if (shippingAddress) {

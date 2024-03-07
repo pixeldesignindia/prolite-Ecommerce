@@ -7,6 +7,7 @@ import {
   calculatePercentage,
   getChartData,
   getInventories,
+  invalidateCache,
 } from "../utils/features.js";
 
 export const getDashboardStats = TryCatch(async (req, res, next) => {
@@ -426,4 +427,98 @@ export const getLineCharts = TryCatch(async (req, res, next) => {
     success: true,
     charts,
   });
+});
+
+export const dateWiseTransactions = TryCatch(async (req, res, next) => {
+    const { date } = req.query;
+    let results;
+
+    if (date) {
+        const key = `admin-dateWise-Transactions${date}`;
+        if (myCache.has(key)) {
+            results = JSON.parse(myCache.get(key) as string);
+        } else {
+            console.log(date);
+            const dateParts = (date as string).split('/');
+            if (dateParts.length !== 3) {
+                throw new Error('Invalid date format');
+            }
+            const parsedDate = new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`);
+
+            if (isNaN(parsedDate.getTime())) {
+                throw new Error('Invalid date format');
+            }
+            const startDate = new Date(parsedDate);
+            startDate.setUTCHours(0, 0, 0, 0);
+            const endDate = new Date(parsedDate);
+            endDate.setUTCHours(23, 59, 59, 999);
+
+            console.log(startDate, endDate);
+
+            const result = await Order.find({
+                createdAt: {
+                    $gte: startDate,
+                    $lte: endDate
+                },
+            }).select({ total: 1, paymentMethod: 1, orderItems: 1 });
+            results = {
+                result
+            };
+            myCache.set(key, JSON.stringify(results));
+        }
+        invalidateCache({ date: String(date) });
+        res.status(200).json(results);
+    } else {
+        let sixMonthResults;
+        const sixMonthsAgo = new Date();
+        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+        const key = "admin-dateWise-Transactions";
+        if (myCache.has(key)) {
+            sixMonthResults = JSON.parse(myCache.get(key) as string);
+        } else {
+            const result = await Order.aggregate([
+                {
+                    $match: {
+                        createdAt: { $gte: sixMonthsAgo },
+                    },
+                },
+                {
+                    $group: {
+                        _id: '$paymentMethod',
+                        transactions: {
+                            $push: {
+                                date: { $dateToString: { format: '%d/%m/%Y', date: '$createdAt' } },
+                                totalAmount: '$total'
+                            }
+                        },
+                        totalAmount: { $sum: '$total' },
+                    },
+                },
+            ]);
+            const formattedResult: Record<string, any> = {};
+
+            result.forEach((item: any) => {
+                formattedResult[item._id] = item.transactions;
+            });
+            let overallTotalCash = 0;
+            let overallTotalCard = 0;
+
+            result.forEach((item: any) => {
+                if (item._id === 'CASH') {
+                    overallTotalCash = item.totalAmount;
+                } else if (item._id === 'CARD') {
+                    overallTotalCard = item.totalAmount;
+                }
+            });
+            sixMonthResults = {
+                transactions: formattedResult,
+                overallTotalCash,
+                overallTotalCard
+            };
+            myCache.set(key, JSON.stringify(sixMonthResults));
+        }
+        res.status(200).json({
+            sixMonthResults
+        });
+    }
 });
