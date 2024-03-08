@@ -11,5 +11,5 @@ app.get("/dashboardStats",adminOnly,getDashboardStats)
 app.get("/pieChart",adminOnly,getPieCharts)
 app.get("/lineChart",adminOnly,getLineCharts)
 app.get("/barChart",adminOnly,getBarCharts)
-app.get("/dateWiseTransactions",dateWiseTransactions)
+app.get("/dateWiseTransactions",adminOnly,dateWiseTransactions)
 export default app;
