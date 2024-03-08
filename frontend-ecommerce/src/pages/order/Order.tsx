@@ -120,6 +120,10 @@ console.log(data?.orders);
           <th className='text-center-tble'>Total</th>
           <td className='text-center-tble'>{data?.orders.total}</td>
         </tr>
+        <tr>
+          <th className='text-center-tble'>Payment Method</th>
+          <td className='text-center-tble'>{data?.orders.paymentMethod}</td>
+        </tr>
       </tbody>
     </table>
   </div>

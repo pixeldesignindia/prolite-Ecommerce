@@ -12,6 +12,7 @@ import { getUser } from "./redux/api/userApi";
 import { UserReducerInitialState } from "./types/reducerTypes";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import LoadIng from "./components/pageLoader/LoadIng";
+import SkeletonLoading from "./components/skeleton/SkeletonLoading";
 
 
 const Home = lazy(() => import("./pages/home/Home"));
@@ -49,6 +50,7 @@ const Myorder = lazy(() => import("./pages/profile/Myorders"));
 const NewProductPage = lazy(() => import("./pages/admin/management/Newproduct"));
 const ProductManagement = lazy(() => import("./pages/admin/management/Productmanagement"));
 const TransactionManagement = lazy(() =>import("./pages/admin/management/Transactionmanagement"));
+const AllTransection = lazy(() =>import("./pages/admin/allTransections/AllTransection"));
 
 const App = () => {
 
@@ -69,6 +71,7 @@ else{dispatch(userNotExist())}
         <Header user={user || null}/>
         <Routes>
           <Route path="*" element={<>hi manas</>} />
+          <Route path="/s" element={<SkeletonLoading/>} />
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<Product />} />
@@ -103,6 +106,7 @@ else{dispatch(userNotExist())}
           <Route path="/admin/product" element={<Products />} />
           <Route path="/admin/customer" element={<Customers />} />
           <Route path="/admin/transaction" element={<Transaction />} />
+          <Route path="/admin/allTransaction" element={<AllTransection />} />
           {/* Charts */}
           <Route path="/admin/chart/bar" element={<Barcharts />} />
           <Route path="/admin/chart/pie" element={<Piecharts />} />

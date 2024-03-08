@@ -25,7 +25,7 @@ const columns: Column<DataType>[] = [
     accessor: "user",
   },
   {
-    Header: "Amount(Sort)",
+    Header: "Amount (Sort)",
     accessor: "amount",
   },
   {
@@ -33,7 +33,7 @@ const columns: Column<DataType>[] = [
     accessor: "discount",
   },
   {
-    Header: "Quantity(Sort)",
+    Header: "Quantity",
     accessor: "quantity",
   },
   {
@@ -94,7 +94,7 @@ console.log(data);
     columns,
     rows,
     "dashboard-product-box",
-    "Transactions",
+    "Orders",
     rows.length > 6
   )();
   return (

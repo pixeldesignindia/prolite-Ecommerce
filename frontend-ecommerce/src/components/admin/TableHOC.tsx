@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   AiOutlineSortAscending,
   AiOutlineSortDescending,
@@ -10,21 +11,15 @@ import {
   TableOptions,
 } from "react-table";
 
-function TableHOC<T extends Object>(
+function TableHOC<T extends object>(
   columns: Column<T>[],
   data: T[],
   containerClassname: string,
   heading: string,
-  showPagination: boolean = false
+  showPagination: boolean = false,
 ) {
   return function HOC() {
-    const options: TableOptions<T> = {
-      columns,
-      data,
-      initialState: {
-        pageSize: 6,
-      },
-    };
+    const [pageSize, setPageSize] = useState<number>(10);
 
     const {
       getTableProps,
@@ -38,11 +33,45 @@ function TableHOC<T extends Object>(
       previousPage,
       canNextPage,
       canPreviousPage,
-    } = useTable(options, useSortBy, usePagination);
+      setPageSize: setTablePageSize,
+    } = useTable(
+      {
+        columns,
+        data,
+        initialState: { pageIndex: 0, pageSize: pageSize },
+      },
+      useSortBy,
+      usePagination
+    );
+
+    const handlePageSizeChange = (
+      e: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+      const newSize = parseInt(e.target.value);
+      setPageSize(newSize);
+      setTablePageSize(newSize);
+    };
 
     return (
       <div className={containerClassname}>
         <h2 className="heading">{heading}</h2>
+        {showPagination && (
+          <div className="page-size-selector">
+            <label htmlFor="page-size">Show : </label>
+            <select
+              id="page-size"
+              value={pageSize}
+              onChange={handlePageSizeChange}
+              style={{background:'#fff',color:'#000',width:'max-content',margin:"0 0 0 2rem",padding:'1rem'}}
+            >
+              {[5, 10, 20, 30].map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <table className="table" {...getTableProps()}>
           <thead>
