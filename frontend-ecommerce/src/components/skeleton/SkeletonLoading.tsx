@@ -1,5 +1,5 @@
 
-import { Placeholder, PlaceholderButton } from 'react-bootstrap';
+import { Placeholder, } from 'react-bootstrap';
 // import cart from '/images/addToCart.svg'
 import './skeleton.css'
 

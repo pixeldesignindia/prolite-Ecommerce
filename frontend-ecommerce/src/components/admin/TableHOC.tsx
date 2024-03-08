@@ -8,7 +8,7 @@ import {
   usePagination,
   useSortBy,
   useTable,
-  TableOptions,
+  // TableOptions,
 } from "react-table";
 
 function TableHOC<T extends object>(

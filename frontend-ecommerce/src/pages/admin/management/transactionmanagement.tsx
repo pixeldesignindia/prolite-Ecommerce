@@ -48,7 +48,6 @@ const TransactionManagement = () => {
 
   const {
     orderItems,
-    user: { name },
     status,
     tax,
     subtotal,

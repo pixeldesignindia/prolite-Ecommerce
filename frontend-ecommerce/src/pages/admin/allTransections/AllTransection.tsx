@@ -2,6 +2,8 @@ import axios from "axios";
 import "./altransection.css";
 import { useEffect, useState } from "react";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
+import { UserReducerInitialState } from "../../../types/reducerTypes";
+import { useSelector } from "react-redux";
 
 const AllTransection = () => {
   const [withOutDate, setWithOutDate] = useState<any>(null);
@@ -10,13 +12,15 @@ const AllTransection = () => {
 
   const [currentPageCard, setCurrentPageCard] = useState<number>(1);
   const [currentPageCash, setCurrentPageCash] = useState<number>(1);
-
+  const { user } = useSelector(
+    (state: { userReducer: UserReducerInitialState }) => state.userReducer
+  );
   const getData = async () => {
     try {
-      let url = `${import.meta.env.VITE_API_URL}api/v1/statistics/dateWiseTransactions`;
+      let url = `${import.meta.env.VITE_API_URL}api/v1/statistics/dateWiseTransactions?id=${user?._id}`;
       if (date !== "") {
         const formattedDate = formatDate(date);
-        url += `?date=${formattedDate}`;
+        url += `&date=${formattedDate}`;
       }
       const { data } = await axios.get(url);
       return data;
@@ -172,8 +176,8 @@ const AllTransection = () => {
                           <img src={item.photo} alt={item.name} />
                         </div>
                         <div className="tr-data">
-                          <p>{item.name}</p>
-                          <p>Price: ${item.price}</p>
+                          <p>{item.name} , </p>
+                          <p>Price: ₹{item.price} , </p>
                           <p>Quantity: {item.quantity}</p>
                         </div>
                       </div>

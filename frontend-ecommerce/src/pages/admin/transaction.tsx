@@ -1,5 +1,4 @@
 import { ReactElement, useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Column } from "react-table";
@@ -60,7 +59,7 @@ console.log(data);
 
   if (isError) {
     const err = error as CustomError;
-    // toast.error(err.data.message);
+    console.log(err.data.message);
   }
 
   useEffect(() => {
