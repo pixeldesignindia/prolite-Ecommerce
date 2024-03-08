@@ -125,7 +125,12 @@ const Search = () => {
       
             {productLoading ? (
           <div className="search-product-list row">
-          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/><SkeletonLoading/><SkeletonLoading/><SkeletonLoading/><SkeletonLoading/><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
         </div>
         ) : (
           <div className="search-product-list row">

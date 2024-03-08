@@ -65,7 +65,7 @@ function TableHOC<T extends object>(
               style={{background:'#fff',color:'#000',width:'max-content',margin:"0 0 0 2rem",padding:'1rem'}}
             >
               {[5, 10, 20, 30].map((size) => (
-                <option key={size} value={size}>
+                <option key={size} value={size} style={{background:'#fff',color:'#000'}}>
                   {size}
                 </option>
               ))}

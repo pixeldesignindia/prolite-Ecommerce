@@ -10,21 +10,26 @@ const SkeletonLoading = () => {
   return (
     <div className="cardC">
       <div className="img center" style={{cursor:'pointer'}}>
-        {/* <img src={`${server}/${displayPhoto[0]}`} alt={name} /> */}
+      <div ><Placeholder  animation="glow">
+        <Placeholder xs={12} />
+      </Placeholder></div>
       </div>
       <div className="card-body">
         <p className="card-title"><Placeholder  animation="glow">
-        <Placeholder xs={4} />
+        <Placeholder xs={12} />
       </Placeholder></p>
 <p ><Placeholder  animation="glow">
-        <Placeholder xs={4} />
+        <Placeholder xs={8} />
+      </Placeholder></p>
+<p ><Placeholder  animation="glow">
+        <Placeholder xs={7} />
       </Placeholder></p>
         
         <p className="card-text"><Placeholder  animation="glow">
-        <Placeholder xs={4} />
+        <Placeholder xs={6} />
       </Placeholder></p>
         {/* {category && <p>Category: {category}</p>} */}
-        <button className="add-cart"></button>
+        <button className="add-cart mt-3" style={{padding:"1rem"}}></button>
       </div>
     </div>
   );
