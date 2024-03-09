@@ -9,6 +9,7 @@ import { useAllUsersQuery, useDeleteUserMutation } from "../../redux/api/userApi
 import { CustomError } from "../../types/api-types";
 import toast from "react-hot-toast";
 import { responseToast } from "../../utils/features";
+import { useNavigate } from "react-router-dom";
 
 interface DataType {
   avatar: ReactElement;
@@ -17,6 +18,7 @@ interface DataType {
   gender: string;
   role: string;
   action: ReactElement;
+  view:ReactElement
 }
 
 const columns: Column<DataType>[] = [
@@ -40,9 +42,14 @@ const columns: Column<DataType>[] = [
     Header: "Action",
     accessor: "action",
   },
+  {
+    Header: "Orders",
+    accessor: "view",
+  },
 ];
 
 const Customers = () => {
+  const navigate= useNavigate()
   const { user } = useSelector((state: RootState) => state.userReducer);
   const { data, isError, error } = useAllUsersQuery(user?._id!);
   const [rows, setRows] = useState<DataType[]>([]);
@@ -69,6 +76,9 @@ const Customers = () => {
               <FaTrash />
             </button>
           ),
+          view:(
+            <button onClick={()=>{navigate(`/admin/customer/${user?._id}`)}} style={{color:"rgb(0,155,255)"}}>View</button>
+            )
         }))
       );
   }, [data]);
