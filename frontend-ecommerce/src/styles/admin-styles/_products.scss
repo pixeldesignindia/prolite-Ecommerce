@@ -49,8 +49,9 @@
     border-radius: 5px;
 
     > h2 {
-      @include heading(2px);
+      @include heading(1px);
       text-align: center;
+      // letter-spacing: .12rem
     }
 
     > img {
@@ -80,20 +81,22 @@
   }
 
   > article {
-    height: 85vh;
     padding: 2rem;
     width: 100%;
-    max-width: 400px;
     background-color: white;
     border-radius: 5px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.216);
     position: relative;
 
     > form {
-      @include flex(column, unset, center, 2rem);
+      @include flex( 2rem);
+      flex-wrap: wrap;
       > h2 {
         text-transform: uppercase;
+        width: 100%;
+        text-align: center;
         letter-spacing: 2px;
+        margin-bottom: 1rem
       }
 
       > img {
@@ -103,12 +106,13 @@
       }
 
       > div {
-        width: 100%;
+        width: 45%;
         position: relative;
+        padding: 1rem 0;
         > label {
           position: absolute;
           left: 0;
-          top: -1.5rem;
+          top: -0.5rem;
         }
 
         > input {
@@ -120,6 +124,29 @@
           );
           border-radius: 5px;
         }
+        > select{
+          @include inputStyle(
+            100%,
+            1rem,
+            unset,
+            1px solid rgba(13, 13, 13, 0.196)
+          );
+          border-radius: 5px;;
+          background-color: #fff;
+          color: #000;
+          >option{
+            @include inputStyle(
+              100%,
+              1rem,
+              unset,
+              1px solid rgba(13, 13, 13, 0.196)
+            );
+            border-radius: 5px;;
+            background-color: #fff;
+            color: #000;
+          }
+        }
+        
       }
 
       > button {
@@ -141,7 +168,7 @@
       @include heading(2px);
     }
     > h5 {
-      margin: 2rem 0 0 0.5rem;
+      margin: 2rem 0 0 0;
       font-size: 1.1rem;
       font-weight: 700;
     }

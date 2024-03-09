@@ -1,5 +1,4 @@
 import { ReactElement, useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Column } from "react-table";
@@ -16,6 +15,7 @@ interface DataType {
   quantity: number;
   status: ReactElement;
   action: ReactElement;
+  invoice:ReactElement;
 }
 
 const columns: Column<DataType>[] = [
@@ -24,7 +24,7 @@ const columns: Column<DataType>[] = [
     accessor: "user",
   },
   {
-    Header: "Amount",
+    Header: "Amount (Sort)",
     accessor: "amount",
   },
   {
@@ -43,18 +43,23 @@ const columns: Column<DataType>[] = [
     Header: "Action",
     accessor: "action",
   },
+  {
+    Header: "Invoice",
+    accessor: "invoice",
+  },
 ];
 
 const Transaction = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
 
   const { isLoading, data, isError, error } = useAllOrdersQuery(user?._id!);
+console.log(data);
 
   const [rows, setRows] = useState<DataType[]>([]);
 
   if (isError) {
     const err = error as CustomError;
-    toast.error(err.data.message);
+    console.log(err.data.message);
   }
 
   useEffect(() => {
@@ -79,6 +84,7 @@ const Transaction = () => {
             </span>
           ),
           action: <Link to={`/admin/transaction/${i._id}`}>Manage</Link>,
+          invoice: <Link to={`/order/${i._id}`}>View</Link>,
         }))
       );
   }, [data]);
@@ -87,7 +93,7 @@ const Transaction = () => {
     columns,
     rows,
     "dashboard-product-box",
-    "Transactions",
+    "Orders",
     rows.length > 6
   )();
   return (

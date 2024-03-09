@@ -25,12 +25,8 @@ const columns: Column<DataType>[] = [
     accessor: "avatar",
   },
   {
-    Header: "Name",
+    Header: "Name(Sort)",
     accessor: "name",
-  },
-  {
-    Header: "Gender",
-    accessor: "gender",
   },
   {
     Header: "Email",

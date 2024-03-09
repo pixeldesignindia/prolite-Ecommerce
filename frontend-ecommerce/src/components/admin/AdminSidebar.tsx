@@ -7,6 +7,7 @@ import {
   // FaGamepad,
   FaStopwatch,
 } from "react-icons/fa";
+import { FaBoxOpen } from "react-icons/fa";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { IoIosPeople } from "react-icons/io";
 import {
@@ -59,7 +60,7 @@ const AdminSidebar = () => {
             : {}
         }
       >
-        <h2>Logo.</h2>
+
         <DivOne location={location} />
         <DivTwo location={location} />
         <DivThree location={location} />
@@ -98,7 +99,13 @@ const DivOne = ({ location }: { location: Location }) => (
       />
       <Li
         url="/admin/transaction"
-        text="Transaction"
+        text="Orders"
+        Icon={FaBoxOpen}
+        location={location}
+      />
+      <Li
+        url="/admin/allTransaction"
+        text="All Transactions"
         Icon={AiFillFileText}
         location={location}
       />

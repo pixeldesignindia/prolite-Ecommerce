@@ -43,10 +43,11 @@ const TransactionManagement = () => {
   const navigate = useNavigate();
 
   const { isLoading, data, isError } = useOrderDetailsQuery(params.id!);
+  console.log(data);
+  
 
   const {
     orderItems,
-    user: { name },
     status,
     tax,
     subtotal,
@@ -114,10 +115,14 @@ const TransactionManagement = () => {
               </button>
               <h1>Order Info</h1>
               <h5>User Info</h5>
-              <p>Name: {name}</p>
+              <p>Name: {data?.orders?.shippingInfo?.name}</p>
               <p>
                 Address:{" "}
-                {/* {`${ address && address}, ${city}, ${state}, ${country} ${pinCode}`} */}
+                {`${data?.orders?.shippingInfo?.address}, ${data?.orders?.shippingInfo?.address}, ${data?.orders?.shippingInfo?.city}, ${data?.orders?.shippingInfo?.country} ${data?.orders?.shippingInfo?.state} ${data?.orders?.shippingInfo?.pinCode}`}
+              </p>
+              <p>
+                Phone:{" "}
+                {`${data?.orders?.shippingInfo?.phoneNumber}`}
               </p>
               <h5>Amount Info</h5>
               <p>Subtotal: {subtotal}</p>
@@ -125,7 +130,7 @@ const TransactionManagement = () => {
               <p>Tax: {tax}</p>
               <p>Discount: {discount}</p>
               <p>Total: {total}</p>
-
+              <p>Payment Method: {data?.orders?.paymentMethod}</p>
               <h5>Status Info</h5>
               <p>
                 Status:{" "}

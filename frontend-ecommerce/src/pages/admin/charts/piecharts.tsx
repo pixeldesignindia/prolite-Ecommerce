@@ -13,8 +13,7 @@ const PieCharts = () => {
   const order = data?.charts.orderFullfillment!;
   const categories = data?.charts.productCategories!;
   const stock = data?.charts.stockAvailablity!;
-  const revenue = data?.charts.revenueDistribution!;
-  const ageGroup = data?.charts.usersAgeGroup!;
+  // const revenue = data?.charts.revenueDistribution!;
   const adminCustomer = data?.charts.adminCustomer!;
 
   if (isError) return <Navigate to={"/admin/dashboard"} />;
@@ -77,7 +76,7 @@ const PieCharts = () => {
               <h2> Stock Availability</h2>
             </section>
 
-            <section>
+            {/* <section>
               <div>
                 <DoughnutChart
                   labels={[
@@ -106,9 +105,9 @@ const PieCharts = () => {
                 />
               </div>
               <h2>Revenue Distribution</h2>
-            </section>
+            </section> */}
 
-            <section>
+            {/* <section>
               <div>
                 <PieChart
                   labels={[
@@ -126,7 +125,7 @@ const PieCharts = () => {
                 />
               </div>
               <h2>Users Age Group</h2>
-            </section>
+            </section> */}
 
             <section>
               <div>

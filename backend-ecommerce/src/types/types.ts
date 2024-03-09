@@ -60,6 +60,7 @@ export type InvalidateCacheProps = {
   orderId?: string;
   productId?: string | string[];
   category?:string;
+  date?:string
 };
 
 export interface newAdressRequestBody{

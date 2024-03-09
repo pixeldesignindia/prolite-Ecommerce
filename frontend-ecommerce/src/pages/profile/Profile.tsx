@@ -8,7 +8,7 @@ const Profile = () => {
 
 
     return (
-        <div className="profile-page bg-blue">
+        <div className="profile-page ">
 <ProfileSide name={user?.name as string} pic={user?.photo as string} />
             <div className="profileLeft center proprofileCenter" style={{justifyContent:'center'}}>
                 <div className="profileBody proprofile">

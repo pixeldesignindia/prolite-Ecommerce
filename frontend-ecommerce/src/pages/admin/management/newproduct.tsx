@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { useSelector } from "react-redux";
 import { UserReducerInitialState } from "../../../types/reducerTypes";
-import { useNewProductMutation } from "../../../redux/api/productsApi";
+import { useCategoryOfBrandQuery, useNewProductMutation } from "../../../redux/api/productsApi";
 import { useNavigate } from "react-router-dom";
 import { responseToast } from "../../../utils/features";
 
@@ -25,6 +25,10 @@ const NewProduct = () => {
   const [photos, setPhotos] = useState<File[]>([]);
   const [displayPhoto, setDisplayPhoto] = useState<File | null>(null); 
   const [newProduct] = useNewProductMutation();
+
+  const {
+    data: categoriesResponse
+  } = useCategoryOfBrandQuery("");
 
   const changeDisplayPhotoHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -95,7 +99,7 @@ const NewProduct = () => {
       <main className="product-management">
         <article>
           <form onSubmit={submitHandler}>
-            <h2>New Product</h2>
+            <h2>Add Product</h2>
             <div>
               <label>Name</label>
               <input
@@ -106,16 +110,7 @@ const NewProduct = () => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div>
-              <label>Description</label>
-              <input
-                required
-                type="text"
-                placeholder="Description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
+            
             <div>
               <label>Model</label>
               <input
@@ -123,6 +118,16 @@ const NewProduct = () => {
                 placeholder="Product Model"
                 value={productModel}
                 onChange={(e) => setProductModel(e.target.value)}
+              />
+            </div>
+            <div style={{width:'92%'}}>
+              <label>Description</label>
+              <input
+                required
+                type="text"
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div>
@@ -155,16 +160,6 @@ const NewProduct = () => {
               />
             </div>
             <div>
-              <label>Category</label>
-              <input
-                required
-                type="text"
-                placeholder="eg. laptop, camera etc"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              />
-            </div>
-            <div>
               <label>Brand</label>
               <select
                 value={brand}
@@ -174,6 +169,34 @@ const NewProduct = () => {
                 <option value="prolite">Prolite</option>
               </select>
             </div>
+            
+        <div>
+          <label>Existing Category</label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)} 
+          >
+            <option value="">Select From Existing Category</option>
+            {categoriesResponse &&
+              categoriesResponse?.categoriesByBrand[1]?.categories.map((i:string) => (
+                <option key={i} value={i}>
+                  {i.toUpperCase()}
+                </option>
+              ))}
+          </select>
+        </div>
+        {category ==='' &&  <div>
+              <label>Category</label>
+              <input
+                required
+                type="text"
+                placeholder="eg. laptop, camera etc"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+            </div>}
+
+
             <div>
               <label>Tags</label>
               <input
@@ -185,7 +208,7 @@ const NewProduct = () => {
               <p>(Please add 2 tags minimum. separated by ' , ')</p>
             </div>
             <div>
-              <label>Display Photo</label>
+              <label>Tumbnail Photo</label>
               <input
                 type="file"
                 required
@@ -193,7 +216,7 @@ const NewProduct = () => {
               />
             </div>
             <div>
-              <label>Photos</label>
+              <label>Gallery Photos</label>
               <input
                 type="file"
                 onChange={changeImageHandler}

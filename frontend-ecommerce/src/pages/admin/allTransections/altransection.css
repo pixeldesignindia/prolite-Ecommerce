@@ -1,0 +1,150 @@
+
+
+
+.col-6 {
+    flex: 1;
+    padding: 10px;
+}
+
+.transectionBox {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px;
+}
+.monthely-transection{padding: 2rem;}
+.trasectionHead h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.trasectionList {
+    margin-bottom: 20px;
+}
+
+.transactionItem {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    display: flex ;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.total p {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Styling for AdminSidebar */
+.admin-sidebar {
+    width: 250px;
+    background-color: #202124;
+    color: #fff;
+    padding: 20px;
+}
+
+.admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.admin-sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.admin-sidebar ul li a:hover {
+    color: #ccc;
+}
+.transaction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.transaction-header input[type="date"] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.dateInputDiv{display: flex; align-items: center; gap: 1.2rem;}
+.dateInputDiv button{border: 1px solid rgba(47, 47, 47, 0.404);border-radius: 5px; padding: .2rem 1rem;}
+.transaction-container {
+    margin-top: 20px;
+    padding-right: 2rem;
+}
+
+.transaction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.transaction-header input[type="date"] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.transaction-table {
+    overflow-x: auto;
+}
+.pagination-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-item {
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .pagination-item.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+.product-detailsWD{display: flex;margin-top: 1rem;gap: 2rem;align-items: center;}
+.tr-data{display: flex;gap: 1rem;align-items: center;}
+.orderImg img{height: 80px;max-width: 100px;}

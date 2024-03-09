@@ -1,0 +1,23 @@
+
+.cardC{min-height: 31rem;margin: 0;padding: 20px;align-items: center;border: 0px;border-radius: 13px;background: #FFFFFF;margin: 0 10px;box-shadow: 0 0 20px #e7e7e7}
+.card-body{height: 172px;text-align: center;padding: 20px 0;}
+.card .img{height: 390px;display:flex;align-items: center;background: #F4FAFF;border-radius: 13px;padding: 0 15px;}
+.card-title{color: rgba(0, 0, 0, 1);font-size: 17px;text-transform: uppercase;font-weight: 700;}
+.card-text{font-family: Montserrat; font-size: 19px;font-weight: 700;color: rgba(53, 180, 119, 1);padding: 5px 0;}
+
+.add-cart{background: rgba(1, 79, 179, 1);display: flex;width: 100%;justify-content: center;align-items: center;padding: 10px 0;border-radius:20px; color: #FFFFFF;border: 0px;font-size: 18px;display: flex;gap: 1.2rem;}
+.add{color: white;font-size: 18px;text-transform: uppercase;margin-bottom: 0px;}
+
+.fa-solid{color: rgb(9, 8, 8); padding: 0 10px;}
+
+.cardC .img{background-color: #F4FAFF;height: 280px;border-radius: 20px;}
+.cardC .img img{padding: 10px;max-width: 90%;max-height: 90%;}
+#button{width: 50px;padding: 10px; border-radius: 50%;}
+#button i{border: 1px solid #151414;padding: 10px;border-radius: 50px;}
+
+@media(max-width:500px){
+    .cardC .img{height: 200px;}
+    .cardC {height: 25.5rem;min-height: fit-content;}
+    .card-text {font-size: 20px;padding: 5px 0;}
+    .card-title{font-size: 16px;}
+}

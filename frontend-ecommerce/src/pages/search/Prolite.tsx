@@ -14,6 +14,7 @@ import Footer from '../../components/footer/Footer'
 import { FiSearch } from "react-icons/fi";
 // import { useNavigate } from 'react-router-dom';
 import { GoChevronRight } from 'react-icons/go';
+import SkeletonLoading from '../../components/skeleton/SkeletonLoading';
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -123,8 +124,14 @@ const Search = () => {
         <div className="container">
       
             {productLoading ? (
-          // <Skeleton length={10} />
-          <p>Loading Product...</p>
+          <div className="search-product-list row">
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+          <div className="col-12 col-md-4 mb-3 mt-product-card"><SkeletonLoading/></div>
+        </div>
         ) : (
           <div className="search-product-list row">
             {searchData?.products.map((i) => (
