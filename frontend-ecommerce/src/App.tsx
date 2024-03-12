@@ -36,6 +36,7 @@ const Refund = lazy(()=>import('./pages/refund/Refund'))
 const Terms = lazy(()=>import('./pages/terms/Terms'))
 // Admin Imports
 const Products = lazy(() => import("./pages/admin/Products"));
+const UserOrder = lazy(() => import("./pages/admin/userOrder/UserOrder"));
 const Customers = lazy(() => import("./pages/admin/Customers"));
 const Transaction = lazy(() => import("./pages/admin/Transaction"));
 const Barcharts = lazy(() => import("./pages/admin/charts/Barcharts"));
@@ -105,6 +106,7 @@ else{dispatch(userNotExist())}
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/product" element={<Products />} />
           <Route path="/admin/customer" element={<Customers />} />
+          <Route path="/admin/customer/:id" element={<UserOrder/>} />
           <Route path="/admin/transaction" element={<Transaction />} />
           <Route path="/admin/allTransaction" element={<AllTransection />} />
           {/* Charts */}
