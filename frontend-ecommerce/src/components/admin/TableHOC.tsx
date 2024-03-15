@@ -72,7 +72,6 @@ function TableHOC<T extends object>(
             </select>
           </div>
         )}
-
         <table className="table" {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -98,7 +97,6 @@ function TableHOC<T extends object>(
           <tbody {...getTableBodyProps()}>
             {page.map((row) => {
               prepareRow(row);
-
               return (
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => (

@@ -66,6 +66,24 @@ input[type="number"]::-webkit-outer-spin-button {
 .top-nav{padding: 1rem 4rem;background: #ebf8ff;display: flex; gap: 1rem;align-items: center;color: rgb(0, 187, 255);}
 .top-nav p{color: rgb(0, 187, 255);}
 .top-nav .lastP{color: rgb(169, 169, 169) !important;}
+
+/* Table */
+.table{--bs-table-bg: none !important;}
+.table > :not(caption) > * > *{color: #fff}
+.rowgroup .row:hover{background-color: #363636;}
+.dashboard-product-box{background-color: #131920;}
+.heading{margin-bottom: 1rem;font-size: 1.5rem;}
+.bar>h4{color: #fff;}
+.bar{border-bottom: 1px solid #ffffffaf;}
+.page-size-selector{color: #fff; margin-bottom: 1rem;}
+.transectionBox{color: #fff;}
+.transactionItem{color: #fff;}
+.transactionItem input{color: #fff;}
+.chart-container{background-color: #131920;}
+.chart-container h1{color: #fff;}
+.dashboard-product-box .heading , .transaction-box .heading{color: #fff;font-size: 1.5rem;}
+.coupon-form input{color: #fff;border: 1px solid #ffffff98 !important;}
+.dashboard-app-container h1{color: #fff;}.coupon-list{color: #fff;}
   @media(max-width:768px){
     .top-nav{padding: .6rem 1rem; gap: .5rem;}
     .w100{width: 100%;}
