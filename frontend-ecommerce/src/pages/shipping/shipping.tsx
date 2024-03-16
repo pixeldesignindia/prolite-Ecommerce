@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { saveShippingInfo } from "../../redux/cart-reducer";
-import { server } from "../../redux/store";
 import { RootState } from "../../redux/store";
 import { UserReducerInitialState } from "../../types/reducerTypes";
 import './shipping.css';
@@ -41,7 +40,7 @@ const Shipping = () => {
       }
       
       const { data } = await axios.post(
-        `${server}/api/v1/payments/create`,
+        `${import.meta.env.VITE_API_URL}api/v1/payments/create`,
         {
           amount: total,
         },
@@ -65,7 +64,7 @@ const Shipping = () => {
   const getAddress = async () => {
     try {
       const addressData = await axios.get(
-        `${server}/api/v1/address/all-address/${user?._id}`
+        `${import.meta.env.VITE_API_URL}api/v1/address/all-address/${user?._id}`
       );
       setAddresses(addressData.data.getAllAdress);
     } catch (error) {
@@ -76,7 +75,7 @@ const Shipping = () => {
   const deleteAddress = async (_id: string) => {
     try {
       await axios.delete(
-        `${server}/api/v1/address/${_id}`
+        `${import.meta.env.VITE_API_URL}api/v1/address/${_id}`
       );
       getAddress();
     } catch (error) {
@@ -106,7 +105,7 @@ const Shipping = () => {
     try {
       if (editAble && selectedAddress) {
         // Update address
-        await axios.put(`${server}/api/v1/address/${selectedAddress}`, {
+        await axios.put(`${import.meta.env.VITE_API_URL}api/v1/address/${selectedAddress}`, {
           name: shippingInfo.name,
           phoneNumber: shippingInfo.phoneNumber,
           address: shippingInfo.address,
@@ -117,7 +116,7 @@ const Shipping = () => {
         });
       } else {
         // Add new address
-        await axios.post(`${server}/api/v1/address/new`, {
+        await axios.post(`${import.meta.env.VITE_API_URL}api/v1/address/new`, {
           user: user?._id,
           name: shippingInfo.name,
           phoneNumber: shippingInfo.phoneNumber,

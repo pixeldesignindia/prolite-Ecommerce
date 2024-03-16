@@ -23,6 +23,8 @@ const AllTransection = () => {
         url += `&date=${formattedDate}`;
       }
       const { data } = await axios.get(url);
+      console.log(data);
+      
       return data;
     } catch (error) {
       console.log(error);
@@ -224,6 +226,12 @@ const AllTransection = () => {
               </div>
               {renderCardTransactions()}
             </div>
+            <div className="transectionBox mt-3">
+              <div className="trasectionHead">
+                <h2 className="text-center">Overall Card Transaction</h2>
+                <h4 className="text-center">{withOutDate.overallTotalCard}</h4>
+              </div>
+            </div>
           </div>
           <div className="col-5">
             <div className="transectionBox">
@@ -231,6 +239,12 @@ const AllTransection = () => {
                 <h2 className="text-center">Cash Transactions</h2>
               </div>
               {renderCashTransactions()}
+            </div>
+            <div className="transectionBox mt-3">
+              <div className="trasectionHead">
+                <h2 className="text-center">Overall Cash Transaction</h2>
+                <h4 className="text-center">{withOutDate.overallTotalCash}</h4>
+              </div>
             </div>
           </div>
         </div>
