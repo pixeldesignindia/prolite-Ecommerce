@@ -29,10 +29,10 @@ li a .product-active-img{width: 90px !important;box-shadow:0 0 3px #e0e0e0 ;}
 .productBrand {
     text-transform: lowercase; /* Convert text to lowercase */
   }
-  
   .productBrand::first-letter {
     text-transform: uppercase; /* Convert first letter to uppercase */
   }
+.add-cart.product-add-cart{background-color: rgba(1, 79, 179, 1);width: 100%;}
 @media (max-width: 767px) {
     .slider-container-product .slick-dots{bottom: 20px;gap: 1.2rem;left: none;right: 50px;}
     .slick-dots li{width: 35px;}

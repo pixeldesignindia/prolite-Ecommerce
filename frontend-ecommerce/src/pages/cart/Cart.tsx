@@ -1,7 +1,6 @@
 import axios from "axios";
 import './cart.css'
 import { useEffect, useState } from "react";
-import { VscError } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import {useNavigate } from "react-router-dom";
 import CartItemCard from "../../components/cart-item/Cart-Item";
@@ -125,13 +124,11 @@ const loginFirst=()=>{
             </span>
           ) : (
             <span className="red">
-              Invalid Coupon <VscError />
+              Invalid Coupon 
             </span>
           ))}
 </div>
         {user?<div>{cartItems.length > 0 && <button className="checkout center" onClick={()=>{navigate('/shipping')}}>Checkout</button> }</div>:<div> <button className="checkout center" onClick={loginFirst}>Checkout</button> </div>}
-
-{/* <Link to="/shipping">Checkout</Link> */}
         </div>
         </div>
       </aside>

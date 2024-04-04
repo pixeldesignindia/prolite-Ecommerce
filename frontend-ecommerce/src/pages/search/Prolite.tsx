@@ -1,5 +1,6 @@
 import './search.css'
 import{ useState } from "react";
+import { GoArrowRight } from "react-icons/go";
 import {
   useCategoryOfBrandQuery,
   useSearchProductsQuery,
@@ -21,6 +22,13 @@ const Search = () => {
   const [sort, setSort] = useState("");
   const [maxPrice, setMaxPrice] = useState(10000);
   const [category, setCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+
+  const handleCategoryClick = (category:string) => {
+    setCategory(category)
+    setSelectedCategory(category);
+
+  };
   const [page, setPage] = useState(1);
   // const navigate=useNavigate()
   const {
@@ -42,6 +50,7 @@ const Search = () => {
 
   const {
     data: categoriesResponse,
+    isLoading: loadingCategories,
     error,
     isError,
   } = useCategoryOfBrandQuery("");
@@ -64,59 +73,104 @@ const Search = () => {
     <GoChevronRight />
     <p className="lastP">Prolite</p>
     </div>
-    <div className="product-search-page bg-blue">
-      <aside>
-        <h3 style={{color:'#014FB3'}}>Filters</h3>
+    <div className="product-search-page ">
+    <aside>
         <div>
-          <h5 >Sort</h5>
-          <select value={sort} onChange={(e) => setSort(e.target.value)} className='s-m-t'>
-            <option value="">None</option>
-            <option value="asc">Price (Low to High)</option>
-            <option value="dsc">Price (High to Low)</option>
-          </select>
+          <h5>Category</h5>
+          <div className="category-list">
+            {!loadingCategories &&
+              categoriesResponse?.categoriesByBrand[0]?.categories.map(
+                (category: string) => (
+                  <div
+                    key={category}
+                    className={`category-item ${
+                      category === selectedCategory ? "activeCat" : ""
+                    }`}
+                    onClick={() => handleCategoryClick(category)}>
+                    <p>{category.toUpperCase()}</p>
+                    <GoArrowRight />
+                  </div>
+                )
+              )}
+          </div>
         </div>
-
         <div>
           <h5 >Max Price: <span style={{color:'#014FB3'}}>{maxPrice || ""}</span> </h5>
-          <input
+          <div className="whiteBox mt-3">
+                    <div className="radioTop">
+                        <h6>Price Range</h6>
+                        <button>Clear</button>
+                    </div>
+                    <div className="radioOptions">
+                        <label className="radioContainer">100-200
+                            <input type="radio" name="priceRange" value="100-200" />
+                            <span className="checkmark"></span>
+                        </label>
+                        <label className="radioContainer">200-300
+                            <input type="radio" name="priceRange" value="200-300" />
+                            <span className="checkmark"></span>
+                        </label>
+                        <label className="radioContainer">400-700
+                            <input type="radio" name="priceRange" value="200-300" />
+                            <span className="checkmark"></span>
+                        </label>
+                        <label className="radioContainer">800-1000
+                            <input type="radio" name="priceRange" value="200-300" />
+                            <span className="checkmark"></span>
+                        </label>
+                        <label className="radioContainer">1100-1500
+                            <input type="radio" name="priceRange" value="200-300" />
+                            <span className="checkmark"></span>
+                        </label>
+                    </div>
+                    <div className="minMax d-flex align-items-center justify-content-between">
+                            <select name="min" id="minSelect">
+                                <option value="min">Min</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select>
+                            <p>To</p>
+                            <select name="max" id="maxSelect">
+                                <option value="0">2000</option>
+                                <option value="25">5000</option>
+                                <option value="50">10000</option>
+                            </select>
+                        </div>
+                    </div>
+          {/* <input
             type="range"
             min={100}
             max={10000}
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
             className='range-input s-m-t'
-          />
+          /> */}
         </div>
-
-        <div>
-          <h5 >Category</h5>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)} className='s-m-t'
-          >
-            <option value="">ALL</option>
-            {categoriesResponse &&
-              categoriesResponse?.categoriesByBrand[1]?.categories.map((i:string) => (
-                <option key={i} value={i}>
-                  {i.toUpperCase()}
-                </option>
-              ))}
+        <div >
+          <h5>Sort</h5>
+          <select value={sort} onChange={(e) => setSort(e.target.value)} className='s-m-t sortSec'>
+            <option value="">None</option>
+            <option value="asc">Price (Low to High)</option>
+            <option value="dsc">Price (High to Low)</option>
           </select>
         </div>
       </aside>
       <main className='blue'>
         <div className="row products-page-head">
-          <div className="col-4" style={{display:'flex',alignItems:'center'}}><h2 className='b'>Product Category</h2></div>
-          <div className="col-4 " style={{display:'flex',alignItems:'center ',justifyContent:'center'}}><h4 className='blue-text text-center'>PROLITE</h4> </div>
+          <div className="col-4" ><h2 className='b'>{selectedCategory.toUpperCase()}</h2></div>
+          <div className="col-4 " style={{display:'flex',justifyContent:'center'}}> </div>
 
           <div className="col-4 search-pro"><div className="input-box">
-        <FiSearch/>
+        
         <input
           type="text"
           placeholder="Search by name..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <FiSearch/>
         </div></div>
         </div>
         
