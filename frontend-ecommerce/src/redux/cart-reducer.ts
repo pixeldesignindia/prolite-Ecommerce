@@ -48,7 +48,31 @@ export const cartReducer = createSlice({
         state.subtotal + state.tax + state.shippingCharges - state.discount;
     },
     
+    decrementCartItem: (state, action: PayloadAction<string>) => {
+      state.loading = true;
 
+      const index = state.cartItems.findIndex(
+        (i) => i.productId === action.payload
+      );
+
+      if (index !== -1 && state.cartItems[index].quantity > 0) {
+        state.cartItems[index].quantity -= 1;
+      }
+
+      state.loading = false;
+
+      // Recalculate prices
+      const subtotal = state.cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+
+      state.subtotal = subtotal;
+      state.shippingCharges = state.subtotal > 1000 ? 0 : 100;
+      state.tax = Math.round(state.subtotal * 0.18);
+      state.total =
+        state.subtotal + state.tax + state.shippingCharges - state.discount;
+    },
     removeCartItem: (state, action: PayloadAction<string>) => {
       state.loading = true;
       state.cartItems = state.cartItems.filter(
@@ -88,6 +112,7 @@ export const cartReducer = createSlice({
 
 export const {
   addToCart,
+  decrementCartItem,
   removeCartItem,
   calculatePrice,
   discountApplied,

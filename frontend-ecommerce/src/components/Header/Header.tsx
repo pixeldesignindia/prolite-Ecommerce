@@ -68,9 +68,10 @@ useEffect(()=>{handleLinkClick()},[])
                 
                 <Link to={"/cart"} style={{display:'flex',alignItems:'center'}} onClick={handleLinkClick}>
                   <img src={cart} alt='cart' style={{width:'1.9rem'}}/>
+                  {cartItems && cartItems.length>=1 &&
                   <div className="cartCount center">
-                  <p >{cartItems && cartItems.length>=1 && cartItems.length}</p>
-                  </div>
+                  <p >{cartItems.length}</p>
+                  </div>}
                 </Link>
 
                 {user?._id ? <>

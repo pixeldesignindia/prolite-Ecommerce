@@ -288,14 +288,14 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
 export const getAllProducts = TryCatch(
   async (req: Request<{}, {}, {}, SearchRequestQuery>, res, next) => {
     const { search, sort, category, minPrice,maxPrice,brand } = req.query;
-
+    console.log(minPrice,maxPrice)
     const page = Number(req.query.page) || 1;
 
     const limit = Number(process.env.PRODUCT_PER_PAGE) || 8;
     const skip = (page - 1) * limit;
 
     const baseQuery: BaseQuery = {};
-
+    
     if (search)
       baseQuery.name = {
         $regex: search,
@@ -307,7 +307,7 @@ export const getAllProducts = TryCatch(
         $lte: Number(maxPrice),
         $gte: Number(minPrice),
       };
-
+      console.log(baseQuery)
     if (category) baseQuery.category = category;
     if (!brand) return next(new ErrorHandler("brand name is required",400))
     baseQuery.brand=brand.toUpperCase();

@@ -31,7 +31,7 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
   input{background: transparent; outline: none;border:0 ;;}
 
   /* button */
-  .checkout{width: 100%;padding: 1rem;background-color: rgb(1, 79, 179);margin-top: 2rem;text-transform: uppercase;color: aliceblue;font-weight: 500;letter-spacing: .3rem;transition: box-shadow 0.3s ease;}
+  .checkout{width: 100%;padding: 1rem;background-color: #014FB3;margin-top: 2rem;text-transform: uppercase;color: aliceblue;font-weight: 600;transition: box-shadow 0.3s ease;border-radius: 8px;}
     
 
     /* .slick-slider.slick-initialized {

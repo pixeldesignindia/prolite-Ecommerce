@@ -3,7 +3,7 @@ import './register.css';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-
+import '../login/login.css'
 const Login = () => {
     const navigate =useNavigate()
     const [name, setName] = useState('');
@@ -53,30 +53,31 @@ const Login = () => {
 
     return (
         <div className='login'>
-            <main>
-                <h1 className='text-center b'>Register</h1>
+            <main className='mt-5 mb-5'>
+                <h1 className='text-center b'>REGISTER</h1>
                 <div>
-                    <label>Name</label>
+                    <label className='b'>Name</label>
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} required placeholder='Name'/>
                 </div>
                 <div>
-                    <label>Email</label>
+                    <label className='b'>Email</label>
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder='Email'/>
                 </div>
                 <div>
-                    <label>Password</label>
+                    <label className='b'>Password</label>
                     <input type="password"  value={password} onChange={(e) => setPassword(e.target.value)} required placeholder='Password'/>
                     {/* <p className="toggle-password-btn" onClick={togglePasswordVisibility}>
                             {showPassword ? "Hide" : "Show"}
                         </p> */}
                 </div>
                 <div>
-                    <label>Confirm Password</label>
+                    <label className='b'>Confirm Password</label>
                     <input type="text" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required placeholder='Confirm Password'/>
                 </div>
                 <div>
                     <button onClick={register}>Register</button>
                 </div>
+                <p style={{ color: '#000' }} className='b text-center mt-2'>Already an user? <span onClick={() => navigate('/login')} style={{ color: '#1176d0', cursor: 'pointer', textDecoration:"underline" }}>Go to Login</span></p>
             </main>
         </div>
     );
