@@ -287,7 +287,7 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
 
 export const getAllProducts = TryCatch(
   async (req: Request<{}, {}, {}, SearchRequestQuery>, res, next) => {
-    const { search, sort, category, price,brand } = req.query;
+    const { search, sort, category, minPrice,maxPrice,brand } = req.query;
 
     const page = Number(req.query.page) || 1;
 
@@ -302,9 +302,10 @@ export const getAllProducts = TryCatch(
         $options: "i",
       };
 
-    if (price)
+    if (minPrice || maxPrice)
       baseQuery.price = {
-        $lte: Number(price),
+        $lte: Number(maxPrice),
+        $gte: Number(minPrice),
       };
 
     if (category) baseQuery.category = category;
