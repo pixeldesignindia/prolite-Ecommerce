@@ -15,6 +15,7 @@ import { FiSearch } from "react-icons/fi";
 // import {  useNavigate } from 'react-router-dom';
 import { GoChevronRight } from 'react-icons/go';
 import SkeletonLoading from '../../components/skeleton/SkeletonLoading';
+import { GoArrowRight } from "react-icons/go";
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -22,7 +23,14 @@ const Search = () => {
   const [maxPrice, setMaxPrice] = useState(10000);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
-  // const navigate=useNavigate()
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+
+  const handleCategoryClick = (category:string) => {
+    setCategory(category)
+    setSelectedCategory(category);
+
+  };
+
   const {
     isLoading: productLoading,
     data: searchData,
@@ -66,18 +74,27 @@ const Search = () => {
     <GoChevronRight />
     <p className="lastP">Autoglo</p>
     </div>
-    <div className="product-search-page bg-blue">
+    <div className="product-search-page ">
       <aside>
-        <h3 style={{color:'#014FB3'}} >Filters</h3>
-        <div >
-          <h5>Sort</h5>
-          <select value={sort} onChange={(e) => setSort(e.target.value)} className='s-m-t'>
-            <option value="">None</option>
-            <option value="asc">Price (Low to High)</option>
-            <option value="dsc">Price (High to Low)</option>
-          </select>
+        <div>
+          <h5>Category</h5>
+          <div className="category-list">
+            {!loadingCategories &&
+              categoriesResponse?.categoriesByBrand[0]?.categories.map(
+                (category: string) => (
+                  <div
+                    key={category}
+                    className={`category-item ${
+                      category === selectedCategory ? "activeCat" : ""
+                    }`}
+                    onClick={() => handleCategoryClick(category)}>
+                    <p>{category.toUpperCase()}</p>
+                    <GoArrowRight />
+                  </div>
+                )
+              )}
+          </div>
         </div>
-
         <div>
           <h5 >Max Price: <span style={{color:'#014FB3'}}>{maxPrice || ""}</span> </h5>
           <input
@@ -89,36 +106,29 @@ const Search = () => {
             className='range-input s-m-t'
           />
         </div>
-
-        <div>
-          <h5>Category</h5>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)} className='s-m-t'
-          >
-            <option value="">ALL</option>
-            {!loadingCategories &&
-              categoriesResponse?.categoriesByBrand[0]?.categories.map((i:string) => (
-                <option key={i} value={i}>
-                  {i.toUpperCase()}
-                </option>
-              ))}
+        <div >
+          <h5>Sort</h5>
+          <select value={sort} onChange={(e) => setSort(e.target.value)} className='s-m-t sortSec'>
+            <option value="">None</option>
+            <option value="asc">Price (Low to High)</option>
+            <option value="dsc">Price (High to Low)</option>
           </select>
         </div>
       </aside>
       <main className='grn'>
       <div className="row products-page-head">
-          <div className="col-4" style={{display:'flex',alignItems:'center'}}><h2 className='b'>Product Category</h2></div>
-          <div className="col-4 " style={{display:'flex',alignItems:'center ',justifyContent:'center'}}><h4 className='blue-text text-center'>AUTOGLO</h4> </div>
+          <div className="col-4" style={{display:'flex',}}><h2 className='b'>{selectedCategory.toUpperCase()}</h2></div>
+          <div className="col-4 " style={{display:'flex',justifyContent:'center'}}> </div>
 
           <div className="col-4 search-pro"><div className="input-box">
-        <FiSearch/>
+        
         <input
           type="text"
           placeholder="Search by name..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <FiSearch/>
         </div></div>
         </div>
         

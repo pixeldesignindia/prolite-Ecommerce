@@ -43,6 +43,7 @@ const ProductCard = ({
         
         <p className="card-text">&#x20b9;{price.toFixed(2)}</p>
         {/* {category && <p>Category: {category}</p>} */}
+        <div className="center">
         <button onClick={() => handler({
           productId,
           price,
@@ -55,6 +56,8 @@ const ProductCard = ({
           model,
           category: category || '' // Default value if category is not provided
         })} className="add-cart"><img src={cart} alt='cart'  /> Add To Cart</button>
+        </div>
+        
       </div>
     </div>
   );

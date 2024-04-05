@@ -1,14 +1,19 @@
 
-import checkout from '/images/checkout.svg'
+import premium from '/images/checkout.svg'
 import delivery from '/images/delivery.svg'
-import premium from '/images/premium.svg'
+import checkout  from '/images/premium.svg'
 import "./Brand.css"
+import leftLine from '/images/lLine.svg'
+import rightLine from '/images/rLine.svg'
+
 const Brand = () => {
   return (
     <div>
 <section className="why-us">
       <div className="container pt-5">
-        <h2 className="heading text-center">Why Choose Us</h2>
+      <div className="d-flex align-items-center justify-content-center gap-4">
+        <img src={leftLine} alt="" /> <h3 className="heading">Why Choose Us ?</h3> <img src={rightLine} alt="" />
+        </div>
       </div>
 
       <div className="container brand-box" >

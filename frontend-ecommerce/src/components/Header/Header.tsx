@@ -67,12 +67,22 @@ useEffect(()=>{handleLinkClick()},[])
                 {user?.role==='admin' && <Link to={"/admin/dashboard"} onClick={handleLinkClick}> <RiUserSettingsLine  style={{fontSize:'1.4rem'}} /> </Link>}
                 
                 <Link to={"/cart"} style={{display:'flex',alignItems:'center'}} onClick={handleLinkClick}>
-                  <img src={cart} alt='cart' style={{height:'1.5rem'}}/>
-                  <p className='cartCount'>{cartItems && cartItems.length>=1 && cartItems.length}</p>
+                  <img src={cart} alt='cart' style={{width:'1.9rem'}}/>
+                  <div className="cartCount center">
+                  <p >{cartItems && cartItems.length>=1 && cartItems.length}</p>
+                  </div>
                 </Link>
 
                 {user?._id ? <>
-                  {user?.photo===''?<Link to={"/profile"} onClick={handleLinkClick}> <img src={userIcon} alt="" className="profile-img" /> </Link> :<Link to={"/profile"} onClick={handleLinkClick}> <img src={user.photo} alt="" className="profile-img" /> </Link> }
+                  {user?.photo===''?<Link to={"/profile"} onClick={handleLinkClick}><img src={userIcon} alt="" className="profile-img" /> </Link> : <Link to={"/profile"} onClick={handleLinkClick}>
+                    <div className="d-flex gap-2 align-items-center ac-data">
+                    <img src={user.photo} alt="" className="profile-img" />
+                    <div>
+                      <p>Hello,{user.name} </p>
+                      <h6 >Account Details</h6>
+                    </div>
+                    </div>
+                      </Link> }
                   <button className="logout center" onClick={() => { logOutHandler(); handleLinkClick(); }}>Logout</button>
 
                 </> : <button className="log center" onClick={() => { navigate('/login'); handleLinkClick(); }}>SignIn</button>
