@@ -96,15 +96,50 @@ const Search = () => {
           </div>
         </div>
         <div>
-          <h5 >Max Price: <span style={{color:'#014FB3'}}>{maxPrice || ""}</span> </h5>
-          <input
-            type="range"
-            min={100}
-            max={10000}
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(Number(e.target.value))}
-            className='range-input s-m-t'
-          />
+        <h5 > Search By Price </h5>
+          <div className="whiteBox mt-3">
+                    <div className="radioTop">
+                        <h6>Price Range</h6>
+                        <button>Clear</button>
+                    </div>
+                    <div className="radioOptions">
+                        <label className="radioContainer">100-200
+                            <input type="radio" name="priceRange" value="100-200" />
+                            <span className="checkmark"></span>
+                        </label>
+                        <label className="radioContainer">200-300
+                            <input type="radio" name="priceRange" value="200-300" />
+                            <span className="checkmark"></span>
+                        </label>
+                        <label className="radioContainer">400-700
+                            <input type="radio" name="priceRange" value="200-300" />
+                            <span className="checkmark"></span>
+                        </label>
+                        <label className="radioContainer">800-1000
+                            <input type="radio" name="priceRange" value="200-300" />
+                            <span className="checkmark"></span>
+                        </label>
+                        <label className="radioContainer">1100-1500
+                            <input type="radio" name="priceRange" value="200-300" />
+                            <span className="checkmark"></span>
+                        </label>
+                    </div>
+                    <div className="minMax d-flex align-items-center justify-content-between">
+                            <select name="min" id="minSelect">
+                                <option value="min">Min</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select>
+                            <p>To</p>
+                            <select name="max" id="maxSelect">
+                                <option value="0">2000</option>
+                                <option value="25">5000</option>
+                                <option value="50">10000</option>
+                            </select>
+                        </div>
+                    </div>
         </div>
         <div >
           <h5>Sort</h5>

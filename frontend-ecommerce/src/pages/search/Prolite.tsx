@@ -95,7 +95,7 @@ const Search = () => {
           </div>
         </div>
         <div>
-          <h5 >Max Price: <span style={{color:'#014FB3'}}>{maxPrice || ""}</span> </h5>
+        <h5 > Search By Price </h5>
           <div className="whiteBox mt-3">
                     <div className="radioTop">
                         <h6>Price Range</h6>
