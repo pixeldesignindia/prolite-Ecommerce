@@ -11,7 +11,8 @@ import Footer from "../../components/footer/Footer";
 import { useLatestProductsByBrandQuery } from "../../redux/api/productsApi";
 import { addToCart } from "../../redux/cart-reducer";
 import { CartItem, Product } from "../../types/types";
-
+import leftLine from '/images/lLine.svg'
+import rightLine from '/images/rLine.svg'
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -70,7 +71,10 @@ const Home: React.FC = () => {
     <div className="bg-blue">
       <Banner />
       <div className="text-align-center">
-        <h2 className="heading">Shop by brand</h2>
+        <div className="d-flex align-items-center justify-content-center gap-4">
+        <img src={leftLine} alt="" /> <h3 className="heading">Shop by brand</h3> <img src={rightLine} alt="" />
+        </div>
+        
         <h4 className="para">AutoGlo</h4>
       </div>
       <div className="slider-container">

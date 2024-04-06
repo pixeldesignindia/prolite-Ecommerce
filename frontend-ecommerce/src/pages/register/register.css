@@ -2,6 +2,7 @@
 .login{background: #f4faff;}
 .login-select{color: black !important;background-color: #fff !important;}
 .login-select option{color: black !important;background-color: #fff !important;}
+.login > main > div button{background-color: #014FB3 !important;font-weight: 600;}
 @media(max-width:'500px'){
     .login{padding: 0 1.2rem;}
 }

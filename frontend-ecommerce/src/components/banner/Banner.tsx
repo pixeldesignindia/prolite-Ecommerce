@@ -3,6 +3,8 @@ import'./banner.css'
 import Carousel from 'react-bootstrap/Carousel';
 import banner1 from '/images/banner1.svg'
 import { useNavigate } from 'react-router-dom';
+import alrt from '/images/pAlert.svg'
+import ext from '/images/exitAuto.svg'
 function Banner() {
   const navigate=useNavigate()
   return (
@@ -29,16 +31,28 @@ function Banner() {
     <div className="container text-center">
       <div className="row gx-4 ">
         <div className="col-3 mt-5 mb-5" onClick={()=>{navigate('/autoglo')}} style={{cursor:'pointer'}}>
-          <h2 className="box blue">AutoGlo</h2>
+          <div className="col-center box blue">
+          <img src={alrt} alt="" />
+          <h4>prolite</h4>
+          </div>
         </div>
-        <div className="col-3 mt-5 mb-5" onClick={()=>{navigate('/prolite')}} style={{cursor:'pointer'}}>
-          <h2 className="box green-box">Prolite</h2>
+        <div className="col-3 mt-5 mb-5 " onClick={()=>{navigate('/prolite')}} style={{cursor:'pointer'}}>
+          <div className="col-center box green-box ">
+          <img src={ext} alt="" />
+          <h4 >AutoGlo</h4>
+          </div>
         </div>
-        <div className="col-3 mt-5 mb-5" onClick={()=>{navigate('/autoglo')}} style={{cursor:'pointer'}}>
-          <h2 className="box blue">AutoGlo</h2>
+        <div className="col-3 mt-5 mb-5 " onClick={()=>{navigate('/autoglo')}} style={{cursor:'pointer'}}>
+          <div className="col-center box blue ">
+          <img src={alrt} alt="" />
+          <h4 >prolite</h4></div>
         </div>
-        <div className="col-3 mt-5 mb-5" onClick={()=>{navigate('/prolite')}} style={{cursor:'pointer'}}>
-          <h2 className="box green-box">Prolite</h2>
+        <div className="col-3 mt-5 mb-5 " onClick={()=>{navigate('/prolite')}} style={{cursor:'pointer'}}>
+          <div className="col-center box box green-box">
+          <img src={ext} alt="" />
+          <h4>autoglo</h4>
+          </div>
+          
         </div>
       </div>
     </div>

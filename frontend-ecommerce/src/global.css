@@ -31,7 +31,7 @@ body,footer{font-family: Montserrat;overflow-x: hidden;}
   input{background: transparent; outline: none;border:0 ;;}
 
   /* button */
-  .checkout{width: 100%;padding: 1rem;background-color: rgb(1, 79, 179);margin-top: 2rem;text-transform: uppercase;color: aliceblue;font-weight: 500;letter-spacing: .3rem;transition: box-shadow 0.3s ease;}
+  .checkout{width: 100%;padding: 1rem;background-color: #014FB3;margin-top: 2rem;text-transform: uppercase;color: aliceblue;font-weight: 600;transition: box-shadow 0.3s ease;border-radius: 8px;}
     
 
     /* .slick-slider.slick-initialized {
@@ -63,8 +63,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* Top Nav */
-.top-nav{padding: 1rem 4rem;background: #ebf8ff;display: flex; gap: 1rem;align-items: center;color: rgb(0, 187, 255);}
-.top-nav p{color: rgb(0, 187, 255);}
+.top-nav{padding: 1rem 4rem;display: flex; gap: 1rem;align-items: center;color:#249adf;border-bottom: 1px solid #8585854f;}
+.top-nav p{color:#14A149}
 .top-nav .lastP{color: rgb(169, 169, 169) !important;}
 
 /* Table */
@@ -84,6 +84,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .dashboard-product-box .heading , .transaction-box .heading{color: #fff;font-size: 1.5rem;}
 .coupon-form input{color: #fff;border: 1px solid #ffffff98 !important;}
 .dashboard-app-container h1{color: #fff;}.coupon-list{color: #fff;}
+.w-box.m-h-s a{color: #131920;}
   @media(max-width:768px){
     .top-nav{padding: .6rem 1rem; gap: .5rem;}
     .w100{width: 100%;}

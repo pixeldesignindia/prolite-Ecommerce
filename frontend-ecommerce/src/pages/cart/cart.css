@@ -4,12 +4,14 @@
 .cart aside img{width: 100px !important; height:100px }
 .cart main::-webkit-scrollbar {
     display: none; }
-    .priceCard{margin: 5rem 3rem;box-shadow: rgba(111, 111, 111, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;width: 80%;height: 60%;padding: 2.5rem;background: #fff;position: sticky;top: 0;}
-    .priceCard>h3{padding-bottom: 2rem;}
+    .priceCard{margin: 5rem 3rem;box-shadow: rgba(157, 157, 157, 0.2) 0px 2px 8px 0px;;width: 80%;height: 70%;padding: 2.5rem;background: #FAF8F8;position: sticky;top: 0;border-radius: 10px;}
+    .cartBoxRow {padding: .5rem 0 !important;border-bottom: 1px solid #9494946a;}
+    .priceCard>h3{padding-bottom: 1.2rem;text-transform: uppercase;font-weight: 700;}
     .cartPriceBox{width: 100%;}
     .cartBoxRow{display: flex;justify-content: space-between;padding: 2px 0px;}
     .empty{width: 50vw;}
     .coupon-code{padding: .5rem; border-radius: 5px;border: .5px solid rgb(214, 213, 210);margin-top: 1.5rem;transition: box-shadow 0.3s ease;text-align: center;}
+    .cartBoxRow.b{font-size: 1.5rem;}
     .coupon-code:hover {
         box-shadow: 0 0 10px 3px rgba(255, 255, 0, 0.5); /* Yellow box shadow */
       }

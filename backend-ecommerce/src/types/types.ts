@@ -38,6 +38,8 @@ export type SearchRequestQuery = {
   sort?: string;
   page?: string;
   brand?: string;
+  minPrice?:string;
+  maxPrice?:string;
 };
 
 export interface BaseQuery {
@@ -45,7 +47,10 @@ export interface BaseQuery {
     $regex: string;
     $options: string;
   };
-  price?: { $lte: number };
+  price?: {
+     $gte: number ;
+   $lte: number ;
+  };
   category?: string;
   brand?: string;
 }

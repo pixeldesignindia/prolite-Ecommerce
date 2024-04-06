@@ -1,9 +1,21 @@
 .login>main{border-radius: 1rem;background-color: #fff;}
+.login>main >h1{margin-top: 0 !important;text-transform: uppercase;margin-bottom: 1.2rem !important;}
 .login{background: #f4faff;}
 .login-select{color: black !important;background-color: #fff !important;}
 .login-select option{color: black !important;background-color: #fff !important;}
 .toggle-password-btn{text-align: right;cursor: pointer;}
 .login > main > div > p{text-align: right;color: rgb(0, 74, 193);}
+.login-p{padding: 1rem;
+    border: none;
+    background-color:#f4faff;
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(162, 162, 162, 0.53);
+    border-radius: 5px;justify-content: space-between;}
+    .login-p input{background-color: #f4faff !important;}
+    .login > main > div button{height: 2.8rem !important;font-weight: 600 !important;}
+    .login > main > div button.googlebtn{background-color: #C9E1FF !important; border: 1px solid #518EF8 !important; color:#014FB3 !important ;}
+    .text-right{text-align: right;}
 @media(max-width:'500px'){
     .login{padding: 0 1.2rem;}
 }

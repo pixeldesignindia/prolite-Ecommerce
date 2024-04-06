@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { server } from "../../redux/store";
 import { CartItem } from "../../types/types";
 import './cartItem.css'
+import { FiPlus } from "react-icons/fi";
+import { HiOutlineMinus } from "react-icons/hi";
+import del from '/images/cartDel.svg'
 type CartItemProps = {
   cartItem: CartItem;
   incrementHandler: (cartItem: CartItem) => void;
@@ -29,21 +32,16 @@ const CartItem = ({
           <p>Category : {category}</p>
           <p>Dimension : {dimension}</p>
           <p>Model : {model}</p>
-          <p>Price : <span className=" b" style={{color:'#46923c'}}>₹{price.toFixed(2)}</span></p>
-          <div className="i-d-btns">
-        <button className="red-bg center" onClick={() => decrementHandler(cartItem)}>-</button>
-        <p>{quantity}</p>
-        <button className="center" onClick={() => incrementHandler(cartItem)}>+</button>
-      </div>
+          <p className="cartDataPrice b">Price : <span>₹{price.toFixed(2)}</span></p>
         </div>
-
-        
+        <div className="i-d-btns">
+        <button className="red-bg center" onClick={() => decrementHandler(cartItem)}><HiOutlineMinus/></button>
+        <p>{quantity}</p>
+        <button className="center" onClick={() => incrementHandler(cartItem)}><FiPlus/></button>
+      </div>
       </article>
-
-      
-
-      <button className="delete-btn" onClick={() => removeHandler(productId)}>
-        Remove
+      <button className="del-btn" onClick={() => removeHandler(productId)}>
+        <img src={del} alt="" />
       </button>
     </div>
   );
