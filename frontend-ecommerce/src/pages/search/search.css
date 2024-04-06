@@ -44,13 +44,17 @@ option {font-size: 1rem;  background-color: #054aa4;font-family: Montserrat;}
 .minMax select,.sortSec{padding:5px 10px;width: 6rem;border: 1px solid rgba(157, 157, 157, 0.437);border-radius: 3px;background-color: #fff;color: #1b1b1b;}
 .minMax select option,.sortSec option{background-color: #fff;color: #000;}
 .category-list{cursor: pointer;}
+.ham{display: none;}
+
 @media(max-width:500px){
-    .product-search-page{display: block;padding: 1.7rem 1rem;height: fit-content;}
+    .product-search-page{padding: 1.7rem 1rem;height: fit-content;position: relative}
     .product-search-page .grn ,.product-search-page .blue{overflow-y: unset;}
-    .product-search-page > aside{width: 100%;display: flex;align-items: center;flex-direction: row;border-right:none;padding: 0;}
+    .product-search-page > aside{width:98vw;display: flex;align-items: flex-start;flex-direction: column;border-right:none;position:absolute;background-color: #fff;padding: 1rem;}
+    .radioOptions,.category-item,.radioTop,.product-search-page > aside >div h5{width: 100%;}
+    .radioTop{gap: 2rem;}
     .product-search-page > aside >h3{display: none;}
-    .product-search-page > aside >div{width: 33%;}
-    .product-search-page > aside >div select{padding:.2rem .8rem;font-size: .7rem;}
+    .product-search-page > aside >div{width: 100%;}
+    .product-search-page > aside >div select{padding:.2rem .8rem;font-size: .7rem;width: 8rem;}
     .product-search-page > aside >div h5{font-size: .9rem;}
     .product-search-page>main {width: 100%;padding: 0 ;}
     .products-page-head {margin-top: 1.2rem;}
@@ -61,4 +65,10 @@ option {font-size: 1rem;  background-color: #054aa4;font-family: Montserrat;}
     .blue-text{font-size: 1rem;}
     .s-m-t{margin-top: .5rem;}
     .s-m-t>option{font-size: .6rem;padding:.1rem;min-height: 1rem;}
+    .ham{display: block;}
+    .ham.cross{display: flex;justify-content: flex-end; align-items: flex-end;width: 100%;}
+    .showSide {transform: translateX(-4%);transition: transform 0.3s ease-in-out;}
+    .notSide {transform: translateX(-120%);transition: transform 0.3s ease-in-out;}
+    .pro-not-found{width: 20rem;}
+  .pro-main-head-btn{width: 100%;display: flex;align-items: center; justify-content: space-between;margin-bottom: 1.2rem;}
 }

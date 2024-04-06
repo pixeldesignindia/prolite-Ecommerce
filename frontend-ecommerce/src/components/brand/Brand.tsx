@@ -11,7 +11,7 @@ const Brand = () => {
     <div>
 <section className="why-us">
       <div className="container pt-5">
-      <div className="d-flex align-items-center justify-content-center gap-4">
+      <div className="d-flex align-items-center justify-content-center gap-4 head-imgs ">
         <img src={leftLine} alt="" /> <h3 className="heading">Why Choose Us ?</h3> <img src={rightLine} alt="" />
         </div>
       </div>

@@ -92,4 +92,6 @@ input[type="number"]::-webkit-outer-spin-button {
     .none{display: none;}
     .res-col-center{display: flex; justify-content: center;align-items: center;flex-direction: column;}
     .log.center{width: max-content !important;}
+    .head-imgs img{width: 3rem;}
+    .heading{font-size: 1.5rem !important;}
   }

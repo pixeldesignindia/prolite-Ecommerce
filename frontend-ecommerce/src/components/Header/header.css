@@ -7,7 +7,7 @@ nav a p{font-weight: 500;}
   align-items: center;
   gap: 1rem;
 }
-.ac-data{width: 14rem;}
+.ac-data{width: max-content}
 .ac-data h6{font-weight: 700;}
 .cartCount{margin-top: -20px !important;font-size: .9rem;}
 .link-center{display: flex;text-align: center;justify-content: center;align-items: center;width: 100%;font-size: 18px; font-weight: 500; text-transform: uppercase;gap: 2rem;}
@@ -46,12 +46,18 @@ nav a p{font-weight: 500;}
     /* box-shadow: 0 0 20px rgba(35, 221, 134, 0.711); */
     background-color: #3AA20F;
   }
+  .logoOff{height: 1.5rem;}
   .profile-img{height: 30px;width: 30px; border-radius: 50%;}
   .navbar-expand-lg .navbar-nav .nav-link{display: flex; justify-content: center; align-items: center;}
-  .navbar-toggler:focus{box-shadow: none;}
+  .navbar-toggler:focus{box-shadow: none !important;}
+  .offcanvasNavbar-expand-md:focus{box-shadow: none !important;}
   .logout , .log{width: max-content;}
   .cartCount{height: 18px ; width: 18px !important; border-radius: 50%;font-size: 10px;font-weight: 400;color: #fff;background-color: #000;border: 1px solid #fff;margin-left: -7px;}
+  .nav-Body .navbar-nav a,.ac-data p, .ac-data h6,.nav-Body .admin-logo a svg,.link-center.res-link a{color: #000 !important;}
+  .logo-img{height: 2.2rem;}
+  .pro-auto-link{margin-left: 2rem;}
   @media(max-width:767px){
+    .logo-img{height: 1.7rem;}
     .link-center{width: fit-content;}
     .res-link , .admin-logo{display: flex; flex-direction: column; justify-content: center; align-items: center;}
     .logout{width: fit-content !important;}

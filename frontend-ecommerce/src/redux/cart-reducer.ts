@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CartReducerInitialState } from "../types/reducerTypes";
 import { CartItem, ShippingInfo } from "../../src/types/types";
+import toast from "react-hot-toast";
 
 
 const initialState: CartReducerInitialState = {
@@ -20,27 +21,39 @@ export const cartReducer = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
       state.loading = true;
-    
+
+      const { productId, quantity, stock } = action.payload;
+
       const index = state.cartItems.findIndex(
-        (i) => i.productId === action.payload.productId
+        (item) => item.productId === productId
       );
-    
+
+      // If the product is already in the cart
       if (index !== -1) {
-        // If item already exists in the cart, increment its quantity by 1
-        state.cartItems[index].quantity += 1;
+        const newQuantity = state.cartItems[index].quantity + quantity;
+
+        // Check if adding more exceeds the available stock
+        if (newQuantity > stock) {
+          toast.error("Cannot add more, Exceeds available stock.");
+          state.loading = false;
+          return;
+        }
+
+        state.cartItems[index].quantity = newQuantity;
+        toast.success("Added to cart.");
       } else {
-        // If item is not present, add it to the cart
+        toast.success("Added to cart.");
         state.cartItems.push(action.payload);
       }
-    
+
       state.loading = false;
-    
+
       // Recalculate prices
       const subtotal = state.cartItems.reduce(
         (total, item) => total + item.price * item.quantity,
         0
       );
-    
+
       state.subtotal = subtotal;
       state.shippingCharges = state.subtotal > 1000 ? 0 : 100;
       state.tax = Math.round(state.subtotal * 0.18);

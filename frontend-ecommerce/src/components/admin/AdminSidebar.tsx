@@ -5,7 +5,6 @@ import {
   FaChartLine,
   FaChartPie,
   // FaGamepad,
-  FaStopwatch,
 } from "react-icons/fa";
 import { FaBoxOpen } from "react-icons/fa";
 import { HiMenuAlt4 } from "react-icons/hi";
@@ -143,12 +142,6 @@ const DivThree = ({ location }: { location: Location }) => (
   <div>
     <h5>Apps</h5>
     <ul>
-      <Li
-        url="/admin/app/stopwatch"
-        text="Stopwatch"
-        Icon={FaStopwatch}
-        location={location}
-      />
       <Li
         url="/admin/app/coupon"
         text="Coupon"

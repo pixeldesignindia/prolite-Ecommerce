@@ -26,7 +26,7 @@ const Login = () => {
             const res = await axios.post(
                 `${import.meta.env.VITE_API_URL}api/v1/users/login`, { email, password }
             );
-            console.log(res);
+            localStorage.setItem('userData', JSON.stringify(res.data.user));
             dispatch(userExist(res.data.user));
             if ('data' in res) {
                 toast.success(`Welcome, ${res.data.user.name}`);
