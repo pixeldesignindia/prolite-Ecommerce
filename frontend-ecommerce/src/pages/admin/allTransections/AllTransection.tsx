@@ -64,10 +64,11 @@ const AllTransection = () => {
     const itemsPerPage = 10;
 
     const renderTransactions = (transactions: any[], currentPage: number) => {
+      const reversedTransactions = [...transactions].reverse(); // Create a copy of the array and reverse it
       const indexOfLastItem = currentPage * itemsPerPage;
       const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-      const currentTransactions = transactions.slice(indexOfFirstItem, indexOfLastItem);
-
+      const currentTransactions = reversedTransactions.slice(indexOfFirstItem, indexOfLastItem);
+    
       return currentTransactions.map((transaction: any, index: number) => (
         <div key={index} className="transactionItem">
           <p>Date: {transaction.date}</p>
@@ -75,6 +76,7 @@ const AllTransection = () => {
         </div>
       ));
     };
+    
 
     return (
       <>
@@ -102,10 +104,11 @@ const AllTransection = () => {
     const itemsPerPage = 10;
 
     const renderTransactions = (transactions: any[], currentPage: number) => {
+      const reversedTransactions = [...transactions].reverse(); // Create a copy of the array and reverse it
       const indexOfLastItem = currentPage * itemsPerPage;
       const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-      const currentTransactions = transactions.slice(indexOfFirstItem, indexOfLastItem);
-
+      const currentTransactions = reversedTransactions.slice(indexOfFirstItem, indexOfLastItem);
+    
       return currentTransactions.map((transaction: any, index: number) => (
         <div key={index} className="transactionItem">
           <p>Date: {transaction.date}</p>
@@ -113,6 +116,7 @@ const AllTransection = () => {
         </div>
       ));
     };
+    
 
     return (
       <>
@@ -146,14 +150,16 @@ const AllTransection = () => {
     return (
       <div className="transaction-container">
         <div className="transaction-header">
-          <h2>Transactions</h2>
+          <h2 style={{color:'#fff'}}>Transactions</h2>
           <div className="dateInputDiv">
-            <button onClick={() => setDate("")}>Reset</button>
-            <p>Date</p>
+            <button onClick={() => setDate("")} className="resert_btn">Reset</button>
+            <p style={{color:'#fff'}}>Date</p>
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
+              style={{color:'#fff'}}
+              
             />
           </div>
         </div>
@@ -206,11 +212,11 @@ const AllTransection = () => {
     if (!withOutDate) return null;
 
     return (
-      <div className="monthely-transection">
-        <div className="transactionItem">
-          <h2>Transactions</h2>{" "}
+      <div className="monthely-transection ">
+        <div className="transactionItem  pb-3">
+          <h2 >Transactions</h2>{" "}
           <div>
-            <label>Date</label>
+            <label>Date :</label>
             <input
               type="date"
               value={date}
@@ -218,11 +224,11 @@ const AllTransection = () => {
             />
           </div>
         </div>
-        <div className="row">
+        <div className="row mt-5">
           <div className="col-5">
             <div className="transectionBox">
               <div className="trasectionHead">
-                <h2 className="text-center">Card Transactions</h2>
+                <h2 className="text-center mb-4">Card Transactions</h2>
               </div>
               {renderCardTransactions()}
             </div>
@@ -236,7 +242,7 @@ const AllTransection = () => {
           <div className="col-5">
             <div className="transectionBox">
               <div className="trasectionHead">
-                <h2 className="text-center">Cash Transactions</h2>
+                <h2 className="text-center mb-4">Cash Transactions</h2>
               </div>
               {renderCashTransactions()}
             </div>

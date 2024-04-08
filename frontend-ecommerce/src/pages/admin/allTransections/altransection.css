@@ -1,5 +1,6 @@
 
-
+.transactionItem h2{color: #fff !important;}
+.transactionItem >div label{color: #fff !important;padding-right: 1rem;}
 
 .col-6 {
     flex: 1;
@@ -23,6 +24,7 @@
 }
 
 .transactionItem {
+    color: #fff !important;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -30,7 +32,7 @@
     align-items: center;
     justify-content: space-between;
 }
-
+.trasectionHead h2{color: #fff !important;}
 .total p {
     font-weight: bold;
     font-size: 16px;
@@ -120,12 +122,12 @@
     color: #fff;
   }
   
-table {
+.transaction-table table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
+.transaction-table th,.transaction-table td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -135,17 +137,17 @@ th, td {
     background-color: #1D2630;
 } */
 
-tr:nth-child(even) {
-    background-color: #1D2630;
+.transaction-table tr:nth-child(even) {
+    /* background-color: #1D2630; */
     color: #fff;
 }
-tr:nth-child(odd) {
+.transaction-table :nth-child(odd) {
     background-color: #1a2736;    color: #fff;
 }
 
-tr:hover {
-    background-color: #2e2c2c;    color: #fff;
+.transaction-table tr:hover {
+   color: #fff;
 }
-.product-detailsWD{display: flex;margin-top: 1rem;gap: 2rem;align-items: center;}
+.product-detailsWD{display: flex;gap: 2rem;align-items: center;}
 .tr-data{display: flex;gap: 1rem;align-items: center;}
 .orderImg img{height: 80px;max-width: 100px;}

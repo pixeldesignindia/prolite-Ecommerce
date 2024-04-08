@@ -62,17 +62,22 @@ export const BarChart = ({
         display: false,
       },
     },
-
     scales: {
       y: {
         beginAtZero: true,
         grid: {
           display: false,
         },
+        ticks: {
+          color: 'white', // Set the text color of the x-axis ticks
+        },
       },
       x: {
         grid: {
           display: false,
+        },
+        ticks: {
+          color: 'white', // Set the text color of the x-axis ticks
         },
       },
     },
@@ -102,6 +107,7 @@ export const BarChart = ({
 
   return <Bar width={horizontal ? "200%" : ""} options={options} data={data} />;
 };
+
 
 interface DoughnutChartProps {
   labels: string[];

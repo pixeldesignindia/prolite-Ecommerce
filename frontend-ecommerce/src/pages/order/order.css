@@ -1,4 +1,4 @@
-.invoice {
+.invoiceUser {
     font-family: Arial, sans-serif;
     max-width: 800px;
     margin: 0 auto;
@@ -8,31 +8,31 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .invoice  h1, h2, h5 {
+  .invoiceUser  h1, h2, h5 {
     color: #333;
   }
   
-  .invoice .table-container {
+  .invoiceUser .table-container {
     margin-bottom: 30px;
   }
   
-  .invoice table {
+  .invoiceUser table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .invoice  table th,.invoice  table td {
+  .invoiceUser  table th,.invoiceUser  table td {
     border: 1px solid #ddd;
     padding: 3px;
   
   }
-  .invoice  table td{text-align: center;font-size: .65rem;}
-  .invoice table th {
+  .invoiceUser  table td{text-align: center;font-size: .65rem;}
+  .invoiceUser table th {
     font-size: .6rem;
     background-color: #f2f2f2;
   }
   
-  .invoice .items img {
+  .invoiceUser .items img {
     width: 100px;
     height: 100px;
     border-radius: 4px;
@@ -45,7 +45,7 @@
   .subtotal p:last-child, .shipping-info p:last-child {
     font-weight: bold;
   }
-  .invoice .items table td {
+  .invoiceUser .items table td {
     border: 1px solid #ddd;
     font-size: .6rem;
     padding: 3px;
@@ -53,7 +53,7 @@
   }
   .table-row-image{max-width: 100px;max-height:50px;}
   .print > button{margin-top: 2rem; padding: .7rem 2rem; background: #1176d0;border-radius: 6px;display: flex; align-items: center;color: #fff; font-size: 1rem; text-transform: uppercase;gap: 1.2rem;letter-spacing: 0.2rem;} 
-  .invoice h6{margin-bottom: .5rem;}
+  .invoiceUser h6{margin-bottom: .5rem;}
   .row-tble th{text-align: center !important; font-weight: 600;}
   .incoContainer{padding-top: 2rem;}
   @media print {
