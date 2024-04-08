@@ -16,9 +16,10 @@ export const latestProductApi = createApi({
 
     categories :builder.query<CategoriesResponse,string>({query:()=>'categories',providesTags:['product']}),
     categoryOfBrand :builder.query<CategoriesResponse,string>({query:()=>'categoryByBrand',providesTags:['product']}),
-    searchProducts :builder.query<SearchProductResponse,SearchProductRequest >({query:({price,search,sort,category,page,brand})=>{
+    searchProducts :builder.query<SearchProductResponse,SearchProductRequest >({query:({minPrice,maxPrice,search,sort,category,page,brand})=>{
       let base=`all?search=${search}&page=${page}`
-      if(price) base+= `&price=${price}`
+      if(minPrice) base+= `&minPrice=${minPrice}`
+      if(maxPrice) base+= `&maxPrice=${maxPrice}`
       if(sort) base+= `&sort=${sort}`
       if(category) base+= `&category=${category}`
       if(brand) base+= `&brand=${brand}`

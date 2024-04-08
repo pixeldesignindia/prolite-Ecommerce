@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header/Header";
@@ -19,6 +18,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 const Product = lazy(() => import("./pages/product/Product"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Cart = lazy(() => import("./pages/cart/Cart"));
+const NotFound = lazy(() => import("./pages/404/NotFound"));
 const Register = lazy(() => import("./pages/register/Register"));
 const Prolite = lazy(() => import("./pages/search/Prolite"));
 const Autoglo = lazy(() => import("./pages/search/AutoGlo"));
@@ -58,20 +58,30 @@ const App = () => {
 const dispatch= useDispatch()
 const {user}= useSelector((state:{userReducer:UserReducerInitialState})=>state.userReducer)
 
-useEffect(()=>{
-onAuthStateChanged(auth,async(user)=>{
-if(user){
-  const data = await getUser(user.uid)
-  dispatch(userExist(data.user)) }
-else{dispatch(userNotExist())}
-})},[]);
+useEffect(() => {
+  const userData = localStorage.getItem('userData') || null;
+
+  const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const data = await getUser(user.uid);
+      dispatch(userExist(data.user));
+    } else if (userData) {
+      dispatch(userExist(JSON.parse(userData)));
+    } else {
+      dispatch(userNotExist());
+    }
+  });
+
+  // Cleanup function to unsubscribe from the auth state listener
+  return () => unsubscribe();
+}, []); 
 
   return (
     <BrowserRouter >
       <Suspense fallback={<><LoadIng/></>}>
         <Header user={user || null}/>
         <Routes>
-          <Route path="*" element={<>hi manas</>} />
+          <Route path="*" element={<NotFound/>} />
           <Route path="/s" element={<SkeletonLoading/>} />
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />

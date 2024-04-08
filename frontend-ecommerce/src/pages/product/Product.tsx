@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Slider from "react-slick";
 import dot from "/images/blueDot.svg"; // Assuming the correct path to the image
@@ -19,7 +19,7 @@ import {
 import { server } from "../../redux/store";
 import { CartItem, Product } from "../../types/types";
 
-const Product = () => {
+const ProductPage = () => {
   const [activeTab, setActiveTab] = useState("description");
 
   // function to handle tab click
@@ -33,8 +33,6 @@ const Product = () => {
   const addToCartHandler = (cartItem: CartItem) => { 
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));
-    toast.success("Added to cart");
-    // navigate("/cart");
   };
 
   const {isLoading, data: brandData } = useLatestProductsByBrandQuery(""); 
@@ -160,9 +158,9 @@ const Product = () => {
   return (
     <>
     <div className="top-nav ">
-    <p>Home</p>
+    <Link to='/' style={{color:"#14A149"}}>Home</Link>
     <GoChevronRight />
-    <p className="productBrand">{product.brand}</p>
+    {product?.brand==="AUTOGLO"?<Link to='/autoglo' style={{color:"#14A149"}}>Autoglo</Link>:<Link to='/prolite' style={{color:"#14A149"}}>Prolite</Link>}
     <GoChevronRight />
     <p  className="lastP">{product.name}</p>
     </div>
@@ -331,7 +329,7 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductPage;
 // interface SliderSettings { // Interface for SliderSettings
 //   customPaging: (i: number) => JSX.Element;
 //   dots: boolean;

@@ -25,12 +25,12 @@ const ProfileSide = ({ name, pic }: ProfileSideProps) => {
 
   return (
     <div className='sideBar'>
-      <div className='w-box row'>
+      <div className='w-box row gap-1'>
         <div className='col-2'>
           {pic===''?<img src={userIcon} alt="" style={{ height: '25px', width: '25px', borderRadius: '50%' }} />:<img src={pic} alt="" style={{ height: '25px', width: '25px', borderRadius: '50%' }} />}
           
         </div>
-        <div className='col-10'>
+        <div className='col-9'>
           <p>Hi,</p>
           <h4>{name}</h4>
         </div>

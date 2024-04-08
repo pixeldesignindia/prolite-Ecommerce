@@ -36,7 +36,8 @@ import { Bar, CartItem, Line, Order, Pie, Product, ShippingInfo, Stats, User } f
         totalPage:number;
     }
     export type SearchProductRequest = {
-        price:number;
+        minPrice:number;
+        maxPrice:number;
         page:number;
         category:string;
         sort:string;

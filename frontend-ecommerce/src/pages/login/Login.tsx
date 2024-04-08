@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './login.css';
 import toast from 'react-hot-toast';
-import { FcGoogle } from 'react-icons/fc';
+import google from '/images/google.svg'
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { useLoginMutation } from '../../redux/api/userApi';
@@ -11,7 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { userExist } from '../../redux/userReducer';
-
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Login = () => {
             const res = await axios.post(
                 `${import.meta.env.VITE_API_URL}api/v1/users/login`, { email, password }
             );
-            console.log(res);
+            localStorage.setItem('userData', JSON.stringify(res.data.user));
             dispatch(userExist(res.data.user));
             if ('data' in res) {
                 toast.success(`Welcome, ${res.data.user.name}`);
@@ -68,25 +69,27 @@ const Login = () => {
     return (
         <div className='login'>
             <main>
-                <h1 className='text-center b'>Login</h1>
+                <h1 className='text-center b'>LOGIN</h1>
                 <div>
-                    <label>Email</label>
+                    <label className='b'>Email</label>
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder='Email' />
                 </div>
                 <div>
-                    <label>Password</label>
-                    
+                    <label className='b'>Password</label>
+                    <div className="login-p d-flex align-items-center">
                         <input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} required placeholder='Password' />
                         
                         <p className="toggle-password-btn" onClick={togglePasswordVisibility}>
-                            {showPassword ? "Hide" : "Show"}
+                            {showPassword ? <FaRegEyeSlash/> : <FaRegEye/>}
                         </p>
+                        </div>
                 </div>
-                <p>New User? <span onClick={() => navigate('/register')} style={{ color: '#1176d0', cursor: 'pointer' }}>Register Here</span></p>
-                <p>Forgot Password? <span onClick={() => navigate('/generateOtp')} style={{ color: '#1176d0', cursor: 'pointer' }}>Reset Password</span></p>
+                <p onClick={() => navigate('/generateOtp')} style={{ color: '#014FB3', cursor: 'pointer' }} className='text-right'>Forgot Password?</p>
+                
                 <div>
-                    <button onClick={manualLoginHandler} style={{ background: ' linear-gradient(102.08deg, #68CD3E 12.37%, #3AA20F 84.78%)', border: '0' }}>Login</button>
-                    <button onClick={loginHandler}>Sign in With Google <FcGoogle /> </button>
+                    <button onClick={manualLoginHandler} style={{ background: '#014FB3', border: '0' }}>Login</button>
+                    <button onClick={loginHandler} className='googlebtn'>Sign in With Google <img src={google}/> </button>
+                    <p style={{ color: '#000' }} className='b text-center mt-2'>New Customer? <span onClick={() => navigate('/register')} style={{ color: '#1176d0', cursor: 'pointer', textDecoration:"underline" }}>Create new account.</span></p>
                 </div>
             </main>
         </div>

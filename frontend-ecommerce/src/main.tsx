@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss'
 import "./global.css";
 // let persister = persistStore(store);

@@ -11,10 +11,10 @@
 
 
 
-.box{background:linear-gradient(101.09deg, #1176D0 13.72%, #025FB2 89.1%);padding: 0 50px;height: 160px; align-items: center; display: flex; justify-content:center;border-radius:10px;color: rgba(255, 255, 255, 1);text-transform: uppercase;font-weight: 600;gap: .5rem;font-weight: 700;}
+.box{background: linear-gradient(101.09deg, #3990DD 13.72%, #1A6DB6 89.1%);padding: 0 50px;height: 160px; align-items: center; display: flex; justify-content:center;border-radius:10px;color: rgba(255, 255, 255, 1);text-transform: uppercase;font-weight: 600;gap: .5rem;font-weight: 700;}
 .box h4{font-weight: 700;}
 .box img{width: 3rem;}
-.green-box{background: linear-gradient(102.08deg, #68CD3E 12.37%, #3AA20F 84.78%);
+.green-box{background: linear-gradient(102.08deg, #60E090 12.37%, #14A149 84.78%);
 }
 
 
