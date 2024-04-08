@@ -20,7 +20,7 @@ import { productSchema } from "../validation/product-validation.js";
 
 
 //To Create New Product  - /api/v1/product/new
-app.post("/new", uploadMiddleware,validatation(productSchema) ,newProduct);
+app.post("/new", uploadMiddleware,validatation(productSchema) ,adminOnly,newProduct);
 
 //To get all Products with filters  - /api/v1/product/all
 app.get("/all", getAllProducts);
@@ -41,7 +41,7 @@ app.get("/admin-products", adminOnly, getAdminProducts);
 app
   .route("/:id")
   .get(getSingleProduct)
-  .put( uploadMiddleware,validatation(productSchema), updateProduct)
+  .put( uploadMiddleware,validatation(productSchema),adminOnly, updateProduct)
   .delete(adminOnly, deleteProduct);
 
 export default app;
