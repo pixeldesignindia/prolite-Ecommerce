@@ -70,7 +70,7 @@ const Search = () => {
     const addToCartHandler = (cartItem: CartItem) => {
         if (cartItem.stock < 1) return toast.error('Out of Stock');
         dispatch(addToCart(cartItem));
-        toast.success('Added to cart');
+        // toast.success('Added to cart');
     };
 
     const { data: categoriesResponse, isLoading: loadingCategories, error, isError } = useCategoryOfBrandQuery('');

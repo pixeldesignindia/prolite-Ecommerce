@@ -9,7 +9,8 @@ import {
   calculatePrice,
   discountApplied,
   removeCartItem,
-  decrementCartItem // Import the decrementCartItem action creator
+  decrementCartItem,
+  incrementCartItem 
 } from "../../redux/cart-reducer";
 import { RootState, server } from "../../redux/store";
 import { CartItem } from "../../types/types";
@@ -28,12 +29,13 @@ const Cart = () => {
   const [isValidCouponCode, setIsValidCouponCode] = useState<boolean>(false);
 
   const incrementHandler = (cartItem: CartItem) => {
-    if (cartItem.quantity >= cartItem.stock) return;
-    dispatch(addToCart({ ...cartItem, quantity: cartItem.quantity + 1 }));
+    if (cartItem.quantity < cartItem.stock) {
+      dispatch(incrementCartItem(cartItem.productId)); 
+    }
   };
   const decrementHandler = (cartItem: CartItem) => {
     if (cartItem.quantity <= 1) return;
-    dispatch(decrementCartItem(cartItem.productId)); // Dispatch decrementCartItem action
+    dispatch(decrementCartItem(cartItem.productId)); 
   };
   const removeHandler = (productId: string) => {
     dispatch(removeCartItem(productId));
