@@ -26,7 +26,6 @@ const Home: React.FC = () => {
   const addToCartHandler = (cartItem: CartItem) => {
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));
-    toast.success("Added to cart");
     // navigate("/cart");
   };
 
@@ -71,7 +70,7 @@ const Home: React.FC = () => {
     <div className="bg-blue">
       <Banner />
       <div className="text-align-center">
-        <div className="d-flex align-items-center justify-content-center gap-4">
+        <div className="d-flex align-items-center justify-content-center gap-4 head-imgs">
         <img src={leftLine} alt="" /> <h3 className="heading">Shop by brand</h3> <img src={rightLine} alt="" />
         </div>
         

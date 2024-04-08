@@ -16,9 +16,13 @@ import { FiSearch } from "react-icons/fi";
 import notFound from "/images/notfound.png";
 import { GoChevronRight } from "react-icons/go";
 import SkeletonLoading from "../../components/skeleton/SkeletonLoading";
+import { RiMenuUnfoldFill } from "react-icons/ri";
+import { MdOutlineClose } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Search = () => {
   const [search, setSearch] = useState("");
+  const [showSide, setShowSide] = useState(false);
   const [sort, setSort] = useState("");
   const [maxPrice, setMaxPrice] = useState(100000);
   const [minPrice, setMinPrice] = useState(1);
@@ -97,13 +101,14 @@ const Search = () => {
   return (
     <>
       <div className="top-nav ">
-        <p>Home</p>
+      <Link to='/' style={{color:"#14A149"}}>Home</Link>
         <GoChevronRight />
         <p className="lastP">Prolite</p>
       </div>
       <div className="product-search-page ">
-        <aside>
+        <aside className={`${showSide ? 'showSide' : 'notSide'}`}>
           <div>
+            <div className="cross ham"><button onClick={()=>{setShowSide(!showSide)}}><MdOutlineClose/></button></div>
             <h5>Category</h5>
             <div className="category-list">
               {!loadingCategories &&
@@ -213,14 +218,6 @@ const Search = () => {
                 </select>
               </div>
             </div>
-            {/* <input
-            type="range"
-            min={100}
-            max={10000}
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(Number(e.target.value))}
-            className='range-input s-m-t'
-          /> */}
           </div>
           <div>
             <h5>Sort Products</h5>
@@ -237,7 +234,8 @@ const Search = () => {
         </aside>
         <main className="blue">
           <div className="row products-page-head">
-            <div className="col-8">
+            <div className="col-8 pro-main-head-btn">
+            <button className="ham" onClick={()=>{setShowSide(!showSide)}}><RiMenuUnfoldFill/></button>
               <h2 className="b">{selectedCategory.toUpperCase()}</h2>
             </div>
             <div className="col-4 search-pro">
@@ -300,7 +298,7 @@ const Search = () => {
                   ))
                 ) : (
                   <div className="center mt-5">
-                    <img src={notFound} alt="" />
+                    <img src={notFound} alt="" className="pro-not-found"/>
                   </div>
                 )}
               </div>

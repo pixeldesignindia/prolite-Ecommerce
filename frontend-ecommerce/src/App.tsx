@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header/Header";
@@ -59,13 +58,23 @@ const App = () => {
 const dispatch= useDispatch()
 const {user}= useSelector((state:{userReducer:UserReducerInitialState})=>state.userReducer)
 
-useEffect(()=>{
-onAuthStateChanged(auth,async(user)=>{
-if(user){
-  const data = await getUser(user.uid)
-  dispatch(userExist(data.user)) }
-else{dispatch(userNotExist())}
-})},[]);
+useEffect(() => {
+  const userData = localStorage.getItem('userData') || null;
+
+  const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const data = await getUser(user.uid);
+      dispatch(userExist(data.user));
+    } else if (userData) {
+      dispatch(userExist(JSON.parse(userData)));
+    } else {
+      dispatch(userNotExist());
+    }
+  });
+
+  // Cleanup function to unsubscribe from the auth state listener
+  return () => unsubscribe();
+}, []); 
 
   return (
     <BrowserRouter >
