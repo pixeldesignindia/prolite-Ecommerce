@@ -20,7 +20,7 @@ interface DataType {
 
 const columns: Column<DataType>[] = [
   {
-    Header: "Avatar",
+    Header: "User",
     accessor: "user",
   },
   {
@@ -53,7 +53,7 @@ const Transaction = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
 
   const { isLoading, data, isError, error } = useAllOrdersQuery(user?._id!);
-console.log(data);
+  console.log(data);
 
   const [rows, setRows] = useState<DataType[]>([]);
 
@@ -63,9 +63,10 @@ console.log(data);
   }
 
   useEffect(() => {
-    if (data)
+    if (data) {
+      const reversedOrders = [...data.orders].reverse();
       setRows(
-        data.orders.map((i) => ({
+        reversedOrders.map((i) => ({
           user: i.user ? i.user.name : "N/A",
           amount: i.total,
           discount: i.discount,
@@ -87,7 +88,9 @@ console.log(data);
           invoice: <Link to={`/order/${i._id}`}>View</Link>,
         }))
       );
+    }
   }, [data]);
+  
 
   const Table = TableHOC<DataType>(
     columns,

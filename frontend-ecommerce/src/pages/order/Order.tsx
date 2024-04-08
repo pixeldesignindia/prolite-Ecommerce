@@ -48,7 +48,7 @@ console.log(data?.orders);
     
     return (
 <div className="incoContainer">
-<div className="invoice">
+<div className="invoiceUser">
   <h1 className='text-center no-print'>Invoice</h1>
   
   <div className="table-container">

@@ -85,6 +85,15 @@ input[type="number"]::-webkit-outer-spin-button {
 .coupon-form input{color: #fff;border: 1px solid #ffffff98 !important;}
 .dashboard-app-container h1{color: #fff;}.coupon-list{color: #fff;}
 .w-box.m-h-s a{color: #131920;}
+.table-pagination span{color: #fff !important;}
+
+
+
+/* Dashboard */
+.category-item>div{width: 10rem;}
+.resert_btn{color: #fff;background-color: #014FB3;padding: .6rem 1.5rem; border-radius: 5px;}
+
+
   @media(max-width:768px){
     .top-nav{padding: .6rem 1rem; gap: .5rem;}
     .w100{width: 100%;}

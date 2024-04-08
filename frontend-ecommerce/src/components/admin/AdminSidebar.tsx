@@ -76,7 +76,7 @@ const AdminSidebar = () => {
 
 const DivOne = ({ location }: { location: Location }) => (
   <div>
-    <h5>Dashboard</h5>
+    <h5>ADMIN</h5>
     <ul>
       <Li
         url="/admin/dashboard"
