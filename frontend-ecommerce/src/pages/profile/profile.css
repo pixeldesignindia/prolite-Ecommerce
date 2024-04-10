@@ -137,4 +137,6 @@
     .amazon-order-shipping p {
         font-size:10px;
     }
+    .pro-data-row{justify-content: center; align-items: center;gap: 1rem;}
+    .pro-data-row p{font-size: 1rem !important;}
 }

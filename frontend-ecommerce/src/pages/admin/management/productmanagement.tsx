@@ -7,6 +7,7 @@ import { useProductDetailsQuery, useUpdateProductMutation, useDeleteProductMutat
 import { useNavigate, useParams } from "react-router-dom";
 import { server } from "../../../redux/store";
 import { responseToast } from "../../../utils/features";
+import AdminLoader from "../../../components/admin/AdminLoader";
 
 const Productmanagement = () => {
   const { user } = useSelector(
@@ -113,7 +114,7 @@ const Productmanagement = () => {
       <AdminSidebar />
       <main className="product-management">
         {isLoading ? (
-          <>Loading...</>
+          < AdminLoader/>
         ) : (
           <>
             <section>
