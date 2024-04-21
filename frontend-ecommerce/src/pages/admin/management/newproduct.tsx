@@ -226,7 +226,7 @@ const NewProduct = () => {
             {photoPreviews.map((preview, index) => (
               <img key={index} src={preview} alt={`Image ${index}`} />
             ))}
-            <button type="submit">Create</button>
+            <button type="submit">ADD PRODUCT</button>
           </form>
         </article>
       </main>

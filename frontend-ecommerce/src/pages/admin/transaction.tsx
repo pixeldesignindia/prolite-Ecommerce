@@ -7,6 +7,7 @@ import TableHOC from "../../components/admin/TableHOC";
 import { useAllOrdersQuery } from "../../redux/api/orderApi";
 import { RootState } from "../../redux/store";
 import { CustomError } from "../../types/api-types";
+import AdminLoader from "../../components/admin/AdminLoader";
 
 interface DataType {
   user: string;
@@ -102,7 +103,7 @@ const Transaction = () => {
   return (
     <div className="admin-container">
       <AdminSidebar />
-      <main>{isLoading ? <>loading...</> : Table}</main>
+      <main>{isLoading ? < AdminLoader/> : Table}</main>
     </div>
   );
 };

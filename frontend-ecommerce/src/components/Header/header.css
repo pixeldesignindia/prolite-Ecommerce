@@ -60,7 +60,7 @@ nav a p{font-weight: 500;}
     .logo-img{height: 1.7rem;}
     .link-center{width: fit-content;}
     .res-link , .admin-logo{display: flex; flex-direction: column; justify-content: center; align-items: center;}
-    .logout{width: fit-content !important;}
+    .logout{width: 20rem !important;}
     .admin-logo{margin:1.2rem 0 1.5rem 0;}
     .link-center{gap: 1.2rem;}
     .log.center{max-width: max-content !important;}

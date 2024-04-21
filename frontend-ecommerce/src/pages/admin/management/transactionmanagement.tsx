@@ -10,6 +10,7 @@ import {
 import { RootState, server } from "../../../redux/store";
 import { Order, OrderItem } from "../../../types/types";
 import { responseToast } from "../../../utils/features";
+import AdminLoader from "../../../components/admin/AdminLoader";
 
 const defaultData: Order = {
   shippingInfo: {
@@ -82,7 +83,7 @@ const TransactionManagement = () => {
       <AdminSidebar />
       <main className="product-management">
         {isLoading ? (
-          <>Loading</>
+          < AdminLoader/>
         ) : (
           <>
             <section

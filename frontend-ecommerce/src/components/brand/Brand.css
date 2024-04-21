@@ -9,4 +9,5 @@
 @media (max-width: 768px) {
     .heading{font-size: 2rem;}
     .why-us .Why{font-size: 1.3rem;}
+    .brand-box{width: 90%;}
 }
