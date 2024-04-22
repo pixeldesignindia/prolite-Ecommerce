@@ -14,7 +14,7 @@ const Myorders = () => {
     const reversedOrders = data?.orders.slice().reverse(); // Create a new array with reversed order
 
     // State to keep track of expanded order
-    const [expandedOrder, setExpandedOrder] = useState<string | null>(null);
+    const [expandedOrder, setExpandedOrder] = useState<string | null>(reversedOrders && reversedOrders.length > 0 ? reversedOrders[0]._id : null);
 
     console.log(data);
 
@@ -30,7 +30,7 @@ const Myorders = () => {
                                 reversedOrders.map((order: any, i) => (
                                     <div className="amazon-order" key={i}>
                                         <div className="amazon-order-header" onClick={() => setExpandedOrder(order._id === expandedOrder ? null : order._id)}>
-                                            <div className="amazon-order-id">Order Id #{order._id}</div>
+                                            {/* <div className="amazon-order-id">Order Id #{order._id}</div> */}
                                             <div className="amazon-order-id none">Date:  {new Date(order.createdAt).toLocaleString()}</div>
                                             <div className="amazon-order-status order-fs" style={{ color: order.status === 'Processing' ? '#1c39bb' : order.status === 'Shipped' ? '#69359c' : order.status === 'Delivered' ? '#0bda51' : 'black', fontWeight: '500' }}>{order.status}</div>
                                         </div>
@@ -55,7 +55,7 @@ const Myorders = () => {
                                                 </div>
                                                 <div className="amazon-order-shipping order-fs">
                                                     <h4>Shipping Info</h4>
-                                                    <p>Ordered At : <span> {new Date(order.createdAt).toLocaleString()}</span></p>
+                                                    <p>Order Id #{order._id}</p>
                                                     <p>Name :  <span>{order.shippingInfo.name}</span>  </p>
                                                     <p>Phone :  <span>{order.shippingInfo.phoneNumber}</span>  </p>
                                                     <p>Address :  <span>{order.shippingInfo.address}</span>  </p>

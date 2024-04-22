@@ -58,6 +58,7 @@ nav a p{font-weight: 500;}
   .pro-auto-link{margin-left: 2rem;}
   .container-fluid-nav{padding: 10px 4%;display: flex;justify-content: space-between;width: 100%;}
   .bx{box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;}
+  .bg-body-tertiary{background-color: #fff !important;}
   @media(max-width:767px){
     .container-fluid-nav{padding: 0 10px;}
     .logo-img{height: 1.7rem;}
@@ -67,4 +68,5 @@ nav a p{font-weight: 500;}
     .admin-logo{margin:1.2rem 0 1.5rem 0;}
     .link-center{gap: 1.2rem;}
     .log.center{max-width: max-content !important;}
+
   }
