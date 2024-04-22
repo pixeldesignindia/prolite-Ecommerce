@@ -1,42 +1,44 @@
-import cart from '/images/cart.svg'
-import logo from '/images/logo.svg';
-import userIcon from '/images/user.svg'
-import { useNavigate , Link} from "react-router-dom";
-import "./header.css";
-import { User } from "../../types/types";
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase";
-import toast from "react-hot-toast";
-import { RootState} from "../../redux/store";
-import { useDispatch, useSelector } from "react-redux";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
+import React from 'react';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Navbar from 'react-bootstrap/Navbar';
-
-import search from '/images/search.svg';
-import { userNotExist } from '../../redux/userReducer';
-import { RiUserSettingsLine } from "react-icons/ri";
+import Nav from 'react-bootstrap/Nav';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { RiUserSettingsLine } from 'react-icons/ri';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
+import toast from 'react-hot-toast';
+import { RootState } from '../../redux/store';
+import { userNotExist } from '../../redux/userReducer';
 import { useState } from 'react';
+
+import cart from '/images/cart.svg';
+import logo from '/images/logo.svg';
+import userIcon from '/images/user.svg';
+import search from '/images/search.svg';
+
+import './header.css';
+import { User } from '../../types/types';
 
 interface PropsType {
   user: User | null;
 }
 
-const Header = ({ user }: PropsType) => {
+const Header: React.FC<PropsType> = ({ user }) => {
+  const navigate = useNavigate()
+  const location = useLocation();
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state: RootState) => state.cartReducer);
-  const navigate = useNavigate();
   const [showOffCanvas, setShowOffCanvas] = useState(false);
 
   const logOutHandler = async () => {
     try {
       signOut(auth);
-      localStorage.removeItem('userData')
+      localStorage.removeItem('userData');
       dispatch(userNotExist());
-      toast.success("Log Out Successful");
+      toast.success('Log Out Successful');
     } catch (err) {
-      toast.error("Log Out Failed");
+      toast.error('Log Out Failed');
     }
   };
 
@@ -45,17 +47,19 @@ const Header = ({ user }: PropsType) => {
   };
 
   const getFirstName = (fullName: string): string => {
-    // Split the full name by space
     const parts = fullName.split(' ');
-    // Return the first part
     return parts[0];
   };
   const userName = user?.name ? getFirstName(user.name) : '';
 
+  const isHomePage = location.pathname === '/';
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
   return (
+    <div  className={`bg-body-tertiary ${isHomePage ? '' : 'bx'} ${isAdminRoute ? 'd-none' : ''}`}>
     <div className="no-print">
       <Navbar expand="md" className="bg-body-tertiary">
-        <Container>
+        <div className='container-fluid-nav'>
           <Link to="/">
             <img src={logo} alt="logo" className="logo-img" />
           </Link>
@@ -256,8 +260,9 @@ const Header = ({ user }: PropsType) => {
               </Nav>
             </Offcanvas.Body>
           </Offcanvas>
-        </Container>
+        </div>
       </Navbar>
+    </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@
 .w-box.row{margin-left: 0 !important;}
 .sideBar{
     position: fixed;
-    top: 145px;
+    top: 10rem;
     min-height: 100vh;
   }
   @media(max-width:500px){
@@ -18,4 +18,5 @@
       .w-box.row{width: 92vw !important;}
       .w-box.row img{height: 2.5rem !important; width:2.5rem;}
       .side-log-out{margin-left: auto;}
+      .profile-logout-btn{width: max-content !important;}
   }

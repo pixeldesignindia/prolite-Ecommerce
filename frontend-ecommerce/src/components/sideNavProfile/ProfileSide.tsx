@@ -40,7 +40,7 @@ const ProfileSide = ({ name, pic }: ProfileSideProps) => {
         <Link to='/profile/myOrders'>My Orders</Link>
         {/* <Link to='/profile'>My Transactions</Link> */}
         <div className="center side-log-out">
-          <button className="logout center" onClick={logOutHandler}>Logout</button>
+          <button className="logout center profile-logout-btn" onClick={logOutHandler}>Logout</button>
         </div>
       </div>
     </div>

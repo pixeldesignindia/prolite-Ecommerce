@@ -97,7 +97,6 @@ useEffect(() => {
           <Route path="/generateOtp" element={<ProtectedRoute isAuthenticated={user?false:true}><GenerateOtp/></ProtectedRoute> } />
           <Route path="/verifyOtp" element={<ProtectedRoute isAuthenticated={user?false:true}><VerifyOtp/></ProtectedRoute> } />
           <Route path="/changePassword" element={<ProtectedRoute isAuthenticated={user?false:true}><ChangePassword/></ProtectedRoute> } />
-
             <Route path="/prolite" element={<Prolite />} />
             <Route path="/autoglo" element={<Autoglo/>} />
             

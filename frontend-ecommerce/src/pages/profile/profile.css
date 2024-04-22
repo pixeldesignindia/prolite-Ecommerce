@@ -19,8 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    
+    cursor: pointer;
 }
 
 .amazon-order-items {
@@ -137,6 +136,7 @@
     .amazon-order-shipping p {
         font-size:10px;
     }
+    .amazon-order-header{padding: 12px;}
     .pro-data-row{justify-content: center; align-items: center;gap: 1rem;}
     .pro-data-row p{font-size: 1rem !important;}
 }
