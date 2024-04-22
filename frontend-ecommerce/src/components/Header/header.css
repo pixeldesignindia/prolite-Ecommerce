@@ -10,7 +10,7 @@ nav a p{font-weight: 500;}
 .ac-data{width: max-content}
 .ac-data h6{font-weight: 700;}
 .cartCount{margin-top: -20px !important;font-size: .9rem;}
-.link-center{display: flex;text-align: center;justify-content: center;align-items: center;width: 100%;font-size: 18px; font-weight: 500; text-transform: uppercase;gap: 2rem;}
+.link-center{display: flex;text-align: center;justify-content: center;align-items: center;width: 100%;font-size: 18px; font-weight: 500; text-transform: uppercase;gap: 2rem;margin-left: 15vw;}
 .logo-img{height: 3rem;}
 .navbar-expand-lg{box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .log {
@@ -56,12 +56,17 @@ nav a p{font-weight: 500;}
   .nav-Body .navbar-nav a,.ac-data p, .ac-data h6,.nav-Body .admin-logo a svg,.link-center.res-link a{color: #000 !important;}
   .logo-img{height: 2.2rem;}
   .pro-auto-link{margin-left: 2rem;}
+  .container-fluid-nav{padding: 10px 4%;display: flex;justify-content: space-between;width: 100%;}
+  .bx{box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;}
+  .bg-body-tertiary{background-color: #fff !important;}
   @media(max-width:767px){
+    .container-fluid-nav{padding: 0 10px;}
     .logo-img{height: 1.7rem;}
-    .link-center{width: fit-content;}
+    .link-center{width: fit-content;margin-left: 0;}
     .res-link , .admin-logo{display: flex; flex-direction: column; justify-content: center; align-items: center;}
     .logout{width: 20rem !important;}
     .admin-logo{margin:1.2rem 0 1.5rem 0;}
     .link-center{gap: 1.2rem;}
     .log.center{max-width: max-content !important;}
+
   }

@@ -1,20 +1,22 @@
-import { useSelector } from "react-redux";
-import { UserReducerInitialState } from "../../types/reducerTypes";
-import "./profile.css";
-import ProfileSide from "../../components/sideNavProfile/ProfileSide";
-import { useMyOrdersQuery } from "../../redux/api/orderApi";
-import { server } from "../../redux/store";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { UserReducerInitialState } from '../../types/reducerTypes';
+import './profile.css';
+import ProfileSide from '../../components/sideNavProfile/ProfileSide';
+import { useMyOrdersQuery } from '../../redux/api/orderApi';
+import { server } from '../../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 const Myorders = () => {
     const navigate = useNavigate();
-    const { user } = useSelector(
-        (state: { userReducer: UserReducerInitialState }) => state.userReducer
-    );
+    const { user } = useSelector((state: { userReducer: UserReducerInitialState }) => state.userReducer);
     const { data } = useMyOrdersQuery(user?._id!);
     const reversedOrders = data?.orders.slice().reverse(); // Create a new array with reversed order
 
-    console.log(data)
+    // State to keep track of expanded order
+    const [expandedOrder, setExpandedOrder] = useState<string | null>(reversedOrders && reversedOrders.length > 0 ? reversedOrders[0]._id : null);
+
+    console.log(data);
 
     return (
         <div className="profile-page ">
@@ -27,42 +29,45 @@ const Myorders = () => {
                             {reversedOrders &&
                                 reversedOrders.map((order: any, i) => (
                                     <div className="amazon-order" key={i}>
-                                        <div className="amazon-order-header">
-                                            <div className="amazon-order-id">Order Id #{order._id}</div>
-                                            <div className="amazon-order-status order-fs" style={{ color: order.status === "Processing" ? "#1c39bb" : order.status === "Shipped" ? "#69359c" : order.status === "Delivered" ? "#0bda51" : "black", fontWeight: '500' }}>{order.status}</div>
+                                        <div className="amazon-order-header" onClick={() => setExpandedOrder(order._id === expandedOrder ? null : order._id)}>
+                                            {/* <div className="amazon-order-id">Order Id #{order._id}</div> */}
+                                            <div className="amazon-order-id none">Date:  {new Date(order.createdAt).toLocaleString()}</div>
+                                            <div className="amazon-order-status order-fs" style={{ color: order.status === 'Processing' ? '#1c39bb' : order.status === 'Shipped' ? '#69359c' : order.status === 'Delivered' ? '#0bda51' : 'black', fontWeight: '500' }}>{order.status}</div>
                                         </div>
-                                        <div className="amazon-order-body">
-                                            <div className="amazon-order-items">
-                                                {order.orderItems.map((item: any, j: any) => (
-                                                    <div className="amazon-order-item" key={j}>
-                                                        <div className="amazon-order-item-image">
-                                                            <img src={`${server}/${item.photo}`} alt="Product" />
-                                                        </div>
-                                                        <div className="amazon-order-item-details">
-                                                            <div>
-                                                                <div className="amazon-order-item-name order-fs">{item.name}</div>
-                                                                <div className="amazon-order-item-price order-fs">Price : {item.price}</div>
-                                                                <div className="amazon-order-item-quantity order-fs">Quantity : {item.quantity}</div>
+                                        {expandedOrder === order._id && (
+                                            <div className="amazon-order-body">
+                                                <div className="amazon-order-items">
+                                                    {order.orderItems.map((item: any, j: any) => (
+                                                        <div className="amazon-order-item" key={j}>
+                                                            <div className="amazon-order-item-image">
+                                                                <img src={`${server}/${item.photo}`} alt="Product" />
                                                             </div>
-                                                            <div className="log-btn-c"><button className="log" onClick={() => { navigate(`/product/${item.productId}`) }}>View Product</button></div>
+                                                            <div className="amazon-order-item-details">
+                                                                <div>
+                                                                    <div className="amazon-order-item-name order-fs">{item.name}</div>
+                                                                    <div className="amazon-order-item-price order-fs">Price : {item.price}</div>
+                                                                    <div className="amazon-order-item-quantity order-fs">Quantity : {item.quantity}</div>
+                                                                </div>
+                                                                <div className="log-btn-c"><button className="log" onClick={() => { navigate(`/product/${item.productId}`) }}>View Product</button></div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    ))}
+                                                </div>
+                                                <div className="amazon-order-shipping order-fs">
+                                                    <h4>Shipping Info</h4>
+                                                    <p>Order Id #{order._id}</p>
+                                                    <p>Name :  <span>{order.shippingInfo.name}</span>  </p>
+                                                    <p>Phone :  <span>{order.shippingInfo.phoneNumber}</span>  </p>
+                                                    <p>Address :  <span>{order.shippingInfo.address}</span>  </p>
+                                                    <p>City :  <span>{order.shippingInfo.city}</span>  </p>
+                                                    <p>Pin code :  <span>{order.shippingInfo.pinCode}</span>  </p>
+                                                    <p>State :  <span>{order.shippingInfo.state}</span>  </p>
+                                                </div>
+                                                <div className="amazon-order-actions">
+                                                    <button onClick={() => navigate(`/order/${order._id}`)} className="log">View Details</button>
+                                                </div>
                                             </div>
-                                            <div className="amazon-order-shipping order-fs">
-                                                <h4>Shipping Info</h4>
-                                                <p>Ordered At : <span> {new Date(order.createdAt).toLocaleString()}</span></p>
-                                                <p>Name :  <span>{order.shippingInfo.name}</span>  </p>
-                                                <p>Phone :  <span>{order.shippingInfo.phoneNumber}</span>  </p>
-                                                <p>Address :  <span>{order.shippingInfo.address}</span>  </p>
-                                                <p>City :  <span>{order.shippingInfo.city}</span>  </p>
-                                                <p>Pin code :  <span>{order.shippingInfo.pinCode}</span>  </p>
-                                                <p>State :  <span>{order.shippingInfo.state}</span>  </p>
-                                            </div>
-                                            <div className="amazon-order-actions">
-                                                <button onClick={() => navigate(`/order/${order._id}`)} className="log">View Details</button>
-                                            </div>
-                                        </div>
+                                        )}
                                     </div>
                                 ))}
                         </div>
