@@ -140,11 +140,13 @@ $color3:  rgb(1, 79, 179);
       > h5 {
         @include heading(2px);
         opacity: 0.8;
-        margin: 1rem 0;
-        color:#fff
+        margin: .7rem 0;
+        color:#fff;
+        font-size: 18px;
+        padding-left: 2rem;
       }
       > ul {
-        @include flex(column, unset, unset, 1.2rem);
+        @include flex(column, unset, unset, 1.1rem);
         list-style: none;
         > li {
           padding: 0.5rem 1rem;

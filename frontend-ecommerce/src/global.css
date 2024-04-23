@@ -63,7 +63,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* Top Nav */
-.top-nav{padding: 1rem 4rem;display: flex; gap: 1rem;align-items: center;color:#249adf;border-bottom: 1px solid #8585854f;}
+.top-nav{padding: 1rem 4%;display: flex; gap: 1rem;align-items: center;color:#249adf;border-bottom: 1px solid #8585854f;}
 .top-nav p{color:#14A149}
 .top-nav .lastP{color: rgb(169, 169, 169) !important;}
 
@@ -94,7 +94,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .resert_btn{color: #fff;background-color: #014FB3;padding: .6rem 1.5rem; border-radius: 5px;}
 .adminLoad{height: 90vh;color: #fff;}
 .adminLoad h4{font-weight: 600;}
-
+.gotohome{padding: .6rem 2rem; background-color: #014FB3; color: #fff;border-radius: 5px;}
+.dashuserPro img{height: 35px;width: 35px;border-radius: 50%;}
+.dashuserPro {align-items: center;gap: 1rem;}
   @media(max-width:768px){
     .top-nav{padding: .6rem 1rem; gap: .5rem;}
     .w100{width: 100%;}

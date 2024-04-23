@@ -2,9 +2,9 @@
   overflow-y: auto;
 background-color: #131920;
   .bar {
-    height: 4rem;
+    
     @include flex(row, unset);
-    padding: 0 1rem;
+    padding: 1rem 2.5rem;
     border-bottom: 1px solid rgba(131, 131, 131, 0.407);
     > input {
       margin-right: auto;
