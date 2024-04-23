@@ -58,7 +58,7 @@ const Header: React.FC<PropsType> = ({ user }) => {
   return (
     <div  className={`bg-body-tertiary ${isHomePage ? '' : 'bx'} ${isAdminRoute ? 'd-none' : ''}`}>
     <div className="no-print">
-      <Navbar expand="md" className="bg-body-tertiary">
+      <Navbar expand="md" >
         <div className='container-fluid-nav'>
           <Link to="/">
             <img src={logo} alt="logo" className="logo-img" />
