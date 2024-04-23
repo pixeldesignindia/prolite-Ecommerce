@@ -46,6 +46,7 @@ option {font-size: 1rem;  background-color: #054aa4;font-family: Montserrat;}
 .category-list{cursor: pointer;}
 .ham{display: none;}
 .search-product-list .cardC{margin: 0;}
+.search-pro{padding-right: 2%;}
 @media(max-width:500px){
     .product-search-page{padding: 1.7rem 1rem;height: fit-content;position: relative}
     .product-search-page .grn ,.product-search-page .blue{overflow-y: unset;}
