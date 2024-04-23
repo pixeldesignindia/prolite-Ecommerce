@@ -1,5 +1,5 @@
 .banner-head{font-size: 3.5rem;font-weight: 600;line-height: 80px;letter-spacing: 0em;text-align: center;}
-.banner-para{font-size: 1.2rem;font-weight: 500;line-height: 47px;letter-spacing: 0em;text-align: center;padding: 0 8rem;}
+.banner-para{font-size: 1.2rem;font-weight: 500;line-height: 40px;letter-spacing: 0em;text-align: center;padding: 0 8rem;}
 .banner-btn{padding: 16px 24px;font-size: 18px;font-weight: 600; color: #000000;border-radius: 5px;text-transform: uppercase;letter-spacing: 4px;background-color: #fff;border: 0px;margin-top: 20px;}
 .carousel{max-height: 70vh !important;}
 .carousel-item{height: 70vh !important;}

@@ -213,7 +213,7 @@ const AllTransection = () => {
 
     return (
       <div className="monthely-transection ">
-        <div className="transactionItem  pb-3">
+        <div className="transactionItem  pb-4 pt-3">
           <h2 >Transactions</h2>{" "}
           <div>
             <label>Date :</label>
@@ -225,7 +225,7 @@ const AllTransection = () => {
           </div>
         </div>
         <div className="row mt-5">
-          <div className="col-5">
+          <div className="col-6">
             <div className="transectionBox">
               <div className="trasectionHead">
                 <h2 className="text-center mb-4">Card Transactions</h2>
@@ -239,7 +239,7 @@ const AllTransection = () => {
               </div>
             </div>
           </div>
-          <div className="col-5">
+          <div className="col-6">
             <div className="transectionBox">
               <div className="trasectionHead">
                 <h2 className="text-center mb-4">Cash Transactions</h2>
