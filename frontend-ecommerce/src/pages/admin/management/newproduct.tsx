@@ -16,6 +16,7 @@ const NewProduct = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
+  const [newCategory, setNewCategory] = useState<string>("");
   const [productModel, setProductModel] = useState<string>("");
   const [dimensions, setDimensions] = useState<string>("");
   const [brand, setBrand] = useState<string>("autoglo");
@@ -65,7 +66,7 @@ const NewProduct = () => {
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Check if any required field is empty or null
-    if (!name || !price || !stock || !photos.length || !category || !brand || !tags.length || !displayPhoto) {
+    if (!name || !price || !stock || !photos.length || !brand || !tags.length || !displayPhoto) {
       console.log('Please fill out all required fields');
       return;
     }
@@ -75,7 +76,12 @@ const NewProduct = () => {
     formData.append("description", description);
     formData.append("price", price.toString());
     formData.append("stock", stock.toString());
-    formData.append("category", category);
+    if (category === '') {
+      formData.append("category", `${category}:${newCategory}`);
+    } else {
+      formData.append("category", category);
+    }
+    
     formData.append("brand", brand);
     formData.append("productModel", productModel);
     formData.append("dimensions", dimensions);
@@ -169,32 +175,41 @@ const NewProduct = () => {
                 <option value="prolite">Prolite</option>
               </select>
             </div>
-            
-        <div>
-          <label>Existing Category</label>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)} 
-          >
-            <option value="">Select From Existing Category</option>
-            {categoriesResponse &&
-              categoriesResponse?.categoriesByBrand[1]?.categories.map((i:string) => (
-                <option key={i} value={i}>
-                  {i.toUpperCase()}
-                </option>
-              ))}
-          </select>
-        </div>
-        {category ==='' &&  <div>
-              <label>Category</label>
-              <input
-                required
-                type="text"
-                placeholder="eg. laptop, camera etc"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              />
-            </div>}
+
+
+{newCategory === '' && (
+  <div>
+    <label>Existing Category</label>
+    <select
+      value={category}
+      onChange={(e) => setCategory(e.target.value)} 
+    >
+      <option value="">Select From Existing Category</option>
+      {categoriesResponse &&
+        categoriesResponse?.categoriesByBrand[1]?.categories.map((i:string) => (
+          <option key={i} value={i}>
+            {i.toUpperCase()}
+          </option>
+        ))}
+    </select>
+  </div>
+)}
+
+{category === '' && (
+  <div>
+    <label>New Category</label>
+    <input
+      type="text"
+      placeholder="eg. laptop, camera etc"
+      value={newCategory}
+      onChange={(e) => setNewCategory(e.target.value)}
+    />
+  </div>
+)}
+
+
+        
+
 
 
             <div>
