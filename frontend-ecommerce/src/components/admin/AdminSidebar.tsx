@@ -6,6 +6,7 @@ import {
   FaChartPie,
   // FaGamepad,
 } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { FaBoxOpen } from "react-icons/fa";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { IoIosPeople } from "react-icons/io";
@@ -16,6 +17,7 @@ import {
 } from "react-icons/ri";
 import { Link, Location, useLocation } from "react-router-dom";
 import { IconType } from "react-icons";
+
 
 const AdminSidebar = () => {
   const location = useLocation();
@@ -108,6 +110,17 @@ const DivOne = ({ location }: { location: Location }) => (
         Icon={AiFillFileText}
         location={location}
       />
+      <li style={{
+      backgroundColor: "white",}}><Link
+      to='/'
+      style={{
+        color:  "black",
+      }}
+    >
+      <FaHome />
+      Home
+    </Link></li>
+      
     </ul>
   </div>
 );

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import AdminSidebar from "../../components/admin/AdminSidebar";
 import { BarChart} from "../../components/admin/Charts";
 import Table from "../../components/admin/DashboardTable";
-import { useNavigate } from "react-router-dom";
 import { useStatsQuery } from "../../redux/api/dashboardApi"; 
 import { RootState } from "../../redux/store";
 import { getLastMonths } from "../../utils/features"; 
@@ -16,7 +15,6 @@ const userImg =
 const { last6Months: months } = getLastMonths();
 
 const Dashboard = () => {
-  const navigate = useNavigate()
   const { user } = useSelector((state: RootState) => state.userReducer);
 
   const { isLoading, data, isError } = useStatsQuery(user?._id!);
@@ -42,7 +40,6 @@ const Dashboard = () => {
               <input type="text" placeholder="Search for data, users, docs" /> */}
               <div className="d-flex dashuserPro"><img src={user?.photo || userImg} alt="User" />
               <h4 style={{color:'#fff'}}>{user?.name}</h4></div>
-              <button className="gotohome" onClick={()=>{navigate('/')}}>Go To Home</button>
             </div>
 
             <section className="widget-container">
