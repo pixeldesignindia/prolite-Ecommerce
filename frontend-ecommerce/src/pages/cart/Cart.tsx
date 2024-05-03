@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {useNavigate } from "react-router-dom";
 import CartItemCard from "../../components/cart-item/Cart-Item";
 import {
-  addToCart,
   calculatePrice,
   discountApplied,
   removeCartItem,
