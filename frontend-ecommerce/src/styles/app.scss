@@ -123,11 +123,11 @@ $color3:  rgb(1, 79, 179);
 
 .admin-container {
   @include grid(1fr 4fr, 2rem);
-  background-color:#131920;
+  background-color:#e4e9e5;
   > aside {
     width: 100%;
-    box-shadow: rgba(103, 252, 255, 0.456) 0px 5px 15px;
-    background-color: #131920;
+    box-shadow: rgb(1 79 179 / 30%) 0px 5px 5px;
+    background-color: #e4e9e5;
     padding: 1rem;
     z-index: 10;
     overflow-y: auto;
@@ -141,9 +141,10 @@ $color3:  rgb(1, 79, 179);
         @include heading(2px);
         opacity: 0.8;
         margin: .7rem 0;
-        color:#fff;
+        color:#131920;
         font-size: 18px;
         padding-left: 2rem;
+        font-weight: 700;
       }
       > ul {
         @include flex(column, unset, unset, 1.1rem);
@@ -185,8 +186,8 @@ $color3:  rgb(1, 79, 179);
     color: #fff;
     font-size: 1.1rem;
     font-weight: 400;
-    padding: 2rem 1rem;
-    background-color: #030d17;
+    padding: 1.5rem 1rem;
+    background-color:rgb(232 232 232);
   }
 
   tbody {
@@ -194,11 +195,11 @@ $color3:  rgb(1, 79, 179);
       box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.093);
     }
     tr:hover {
-      background-color: #1a202b;
+      background-color: #ebebeb;
     }
 
     td {
-      padding: 1rem;
+      padding: .5rem;
 
       img {
         width: 4rem;
@@ -289,3 +290,11 @@ $color3:  rgb(1, 79, 179);
 .product-management > article{
   height:max-content !important;
 }
+.dashboard{background-color:#e4e9e5;}
+.graph-container h2{color: #fff !important; font-weight: 400 !important;}
+.dashboard .graph-container{gap: 1rem;}
+.dashboard .graph-container > div{background-color: rgb(113 133 160);}
+.dashboard .widget-container .widget{width: 19rem;}
+.dashboard .graph-container .dashboard-categories .category-item > h5{font-weight: 400;color: #fff !important;}
+.chart-container > section > h2{color: #000;}
+.dashboard .transaction-container .transaction-box > h2{color: #000;}

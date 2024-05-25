@@ -1,6 +1,6 @@
 
-.transactionItem h2{color: #fff !important;}
-.transactionItem >div label{color: #fff !important;padding-right: 1rem;}
+.transactionItem h2{color:black;}
+.transactionItem >div label{color:black;padding-right: 1rem;}
 
 .col-6 {
     flex: 1;
@@ -8,7 +8,7 @@
 }
 
 .transectionBox {
-    background-color: #1D2630;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     padding: 30px 20px;
@@ -24,7 +24,7 @@
 }
 
 .transactionItem {
-    color: #fff !important;
+    color: black;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.trasectionHead h2{color: #fff !important;}
+.trasectionHead h2{color: black;}
 .total p {
     font-weight: bold;
     font-size: 16px;
@@ -42,7 +42,7 @@
 .admin-sidebar {
     width: 250px;
     background-color: #202124;
-    color: #fff;
+    color: #0000;
     padding: 20px;
 }
 
@@ -114,7 +114,7 @@
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #1D2630;
+    background-color: #c4ddf9;
   }
   
   .pagination-item.active {

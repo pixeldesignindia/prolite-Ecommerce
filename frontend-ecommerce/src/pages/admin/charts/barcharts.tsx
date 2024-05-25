@@ -39,8 +39,8 @@ const Barcharts = () => {
                 labels={last6Months}
                 title_1="Products"
                 title_2="Users"
-                bgColor_1={`hsl(260, 50%, 30%)`}
-                bgColor_2={`hsl(360, 90%, 90%)`}
+                bgColor_1={`#198754`}
+                bgColor_2={`#d6dc0d`}
               />
               <h2>Top Products & Top Customers</h2>
             </section>

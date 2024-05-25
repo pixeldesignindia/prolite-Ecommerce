@@ -153,7 +153,7 @@ const AllTransection = () => {
           <h2 style={{color:'#fff'}}>Transactions</h2>
           <div className="dateInputDiv">
             <button onClick={() => setDate("")} className="resert_btn">Reset</button>
-            <p style={{color:'#fff'}}>Date</p>
+            <p style={{color:'#0000'}}>Date</p>
             <input
               type="date"
               value={date}

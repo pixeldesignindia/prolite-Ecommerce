@@ -39,7 +39,7 @@ const Dashboard = () => {
               {/* <BsSearch />
               <input type="text" placeholder="Search for data, users, docs" /> */}
               <div className="d-flex dashuserPro"><img src={user?.photo || userImg} alt="User" />
-              <h4 style={{color:'#fff'}}>{user?.name}</h4></div>
+              <h4 style={{color:'#00000'}}>{user?.name}</h4></div>
             </div>
 
             <section className="widget-container">
@@ -80,7 +80,7 @@ const Dashboard = () => {
                   data_2={stats?.chart?.order}
                   title_1="Revenue"
                   title_2="Transaction"
-                  bgColor_1="rgb(0, 115, 255)"
+                  bgColor_1="#262e4e"
                   bgColor_2="rgba(53, 162, 235, 0.8)"
                 />
               </div>
@@ -164,7 +164,7 @@ const WidgetItem = ({
       style={{
         background: `conic-gradient(
         ${color} ${(Math.abs(percent) / 100) * 360}deg,
-        rgb(255, 255, 255) 0
+        rgb(226 237 253) 0
       )`,
       }}
     >

@@ -111,7 +111,7 @@ const DivOne = ({ location }: { location: Location }) => (
         location={location}
       />
       <li style={{
-      backgroundColor: "white",}}><Link
+      backgroundColor: "#fff",}}><Link
       to='/'
       style={{
         color:  "black",
@@ -188,7 +188,7 @@ const Li = ({ url, text, location, Icon }: LiProps) => (
     <Link
       to={url}
       style={{
-        color: location.pathname.includes(url) ? "rgb(0,115,255)" : "black",
+        color: location.pathname.includes(url) ? "rgb(11 0 196)" : "black",
       }}
     >
       <Icon />

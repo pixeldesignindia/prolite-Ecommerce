@@ -10,7 +10,7 @@ nav a p{font-weight: 500;}
 .ac-data{width: max-content}
 .ac-data h6{font-weight: 700;}
 .cartCount{margin-top: -20px !important;font-size: .9rem;}
-.link-center{display: flex;text-align: center;justify-content: center;align-items: center;width: 100%;font-size: 18px; font-weight: 500; text-transform: uppercase;gap: 2rem;margin-left: 15vw;}
+.link-center{display: flex;text-align: center;justify-content: center;align-items: center;width: 100%;font-size: 18px; font-weight: 500; text-transform: uppercase;gap: 2rem;}
 .logo-img{height: 3rem;}
 .navbar-expand-lg{box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
 .log {

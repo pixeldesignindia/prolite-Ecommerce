@@ -1,6 +1,6 @@
 .dashboard {
   overflow-y: auto;
-background-color: #131920;
+background-color: #e4e9e5;
   .bar {
     
     @include flex(row, unset);
@@ -26,9 +26,9 @@ background-color: #131920;
 
     .widget {
       width: 16rem;
-      background-color: #1D2630
+      background-color: #ffffff
       ;
-      color: #fff;
+      color: #050505;
       box-shadow: 0 0 5px rgba(182, 182, 182, 0.559);
       padding: 2rem;
       border-radius: 10px;
@@ -73,9 +73,9 @@ background-color: #131920;
     @include flex(row, unset, unset, 2rem);
     padding: 0 2rem 2rem 0;
     > div {
-      background-color: #1D2630
+      background-color: #ffffff
       ;
-      color: #fff;
+      color: #000000;
       border-radius: 10px;
     }
 
@@ -122,7 +122,7 @@ background-color: #131920;
           font-weight: 300;
           font-size: 1.1rem;
           width: 13rem;
-          color: #fff !important;
+          color: #040404 !important;
 
         }
         > div {
@@ -152,7 +152,7 @@ background-color: #131920;
     height: 30rem;
 
     > div {
-      background-color: #1D2630;
+      background-color: #ffffff;
       box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.132);
       border-radius: 10px;
     }
