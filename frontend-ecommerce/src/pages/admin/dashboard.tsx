@@ -80,8 +80,8 @@ const Dashboard = () => {
                   data_2={stats?.chart?.order}
                   title_1="Revenue"
                   title_2="Transaction"
-                  bgColor_1="#262e4e"
-                  bgColor_2="rgba(53, 162, 235, 0.8)"
+                  bgColor_1="rgb(0 91 49)"
+                  bgColor_2="rgb(9 19 110)"
                 />
               </div>
 

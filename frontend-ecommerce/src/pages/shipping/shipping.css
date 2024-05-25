@@ -8,6 +8,7 @@
     width: 90%;
   }
   .ship-content{padding: 2rem 0 2rem 2rem;}
+  .shipping .bg-blue .rowBlock .right{width: 45%;}
   /* .ship-r{background-color:  #0b72bc;} */
   .ship-l{background-color:rgb(1, 79, 179);min-height: 85vh;}
   .redio-address{  padding: 1.2rem;border: 1px solid rgba(101, 101, 101, 0.2);width: 100%;background-color:#fff;transition:.3s ease-in-out;display: flex !important; justify-content: space-between;}

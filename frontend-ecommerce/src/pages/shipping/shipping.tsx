@@ -156,7 +156,7 @@ const Shipping = () => {
     <div className="shipping">
       <div className="bg-blue">
         <div className="row rowBlock">
-          <div className="col-6 w100">
+          <div className="col-6 w100 left">
             <div className="ship-content">
               <h4 style={{color:"#000"}}>Saved Address</h4>
               {addresses.length > 0 && (
@@ -185,7 +185,7 @@ const Shipping = () => {
             </div>
           </div>
 
-          <div className="col-6 w100">
+          <div className="col-6 w100 right">
             <div className="ship-content ship-r">
               <div className="radio-container">
                 <h4> { editAble ? 'Edit Address':'Add New Address'}</h4>

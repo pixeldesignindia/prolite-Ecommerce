@@ -122,11 +122,11 @@ $color3:  rgb(1, 79, 179);
 }
 
 .admin-container {
-  @include grid(1fr 4fr, 2rem);
+  @include grid(1fr 4fr,);
   background-color:#e4e9e5;
   > aside {
     width: 100%;
-    box-shadow: rgb(1 79 179 / 30%) 0px 5px 5px;
+    box-shadow:rgba(1, 79, 179, 0.3) 0px 0px 30px -8px;
     background-color: #e4e9e5;
     padding: 1rem;
     z-index: 10;
@@ -151,7 +151,7 @@ $color3:  rgb(1, 79, 179);
         list-style: none;
         > li {
           padding: 0.5rem 1rem;
-          border-radius: 10px;
+          border-radius: 2px;
           a {
             color: rgba(0, 0, 0, 0.825);
             @include flex(row, unset);
@@ -209,10 +209,10 @@ $color3:  rgb(1, 79, 179);
       }
       a {
         text-decoration: none;
-        background-color: rgba(44, 104, 255, 0.455);
-        color: rgba(44, 104, 255);
+        background-color: rgb(1, 79, 179);
+        color:#fff;
         padding: 0.25rem 0.5rem;
-        border-radius: 10px;
+        border-radius: 3px;
       }
       button {
         width: 2rem;
@@ -246,7 +246,7 @@ $color3:  rgb(1, 79, 179);
     padding: 0.5rem 1rem;
     border: none;
     outline: none;
-    border-radius: 10px;
+    border-radius: 3px;
     cursor: pointer;
     background-color: rgba(1, 79, 179, 1);
     color: white;
@@ -291,10 +291,13 @@ $color3:  rgb(1, 79, 179);
   height:max-content !important;
 }
 .dashboard{background-color:#e4e9e5;}
-.graph-container h2{color: #fff !important; font-weight: 400 !important;}
+.graph-container h2{color: #000000 !important; font-weight: 500 !important;font-size: 22px;}
 .dashboard .graph-container{gap: 1rem;}
-.dashboard .graph-container > div{background-color: rgb(113 133 160);}
+.dashboard .graph-container > div{background-color:#fff;}
 .dashboard .widget-container .widget{width: 19rem;}
-.dashboard .graph-container .dashboard-categories .category-item > h5{font-weight: 400;color: #fff !important;}
+.dashboard .graph-container .dashboard-categories .category-item > h5{font-weight: 400;color: #000000 !important;}
 .chart-container > section > h2{color: #000;}
-.dashboard .transaction-container .transaction-box > h2{color: #000;}
+.dashboard .transaction-container .transaction-box > h2{color: #000;font-size: 22px; font-weight: 500;}
+#page-size{padding: .5rem 1rem !important;}
+.admin-container{gap: 0;}
+.dashboard{padding: 0 2rem;}

@@ -29,8 +29,8 @@ const CartItem = ({
       <article >
         <div className="cart-pro-data">
           <Link to={`/product/${productId}`} className="b">{name}</Link>
-          <p>Category : {category}</p>
-          <p>Dimension : {dimension}</p>
+          {/* <p>Category : {category}</p> */}
+          {/* <p>Dimension : {dimension}</p> */}
           <p>Model : {model}</p>
           <p className="cartDataPrice b">Price : <span>₹{price.toFixed(2)}</span></p>
         </div>

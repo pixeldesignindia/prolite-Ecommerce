@@ -71,7 +71,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .table{--bs-table-bg: none !important;}
 .table > :not(caption) > * > *{color: #000000}
 .rowgroup .row:hover{background-color: #363636;}
-.dashboard-product-box{background-color: #e4e9e5;}
+.dashboard-product-box{background-color: #f3f3f3;}
 .heading{margin-bottom: 1rem;font-size: 1.5rem;}
 .bar>h4{color: #fff;}
 .bar{border-bottom: 1px solid #ffffffaf;}
@@ -79,11 +79,12 @@ input[type="number"]::-webkit-outer-spin-button {
 .transectionBox{color: #000000;}
 .transactionItem{color: #000000;}
 .transactionItem input{color: #000000;}
-.chart-container{background-color: #e4e9e5;}
+.chart-container{background-color: #f3f3f3;}
 .chart-container h1{color: #000000;}
 .dashboard-product-box .heading , .transaction-box .heading{font-size: 1.5rem;}
 .coupon-form input{color: #000000;border: 1px solid #ffffff98 !important;}
-.dashboard-app-container h1{color: #000000;}.coupon-list{color: #000000;}
+.dashboard-app-container h1{color: #000000;}
+.coupon-list{color: #000000;}
 .w-box.m-h-s a{color: #131920;}
 .table-pagination span{color: #000000 !important;}
 .dashboard-product-box .heading{color: #000;font-weight: 500;}
